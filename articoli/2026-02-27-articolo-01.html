@@ -25,10 +25,37 @@ body {
   margin: 0 auto;
   padding: 22px 16px 32px;
 }
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
 .back-link {
   text-decoration: none;
   color: var(--accent);
   font-weight: 700;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
 }
 .article-date {
   margin-top: 14px;
@@ -47,6 +74,35 @@ h1 {
 .article-text p {
   margin: 0 0 1em;
 }
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  h1 {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
 @media (min-width: 700px) {
   .container { padding: 36px 28px 42px; }
   h1 { font-size: 1.72rem; }
@@ -55,7 +111,17 @@ h1 {
 </head>
 <body>
 <div class="container">
-  <a class="back-link" href="../index.html">← Torna agli articoli</a>
+  <div class="top-actions">
+    <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
   <div class="article-date">28 febbraio 2026</div>
   <h1>Quando un sistema artificiale firma un articolo di fisica teorica</h1>
   <div class="article-text">
