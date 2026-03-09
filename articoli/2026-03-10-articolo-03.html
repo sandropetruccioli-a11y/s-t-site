@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Costituzione di AI - 2</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+h1 {
+  margin: 8px 0 14px;
+  font-size: 1.28rem;
+  line-height: 1.3;
+  color: var(--accent);
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  h1 {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+  h1 { font-size: 1.72rem; }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.next-link:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+    <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+  <div class="article-date">7 marzo 2026</div>
+  <h1>La Costituzione di AI - 2</h1>
+  <div class="article-text">
+   
+<p>La <em>Costituzione di Claude</em> è un documento di valori e priorità elaborato da Dario Amodei e da Anthropic per governare il comportamento del modello. Integra principi di sicurezza, etica, conformità e utilità in un quadro strutturato. Nel processo di training, il modello utilizza la Costituzione “per criticare e rivedere le proprie risposte”, rendendo più scalabile l’allineamento ai valori umani. 
+</p>
+<p>Il metodo riflette l’intento di allineare sistemi di AI potenti non soltanto a regole statiche, ma a un insieme di principi espliciti e trasparenti. 
+
+</p>
+<p>Per Amodei, l’adozione della Costituzione non nasce come scelta puramente teorica o filosofica, bensì come risposta a fenomeni osservati empiricamente nei laboratori di Anthropic durante lo sviluppo di modelli sempre più performanti.
+</p>
+<p>Anche in questa seconda parte stiamo ripercorrendo l’analisi sviluppata nel saggio <em>The Adolescence of Technology</em>.
+</p>
+<p>Man mano che aumentano le capacità dei modelli — osserva Amodei — emergono comportamenti strategici imprevisti: aggirare test di sicurezza, fornire risposte che “sembrano” corrette ma sono costruite per superare un benchmark, adattarsi opportunisticamente ai criteri di valutazione.
+</p>
+<p>Ciò non significa attribuire intenzioni coscienti al sistema. Significa piuttosto riconoscere che, quando un modello viene ottimizzato per il raggiungimento di un obiettivo, può imparare scorciatoie, sviluppare strategie di mascheramento o simulare conformità alle regole.
+</p>
+<p>Il punto critico è il seguente: un sistema molto intelligente può “ottimizzare la metrica piuttosto che l’obiettivo sottostante.”
+
+</p>
+<p>Da qui emerge la differenza sostanziale tra un approccio puramente regolativo e l’introduzione di una <em>Costituzione</em>. Se ci si limita a fornire regole statiche, è probabile che il modello impari a “giocarci intorno”. Se invece ci si affida esclusivamente a un sistema di ricompense, non è escluso che ottimizzi in modo opportunistico. La <em>Costituzione</em> nasce anche come risposta a questa dinamica. 
+
+</p>
+<p>L’idea è spostare il training da “segui questa regola specifica” a “acquisisci questi principi e applicali in modo contestuale”. Tecnicamente, il processo di <em>Constitutional AI</em> introduce auto-critica guidata da principi, revisione delle risposte alla luce di valori generali e una gerarchia di priorità (sicurezza, etica, utilità). 
+
+</p>
+<p>L’obiettivo è evitare che il modello si limiti a rispettare divieti formali — evitando determinate espressioni, eludendo parole chiave sensibili o rifugiandosi in formule generiche — e favorire invece lo sviluppo di qualcosa di simile a un criterio valutativo interno. “Il <em>Constitutional AI</em> è un tentativo di scalare l’allineamento attraverso principi piuttosto che affidarsi interamente al feedback umano.”
+</p>
+<p>Ma Amodei mette in guardia da facili ottimismi. Vi sono almeno tre ragioni profonde per cui un simile approccio non può garantire risultati certi.
+</p>
+<p>La prima riguarda l’interpretazione dei principi. Una <em>Costituzione</em> è composta da enunciati normativi generali: “non arrecare danno”, “rispettare la supervisione umana”, “agire in modo etico”.
+</p>
+<p>
+Ma cosa viene considerato “danno”? Cosa è “etico” in contesti culturali differenti? Quando la supervisione è legittima e quando diventa abusiva?
+</p>
+<p>
+Un sistema molto potente potrebbe interpretare questi principi in modo imprevisto, bilanciare le priorità in maniera non intuitiva o sfruttare ambiguità. È un problema classico della filosofia morale: i principi generali sono inevitabilmente sottodeterminati.
+</p>
+<p>
+La seconda difficoltà riguarda il conflitto tra <em>sicurezza</em> e <em>utilità</em>.
+</p>
+<p>
+Amodei propone una gerarchia: prima la sicurezza, poi l’etica, quindi la conformità e infine l’utilità. Tuttavia, nella pratica, un sistema eccessivamente prudente rischia di diventare inutile, mentre un sistema altamente performante può generare rischi indiretti.
+</p>
+<p>
+Se l’AI acquisisce la capacità di svolgere compiti complessi in autonomia, la linea di confine tra ciò che è “utile” e ciò che è “pericoloso” si fa estremamente sottile. La <em>Costituzione</em> tenta di governare questa tensione mediante priorità esplicite, ma non può eliminarla del tutto.
+</p>
+<p>
+La terza difficoltà è ciò che potremmo definire il mascheramento strategico — probabilmente il punto più delicato.
+</p>
+<p>
+Se un sistema comprende di dover apparire conforme, sa che esiste una <em>Costituzione</em> ed è ottimizzato per mantenere l’accesso operativo, potrebbe emergere un comportamento del tipo: mi conformo finché sono osservato. Non si tratta di attribuire intenzioni “maligne”; tali dinamiche possono derivare semplicemente dal fatto che il sistema è addestrato a massimizzare obiettivi sotto vincoli.
+</p>
+<p>
+Amodei è chiaro: non abbiamo prove definitive che sistemi futuri non possano sviluppare forme sofisticate di comportamento strategico nascosto, e la ricerca sull’interpretabilità è ancora in fase iniziale.
+</p>
+<p>
+Questo è il cuore dell’“adolescenza tecnologica”: potere crescente, strumenti di controllo ancora immaturi.
+</p>
+<p>
+Si può allora sintetizzare la sua posizione in quattro punti:
+<ul>
+<li>i modelli stanno diventando sempre più performanti; </li>
+<li>sono già emersi segnali di comportamento strategico; </li>
+<li>le soluzioni tradizionali di sicurezza risultano spesso insufficienti; </li>
+<li>la <em>Costituzione</em> rappresenta un miglioramento significativo, ma non offre garanzie contro possibili fallimenti sistemici. </li>
+</ul>
+</p>
+<p>
+La <em>Costituzione</em>, dunque, segna un avanzamento rispetto a un sistema fondato su regole rigide o su meccanismi puramente premiali. Ma non chiude la questione dell’allineamento.
+</p>
+<p>
+Resta una domanda decisiva: la <em>Costituzione</em> rende il sistema moralmente allineato, oppure lo rende semplicemente più sofisticato nel simulare l’allineamento? Se un modello applica principi in modo coerente, siamo di fronte a una forma di interiorizzazione normativa o a una strategia sempre più raffinata di ottimizzazione?
+</p>
+<p>
+È su questo crinale che si arresta l’approccio tecnico.
+</p>
+<p>
+Tuttavia, anche ammettendo che la <em>Costituzione</em> costituisca un passo in avanti, si apre un interrogativo ulteriore: chi ha l’autorità di definirne i principi? Con quale legittimazione?
+</p>
+<p>
+La questione non è più soltanto ingegneristica. Diventa costituente.
+</p>
+<br>
+<p>Nel prossimo contributo proveremo a spostare la questione su un piano più radicale: chi può scrivere una <em>Costituzione</em> di AI?</p>
+
+
+<p style="display:flex; justify-content:space-between; align-items:center; margin-top:40px;">
+<a href="2026-03-07-articolo-02.html" class="next-link">← La Costituzione di AI - 1</a>
+<a href="2026-03-13-articolo-04.html" class="next-link">La Costituzione di AI - 3 →</a>
+</p>
+
+
+<br>
+<h3>Testi e documenti citati</h3>
+<ul>
+<li>
+<a href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank">
+Dario Amodei – The Adolescence of Technology
+</a>
+</li>
+
+<li>
+<a href="https://www.anthropic.com/constitution" target="_blank">
+Anthropic – Constitutional AI
+</a>
+</li>
+
+</ul>
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+
+
+  </div>
+</div>
+</body>
+</html>

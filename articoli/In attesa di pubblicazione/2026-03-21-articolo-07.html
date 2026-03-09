@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI: bene comune e responsabilità morale</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+h1 {
+  margin: 8px 0 14px;
+  font-size: 1.28rem;
+  line-height: 1.3;
+  color: var(--accent);
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  h1 {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+  h1 { font-size: 1.72rem; }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.next-link:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+    <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+  <div class="article-date">7 marzo 2026</div>
+  <h1>AI: bene comune e responsabilità morale</h1>
+  <div class="article-text">
+    <p>
+Nel discorso rivolto al Collegio cardinalizio subito dopo il suo insediamento, papa Leone XIV ha spiegato che la scelta del nome rinvia alla storica enciclica <em>Rerum Novarum</em>, dedicata alle questioni sociali poste dalla prima grande rivoluzione industriale. Ha poi aggiunto che oggi la Chiesa offre a tutti “il tesoro della sua dottrina sociale in risposta a un’altra rivoluzione industriale e agli sviluppi nel campo dell’intelligenza artificiale che pongono nuove sfide per la difesa della dignità umana, della giustizia e del lavoro”.
+</p>
+<p>
+Poco più di un anno prima, il 28 gennaio 2025, era stata pubblicata <em>Antiqua et Nova. Nota sul rapporto tra intelligenza artificiale e intelligenza umana</em>, documento congiunto del Dicastero per la Dottrina della Fede e del Dicastero per la Cultura e l’Educazione. Si tratta di un testo particolarmente interessante perché rappresenta uno dei primi tentativi sistematici della Chiesa cattolica di affrontare l’AI sul piano antropologico ed etico, e non soltanto su quello pastorale.
+</p>
+<p>
+Il documento parte da una premessa molto chiara: l’intelligenza umana appartiene alla dignità della persona creata “a immagine di Dio”, mentre le tecnologie sono considerate come frutto della collaborazione dell’uomo con la creazione. L’AI, dunque, non viene trattata come qualcosa di intrinsecamente negativo; al contrario, il testo riconosce esplicitamente che il progresso tecnico può rientrare nella vocazione umana.
+</p>
+<p>
+La <em>Nota</em> non si limita dunque a fissare limiti e cautele: prova anche a collocare l’AI entro una visione positiva della tecnica come possibilità propria dell’agire umano, purché resti subordinata alla dignità della persona, al bene comune e alla responsabilità morale.
+</p>
+<p>
+Ci si muove certamente nel solco della tradizione dottrinale. Ma proprio per questo il documento è interessante: perché prova a misurarsi con l’intelligenza artificiale non dall’esterno, né soltanto in chiave difensiva, bensì cercando di chiarire quali aspetti dell’umano debbano restare indisponibili anche dentro una trasformazione tecnologica di portata storica.
+</p>
+<p>
+<em>Antiqua et Nova</em> individua tre limiti fondamentali dell’AI.
+</p>
+<p>
+Esiste anzitutto un <em>limite ontologico</em>: l’AI può eseguire compiti complessi, ma non pensa realmente. Opera su inferenze statistiche, non possiede comprensione semantica piena, né coscienza o esperienza.
+</p>
+<p>
+C’è poi un <em>limite corporeo ed esperienziale</em>: l’intelligenza umana nasce da esperienza corporea, emozioni, relazioni sociali e storia personale. L’AI, invece, apprende da dati ma non vive esperienze. Su questo punto la <em>Nota</em> si avvicina a quanto sostengono molti neuroscienziati e filosofi della mente.
+</p>
+<p>
+Infine esiste un <em>limite morale e relazionale</em>. L’AI non può esercitare discernimento morale né instaurare relazioni autentiche; non è un soggetto morale e non è responsabile delle proprie azioni.
+</p>
+<p>
+Da questi limiti deriva la tesi centrale del documento: l’AI deve essere considerata uno strumento prodotto dall’intelligenza umana e non va confusa con una forma di intelligenza equivalente alla nostra. Qui si trova il cuore della sua impostazione antropologica: la tecnologia deve restare subordinata alla dignità della persona e orientata al bene comune.
+</p>
+<p>
+Accanto alla definizione dei limiti cognitivi, l’analisi affronta poi i rischi sociali e politici: concentrazione del potere nelle grandi aziende tecnologiche, manipolazione dell’opinione pubblica, amplificazione delle disuguaglianze, uso militare dell’AI.
+</p>
+<p>
+Un approccio così attento agli aspetti antropologici ed etici non può che operare una netta distinzione tra intelligenza umana e AI. Resta tuttavia aperta la domanda se questa distinzione ontologica sia sufficiente ad affrontare anche il problema del potere epistemico che i sistemi artificiali tendono ad acquisire.
+</p>
+<p>
+Dal punto di vista empirico, infatti, oggi assistiamo al fatto che l’AI è in grado di produrre conoscenza, orientare la ricerca e modificare i processi decisionali. La risposta della <em>Nota</em>, su questo punto, è ferma: l’AI può ampliare le capacità umane, ma non può sostituire il soggetto umano della conoscenza e della decisione morale.
+</p>
+<p>
+È proprio a partire da qui che diventa possibile misurare, con maggiore precisione, le convergenze e soprattutto le divergenze tra il documento vaticano e le analisi di Amodei e di Pignataro. A uno sguardo superficiale si potrebbe essere tentati di insistere soprattutto sui punti di contatto. E tali punti, in effetti, non mancano. 
+</p>
+<p>
+Ma su un aspetto decisivo la <em>Nota</em> si distanzia da entrambi: quando ribadisce che l’AI non è una intelligenza in senso proprio, bensì un <em>prodotto</em> dell’intelligenza umana, e soprattutto quando sottolinea che l’uso stesso della parola “intelligenza” riferita alle macchine è, in qualche misura, fuorviante, in quanto oscura ciò che è specifico dell’intelligenza umana. È questo il suo punto antropologico fondamentale.
+</p>
+<p>
+Nel caso di Amodei, la tensione si ripresenta in termini non del tutto diversi da quelli già emersi nel confronto con le neuroscienze, anche se qui il fondamento è diverso. Non si tratta anzitutto di chiarire che cosa sia l’intelligenza in senso proprio, bensì di comprendere che cosa, nell’esperienza umana, non possa essere ridotto a funzione tecnica o delegato a sistemi artificiali.
+</p>
+<p>
+Amodei, in realtà, non sostiene che l’AI sia identica all’intelligenza umana. Come si è visto, il presupposto del suo ragionamento è un altro: se i sistemi raggiungono capacità cognitive comparabili o superiori a quelle dell’uomo, le conseguenze economiche e politiche possono essere enormi.
+</p>
+<p>
+Da una parte, dunque, la <em>Nota</em> muove dall’idea che l’AI non possieda esperienza, discernimento morale e relazioni autentiche, e conclude che le sue capacità restano solo una frazione delle capacità umane. Dall’altra, Amodei non si chiede se la macchina sia veramente intelligente, ma quale potere possano acquisire sistemi che svolgono compiti cognitivi meglio degli esseri umani.
+</p>
+<p>
+I due discorsi, perciò, si muovono su piani diversi.
+</p>
+<p>
+Nel caso di Pignataro, la divergenza è ancora più esplicita. Pignataro sostiene che il vero problema non sia l’intelligenza delle macchine, ma il fatto che le piattaforme possano apprendere la grammatica delle istituzioni economiche, accumulando conoscenza organizzativa e orientando decisioni. Il documento vaticano, invece, continua a collocare l’AI entro un orizzonte fondamentalmente strumentale.
+</p>
+<p>
+È qui che la distanza tra i due approcci diventa più netta. Per Pignataro, infatti, i sistemi non si limitano a eseguire compiti: possono ristrutturare dall’interno i processi decisionali. La Nota riconosce alcuni rischi sociali molto seri, ma non arriva fino a questa diagnosi. Continua a pensare l’essere umano come unico soggetto morale e responsabile e, proprio per questo, a subordinare l’AI alla responsabilità umana invece di leggerla come possibile infrastruttura autonoma di potere.
+</p>
+<p>
+Le differenze ci sono, anche se la <em>Nota</em> segnala con lucidità il pericolo che le nuove tecnologie rafforzino il <em>paradigma tecnocratico</em>, cioè l’idea che ogni problema umano possa essere risolto tecnicamente. Su questo punto il documento prende esplicitamente posizione contro quelle correnti — dal transumanesimo al postumanesimo — che vedono nelle tecnoscienze non soltanto strumenti, ma il principio di una ridefinizione dell’uomo e della società.
+</p>
+<p>
+L’intelligenza umana non è soltanto capacità di risolvere problemi: include relazioni, esperienza corporea, apertura alla verità, dimensione morale e spirituale. Questa concezione ampia dell’intelligenza serve a difendere la dignità della persona.
+</p>
+<p>
+<em>Antiqua et Nova</em> afferma con forza che la tecnologia deve restare al servizio dell’uomo. Ciò non scioglie però una questione di fondo: chi controlla effettivamente i sistemi che accumulano conoscenza e potere?
+</p>
+
+
+
+
+
+<br>
+<h3>Testi e documenti citati</h3>
+<p>
+Per chi desideri confrontarsi direttamente con i testi citati in questa analisi,
+sono disponibili qui Antiqua et Nova i saggi di Dario Amodei, e di Andrea Pignataro.
+</p>
+
+<ul>
+
+<li>
+<a href="https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_it.html" target="_blank">
+<em>Antiqua et Nova</em> 
+</a>
+</li>
+
+
+<li>
+<a href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank">
+Dario Amodei – The Adolescence of Technology
+</a>
+</li>
+
+
+<li>
+<a href="https://ionanalytics.com/wp-content/uploads/2026/02/The_Wrong_Apocalypse.pdf" target="_blank">
+Andrea Pignataro – The Wrong Apocalypse
+</a>
+</li>
+</ul>
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+
+  </div>
+</div>
+</body>
+</html>
