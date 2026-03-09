@@ -103,7 +103,7 @@ h1 {
     widows: 3;
   }
 }
-@media (min-width: 700px) {
+@media (min-width: 701px) {
   .container { padding: 36px 28px 42px; }
   h1 { font-size: 1.72rem; }
 }
@@ -115,6 +115,30 @@ h1 {
 
 .next-link:hover {
   text-decoration: underline;
+}
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+  .article-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .article-nav .next-link {
+    display: block;
+    width: 100%;
+  }
+
+  .article-nav .next-link:last-child {
+    align-self: flex-end;
+    text-align: right;
+  }
 }
 </style>
 </head>
@@ -218,11 +242,10 @@ La questione non è più soltanto ingegneristica. Diventa costituente.
 <p>Nel prossimo contributo proveremo a spostare la questione su un piano più radicale: chi può scrivere una <em>Costituzione</em> di AI?</p>
 
 
-<p style="display:flex; justify-content:space-between; align-items:center; margin-top:40px;">
-<a href="2026-03-07-articolo-02.html" class="next-link">← La Costituzione di AI - 1</a>
-<a href="2026-03-13-articolo-04.html" class="next-link">La Costituzione di AI - 3 →</a>
+<p class="article-nav">
+  <a href="2026-03-07-articolo-02.html" class="next-link">← La Costituzione di AI - 1</a>
+  <a href="2026-03-13-articolo-04.html" class="next-link">La Costituzione di AI - 3 →</a>
 </p>
-
 
 <br>
 <h3>Testi e documenti citati</h3>
