@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I rischi di AI: intelligenza o infrastruttura?</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+h1 {
+  margin: 8px 0 14px;
+  font-size: 1.28rem;
+  line-height: 1.3;
+  color: var(--accent);
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  h1 {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+@media (min-width: 701px) {
+  .container { padding: 36px 28px 42px; }
+  h1 { font-size: 1.72rem; }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.next-link:hover {
+  text-decoration: underline;
+}
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+  .article-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .article-nav .next-link {
+    display: block;
+    width: 100%;
+  }
+
+  .article-nav .next-link:last-child {
+    align-self: flex-end;
+    text-align: right;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+  <a class="back-link" href="2026-03-25-guida-09.html">← Torna alla guida</a>
+  <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+    <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9V3h12v6"></path>
+      <path d="M6 18h12v3H6z"></path>
+      <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+    </svg>
+    Stampa
+  </button>
+</div>
+  <div class="article-date">15 marzo 2026</div>
+  <h1>I rischi di AI: intelligenza o infrastruttura?</h1>
+  <div class="article-text">
+   
+
+
+ <p>
+Tra il 28 gennaio e il 13 febbraio 2026 oltre duemila miliardi di dollari di capitalizzazione sono scomparsi dal settore del <em>software enterprise</em>. La causa immediata è stata il lancio di nuovi strumenti basati sull’intelligenza artificiale — in particolare plugin per Claude Cowork e i progressi di Claude Code.
+</p>
+<p>
+Questi strumenti hanno mostrato come sistemi AI possano svolgere molte attività tipiche del lavoro cognitivo strutturato: redigere documenti legali, gestire flussi contabili, costruire strumenti interni di coordinamento e automatizzare numerose funzioni aziendali. Da qui la reazione dei mercati: se un agente AI può svolgere ciò che oggi fanno questi software, perché continuare a pagare per essi?
+</p>
+<p>
+A scrivere queste cose è Andrea Pignataro, CEO di ION Group, leader globale nel settore del software e dei dati finanziari. Ha pubblicato sul suo blog il saggio <em>The Wrong Apocalypse</em>, per lanciare questa allerta ma soprattutto per contestare la tesi di Dario Amodei, il quale immagina un futuro in cui l’AI raggiunge livelli cognitivi equivalenti a una “nazione di geni in un data center”. Ma, come vedremo, pur rifiutando una visione catastrofista, le conclusioni cui giunge sono forse più radicali di quelle di Amodei.
+</p>
+<p>
+In effetti, la sua tesi può essere riassunta in modo molto netto: il vero rischio non è l’intelligenza della macchina, ma la piattaforma che apprende la grammatica delle istituzioni.
+</p>
+<p>
+Pignataro non contesta la direzione del cambiamento. Ritiene però sbagliato il modo in cui viene interpretato, come pure i tempi e i settori che sarebbero esposti alla trasformazione: “wrong about the mechanism, wrong about the timeline, and wrong about which companies are actually vulnerable”.
+</p>
+<p>
+Quello che Amodei compie, secondo Pignataro, è un errore concettuale: confonde la capacità di un sistema AI di svolgere un compito cognitivo con la possibilità concreta che quel sistema possa sostituire l’intero sistema organizzativo che rende quel compito significativo.
+</p>
+<p>
+Molti osservatori partono dall’idea che se l’AI può eseguire una determinata attività — scrivere codice, analizzare dati, produrre documenti — allora potrà anche sostituire il software o le professioni che oggi la rendono possibile. Questa, per Pignataro, è un’inferenza tutt’altro che ovvia: ignora il fatto che gran parte del <em>software enterprise</em> non esiste per eseguire compiti cognitivi, ma per coordinare attività cognitive tra molte persone e istituzioni.
+</p>
+<p>
+Le organizzazioni, infatti, sono sistemi complessi composti da attori con informazioni, responsabilità e incentivi diversi. Il software aziendale funziona come infrastruttura che rende possibile questa coordinazione: definisce standard, procedure, flussi informativi e forme di controllo.
+</p>
+<p>
+Per questo motivo sostituire un software non equivale a sostituire un singolo compito cognitivo. Anche quando una determinata attività può essere svolta meglio da un sistema AI, resta il problema di come quella attività venga inserita e resa verificabile all’interno di processi organizzativi più ampi. Il valore di questi strumenti risiede nella loro integrazione nei processi istituzionali e nelle pratiche organizzative che regolano il lavoro collettivo.
+</p>
+<p>
+A tal proposito l’autore distingue tra due livelli: i <em>task</em> cognitivi e i <em>language games</em> istituzionali. I primi possono essere sempre più facilmente svolti dall’AI; i secondi riguardano le pratiche, le norme implicite e le strutture organizzative attraverso cui operano le istituzioni. Sostituire i <em>task</em> è relativamente facile; sostituire i <em>language games</em> istituzionali è molto più difficile, perché implica modificare abitudini, rapporti di potere e processi decisionali.
+</p>
+<p>
+Come osserva Pignataro: “<em>The Adolescence of Technology</em> treats the economy as a collection of tasks that AI will perform, rather than as a collection of language games that AI must learn to play.”
+</p>
+<p>
+Il vero cambiamento potrebbe quindi essere più lento e complesso di quanto suggerisca il panico dei mercati. L’AI probabilmente eroderà lo strato più diffuso del software — quello che svolge funzioni cognitive relativamente isolate — mentre rafforzerà il valore dei sistemi profondamente integrati nei processi istituzionali.
+</p>
+<p>
+Il rischio principale, secondo Pignataro, non è che l’AI sostituisca i lavoratori, né l’intelligenza della macchina in sé. Il vero rischio è la piattaforma che apprende le strutture organizzative, accumula conoscenza istituzionale e diventa il nodo centrale di coordinamento.
+</p>
+<p>
+Superata la soglia, essa potrebbe ridimensionare o rendere superflue intere professioni.</p>
+<p>
+Si potrebbe così innescare una dinamica quasi tragica: una sorta di <em>tragedy of the commons</em> applicata alla conoscenza organizzativa; “each individual firm is rational, yet the collective result is catastrophic.”
+</p>
+<p>
+Ogni azienda adotta strumenti AI per restare competitiva, ma così facendo contribuisce a rafforzare l’infrastruttura che finirà per ridurre il suo stesso spazio di autonomia.
+</p>
+<p>
+A questo punto il problema cambia natura. Non più l’AI come soggetto intelligente, ma l’AI come infrastruttura epistemica che apprende il funzionamento dell’intero sistema sociale.
+</p>
+<p>
+E qui la “questione costituzionale”, per riprendere il discorso su Amodei, diventa ancora più complessa. Non si tratta soltanto di controllare il comportamento dei modelli, ma di decidere chi controlla l’infrastruttura che apprende la grammatica delle istituzioni.
+</p>
+<p>
+Allora, se davvero le piattaforme AI acquisissero la grammatica delle istituzioni economiche, la <em>Costituzione di AI</em> dovrebbe regolare il comportamento dei modelli oppure la proprietà e il controllo dell’infrastruttura cognitiva globale?
+</p>
+<p>
+Sono due problemi completamente diversi. E non è escluso che proprio il secondo sia quello decisivo.
+</p>
+<br>
+
+<h3>Testi e documenti citati</h3>
+<ul>
+<li>
+<a href="2026-03-07-articolo-02.html">
+In questo laboratorio ho discusso l’approccio di Dario Amodei all’AI in una serie di tre contributi.<br>→ La Costituzione dell’AI – Parte I
+</a>
+</li>
+<br>
+<li>
+<a href="https://ionanalytics.com/insights/mergermarket/the-wrong-apocalypse-op-ed/" target="_blank">
+Andrea Pignataro – The Wrong Apocalypse
+</a>
+</li>
+<li>
+<a href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank">
+Dario Amodei – The Adolescence of Technology
+</a>
+</li>
+</ul>
+
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+  </div>
+</div>
+</body>
+</html>
