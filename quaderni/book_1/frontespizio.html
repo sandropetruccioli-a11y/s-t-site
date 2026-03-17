@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dalla scienza alle tecnoscienze — Frontespizio</title>
+<meta name="description" content="Sandro Petruccioli, Dalla scienza alle tecnoscienze. Il sapere come sistema e l’eclissi della democrazia.">
+<style>
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.front-page {
+    min-height: 100vh;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 18px 34px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    align-self: flex-start;
+}
+
+.top-link:hover {
+    color: var(--accent);
+}
+
+.front-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.front-block {
+    width: 100%;
+    text-align: center;
+}
+
+.front-logo {
+    width: 92px;
+    height: auto;
+    display: block;
+    margin: 0 auto 34px;
+}
+
+.front-author {
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.front-title {
+    margin: 0;
+    color: var(--accent);
+    font-size: 1.75rem;
+    line-height: 1.18;
+    letter-spacing: 0.02em;
+}
+
+.front-subtitle {
+    margin-top: 12px;
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.18rem;
+    line-height: 1.4;
+    color: #2b2f31;
+}
+
+.front-date {
+    margin-top: 34px;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+}
+
+.front-footer {
+    margin-top: 40px;
+}
+
+.copyright {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.next-link {
+    display: block;
+    text-align: right;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.next-link:hover {
+    color: var(--accent);
+}
+
+@media (min-width: 700px) {
+    .front-page {
+        padding: 34px 28px 40px;
+    }
+
+    .front-logo {
+        width: 108px;
+        margin-bottom: 40px;
+    }
+
+    .front-author {
+        font-size: 1.05rem;
+        margin-bottom: 34px;
+    }
+
+    .front-title {
+        font-size: 2.25rem;
+    }
+
+    .front-subtitle {
+        font-size: 1.32rem;
+        margin-top: 14px;
+    }
+
+    .front-date {
+        margin-top: 38px;
+        font-size: 1rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="front-page">
+
+    <a href="../quaderni.html" class="top-link">← Quaderni</a>
+
+    <main class="front-main">
+        <div class="front-block">
+            <img src="../../logo-quaderni.png" alt="Quaderni" class="front-logo">
+
+            <div class="front-author">Sandro Petruccioli</div>
+
+            <h1 class="front-title">Dalla scienza alle tecnoscienze</h1>
+
+            <div class="front-subtitle">
+                Il sapere come sistema e l’eclissi della democrazia
+            </div>
+
+           
+        </div>
+    </main>
+
+    <footer class="front-footer">
+        <div class="copyright">© Sandro Petruccioli 2026</div>
+        <a href="prefazione.html" class="next-link">Prefazione →</a>
+    </footer>
+
+</div>
+
+</body>
+</html>

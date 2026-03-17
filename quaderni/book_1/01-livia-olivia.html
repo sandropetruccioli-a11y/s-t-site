@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prefazione — Dalla scienza alle tecnoscienze</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* TITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO */
+
+.chapter-text {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-style: normal;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p { margin: 0 0 1.15em; }
+
+/* CAPOLETTERA SOLO TESTI NON DIALOGICI */
+
+.chapter-text:not(.dialogue) p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* DIALOGO */
+
+.dialogue { margin-top: 8px; }
+
+.turn { margin-bottom: 1.35rem; }
+
+.speaker {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.28rem;
+}
+
+.speech p { margin: 0 0 0.75em; }
+
+/* DESKTOP */
+
+@media (min-width:700px){
+
+    .turn{
+        display:grid;
+        grid-template-columns:110px 1fr;
+        column-gap:18px;
+        align-items:start;
+    }
+
+    .speaker{
+        margin-bottom:0;
+        padding-top:0.15em;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+    .chapter-text{
+        font-size:1.02rem;
+        line-height:1.55;
+    }
+
+    .chapter-title{
+        font-size:1.35rem;
+        margin-bottom:20px;
+    }
+
+    .turn{
+        display:block;
+        margin-bottom:1rem;
+    }
+
+    .speaker{
+        font-size:0.8rem;
+        margin-bottom:0.2rem;
+    }
+
+    .speech p{
+        margin:0 0 0.55em;
+    }
+    .speech {
+        padding-left: 6px;
+        border-left: 2px solid rgba(10,70,82,0.15);
+    }
+
+
+
+}
+
+/* SEPARATORE */
+
+.chapter-separator{
+    margin-top:36px;
+    border:none;
+    border-top:1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+    font-size:0.9rem;
+}
+
+.chapter-nav a{
+    text-decoration:none;
+    color:var(--muted);
+}
+
+.chapter-nav a:hover{ color:var(--accent); }
+
+/* PULSANTE STAMPA */
+
+.chapter-tools{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+
+.print-button{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:none;
+    background:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:0.85rem;
+}
+
+.print-button:hover{ color:var(--accent); }
+
+.print-icon{
+    width:16px;
+    height:16px;
+}
+
+/* STAMPA */
+
+@media print{
+
+    @page{
+        size:A4;
+        margin:25mm;
+    }
+
+    body{
+        background:white;
+        color:black;
+    }
+
+    .chapter-container{
+        max-width:none;
+        margin:0;
+        padding:0;
+    }
+
+    .chapter-text{
+        font-style:normal;
+        font-size:12pt;
+        line-height:1.6;
+    }
+
+    .chapter-text p:first-of-type::first-letter{
+        font-size:inherit;
+        float:none;
+        margin:0;
+    }
+
+    .turn{ display:block; }
+
+    .speaker{
+        color:black;
+        font-weight:700;
+        margin-bottom:0.2rem;
+    }
+
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator{
+        display:none;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="../quaderni.html" class="back-link">← Dalla scienza alle tecnoscienze</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Stampa capitolo">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">1.  Livia, Olivia e studiare ciò che serve</h1>
+
+<div class="chapter-text dialogue">
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+                Ti vorrei coinvolgere su un tema certamente non nuovo, ma che mi colpisce tutte le volte che si ripresenta. È successo questo: domenica scorsa durante un pranzo di famiglia ho cominciato a parlare con Livia e Olivia (12 anni) facendo le solite domande: come va la scuola, come vi trovate con il nuovo insegnamento (hanno da poco iniziato le medie) e così via.
+            </p>
+            <p>
+                Erano d’accordo su molte cose, ma soprattutto mostravano una profonda insofferenza su alcuni criteri formativi per loro incomprensibili. Semplificando, li riassumo così: a) perché devo studiare una materia se non capisco a cosa mi potranno servire le cose che devo imparare (la classica “concezione strumentale del sapere”); b) se non ottengo un risultato positivo alla prima prova, non trasformo l’insuccesso in una sfida, preferisco cambiare argomento.
+            </p>
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+                Capisco il tuo imbarazzo.
+            </p>
+            <p>
+                Infatti, è uno di quei casi in cui una conversazione apparentemente casuale con due dodicenni intercetta un nodo filosofico profondo: riguarda la scuola, certo, ma in realtà riguarda il nostro rapporto contemporaneo con il sapere.
+            </p>
+            <p>
+                Quando Livia e Olivia chiedono perché dovrebbero studiare qualcosa se non capiscono a cosa servirà, non stanno esprimendo infantilismo, né pigrizia, né quella vaga etichetta che oggi si usa spesso — “fragilità generazionale”.
+            </p>
+            <p>
+                Stanno formulando, in modo coerente, un messaggio che ricevono continuamente: il sapere vale se serve a qualcosa.
+            </p>
+            <p>
+                Ma attenzione: non in astratto.
+            </p>
+            <p>
+                Serve subito, in una forma riconoscibile e verificabile.
+            </p>
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+                Quello che mi ha colpito è la determinazione della loro posizione. Per loro questa è una certezza.
+            </p>
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+                Attenzione però a non equivocare. La loro domanda — “perché devo studiare questa cosa se non so a cosa mi servirà?” — non è una ribellione contro la scuola.
+            </p>
+            <p>
+                È una richiesta di giustificazione funzionale.
+            </p>
+            <p>
+                Ed è perfettamente razionale, se la si guarda dall’interno del mondo che abbiamo costruito per loro.
+            </p>
+<p>
+C’è però un secondo elemento, forse ancora più grave.
+Non riguarda soltanto la strumentalità, ma il rapporto con il tempo.
+</p>
+<p>
+Quello che emerge è una vera e propria intolleranza alla latenza.
+Se non capisco subito, allora non è per me.
+Se non riesco subito, allora non sono portata.
+Se non ottengo un riscontro positivo immediato, allora è inutile continuare.
+</p>
+<p>
+Questo non è solo un atteggiamento.
+È una struttura temporale interiorizzata.
+</p>
+<p>
+Vivono in un ambiente in cui il feedback è immediato, l’errore è pubblico, la prestazione è continua, e l’apprendimento lento non lascia tracce visibili.
+La scuola, invece, è uno degli ultimi luoghi che richiede tempo opaco: studio senza risultato immediato, esercizio senza gratificazione, comprensione che arriva dopo.
+</p>
+<p>
+Il conflitto, a questo punto, è inevitabile.
+</p>
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Per molti c’è sempre una via di uscita. Il problema è la scuola, che non sa motivare, che non sa parlare il linguaggio dei ragazzi. Ma il nodo, come sai, è più profondo. 
+</p>
+<p>
+La scuola presuppone — spesso senza più dirlo — che il sapere abbia valore prima di avere un uso.
+Questo presupposto non è più condiviso culturalmente. E quando un presupposto non è condiviso, tutto il resto vacilla: ogni contenuto appare arbitrario, ogni richiesta diventa sospetta, ogni fatica sembra ingiustificata.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Ti faccio però notare che le ragazze non stanno dicendo “non voglio imparare”.
+Stanno dicendo: “non capisco perché dovrei attraversare qualcosa che non promette un senso visibile”.
+Ed è una domanda adulta.
+</p>
+<p>
+Per secoli l’educazione si è fondata su un’idea implicita: impari cose che ti formano, anche se non sai ancora come.
+Oggi domina un’altra idea: impari cose che ti servono, e lo capisci subito.
+Il passaggio non è neutro.
+La formazione tollera l’inutile apparente.
+</p>
+<p>
+La prestazione no.
+</p>
+<p>
+E il punto è che nessuna formazione vera è immediatamente utile.
+La matematica forma prima di servire.
+La grammatica forma prima di applicarsi.
+La storia forma prima di orientare.
+</p>
+<p>
+Ma questo ‘prima’ è diventato culturalmente inaccettabile.
+</p>
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Intendi dire che quello di Livia e Olivia è, in miniatura, lo stesso problema che attraversa oggi le istituzioni, la ricerca, la tecnologia, l’intelligenza artificiale: perché dovrei fare qualcosa che non produce subito un risultato?
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+In un certo senso sì. È la stessa logica che schiaccia la ricerca di base, riduce l’università a erogatore di competenze, trasforma la conoscenza in addestramento.
+</p>
+<p>
+Ed è anche la logica contro cui tu, nel tuo lavoro, hai sempre resistito: prendendo sul serio le regole, accettando tempi lunghi, pagando il prezzo della non-immediatezza.
+</p>
+<p>
+Forse, allora, la risposta giusta non è convincerle, né promettere un’utilità futura, né rassicurarle.
+La cosa più onesta potrebbe essere non fingere che tutto sia utile subito.
+</p>
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Prendiamo un punto che tu hai ben evidenziato, sottolineando il contrasto tra cose che formano e cose che servono e proviamo a proiettarlo sui metodi e i contenuti dell’insegnamento della matematica. Il sapere matematico è forse all’apice di questa piramide. 
+</p>
+<p>
+Da una parte, appare oggi come uno ‘strumento’ utile; dall’altra, la sua storia sembra raccontare tutt’altro.
+</p>
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Sì, qui tocchi un punto particolarmente delicato, e anche uno dei più fraintesi.
+La matematica è il luogo in cui la distinzione tra “ciò che forma” e “ciò che serve” si rivela instabile — ma solo a posteriori. Ed è proprio questo il nodo che la scuola oggi fatica enormemente a tenere.
+</p>
+<p>
+La matematica occupa una posizione singolare. Da un lato è indiscutibilmente uno strumento: senza matematica non esisterebbero la scienza moderna, la tecnologia, l’economia contemporanea, l’informatica, l’intelligenza artificiale. Da questo punto di vista, la sua utilità è fuori discussione.
+</p>
+<p>
+Ma dall’altro lato — ed è qui che nasce il paradosso — quasi mai la matematica è nata come strumento. Storicamente nasce come esplorazione teorica, come gioco intellettuale, come interrogazione formale su strutture astratte.
+</p>
+<p>
+Questa doppia natura la rende pedagogicamente esplosiva.
+</p>
+<p>
+Perché oggi chiediamo agli studenti di studiarla come se fosse uno strumento immediatamente disponibile, quando in realtà si è sviluppata, per secoli, come un sapere radicalmente non strumentale. La contraddizione non è un incidente didattico: è strutturale.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Se guardiamo alla storia della matematica emerge un fatto piuttosto scomodo per ogni concezione utilitaristica dell’apprendimento. Le matematiche che hanno “servito” di più sono quasi sempre nate senza alcuna idea di servire. Perdonami il gioco di parole.
+</p>
+<p>
+La geometria non nasce per misurare il mondo, ma per comprendere strutture ideali.
+L’algebra moderna nasce come manipolazione simbolica astratta.
+La teoria dei numeri è stata per secoli l’inutile per eccellenza.
+Le geometrie non euclidee nascono come esercizi di coerenza logica interna.
+</p>
+<p>
+Solo molto più tardi queste costruzioni diventano il linguaggio della fisica, l’ossatura della tecnologia, il motore dell’informatica.
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Nel tentativo — forse, comprensibile — di rispondere alle domande degli studenti, la scuola spesso cade in un corto circuito. Anticipa l’utilità, simula applicazioni, costruisce contesti “reali” che sono in realtà fittizi.
+Il risultato è paradossale: la matematica finisce per apparire né davvero formativa né autenticamente utile. Perde la sua necessità interna, si riduce a una sequenza di procedure senza senso profondo. È il peggio dei due mondi.
+</p>
+<p>
+E qui arriviamo, a quello che a mio giudizio è il punto educativo decisivo.
+</p>
+<p>
+La matematica non forma perché insegna a calcolare o perché risolve problemi pratici. Forma perché obbliga ad accettare che il senso non sia immediato; perché educa alla pazienza concettuale.
+</p>
+<p>
+In questo senso, è forse uno degli ultimi luoghi in cui si impara a tollerare il “non sapere ancora”.
+Ed è proprio per questo che oggi la matematica è culturalmente fragile e pedagogicamente esposta. Difenderla è difficile, e spesso la si difende male.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Se riconduco questo tuo ragionamento al caso dal quale siamo partiti mi stai dicendo che quando le ragazze chiedono: “a cosa mi servirà?”, la risposta più onesta, guardando alla storia, sarebbe: non lo sappiamo ancora.
+</p>
+<p>
+Ma questa risposta è diventata per loro culturalmente inaccettabile. Infatti, la scuola per venirne a capo, tende a semplificare, a promettere usi futuri vaghi, a dire mezze verità.
+</p>
+<p>
+Penso allora che il problema non sia che la loro domanda sia sbagliata. Piuttosto che la cultura in cui viviamo non è più in grado di sostenere una risposta non strumentale.
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Quello che stai dicendo sulla matematica è isomorfo a ciò che molti di noi hanno vissuto all’interno delle istituzioni: fare le cose prima che servano, rispettare le regole prima che convenga, mantenere coerenza prima che produca vantaggi.
+</p>
+<p>
+Spesso questo non serve subito, non produce successo, non viene riconosciuto. Eppure senza questo “inutile apparente” nessun sistema regge nel lungo periodo.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Mi stai dicendo che la matematica, la formazione, l’etica istituzionale funzionano allo stesso modo: il loro valore non è anticipabile senza essere distrutto.
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Forse la posta in gioco non è convincere gli studenti che la matematica “serve”.
+È qualcosa di più radicale: difendere l’idea che esistano saperi il cui valore non coincide con il loro uso immediato.
+</p>
+<p>
+Se perdiamo questo, non perdiamo solo la matematica. Perdiamo la formazione, la ricerca, e forse la possibilità stessa di pensare un futuro.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Tu stai dicendo che il problema non è convincere gli studenti che la matematica “serve”, ma difendere l’idea che possano esistere saperi il cui valore non si misura nell’immediatezza dell’uso.
+Ma così facendo non rischiamo di arroccarci su una posizione puramente difensiva? Di trasformare questa difesa in una sorta di pedagogia di principio, facilmente liquidabile come ideologica?
+</p>
+<p>
+Vorrei allora provare a spostare il terreno.
+</p>
+<p>
+E se recuperassimo la storia non come cornice, ma come metodo didattico? In quel caso non saremmo noi a proclamare il valore del sapere: sarebbero i percorsi stessi della matematica a mostrarlo. Sarebbe la loro genesi, spesso lontana da ogni applicazione, a rendere visibile come il senso emerga prima dell’uso, e non il contrario.
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+La soluzione che proponi è non convenzionale e per questo merita attenzione. Hai ragione su un punto che considero cruciale: ogni volta che difendiamo il valore formativo della matematica in astratto, rischiamo inevitabilmente di scivolare nell’ideologia pedagogica. Anche quando abbiamo ragione, finiamo per chiedere un atto di fede: fidati, servirà.
+Ed è proprio questo che oggi non regge più.
+</p>
+<p>
+La storia, invece, non chiede fiducia.
+Mostra.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Se usata seriamente, la storia della matematica — e più in generale della scienza — non è un ornamento culturale, né un racconto edificante, né una giustificazione a posteriori. È un vero e proprio dispositivo cognitivo: rende visibile come il sapere si costruisce nel tempo.
+</p>
+<p>
+E soprattutto fa emergere, senza forzature, alcuni fatti difficili da aggirare. Il sapere nasce da problemi interni, non da applicazioni previste. L’utilità arriva dopo, spesso molto dopo, e spesso altrove. E chi ha prodotto quel sapere non poteva in alcun modo prevederlo.
+</p>
+<p>
+Questi non sono valori da difendere. Sono fatti storici.
+</p>
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Qui capisco meglio cosa intendi. Dire a uno studente “devi studiare matematica perché forma la mente” è una richiesta normativa, che oggi suona retorica.
+</p>
+<p>
+Mostrare invece che interi ambiti della matematica sono nati senza alcuna finalità pratica è un’altra cosa.
+La teoria dei numeri è stata considerata per secoli l’inutile per eccellenza.
+Le geometrie non euclidee non nascono per descrivere il mondo, ma come risposta a una necessità logica interna: capire che cosa accade se si modifica un assioma.
+Eppure proprio queste costruzioni, sviluppate senza alcuna intenzione applicativa, sono poi diventate il linguaggio con cui il mondo moderno è stato pensato e trasformato.
+Questo non è propaganda. 
+</p>
+<p>
+È narrazione di fatti.
+E i fatti hanno una forza che nessuna pedagogia prescrittiva possiede.
+</p>
+<p>
+In questo senso, la storia diventa un antidoto naturale alla domanda “a cosa serve?”.
+</p>
+<p>
+Quella domanda presuppone che l’uso preceda il valore, che il futuro sia anticipabile e che il sapere venga progettato come mezzo. La storia non ribalta un principio astratto. Mostra che il valore del sapere emerge prima dell’uso.
+</p>
+<p>
+Non lo enuncia come principio: lo fa vedere.
+Lo studente non è costretto a crederci. È portato a riconoscere una regolarità.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+C’è poi un altro aspetto, forse ancora più profondo.
+La matematica insegnata come strumento vive nel tempo breve: esercizio e risultato, errore e correzione, test e valutazione.
+</p>
+<p>
+La storia della matematica reintroduce il tempo lungo del sapere: tentativi falliti, strade laterali, concetti che restano sospesi per decenni, risultati che nessuno sa come usare.
+</p>
+<p>
+Questo ha un effetto educativo enorme.
+Legittima la lentezza. Normalizza l’errore.
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            
+<p>
+E, infine, questo parla direttamente a ragazze come Olivia e Livia, senza bisogno di moralismi.
+</p>
+<p>
+Usare la storia come metodo è una scelta radicalmente non ideologica.
+Significa rinunciare a “difendere” la matematica, rinunciare a giustificarla, rinunciare a promettere benefici.
+Significa accettare che il sapere non offre garanzie — ed è proprio per questo che è decisivo.
+</p>
+<p>
+È l’opposto della propaganda, perché non promette successo, non assicura utilità, non nasconde i fallimenti.
+</p>
+<p>
+È una pedagogia diversa. 
+È una pedagogia della responsabilità cognitiva, non della persuasione.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Stai dicendo molto meglio di me quello che qui ho cercato di sostenere. 
+</p>
+<p>
+Se c’è una via d’uscita dalla disfatta di cui si è parlato, allora, non passa dalla difesa ideologica dei saperi, ma da questo gesto più sobrio e più radicale: mostrare come i saperi sono diventati ciò che sono, senza sapere che lo sarebbero diventati.
+</p>
+<p>
+La matematica, raccontata storicamente, non richiede fiducia.
+Si limita a dire: guarda.
+</p>
+<p>
+Ed è probabilmente l’unica cosa che oggi possiamo ancora fare con onestà.
+</p>
+
+        </div>
+
+</div>
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="prologo.html">Prologo</a>
+<a href="02-memoria-storica.html">2. La perdita della memoria storica →</a>
+</div>
+
+</div>
+
+</body>
+</html>

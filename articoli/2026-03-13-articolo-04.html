@@ -25,6 +25,33 @@ body {
   margin: 0 auto;
   padding: 22px 16px 32px;
 }
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
 .back-link {
   text-decoration: none;
   color: var(--accent);
@@ -47,16 +74,88 @@ h1 {
 .article-text p {
   margin: 0 0 1em;
 }
-@media (min-width: 700px) {
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  h1 {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+@media (min-width: 701px) {
   .container { padding: 36px 28px 42px; }
   h1 { font-size: 1.72rem; }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.next-link:hover {
+  text-decoration: underline;
+}
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+  .article-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .article-nav .next-link {
+    display: block;
+    width: 100%;
+  }
+
+  .article-nav .next-link:last-child {
+    align-self: flex-end;
+    text-align: right;
+  }
 }
 </style>
 </head>
 <body>
 <div class="container">
-  <a class="back-link" href="../index.html">← Torna agli articoli</a>
-  <div class="article-date">13 marzo 2026</div>
+  <div class="top-actions">
+    <a class="back-link" href="2026-03-25-guida-09.html">← Torna alla guida</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+  <div class="article-date">12 marzo 2026</div>
   <h1>La Costituzione di AI - 3</h1>
   <div class="article-text">
     <p>

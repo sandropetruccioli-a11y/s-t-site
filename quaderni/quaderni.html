@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Quaderni</title>
+<meta name="description" content="I Quaderni di Scienza e tecnoscienza: dialoghi, racconti e saggi narrativi su scienza, tecnologie e decisione collettiva.">
+<link rel="canonical" href="https://s-t-site.netlify.app/quaderni/quaderni.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="I Quaderni">
+<meta property="og:description" content="Testi lunghi, dialoghi e saggi narrativi su scienza, tecnologie e decisione collettiva.">
+<meta property="og:url" content="https://s-t-site.netlify.app/quaderni/quaderni.html">
+<meta property="og:site_name" content="Scienza e tecnoscienze">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0a4652">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/icon-192.png">
+
+<style>
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+    --highlight: #c9a227;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 16px 36px;
+}
+
+.hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 12px;
+    margin-bottom: 18px;
+}
+
+.site-logo {
+    width: 88px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    flex: 0 0 auto;
+}
+
+.title-wrap {
+    min-width: 0;
+    margin-left: 6px;
+}
+
+.quaderni-title {
+    margin: 0;
+    line-height: 1.15;
+}
+
+.quaderni-main {
+    display: block;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.32rem;
+    color: var(--accent);
+    letter-spacing: 0.07em;
+}
+
+.quaderni-sub {
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.96rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+.quaderni-site {
+    display: block;
+    margin-top: 4px;
+    font-weight: 700;
+    font-size: 1.0rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+}
+
+quaderni-intro {
+    margin: 0 0 22px;
+    margin-top: 18px;
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.03rem;
+    line-height: 1.62;
+    color: #2b2f31;
+}
+
+.intro-toggle summary {
+    list-style: none;
+    cursor: pointer;
+    font-family: "Iowan Old Style", "Palatino", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.intro-toggle summary::-webkit-details-marker {
+    display: none;
+}
+
+.intro-toggle summary {
+    position: relative;
+    padding-right: 22px;
+}
+
+.intro-toggle .arrow {
+    position: absolute;
+    right: 0;
+    bottom: 0.2em;
+    font-style: normal;
+    font-size: 1rem;
+    opacity: 0.9;
+    color: var(--muted);
+    transition: transform 0.2s ease;
+}
+
+.quaderno summary {
+    position: relative;
+    padding-right: 22px;
+}
+
+.quaderno .arrow {
+    position: absolute;
+    right: 0;
+    top: 0.2em;
+    font-size: 1rem;
+    opacity: 0.9;
+    color: var(--muted);
+    transition: transform 0.2s ease;
+}
+
+
+.intro-toggle[open] .arrow,
+.quaderno[open] .arrow {
+    transform: rotate(180deg);
+}
+
+
+.intro-more {
+    margin-top: 12px;
+}
+
+.intro-more p {
+    font-family: "Iowan Old Style", "Palatino", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+
+.intro-separator {
+    border: none;
+    border-top: 1px solid rgba(21,58,68,0.25);
+    margin: 24px 0;
+}
+.intro p {
+    margin: 0 0 1em;
+}
+
+.quaderno summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.quaderno summary::-webkit-details-marker {
+    display: none;
+}
+
+.quaderno summary {
+    position: relative;
+    padding-right: 18px;
+}
+
+.quaderno .arrow {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+.quaderno h3 {
+    margin: 0;
+    color: var(--accent);
+    font-size: 1.3rem;
+    letter-spacing: 0.03em;
+}
+
+.quaderno .subtitle {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+.quaderno[open] .arrow {
+    transform: rotate(180deg);
+}
+.chapter-list {
+    margin-top: 12px;
+    padding-left: 18px;
+}
+
+.chapter-list li {
+    margin-bottom: 8px;
+}
+
+.chapter-list a {
+    color: rgba(10,70,82,0.45);
+}
+
+.chapter-list a.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.chapter-list a:hover {
+    color: var(--accent);
+}
+
+.quaderni-separator {
+    border: none;
+    border-top: 1px solid rgba(21,58,68,0.25);
+    margin: 28px 0;
+}
+.home-button {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.home-button:hover {
+    color: var(--accent);
+}
+
+@media (min-width: 700px) {
+    .container { padding: 38px 28px 44px; }
+    .arrow { font-size: 1.25rem; }
+    .hero { gap: 18px; margin-bottom: 18px; }
+    .site-logo { width: 136px; }
+    .quaderni-main { font-size: 1.82rem; }
+    .quaderni-sub { font-size: 1.02rem; }
+    .quaderni-site { font-size: 1.22rem; }
+    .intro { font-size: 1.08rem; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <a href="../index.html" class="home-button">← home</a>
+    <header class="hero">
+        <img src="../logo-quaderni.png" alt="Logo Quaderni" class="site-logo">
+        <div class="title-wrap">
+            <h1 class="quaderni-title">
+                <span class="quaderni-main">QUADERNI</span>
+                <span class="quaderni-sub">di</span>
+                <span class="quaderni-site">SCIENZA E TECNOSCIENZE</span>
+            </h1>
+        </div>
+    </header>
+
+
+<section class="quaderni-intro">
+
+<details class="intro-toggle">
+
+<summary>
+I Quaderni di Scienza e tecnoscienze raccolgono testi che affrontano il mutamento contemporaneo della scienza e delle tecnologie. Alcune riflessioni richiedono tempo, articolazione e dialogo: spesso incompatibili con i formati brevi del dibattito pubblico o con i tempi lunghi della pubblicazione editoriale.
+<span class="arrow">⌄</span>
+</summary>
+
+<div class="intro-more">
+
+
+
+<p>
+I Quaderni nascono in questo spazio intermedio e presentano dialoghi, racconti e saggi narrativi che accompagnano queste trasformazioni.
+</p>
+
+<p>
+Alcuni testi verranno pubblicati progressivamente, in più parti, come accadeva un tempo nelle riviste o nei quotidiani.
+</p>
+
+<p>
+Ogni Quaderno costituisce un percorso autonomo, ma tutti condividono una stessa domanda di fondo: che cosa accade quando la scienza diventa infrastruttura e inizia a ridefinire le condizioni stesse della decisione collettiva?
+</p>
+
+</div>
+
+</details>
+
+<hr class="intro-separator">
+
+</section>
+
+<section class="quaderni-index">
+
+<details class="quaderno">
+<summary>
+<h3>Dalla scienza alle tecnoscienze</h3>
+<div class="subtitle">Il sapere come sistema e l’eclissi della democrazia</div>
+<span class="arrow">⌄</span>
+</summary>
+
+<ul class="chapter-list">
+
+<li><a href="book_1/frontespizio.html" class="active">Frontespizio</a></li>
+<li><a href="book_1/prefazione.html" class="active">Prefazione</a></li>
+<li><a href="book_1/prologo.html" class="active"> Prologo </a></li>
+<li><a href="book_1/01-livia-olivia.html" class="active"> 1. Livia, Olivia e studiare ciò che serve </a></li>
+
+<li><a href="quaderni/02-memoria-storica.html" target="_blank">2. La perdita della memoria storica</a></li>
+<li><a href="quaderni/03-raccontare-scienza.html" target="_blank">3. Come raccontare la scienza</a></li>
+<li><a href="quaderni/04-scienza-sistema.html" target="_blank">4. La scienza che si fa Sistema</a></li>
+<li><a href="quaderni/05-avvento-tecnoscienze.html" target="_blank">5. L’avvento delle tecnoscienze</a></li>
+<li><a href="quaderni/06-scegliere-democrazia.html" target="_blank">6. Scegliere la democrazia?</a></li>
+<li><a href="quaderni/07-tecnoscienze-democrazia.html" target="_blank">7. Tecnoscienze vs democrazia</a></li>
+<li><a href="quaderni/08-messaggio-bottiglia.html" target="_blank">8. Un messaggio nella bottiglia</a></li>
+<li><a href="quaderni/09-domani.html" target="_blank">9. Livia e Olivia, domani</a></li>
+<li><a href="quaderni/conclusione.html" target="_blank">In luogo di una conclusione</a></li>
+<li><a href="quaderni/personaggi.html" target="_blank">I personaggi</a></li>
+<li><a href="quaderni/indicazioni.html" target="_blank">Indicazioni di lettura</a></li>
+
+</ul>
+</details>
+
+<hr class="quaderni-separator">
+
+<details class="quaderno">
+
+<summary>
+<h3>Crossing the System</h3>
+<div class="subtitle">A Story of Power, Institutions, and Moral Refusal</div>
+<span class="arrow">⌄</span>
+</summary>
+
+<ul class="chapter-list">
+
+<li><a href="crossing/methodological-note.html" target="_blank">Methodological note</a></li>
+<li><a href="crossing/story-part-1.html" target="_blank">The Story – Part I</a></li>
+<li><a href="crossing/story-part-2.html" target="_blank">The Story – Part II</a></li>
+<li><a href="crossing/page-of-intentions.html" target="_blank">Page of intentions</a></li>
+<li><a href="crossing/fragments-dialogue.html" target="_blank">Fragments of a Dialogue</a></li>
+<li><a href="crossing/afterword.html" target="_blank">Afterword – Two dialogues</a></li>
+<li><a href="crossing/dialogue-1.html" target="_blank">a) First dialogue</a></li>
+<li><a href="crossing/dialogue-2.html" target="_blank">b) Second dialogue</a></li>
+
+</ul>
+
+</details>
+
+</section>
+<script>
+document.querySelectorAll('.chapter-list a').forEach(link => {
+    fetch(link.href, {method: 'HEAD'})
+    .then(res => {
+        if(res.ok){
+            link.style.color = "#0a4652";
+            link.style.fontWeight = "600";
+        }
+    })
+    .catch(()=>{});
+});
+</script>
+
+</div>
+</body>
+</html>

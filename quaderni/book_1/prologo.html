@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prefazione — Dalla scienza alle tecnoscienze</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+/* TITOLO CAPITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO TIPOGRAFICO */
+
+.chapter-text {
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-style: normal;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p {
+    margin: 0 0 1.15em;
+}
+
+/* CAPOLETTERA */
+
+.chapter-text p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* SEPARATORE */
+
+.chapter-separator {
+    margin-top: 36px;
+    border: none;
+    border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+
+.chapter-nav a {
+    text-decoration: none;
+    color: var(--muted);
+}
+
+.chapter-nav a:hover {
+    color: var(--accent);
+}
+
+/* PULSANTE STAMPA */
+
+.chapter-tools {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.print-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.print-button:hover {
+    color: var(--accent);
+}
+
+.print-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* NON MOSTRARE IL PULSANTE NEL PDF */
+
+@media print {
+    .print-button {
+        display: none;
+    }
+}
+
+/* STILE DI STAMPA */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* testo normale, non corsivo */
+
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    /* rimuove capolettera */
+
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+    }
+
+    /* nasconde elementi non utili */
+
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator {
+        display: none;
+    }
+
+}
+.chapter-title {
+    text-align: left;
+    font-size: 16pt;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="../quaderni.html" class="back-link">← Dalla scienza alle tecnoscienze</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Stampa capitolo">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">Prologo</h1>
+<div class="chapter-text">
+
+
+<p>
+Non la vedevo da tantissimo tempo.
+<p>
+</p>
+Avevo seguito, a distanza, la sua brillante carriera; avevo condiviso i suoi successi attraverso amici comuni, notizie frammentarie, incontri mancati. Ci eravamo persi senza mai davvero separarci.
+<p>
+</p>
+Ci eravamo conosciuti sui banchi dell’università. Seguivamo insieme le lezioni di Analisi I di Gaetano Fichera, nell’aula grande del bellissimo edificio di Giò Ponti. Avevamo fatto gruppo con Roberto ed Emilio.
+<p>
+</p>
+Per simpatia? Per affinità politica? Forse. Ma credo che all’inizio avesse pesato anche qualcos’altro: una sorta di atteggiamento protettivo nei confronti di una ragazza che ci sembrava timida, quasi indifesa.
+<p>
+</p>
+Su cinquecento studenti iscritti al primo anno di fisica, all’epoca, le studentesse non arrivavano a dieci.
+<p>
+</p>
+Ma Alessandra era tutt’altro che timida. E tutt’altro che indifesa.
+<p>
+</p>
+Erano anni di grande vivacità e di improvvise turbolenze. Spesso si studiava insieme, ma il collante del nostro gruppo non erano gli argomenti trattati nelle lezioni — a dire il vero un po’ noiose — di Edoardo Amaldi.
+<p>
+</p>
+Il punto era altrove.
+<p>
+</p>
+Là fuori c’era un mondo che, così ci sembrava allora, stava cambiando rapidamente. Cercavamo di capire, e più che le risposte ci interessavano gli interrogativi. Le domande sul senso della scienza, sul suo rapporto con la società, sulla sua pretesa neutralità. Ognuno contribuiva a modo suo, senza un disegno preciso, ma con un’intensità che oggi mi sorprende ancora.
+<p>
+</p>
+Io, Emilio e Roberto eravamo più affini. Vivevamo tutti in un quartiere popolare, a due passi dalla Città universitaria. Le nostre giornate si svolgevano quasi interamente lì intorno: lezioni, biblioteche, discussioni interminabili, qualche riunione politica, molto tempo passato a parlare.
+<p>
+</p>
+Alessandra veniva da un mondo diverso. Abitava ai Parioli. Suo padre era un noto professore di filosofia: aveva insegnato per anni in una lontana università del Mezzogiorno ed era da poco approdato anche lui nel nostro Ateneo. Questo la rendeva, ai nostri occhi, al tempo stesso più distante e più interessante.
+<p>
+</p>
+Ma le differenze sociali e familiari non erano mai diventate una barriera. Se mai, erano uno degli elementi che tenevano vivo il confronto. E già allora, senza che ce ne rendessimo conto, disegnavano traiettorie possibili che solo molto più tardi avremmo riconosciuto come tali.
+<p>
+</p>
+C’è un piccolo episodio di quegli anni che mi è sempre rimasto impresso, e che oggi mi torna alla mente pensando ad Alessandra. 
+<p>
+</p>
+Una mattina, sul muro accanto all’ingresso dell’edificio di Fisica, qualcuno aveva lasciato un messaggio perentorio:
+<p>
+</p>
+«<em>No alla scienza ideologia borghese</em>».
+<p>
+</p>
+La scritta fece scalpore e gettò nel panico molti professori. Non tanto per il contenuto in sé, quanto per il timore che la scienza, la ricerca, l’oggettività del sapere potessero essere contaminate dal tarlo del dubbio ideologico e filosofico. Seguì una fase di discussioni accese tra noi studenti, che culminò in una tumultuosa assemblea. Studenti e giovani ricercatori presero la parola a lungo, portando sul tavolo argomentazioni talvolta ingenue, quasi sempre superficiali, spesso più gridate che pensate.
+<p>
+</p>
+Fu poi il turno di Alessandra. Il suo intervento restituì per un momento tranquillità e serietà alla discussione. Fu ferma e tenace nella denuncia di quello slogan, che riprendeva in modo piuttosto maldestro alcune tesi ben note dei filosofi marxisti della Scuola di Francoforte. Ma, soprattutto, seppe distinguere con grande lucidità tra la critica ideologica della scienza e il problema, ben più serio, del suo statuto conoscitivo.
+<p>
+</p>
+Il suo argomentare in difesa dell’oggettività della scienza — e insieme della sua ineliminabile dimensione culturale — era brillante e competente. Non era una difesa ingenua, né un riflesso accademico. Era il tentativo di sottrarre la scienza tanto alla riduzione a ideologia quanto alla pretesa di una neutralità vuota e autosufficiente.
+<p>
+</p>
+Solo molto tempo dopo ho pensato che, forse, quella lucidità non era casuale. Nella sua abitazione di viale Parioli, nella biblioteca del padre, erano di casa gli scritti di Karl Popper e gli studi di Alexandre Koyré. Allora non lo sapevo, ma già in quell’aula affollata Alessandra stava mostrando una solidità intellettuale che avrebbe accompagnato tutta la sua vita scientifica.
+<p>
+</p>
+Poi il nostro gruppo si sciolse.
+<p>
+</p>
+Senza contrasti. Senza divergenze gravi, né politiche né scientifiche. Nessuna resa dei conti, nessuna riunione di chiarimento. Tutto avvenne in modo naturale, in anni che di normale non avevano nulla.
+<p>
+</p>
+Il cielo si stava facendo plumbeo.
+<p>
+</p>
+Il confronto divenne conflitto, e il conflitto sfociò nel contrasto, non di rado perfino armato. Non c’era più spazio per discussioni sul concetto di neutralità. Tutto sembrava richiedere — e imporre — una scelta netta a favore di uno schieramento. Da noi, alcune promesse scientifiche caddero in quella trappola e si persero.
+<p>
+</p>
+Per il nostro gruppo fu invece il momento delle scelte scientifiche. Ciascuno seguì, come si dice, le proprie inclinazioni, più o meno evidenti.
+<p>
+</p>
+Emilio, dall’intelligenza vivace e dalla memoria straordinaria, si avviò quasi naturalmente verso il laboratorio. Roberto fece la scelta più congeniale alle sue curiosità, talvolta stravaganti, e fu attratto da un settore di ricerca allora appena accennato: l’oceanografia.
+<p>
+</p>
+Alessandra, coerente con la propria solidità epistemologica, trovò in un giovane ricercatore il suo mentore e si immerse negli studi di meccanica statistica.
+<p>
+</p>
+Le occasioni di incontro si diradarono, e ben presto finimmo per perderci di vista.
+<p>
+</p>
+Emilio sarebbe entrato a far parte di importanti gruppi di ricerca in fisica delle particelle elementari e, al CERN, partecipò a un paio di esperimenti che avrebbero meritato il premio Nobel. Roberto si affermò nel suo settore e ricoprì ruoli di direzione in istituti di ricerca nazionali. Alessandra, dopo aver frequentato importanti università americane e del vecchio continente, approdò anch’essa al CERN e, più tardi, fu chiamata a dirigere un progetto di primo piano presso un centro europeo per l’intelligenza artificiale.
+<p>
+</p>
+Sembrava che il nostro gruppo si fosse dissolto.
+<p>
+</p>
+Non era così.
+<p>
+</p>
+In occasione dei nostri rarissimi incontri avevo sempre l’impressione di riprendere un discorso appena interrotto. Con Emilio e Roberto ci saremmo ritrovati molti anni dopo e, nella vecchia trattoria ‘Da Pommidoro’, avremmo festeggiato il mezzo secolo dal nostro ingresso all’università.
+<p>
+</p>
+Alessandra non c’era.
+Come se fosse evaporata.
+<p>
+</p>
+La incontrai più avanti, per caso. Una passeggiata in montagna. Una sosta per riprendere fiato e ammirare le cime innevate. Un volto amico, riconosciuto. Un’emozione improvvisa. Un abbraccio.
+<p>
+</p>
+Troppe cose per parlarne lì.
+<p>
+</p>
+Ci promettemmo di rivederci, con calma.
+<p>
+</p>
+Quando finalmente ci incontrammo di nuovo, capimmo quasi subito che non avevamo alcuna voglia di ripercorrere le nostre vite.
+Sarebbe stato facile, forse perfino naturale: raccontarsi gli anni trascorsi, le scelte fatte, i successi, le delusioni. Ma tutti e due sapevamo che sarebbe stato tempo perso. Non perché quelle storie non contassero, ma perché non era lì che si giocava ciò che ci premeva davvero capire.
+<p>
+</p>
+In fondo, non era mai stato quello il collante del rapporto all’interno del nostro gruppo. Anche allora, da studenti, ci interessava meno ciò che eravamo stati e molto di più ciò che stava per accadere. Il futuro, non il passato, era il luogo delle nostre domande.
+<p>
+</p>
+I contesti sono cambiati, profondamente. Ma oggi, forse più di ieri, parlare di futuro è diventato difficile. E proprio per questo necessario. Soprattutto di fronte al disincanto delle generazioni più giovani, che non sembra nascere dall’assenza di risposte, ma dalla mancanza di domande che valga la pena di attraversare.
+<p>
+</p>
+Fu a partire da qui che il discorso prese forma. E fu quasi naturale che, a un certo punto, entrassero in scena due ragazzine, Livia e Olivia.</p>
+
+
+</div>
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="prefazione.html">Prefazione</a>
+<a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve →</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -241,6 +241,45 @@ h2 {
     filter: brightness(0.9);
 }
 
+.quaderni-entry {
+    display: flex;
+    justify-content: flex-end;
+    margin: 8px 0 24px 0;
+}
+
+.quaderni-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(10, 70, 82, 0.25);
+    border-radius: 10px;
+    background: var(--bg);
+    padding: 5px;
+    overflow: hidden;
+    border-color: var(--accent);
+}
+
+.quaderni-logo {
+    width: 55px;
+    height: auto;
+}
+
+.quaderni-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+
+.quaderni-sub {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+
+
 @media (min-width: 700px) {
     .article-excerpt { -webkit-line-clamp: 5; }
     .container { padding: 38px 28px 44px; }
@@ -275,6 +314,7 @@ h2 {
 <aside class="menu-panel" id="site-menu" aria-label="Menu principale">
     <p class="menu-title">Menu</p>
     <ul class="menu-list">
+        <li><a href="quaderni/quaderni.html">Quaderni</a></li>
         <li><a href="questo-sito.html">Questo sito</a></li>
         <li><a href="chi-siamo.html">Chi siamo</a></li>
         <li><a href="contributi.html">Contributi</a></li>
@@ -294,11 +334,26 @@ h2 {
 <p class="intro-note">
 La transizione dalla scienza alle tecnoscienze solleva questioni inedite.
 Cambia il modo in cui il sapere si organizza e incide sulle forme della decisione.
-Questo spazio osserva tali mutamenti a partire dai fatti, per comprenderne le implicazioni politiche e istituzionali.
+Qui osserviamo questi mutamenti per comprenderne le implicazioni politiche e istituzionali.
 
 </p>
 
+<a href="quaderni/quaderni.html" class="quaderni-entry">
+    <span class="quaderni-button">
+        <img src="logo-quaderni.png" alt="Quaderni" class="quaderni-logo">
+    </span>
+</a>
+
+
 <section class="articles">
+
+    <article class="article">
+        <div class="article-date">18 marzo 2026</div>
+        <div class="article-title"><a class="article-title-link" href="articoli/2026-03-18-articolo-06.html">Neuroscienze e intelligenza artificiale</a></div>
+        <div class="article-excerpt">Se Amodei e Pignataro ci costringono a guardare l’AI come potenza tecnologica e come infrastruttura istituzionale, resta tuttavia aperta una domanda più radicale: che cosa intendiamo davvero per intelligenza?</div>
+        <div class="article-footer"><a href="articoli/2026-03-18-articolo-06.html" class="article-link" aria-label="Apri articolo 6">→</a></div>
+    </article>
+
     <article class="article">
         <div class="article-date">15 marzo 2026</div>
         <div class="article-title"><a class="article-title-link" href="articoli/2026-03-15-articolo-05.html">I rischi di AI: intelligenza o infrastruttura?</a></div>
