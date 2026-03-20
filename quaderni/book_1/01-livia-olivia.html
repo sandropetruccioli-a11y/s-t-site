@@ -193,52 +193,49 @@ body {
     height:16px;
 }
 
-/* STAMPA */
+/* STILE DI STAMPA */
+@media print {
 
-@media print{
-
-    @page{
-        size:A4;
-        margin:25mm;
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
     }
 
-    body{
-        background:white;
-        color:black;
+    body {
+        background: white;
+        color: black;
     }
 
-    .chapter-container{
-        max-width:none;
-        margin:0;
-        padding:0;
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
     }
 
-    .chapter-text{
-        font-style:normal;
-        font-size:12pt;
-        line-height:1.6;
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
     }
 
-    .chapter-text p:first-of-type::first-letter{
-        font-size:inherit;
-        float:none;
-        margin:0;
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
     }
 
-    .turn{ display:block; }
-
-    .speaker{
-        color:black;
-        font-weight:700;
-        margin-bottom:0.2rem;
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
     }
 
     .back-link,
     .chapter-nav,
     .print-button,
-    .chapter-separator{
-        display:none;
+    .chapter-separator {
+        display: none;
     }
+}
 
 }
 </style>
@@ -248,7 +245,7 @@ body {
 
 <div class="chapter-container">
 
-<a href="../quaderni.html" class="back-link">← Dalla scienza alle tecnoscienze</a>
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
 
 <div class="chapter-tools">
 <button class="print-button" type="button"
@@ -702,7 +699,7 @@ Ed è probabilmente l’unica cosa che oggi possiamo ancora fare con onestà.
 <hr class="chapter-separator">
 
 <div class="chapter-nav">
-<a href="prologo.html">Prologo</a>
+<a href="prologo.html">← Prologo</a>
 <a href="02-memoria-storica.html">2. La perdita della memoria storica →</a>
 </div>
 

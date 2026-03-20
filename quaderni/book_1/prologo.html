@@ -138,7 +138,6 @@ body {
 }
 
 /* STILE DI STAMPA */
-
 @media print {
 
     @page {
@@ -157,15 +156,16 @@ body {
         padding: 0;
     }
 
-    /* testo normale, non corsivo */
-
     .chapter-text {
         font-style: normal;
         font-size: 12pt;
         line-height: 1.6;
     }
 
-    /* rimuove capolettera */
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
 
     .chapter-text p:first-of-type::first-letter {
         font-size: inherit;
@@ -173,20 +173,15 @@ body {
         margin: 0;
     }
 
-    /* nasconde elementi non utili */
-
     .back-link,
     .chapter-nav,
     .print-button,
     .chapter-separator {
         display: none;
     }
+}
 
-}
-.chapter-title {
-    text-align: left;
-    font-size: 16pt;
-}
+
 
 </style>
 </head>
@@ -195,7 +190,7 @@ body {
 
 <div class="chapter-container">
 
-<a href="../quaderni.html" class="back-link">← Dalla scienza alle tecnoscienze</a>
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
 
 <div class="chapter-tools">
 <button class="print-button" type="button"
@@ -349,7 +344,7 @@ Fu a partire da qui che il discorso prese forma. E fu quasi naturale che, a un c
 <hr class="chapter-separator">
 
 <div class="chapter-nav">
-<a href="prefazione.html">Prefazione</a>
+<a href="prefazione.html">← Prefazione</a>
 <a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve →</a>
 </div>
 

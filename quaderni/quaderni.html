@@ -16,7 +16,6 @@
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="apple-touch-icon" href="/icon-192.png">
-
 <style>
 :root {
     --bg: #f4f3ef;
@@ -43,6 +42,8 @@ body {
     margin: 0 auto;
     padding: 20px 16px 36px;
 }
+
+/* TESTATA */
 
 .hero {
     display: flex;
@@ -93,14 +94,29 @@ body {
     display: block;
     margin-top: 4px;
     font-weight: 700;
-    font-size: 1.0rem;
+    font-size: 1rem;
     letter-spacing: 0.06em;
     color: var(--accent);
 }
 
-quaderni-intro {
-    margin: 0 0 22px;
-    margin-top: 18px;
+/* LINK DI RITORNO */
+
+.home-button {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.home-button:hover {
+    color: var(--accent);
+}
+
+/* INTRODUZIONE GENERALE */
+
+.quaderni-intro {
+    margin: 18px 0 22px;
     font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
     font-style: italic;
     font-size: 1.03rem;
@@ -108,9 +124,15 @@ quaderni-intro {
     color: #2b2f31;
 }
 
+.quaderni-intro p {
+    margin: 0 0 1em;
+}
+
 .intro-toggle summary {
     list-style: none;
     cursor: pointer;
+    position: relative;
+    padding-right: 22px;
     font-family: "Iowan Old Style", "Palatino", serif;
     font-style: italic;
     font-size: 1.05rem;
@@ -121,43 +143,20 @@ quaderni-intro {
     display: none;
 }
 
-.intro-toggle summary {
-    position: relative;
-    padding-right: 22px;
-}
-
 .intro-toggle .arrow {
     position: absolute;
     right: 0;
     bottom: 0.2em;
     font-style: normal;
-    font-size: 1rem;
-    opacity: 0.9;
+    font-size: 0.9rem;
     color: var(--muted);
+    opacity: 0.9;
     transition: transform 0.2s ease;
 }
 
-.quaderno summary {
-    position: relative;
-    padding-right: 22px;
-}
-
-.quaderno .arrow {
-    position: absolute;
-    right: 0;
-    top: 0.2em;
-    font-size: 1rem;
-    opacity: 0.9;
-    color: var(--muted);
-    transition: transform 0.2s ease;
-}
-
-
-.intro-toggle[open] .arrow,
-.quaderno[open] .arrow {
+.intro-toggle[open] .arrow {
     transform: rotate(180deg);
 }
-
 
 .intro-more {
     margin-top: 12px;
@@ -176,94 +175,127 @@ quaderni-intro {
     border-top: 1px solid rgba(21,58,68,0.25);
     margin: 24px 0;
 }
-.intro p {
-    margin: 0 0 1em;
+
+/* VOLUMI */
+
+.quaderni-index {
+    margin-top: 8px;
 }
 
-.quaderno summary {
-    cursor: pointer;
-    list-style: none;
-}
-
-.quaderno summary::-webkit-details-marker {
-    display: none;
-}
-
-.quaderno summary {
-    position: relative;
-    padding-right: 18px;
-}
-
-.quaderno .arrow {
-    position: absolute;
-    right: 0;
-    top: 6px;
-    font-size: 0.9rem;
-    color: var(--muted);
-}
-.quaderno h3 {
+.quaderno-card h3 {
     margin: 0;
     color: var(--accent);
     font-size: 1.3rem;
     letter-spacing: 0.03em;
 }
 
-.quaderno .subtitle {
+.quaderno-card .subtitle {
     color: var(--muted);
     font-size: 0.95rem;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 }
-.quaderno[open] .arrow {
+
+/* QUARTA DI COPERTINA A TENDINA */
+
+.back-toggle summary {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    padding-right: 20px;
+}
+
+.back-toggle summary::-webkit-details-marker {
+    display: none;
+}
+
+.back-first {
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #2b2f31;
+}
+
+.back-toggle .arrow {
+    position: absolute;
+    right: 0;
+    top: 0.2em;
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--muted);
+    transition: transform 0.2s ease;
+}
+
+.back-toggle[open] .arrow {
     transform: rotate(180deg);
 }
-.chapter-list {
-    margin-top: 12px;
-    padding-left: 18px;
+
+.quaderno-back {
+    margin-top: 10px;
+    margin-bottom: 14px;
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #2b2f31;
 }
 
-.chapter-list li {
-    margin-bottom: 8px;
+.quaderno-back p {
+    margin: 0 0 0.9em;
 }
 
-.chapter-list a {
-    color: rgba(10,70,82,0.45);
-}
+/* PULSANTE DI INGRESSO AL VOLUME */
 
-.chapter-list a.active {
+.enter-button {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
     color: var(--accent);
+    font-size: 0.95rem;
     font-weight: 600;
 }
 
-.chapter-list a:hover {
-    color: var(--accent);
+.enter-button:hover {
+    text-decoration: underline;
 }
+
+/* SEPARATORE */
 
 .quaderni-separator {
     border: none;
     border-top: 1px solid rgba(21,58,68,0.25);
     margin: 28px 0;
 }
-.home-button {
-    display: inline-block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 0.9rem;
-}
 
-.home-button:hover {
-    color: var(--accent);
-}
+/* DESKTOP */
 
 @media (min-width: 700px) {
-    .container { padding: 38px 28px 44px; }
-    .arrow { font-size: 1.25rem; }
-    .hero { gap: 18px; margin-bottom: 18px; }
-    .site-logo { width: 136px; }
-    .quaderni-main { font-size: 1.82rem; }
-    .quaderni-sub { font-size: 1.02rem; }
-    .quaderni-site { font-size: 1.22rem; }
-    .intro { font-size: 1.08rem; }
+    .container {
+        padding: 38px 28px 44px;
+    }
+
+    .hero {
+        gap: 18px;
+        margin-bottom: 18px;
+    }
+
+    .site-logo {
+        width: 136px;
+    }
+
+    .quaderni-main {
+        font-size: 1.82rem;
+    }
+
+    .quaderni-sub {
+        font-size: 1.02rem;
+    }
+
+    .quaderni-site {
+        font-size: 1.22rem;
+    }
+
+    .quaderni-intro {
+        font-size: 1.08rem;
+    }
 }
 </style>
 </head>
@@ -316,61 +348,82 @@ Ogni Quaderno costituisce un percorso autonomo, ma tutti condividono una stessa 
 
 </section>
 
+
+
 <section class="quaderni-index">
+<article class="quaderno-card">
+    <h3>Dalla scienza alle tecnoscienze</h3>
+    <div class="subtitle">Il sapere come sistema e l’eclissi della democrazia</div>
 
-<details class="quaderno">
-<summary>
-<h3>Dalla scienza alle tecnoscienze</h3>
-<div class="subtitle">Il sapere come sistema e l’eclissi della democrazia</div>
-<span class="arrow">⌄</span>
-</summary>
+    <details class="back-toggle">
+        <summary>
+            <span class="back-first">
+                Dalla scienza alle tecnoscienze non nasce con l’intenzione di fornire risposte o indicare soluzioni praticabili nel breve periodo.
+            </span>
+            <span class="arrow">⌄</span>
+        </summary>
 
-<ul class="chapter-list">
+        <div class="quaderno-back">
+            <p>
+                Nasce da conversazioni reali e dalla percezione che alcune questioni decisive del nostro tempo fatichino ormai a trovare uno spazio adeguato di discussione pubblica.
+            </p>
 
-<li><a href="book_1/frontespizio.html" class="active">Frontespizio</a></li>
-<li><a href="book_1/prefazione.html" class="active">Prefazione</a></li>
-<li><a href="book_1/prologo.html" class="active"> Prologo </a></li>
-<li><a href="book_1/01-livia-olivia.html" class="active"> 1. Livia, Olivia e studiare ciò che serve </a></li>
+            <p>
+                Il libro prende avvio da una domanda elementare sul senso dello studio, su ciò che “serve” e su ciò che “forma”, per arrivare a interrogare una trasformazione molto più profonda: il passaggio dalla scienza alle tecnoscienze.
+            </p>
 
-<li><a href="quaderni/02-memoria-storica.html" target="_blank">2. La perdita della memoria storica</a></li>
-<li><a href="quaderni/03-raccontare-scienza.html" target="_blank">3. Come raccontare la scienza</a></li>
-<li><a href="quaderni/04-scienza-sistema.html" target="_blank">4. La scienza che si fa Sistema</a></li>
-<li><a href="quaderni/05-avvento-tecnoscienze.html" target="_blank">5. L’avvento delle tecnoscienze</a></li>
-<li><a href="quaderni/06-scegliere-democrazia.html" target="_blank">6. Scegliere la democrazia?</a></li>
-<li><a href="quaderni/07-tecnoscienze-democrazia.html" target="_blank">7. Tecnoscienze vs democrazia</a></li>
-<li><a href="quaderni/08-messaggio-bottiglia.html" target="_blank">8. Un messaggio nella bottiglia</a></li>
-<li><a href="quaderni/09-domani.html" target="_blank">9. Livia e Olivia, domani</a></li>
-<li><a href="quaderni/conclusione.html" target="_blank">In luogo di una conclusione</a></li>
-<li><a href="quaderni/personaggi.html" target="_blank">I personaggi</a></li>
-<li><a href="quaderni/indicazioni.html" target="_blank">Indicazioni di lettura</a></li>
+            <p>
+                Con questa espressione non si intende un semplice avanzamento lineare del sapere, ma una mutazione strutturale: la progressiva integrazione della conoscenza scientifica in sistemi complessi di produzione, decisione, valutazione e governo.
+            </p>
 
-</ul>
-</details>
+            <p>
+                In questo contesto, la conoscenza tende a funzionare sempre meno come spazio critico e sempre più come infrastruttura strategica.
+            </p>
 
-<hr class="quaderni-separator">
+            <p>
+                Il libro attraversa così il nodo sempre più problematico che lega sapere, potere e democrazia, senza proporre manifesti o soluzioni, ma cercando di rendere pensabili tensioni che il presente tende a rimuovere.
+            </p>
+        </div>
+    </details>
 
-<details class="quaderno">
+    <a href="book_1/frontespizio.html" class="enter-button">Vai al volume →</a>
+</article>
 
-<summary>
-<h3>Crossing the System</h3>
-<div class="subtitle">A Story of Power, Institutions, and Moral Refusal</div>
-<span class="arrow">⌄</span>
-</summary>
 
-<ul class="chapter-list">
+    <hr class="quaderni-separator">
 
-<li><a href="crossing/methodological-note.html" target="_blank">Methodological note</a></li>
-<li><a href="crossing/story-part-1.html" target="_blank">The Story – Part I</a></li>
-<li><a href="crossing/story-part-2.html" target="_blank">The Story – Part II</a></li>
-<li><a href="crossing/page-of-intentions.html" target="_blank">Page of intentions</a></li>
-<li><a href="crossing/fragments-dialogue.html" target="_blank">Fragments of a Dialogue</a></li>
-<li><a href="crossing/afterword.html" target="_blank">Afterword – Two dialogues</a></li>
-<li><a href="crossing/dialogue-1.html" target="_blank">a) First dialogue</a></li>
-<li><a href="crossing/dialogue-2.html" target="_blank">b) Second dialogue</a></li>
+    <article class="quaderno-card">
+        <h3>Crossing the System</h3>
+        <div class="subtitle">A Story of Power, Institutions, and Moral Refusal</div>
 
-</ul>
+    <details class="back-toggle">
+        <summary>
+            <span class="back-first">
+               This book traces a trajectory through two systems of power — the university and a major European research center for artificial intelligence.
+            </span>
+            <span class="arrow">⌄</span>
+        </summary>
 
-</details>
+<div class="quaderno-back">
+            <p>
+                At its center is a figure who does not oppose institutions through dramatic gestures, but becomes increasingly incompatible with them by taking their rules seriously.
+            </p>
+
+            <p>
+                <em>Crossing the System</em> is not a memoir or a roman à clef. It is a moral and political account of undeclared power, institutional conformity, and the silent cost of remaining faithful to oneself.
+            </p>
+
+            <p>
+                It is also a reflection on how such a story can be written today: through a dialogue between human experience and a technology capable of listening, structuring, and returning meaning without claiming authority.
+            </p>
+
+           
+        </div>
+    </details>
+
+    <a href="book_2/frontespizio.html" class="enter-button">Enter the volume →</a>
+</article>
+
 
 </section>
 <script>

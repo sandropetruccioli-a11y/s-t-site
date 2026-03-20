@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodological note</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+/* TITOLO CAPITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO TIPOGRAFICO */
+
+.chapter-text {
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p {
+    margin: 0 0 1.15em;
+}
+
+/* CAPOLETTERA */
+
+.chapter-text p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* SEPARATORE */
+
+.chapter-separator {
+    margin-top: 36px;
+    border: none;
+    border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+
+.chapter-nav a {
+    text-decoration: none;
+    color: var(--muted);
+}
+
+.chapter-nav a:hover {
+    color: var(--accent);
+}
+
+/* PULSANTE STAMPA */
+
+.chapter-tools {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.print-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.print-button:hover {
+    color: var(--accent);
+}
+
+.print-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* NON MOSTRARE IL PULSANTE NEL PDF */
+
+@media print {
+    .print-button {
+        display: none;
+    }
+}
+
+/* STILE DI STAMPA */
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
+
+.chapter-subtitle {
+    margin-top: -10px;
+    margin-bottom: 22px;
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.4;
+    color: #2b2f31;
+}
+
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+    }
+
+.chapter-text ul {
+    margin: 0 0 1.15em 1.2em;
+    padding: 0;
+}
+
+.chapter-text li {
+    margin-bottom: 0.4em;
+}
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator {
+        display: none;
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="frontespizio.html" class="back-link">← Back to the front page</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Print chapter">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Print
+</button>
+</div>
+
+<h1 class="chapter-title">Methodological Note</h1>
+<div class="chapter-subtitle">On how this book was written</div>
+
+<div class="chapter-text">
+
+
+
+<p>
+This book stems from an unusual interweaving of experience, reflection and writing.
+</p>
+
+<p>The material from which it begins consists of two autobiographical texts, in which the author reconstructed, with analytical and testimonial intent, some central passages of his own relationship with institutions and power. These were not, however, mere memoirs: a precise moral posture, a strong idea of responsibility, rule, and institution, and a non-indulgent reflection on the forms-often opaque-through which power manifests itself were already present in those texts.
+</p>
+
+<p>From the outset it became clear that the work could not consist in a narrative rewriting of those materials. The risk would have been twofold: on the one hand, to reduce the experience to a chronicle; on the other, to attenuate its critical force by bending it to a traditional novelistic model. The choice was therefore different: to transform the experience into a narrative structure, without preserving its autobiographical form.
+</p>
+
+<p>It is in this transition that collaboration with an artificial intelligence system comes into play.
+</p>
+
+<p>The AI’s contribution was not to “write instead of the author,” nor to simulate an identity or interiority of the author. On the contrary, the work took place as a continuous dialogue, in which the AI operated as a tool for exploring the narrative and conceptual implications already present in the source materials.
+</p>
+
+<p>More precisely, the process was this:</p>
+
+<ul>
+    <li>the author provided experiences, judgments, corrections, resistances;</li>
+    <li>the AI proposed possible structures, scenes, concatenations;</li>
+    <li>each advance was discussed, verified, sometimes rejected.</li>
+</ul>
+
+<p>This was not an automatic process, nor was it a creative delegation. The AI did not “interpret” the author, but worked within a logic of coherence, bringing out what, given certain moral and institutional premises, was narratively necessary or inevitable.
+</p>
+
+<p>In this sense, the book is not the result of an imitation, but of a formalization: not a mimesis of a biography, but the enactment of a position in the world. The protagonist of the story does not coincide with the author, but embodies a figure of coherence that traverses different systems without ever fully identifying with them.
+</p>
+
+<p>Importantly, this work does not aim to demonstrate the “creative capabilities” of artificial intelligence, nor to celebrate its role. On the contrary, the process made visible here is intended to show how a technological tool can be used without establishing a power relationship, but within a relationship of human control, verification and responsibility.
+</p>
+
+<p>If this book succeeds in saying anything meaningful about power, it is also because its very making was guarded against any form of opaque delegation: no narrative decision was made without being understood; no solution was accepted by authority, technique, or suggestion.
+</p>
+
+<p>The result is not an autobiographical novel, nor an essay disguised as fiction. Rather, it is a tale born of the friction between experience and structure, between memory and form, between individual and systems.
+</p>
+
+<p>If the reader finds in these pages a reflection on power, institutions and their limits, he or she may perhaps recognize that the way the book was written is also part of that reflection.
+</p>
+
+</div>
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+    <a href="frontespizio.html">← Back to the front page</a>
+    <a href="story-part-1.html">The Story - Part 1 →</a>
+</div>
+
+</div>
+
+</body>
+</html>

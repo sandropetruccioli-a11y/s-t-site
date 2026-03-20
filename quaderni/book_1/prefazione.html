@@ -138,7 +138,6 @@ body {
 }
 
 /* STILE DI STAMPA */
-
 @media print {
 
     @page {
@@ -157,15 +156,16 @@ body {
         padding: 0;
     }
 
-    /* testo normale, non corsivo */
-
     .chapter-text {
         font-style: normal;
         font-size: 12pt;
         line-height: 1.6;
     }
 
-    /* rimuove capolettera */
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
 
     .chapter-text p:first-of-type::first-letter {
         font-size: inherit;
@@ -173,20 +173,14 @@ body {
         margin: 0;
     }
 
-    /* nasconde elementi non utili */
-
     .back-link,
     .chapter-nav,
     .print-button,
     .chapter-separator {
         display: none;
     }
+}
 
-}
-.chapter-title {
-    text-align: left;
-    font-size: 16pt;
-}
 
 </style>
 </head>
@@ -195,7 +189,7 @@ body {
 
 <div class="chapter-container">
 
-<a href="../quaderni.html" class="back-link">← Dalla scienza alle tecnoscienze</a>
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
 
 <div class="chapter-tools">
 <button class="print-button" type="button"
@@ -276,8 +270,8 @@ Nulla garantisce che questo libro trovi ascolto. Nulla assicura che le domande c
 <hr class="chapter-separator">
 
 <div class="chapter-nav">
-<a href="../quaderni.html">Indice</a>
-<a href="prologo.html">Prologo →</a>
+    <a href="frontespizio.html">← Torna al frontespizio</a>
+    <a href="prologo.html">Prologo →</a>
 </div>
 
 </div>
