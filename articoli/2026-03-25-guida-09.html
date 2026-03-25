@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guida alla lettura: AI, istituzioni, intelligenza, persona</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+h1 {
+  margin: 8px 0 14px;
+  font-size: 1.28rem;
+  line-height: 1.3;
+  color: var(--accent);
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+.guide-list {
+  margin-top: 28px;
+}
+.guide-item {
+  margin-bottom: 18px;
+}
+.guide-item a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.guide-item a:hover {
+  text-decoration: underline;
+}
+.guide-item p {
+  margin: 4px 0 0;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  h1 {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+  .article-text p,
+  .guide-item {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+@media (min-width: 701px) {
+  .container { padding: 36px 28px 42px; }
+  h1 { font-size: 1.72rem; }
+}
+
+.intro-more {
+  margin-top: 4px;
+}
+
+.intro-more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-weight: 500;      /* meno pesante */
+  font-size: 0.85rem;    /* più piccolo */
+  font-style: italic;    /* corsivo */
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.intro-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.intro-more summary::after {
+  content: "▾";
+  font-size: 0.9em;
+  transition: transform 0.2s ease;
+}
+
+.intro-more[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.intro-hidden {
+  margin-top: 12px;
+}
+
+@media print {
+  .intro-more {
+    display: block !important;
+  }
+
+  .intro-more summary {
+    display: none !important;
+  }
+
+  .intro-hidden {
+    display: block !important;
+    margin-top: 0 !important;
+  }
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+    <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa guida in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+
+  <div class="article-date">25 marzo 2026</div>
+  <h1>Guida alla lettura</h1>
+
+
+<div class="article-text">
+  <p>
+    Il dibattito sull’intelligenza artificiale tende spesso a sovrapporre piani diversi: la potenza dei sistemi, le loro implicazioni istituzionali, la natura dell’intelligenza, il destino dell’umano, i limiti etici e politici del loro impiego. Da qui nasce molta della sua confusione.
+  </p>
+
+  <details class="intro-more">
+    <summary>Continua a leggere</summary>
+    <div class="intro-hidden">
+      <p>
+        L’itinerario raccolto in questo laboratorio non pretende di esaurire la complessità della discussione, ma di individuare alcune posizioni paradigmatiche che consentano di orientarsi in un campo altrimenti dispersivo. Più che offrire una teoria unitaria dell’AI, ciò che qui si propone è una mappa concettuale: un insieme di prospettive diverse, talvolta convergenti, talvolta in tensione, che aiutano a comprendere in quale senso l’intelligenza artificiale sia oggi un problema tecnologico, istituzionale, antropologico, epistemologico e politico.
+      </p>
+      <p>
+        Nel primo gruppo di contributi l’AI viene considerata come potenza e come fattore di trasformazione sistemica. Da un lato Dario Amodei mette a fuoco la crescita della capacità dei modelli e i rischi che ne derivano, fino alla proposta di una “Costituzione dell’AI” come tentativo di allineamento e governo dei sistemi più avanzati. Dall’altro Andrea Pignataro sposta l’attenzione dal modello alla piattaforma, mostrando come il vero problema possa non essere soltanto l’intelligenza della macchina, ma la sua capacità di apprendere la grammatica delle istituzioni e di accumulare potere organizzativo.
+      </p>
+      <p>
+        Un secondo versante è quello delle neuroscienze, con Antonio Damasio e Stanislas Dehaene. Qui la questione si sposta: non si tratta più soltanto di chiedere che cosa l’AI sappia fare, ma che cosa debba intendersi, in senso proprio, per intelligenza umana.
+      </p>
+      <p>
+        Un terzo versante è quello antropologico e normativo, rappresentato da <em>Antiqua et Nova</em>. In questo caso l’AI è interrogata a partire dalla dignità della persona, dal bene comune, dalla responsabilità morale e da ciò che, anche in una trasformazione tecnologica di portata storica, non può essere delegato né ridotto a funzione.
+      </p>
+      <p>
+        Infine, vi è un quarto livello, quello degli orizzonti filosofici e ideologico-politici: transumanesimo, postumanesimo, tecno-libertarismo e altre correnti che vedono nelle tecnoscienze un progetto di trasformazione dell’uomo, della società e delle istituzioni.
+      </p>
+      <p>
+        La funzione di questa mappa non è chiudere il discorso, ma renderlo più leggibile. Ogni contributo affronta un segmento del problema; l’insieme prova a mostrare che il dibattito sull’intelligenza artificiale non può essere compreso se non si distinguono con precisione i livelli sui quali esso si svolge.
+      </p>
+    </div>
+  </details>
+</div>
+
+
+  <div class="guide-list">
+    <div class="guide-item">
+      <a href="2026-03-07-articolo-02.html">La Costituzione di AI – 1</a>
+      <p>Dario Amodei legge l’AI come potenza tecnologica crescente e come problema di governance.</p>
+    </div>
+
+    <div class="guide-item">
+      <a href="2026-03-10-articolo-03.html">La Costituzione di AI – 2</a>
+      <p>La “Costituzione” di Anthropic come tentativo di allineamento dei modelli attraverso principi espliciti.</p>
+    </div>
+
+    <div class="guide-item">
+      <a href="2026-03-13-articolo-04.html">La Costituzione di AI – 3</a>
+      <p>La questione si sposta dal training alla teoria costituzionale: chi scrive le regole dell’AI?</p>
+    </div>
+
+    <div class="guide-item">
+      <a href="2026-03-15-articolo-05.html">I rischi di AI: intelligenza o infrastruttura?</a>
+      <p>Andrea Pignataro sposta l’attenzione dal modello alla piattaforma che apprende la grammatica delle istituzioni.</p>
+    </div>
+
+    <div class="guide-item">
+      <a href="2026-03-18-articolo-06.html">Neuroscienze e intelligenza artificiale</a>
+      <p>Damasio e Dehaene aiutano a distinguere tra prestazione cognitiva e intelligenza umana in senso proprio.</p>
+    </div>
+
+    <div class="guide-item">
+      <a href="2026-03-21-articolo-07.html">AI: bene comune e responsabilità morale</a>
+      <p><em>Antiqua et Nova</em> legge l’AI a partire dalla dignità della persona, dal bene comune e dalla responsabilità umana.</p>
+    </div>
+
+    <div class="guide-item">
+      <a href="2026-03-24-articolo-08.html">Le tecnoscienze come progetto di cambiamento umano e sociale</a>
+      <p>Transumanesimo, postumanesimo e tecno-libertarismo mostrano che dalle tecnoscienze non discende un solo modello di società.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
