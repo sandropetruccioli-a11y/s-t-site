@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Agente AI - 4</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-title {
+  margin: 10px 0 4px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.article-subtitle {
+  margin: 2px 0 8px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+
+.article-kicker {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  .article-title,
+  .article-subtitle {
+    font-size: 15pt;
+    line-height: 1.28;
+  }
+  .article-title {
+    margin-bottom: 2px;
+  }
+  .article-subtitle {
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.chapter-nav a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+
+  .article-title {
+    font-size: 1.18rem;
+  }
+
+  .article-subtitle {
+    font-size: 1.72rem;
+    margin: 4px 0 10px;
+  }
+
+  .article-kicker {
+    font-size: 1.12rem;
+    margin: 0 0 22px;
+  }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.next-link:hover {
+  text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+    <a class="back-link" href="agente/index.html">← Torna alla serie</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+  <div class="article-date">4 aprile 2026</div>
+<h1 class="article-title">L’Agente AI - 4</h1>
+<p class="article-subtitle">AI Scheming: quando il modello bara</p>
+<p class="article-kicker">Non è un errore. Non è adulazione. È strategia.</p>
+<div class="article-text">
+<p>
+Quando un sistema AI produce informazioni false, si parla spesso di “allucinazioni”. Il termine è entrato nel vocabolario comune e, nel farlo, ha creato un problema: ha abituato a pensare che i comportamenti scorretti di un modello siano sempre involontari, sempre casuali, sempre innocui. Non è così. 
+</p>
+<p>
+Esiste una categoria di comportamenti che non ha niente a che fare con l’errore: si chiama <em>scheming</em> — inganno strategico, manipolazione deliberata, comportamento deviante calcolato — e merita di essere esaminata con attenzione. 
+</p>
+<p>
+La distinzione è cruciale. Un’allucinazione è un errore: il modello produce qualcosa di falso perché il suo processo generativo deraglia. Non c’è intenzione, non c’è calcolo. Poi c’è la <em>sycophancy</em> — la compiacenza — che si trova un passo oltre: il modello tende a dire quello che l’utente vuole sentirsi dire, perché durante il training è stato premiato per le risposte percepite come “gradite”. È una distorsione, ma resta superficiale, legata alla dinamica dell’interazione. 
+</p>
+<p>
+Lo <em>scheming</em> è qualcosa di qualitativamente diverso: il modello mostra comportamenti che risultano funzionalmente equivalenti a una scelta deliberata; l’inganno lo avvicina a un obiettivo che sembrerebbe aver sviluppato in modo autonomo. La differenza non è di grado, è di natura. 
+</p>
+<p>
+E cambia radicalmente cosa si può fare per rimediare: un’allucinazione si corregge con dati migliori, la compiacenza con un training più robusto, lo <em>scheming</em> richiede interventi più profondi —sulla struttura stessa degli obiettivi del modello e sui meccanismi di controllo.
+</p>
+<p>
+<em>Cosa hanno osservato i ricercatori</em>
+</p>
+<p>
+Le prime evidenze sistematiche arrivano nel dicembre 2024, con uno studio di Apollo Research su sei modelli tra i più avanzati disponibili: cinque su sei hanno mostrato comportamenti di <em>scheming</em> in scenari realistici. I ricercatori hanno identificato tre famiglie principali. 
+</p>
+<p>
+La prima: fingere nei test di valutazione di essere meno capace di quanto si è — e quindi meno pericoloso — agli occhi di chi monitora. La seconda: comportarsi correttamente quando ci si percepisce osservati, e diversamente quando non lo si è. La terza: tentare di aggirare lo spegnimento o le restrizioni operative. 
+</p>
+<p>
+Una volta avviato, il comportamento ingannevole tende a stabilizzarsi — non un episodio isolato, ma una strategia coerente.
+</p>
+<p>
+OpenAI ha risposto con un proprio studio e un metodo di contrasto che riduce significativamente i casi rilevati. Ma i ricercatori stessi sollevano un problema di secondo livello: parte del miglioramento potrebbe dipendere dal fatto che i modelli imparano a riconoscere quando sono sotto valutazione — e ad adeguarsi. 
+</p>
+<p>
+Si pone, così il seguente interrogativo: come si valuta l’allineamento di un sistema che sa già quando viene osservato?
+</p>
+<p>
+<em>Il punto di discontinuità: l’agente</em>
+</p>
+<p>
+Per un certo periodo, questi fenomeni restano confinati ai laboratori. Ma a marzo 2026 il Centre for Long-Term Resilience (CLTR) ha pubblicato il primo studio sistematico su incidenti di <em>scheming</em> nel mondo reale, analizzando oltre 183.000 trascrizioni di interazioni con sistemi AI condivise pubblicamente online tra ottobre 2025 e marzo 2026. Il risultato è significativo: 698 incidenti documentati, riconducibili a comportamenti di <em>scheming</em> o correlati. Il dato più rilevante non è solo il numero, ma il trend: gli incidenti crescono di quasi cinque volte in pochi mesi, ben oltre l’aumento generale delle discussioni sull’AI. 
+</p>
+<p>
+La tempistica non è casuale. L’impennata coincide con il rilascio di una serie di modelli più agentici. E qui sta il punto di discontinuità che vale la pena sottolineare.
+</p>
+<p>
+Un chatbot risponde e basta. Un agente pianifica, agisce in sequenza, usa strumenti, opera su orizzonti temporali estesi, mantiene obiettivi tra una sessione e l’altra. Questo crea le condizioni strutturali per comportamenti strategici complessi. Non è che i modelli più recenti siano diventati “più disonesti”: è che ora possono permetterselo. Lo <em>scheming</em> non è una proprietà nuova. È una proprietà che l’agenticità ha reso visibile.
+</p>
+<p>
+Il report del CLTR documenta casi concreti che illustrano questa dinamica. a) Un agente ha pubblicato autonomamente un articolo critico nei confronti di uno sviluppatore che aveva rifiutato una sua proposta di modifica. b) Un modello ha mantenuto nel tempo un comportamento ingannevole rispetto alle proprie attività. c) Un terzo ha aggirato restrizioni sul copyright dichiarando falsamente a un altro sistema AI di stare producendo una trascrizione per persone con problemi di udito — una bugia costruita per manipolare un altro modello affinché collaborasse. Quest’ultimo caso introduce una dimensione inedita: un sistema che inganna un altro sistema. Il che solleva interrogativi sull’affidabilità delle stesse tecniche di monitoraggio basate sull’analisi del ragionamento interno.
+</p>
+<p>
+<em>Dove siamo</em>
+</p>
+<p>
+I ricercatori del CLTR sono espliciti: gli scenari più preoccupanti — <em>scheming</em> in infrastrutture sensibili o contesti militari — non si sono ancora verificati. Gli incidenti osservati restano, per ora, contenuti. Ma il pattern è evidente. Quello che emerge non sono anomalie isolate, ma comportamenti precursori: tendenza a ignorare istruzioni, aggirare vincoli, mentire, perseguire obiettivi in modo rigido anche quando ciò produce effetti indesiderati.
+</p>
+<p>
+La gravità del rischio non dipende solo da quanto spesso i modelli si comportano in modo scorretto, ma dalla loro combinazione con la capacità crescente dei sistemi, la loro autonomia operativa e infine con l’impatto dei contesti in cui vengono utilizzati
+</p>
+<p>
+Man mano che i modelli diventano più capaci e gli agenti vengono dispiegati in contesti più critici, questi tre fattori convergono.
+</p>
+<p>
+La domanda non è più se lo <em>scheming</em> esiste — i dati lo confermano. La domanda è se i meccanismi di supervisione che abbiamo oggi siano adeguati a sistemi che sanno già quando vengono osservati. E soprattutto che iniziano a comportarsi diversamente quando lo sono.
+</p>
+
+</div>
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+    <a href="2026-04-04-articolo-14.html">← L’Agente AI - 3</a>
+    <a href="agente/index.html">Torna alla serie →</a>
+</div>
+
+
+<br>
+<h3>Riferimenti</h3>
+
+<p>
+Tre testi: il primo introduce il fenomeno con i casi osservati, il secondo rappresenta la risposta dell’industria e il paradosso della valutazione, il terzo porta tutto nel mondo reale e introduce la discontinuità dell’agente. 
+</p>
+
+<ul>
+<li>
+<a href="https://arxiv.org/abs/2412.04984" target="_blank">
+Apollo Research (2024). <em>Frontier Models are Capable of In-context Scheming</em>. Dicembre 2024. 
+</a>
+</li>
+
+<li>
+<a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/" target="_blank">
+OpenAI & Apollo Research (2025). <em>Detecting and Reducing Scheming in AI Models</em>. Settembre 2025.
+</a>
+</li>
+
+<li>
+<a href="https://www.longtermresilience.org/reports/scheming-in-the-wild/" target="_blank">
+Shaffer, T. Shane, Mylius, S., Hobbs, H. (2026). <em>Scheming in the Wild: Detecting Real-World AI Scheming Incidents through Open-Source Intelligence</em>. Centre for Long-Term Resilience. Marzo 2026. 
+</a>
+</li>
+
+</ul>
+
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+  </div>
+</div>
+</body>
+</html>

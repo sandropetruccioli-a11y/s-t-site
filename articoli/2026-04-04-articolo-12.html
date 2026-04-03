@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L’Agente AI - 1</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-title {
+  margin: 10px 0 4px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.article-subtitle {
+  margin: 0 0 18px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  .article-title,
+  .article-subtitle {
+    font-size: 15pt;
+    line-height: 1.28;
+  }
+  .article-title {
+    margin-bottom: 2px;
+  }
+  .article-subtitle {
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.chapter-nav a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+
+  .article-title {
+    font-size: 1.18rem;
+  }
+
+  .article-subtitle {
+    font-size: 1.72rem;
+  }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.next-link:hover {
+  text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+    <a class="back-link" href="agente/index.html">← Torna alla serie</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+<div class="article-date">4 aprile 2026</div>
+<h1 class="article-title">L’Agente AI - 1</h1>
+<p class="article-subtitle">Entra in scena l’agente. Ce ne accorgiamo?</p>
+
+<div class="article-text">
+ <p>
+Stiamo entrando in una nuova fase, quella dell’intelligenza artificiale agentica. L’espressione non è felice, ma le difficoltà che nasconde sono tutt’altro che linguistiche. Per capirle, bisogna chiarire che cosa cambia quando, tra utente e piattaforma, entra in gioco un agente.
+</p>
+<p>
+Finché l’intelligenza artificiale risponde a una domanda, resta uno strumento reattivo. Quando invece riceve un obiettivo, usa strumenti, interroga ambienti digitali e compie azioni intermedie per arrivare a un risultato, entra in scena un’altra figura: l’agente. Il punto non è stabilire se sia “più intelligente”, ma capire quale nuova mediazione introduca tra intenzione umana, sistemi tecnici e responsabilità dell’azione.
+</p>
+<p>
+Dal modello classico, fondato su un rapporto relativamente diretto tra utente e piattaforma, si passa così a una nuova architettura nella quale si profila una triade: utente, agente, ecosistema di piattaforme. Ma qual è, esattamente, il ruolo dell’agente? Si limita a tradurre il linguaggio umano in istruzioni operative, oppure interviene anche nella riformulazione degli obiettivi, nella scelta dei mezzi e nella definizione del percorso?
+</p>
+<p>
+Per affrontare la questione conviene evitare due scorciatoie opposte. La prima è quella entusiastica: gli agenti sarebbero semplicemente assistenti intelligenti. La seconda è quella speculare: gli agenti finirebbero per sostituire l’umano. Entrambe queste formule dicono troppo poco. La domanda più utile è un’altra: che cosa media davvero un agente? Il linguaggio, l’accesso ai sistemi, la decisione, oppure una parte della responsabilità?
+</p>
+<p>
+Da questa domanda discendono alcuni interrogativi concreti. Quando un agente è davvero un agente? Quale ostacolo rimuove? Che cosa perde l’utente quando delega? Dove si colloca il controllo umano? Come cambia la forma dell’interfaccia? E che cosa significa, esattamente, fidarsi di un agente?
+</p>
+<p>
+In questo articolo in tre parti non cercherò di dare risposte esaurienti. Proverò piuttosto a chiarire la portata del problema, seguendo tre piani: la fenomenologia dell’agente, cioè il modo in cui cambia l’esperienza dell’interazione; la sua fisiologia, cioè ciò che accade realmente tra la formulazione di un obiettivo e la restituzione di un esito; e infine la dimensione epistemologica ed etica della delega, che emerge quando una parte del percorso decisionale viene affidata a un sistema opaco o solo parzialmente visibile.
+</p>
+<p>
+Potremmo tentare di definirlo dicendo che l’agente è un sistema che riceve un obiettivo, usa strumenti, consulta fonti o applicazioni, prende decisioni intermedie e porta avanti un compito con un certo grado di autonomia. Ma è più utile osservare questo nuovo modello dalla parte dell’utente e capire che cosa cambia per lui quando entra in gioco un agente.
+</p>
+<p>
+Nella relazione diretta utente-sistema, l’utente sa che cosa ha chiesto e vede che cosa riceve. C’è una trasparenza immediata della transazione: input, output, fine. Con un agente la struttura cambia su almeno quattro dimensioni osservabili.
+</p>
+<p>
+1. Il tempo. L’utente delega e aspetta. Nel mezzo accade qualcosa che non osserva in tempo reale, o che osserva solo parzialmente attraverso log, messaggi intermedi, notifiche. Si apre una <em>finestra opaca tra la richiesta e il risultato</em>.
+</p>
+<p>
+2. La granularità del controllo. L’utente non specifica ogni passo: specifica un obiettivo. Questo è un guadagno di efficienza, ma implica anche una cessione. L’agente <em>decide come scomporre il compito, in quale ordine, con quali strumenti</em>.
+</p>
+<p>
+3. La verificabilità. Con una risposta diretta, l’utente può valutare immediatamente se essa sia corretta o pertinente. Con un agente che ha compiuto molte operazioni, la verifica è più difficile: <em>il risultato finale può sembrare corretto</em> anche se uno dei passaggi intermedi era sbagliato o inopportuno.
+</p>
+<p>
+4. Il senso di agenzia. L’utente percepisce una combinazione singolare: da un lato più potere — “posso fare cose che prima non potevo fare da solo” — dall’altro una maggiore distanza dal processo. Non è più chiaro dove finisca la propria intenzione e dove cominci l’<em>esecuzione autonoma del sistema</em>.
+</p>
+<p>
+Sorge allora spontaneo chiedersi se l’utente abbia davvero contezza del mutamento di modello. Nella maggior parte dei casi, no. L’interfaccia non cambia: l’utente continua a scrivere in una casella di testo e a ricevere risposte in linguaggio naturale. La <em>continuità dell’esperienza conversazionale</em> maschera la <em>discontinuità funzionale sottostante</em>.
+</p>
+<p>
+In più, il linguaggio usato dall’agente per comunicare i risultati è lo stesso del modello di base. Non c’è una voce diversa, non c’è un registro diverso. L’utente continua così a mantenere il modello mentale del dialogo diretto anche quando non è più ciò che sta accadendo. Pensa di “parlare con il sistema”, mentre in realtà riceve l’esito di una catena di operazioni autonome.
+</p>
+<p>
+Questo produce un disallineamento tra esperienza soggettiva e processo reale.
+</p>
+<p>
+Perché si è avvertito il bisogno di ricorrere a questo insolito strumento di mediazione? Anzitutto per una <em>ragione tecnica</em>: i modelli linguistici, nella loro forma di base, producono testo ma non agiscono. Non recuperano da soli informazioni aggiornate, non eseguono operazioni su file, non interagiscono direttamente con sistemi esterni. L’agente nasce per trasformare la capacità linguistica in capacità operativa.
+</p>
+<p>
+C’è poi una <em>ragione funzionale</em>. Molti compiti reali non sono riducibili a una singola domanda e a una singola risposta. Richiedono sequenze di operazioni, decisioni intermedie, gestione di risultati parziali. Un utente che vuole analizzare un documento, cercare informazioni correlate, produrre un report e inviarlo non sta formulando una semplice query: sta descrivendo un flusso di lavoro. L’agente è la risposta a questa complessità.
+</p>
+<p>
+C’è anche una <em>ragione economica</em>. Più l’agente sa fare autonomamente, più il sistema diventa indispensabile e più aumenta il valore percepito del servizio. L’autonomia dell’agente è anche un argomento commerciale.
+</p>
+<p>
+Ma esiste infine una ragione più profonda. L’introduzione dell’agente <em>sposta il baricentro della relazione</em>. Prima l’utente era il soggetto attivo che usava uno strumento. Con l’agente, l’utente tende a diventare il soggetto che <em>definisce obiettivi</em>, mentre il sistema <em>decide come raggiungerli</em>. Anche quando non viene presentato esplicitamente in questi termini, questo passaggio comporta una ridistribuzione silenziosa di agency tra utente e sistema.
+</p>
+<p>
+L’agente, in sostanza, non è un terzo soggetto autonomo nel senso forte del termine. È una <em>modalità organizzativa del sistema</em>: il modo in cui esso si riorganizza per gestire compiti che richiedono sequenzialità, iterazione e uso di strumenti. La sua terzietà è funzionale, non ontologica.
+</p>
+<p>
+C’è però una conseguenza che vale la pena nominare fin d’ora. Se l’opacità del percorso non è soltanto una scelta strategica, ma dipende anche dalla struttura stessa di questa mediazione, non per questo è meno reale. 
+</p>
+<p>
+L’utente si trova strutturalmente in una posizione in cui non può verificare il percorso, ma solo valutarne l’esito. E la valutazione dell’esito, senza accesso al percorso, è una forma di fiducia, non di controllo.
+</p>
+<p>
+È precisamente da questo scarto tra <em>fiducia</em> e <em>controllo</em> che occorre ripartire. Per capire come funzioni davvero questa mediazione bisognerà allora entrare nella sua fisiologia: vedere in che modo l’agente scompone il compito, riformula le intenzioni, sceglie gli strumenti e costruisce il percorso della soluzione. 
+</p>
+<p>
+Ma si può già intravedere il punto decisivo: quando il controllo arretra e la fiducia diventa necessaria, la questione non è più soltanto tecnica. Diventa anche epistemologica ed etica.
+</p>
+
+</div>
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+    <a href="agente/index.html">← Torna alla serie</a>
+    <a href="2026-04-04-articolo-13.html">L’Agente AI - 2 →</a>
+</div>
+
+<br>
+<h3>Fonti essenziali</h3>
+
+<ul>
+<li>
+<a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf?utm_source=chatgpt.com" target="_blank">
+Open AI – A practical guide to building agents
+</a>
+</li>
+
+<li>
+<a href="https://www.anthropic.com/engineering/building-effective-agents?utm_source=chatgpt.com" target="_blank">
+Anthropic – Building Effective AI Agents
+</a>
+</li>
+
+<li>
+<a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank">
+NIST – Artificial Intelligence Risk Management Framework: Generative AI Profile
+</a>
+</li>
+</ul>
+
+<footer>
+  <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+    — Sandro Petruccioli
+  </p>
+</footer>
+
+  </div>
+</div>
+</body>
+</html>

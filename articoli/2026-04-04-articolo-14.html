@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Agente AI - 3</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-title {
+  margin: 10px 0 4px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.article-subtitle {
+  margin: 2px 0 8px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+
+.article-kicker {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  .article-title,
+  .article-subtitle {
+    font-size: 15pt;
+    line-height: 1.28;
+  }
+  .article-title {
+    margin-bottom: 2px;
+  }
+  .article-subtitle {
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.chapter-nav a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+
+
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+
+  .article-title {
+    font-size: 1.18rem;
+  }
+
+  .article-subtitle {
+    font-size: 1.72rem;
+    margin: 4px 0 10px;
+  }
+
+  .article-kicker {
+    font-size: 1.12rem;
+    margin: 0 0 22px;
+  }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.next-link:hover {
+  text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+    <a class="back-link" href="agente/index.html">← Torna alla serie</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+  <div class="article-date">4 aprile 2026</div>
+<h1 class="article-title">L’Agente AI - 3</h1>
+<p class="article-subtitle">Fiducia senza controllo </p>
+<p class="article-kicker">Quando la delega diventa subordinazione</p>
+<div class="article-text">
+<p>
+Ogni volta che una parte di un processo resta invisibile, avvertiamo il bisogno di rappresentarci ciò che accade nel mezzo. Questo è esattamente ciò che accade con i sistemi agentici. L’utente formula un obiettivo, riceve un esito, ma non vede davvero il percorso che collega l’uno all’altro. La <em>zona opaca</em> non elimina il bisogno di comprendere; semplicemente lo sposta sul terreno della rappresentazione.
+</p>
+<p>
+È a questo punto che emerge la rappresentazione più familiare e più disponibile: quella del collaboratore umano. Quando l’utente tende a rappresentarsi l’agente come qualcosa di simile non sta cadendo in una trappola ingenua. Dall’osservatorio della tastiera e dello schermo tutto ciò è non solo plausibile, ma in larga misura giustificato.
+</p>
+<p>
+L’utente non sa davvero che cosa accade nella <em>zona opaca</em>. Avverte però, più o meno chiaramente, che una parte del processo elaborativo e decisionale gli sfugge. Tende così a colmare quella sottrazione rappresentandola come il raggio d’azione di qualcosa di assimilabile a un collaboratore umano, piuttosto che come il funzionamento di una macchina.
+</p>
+<p>
+Si tratta di una risposta adattiva a una situazione strutturalmente nuova. L’utente sa — anche se non sempre in modo esplicito — di interagire con un sistema artificiale. Ma di fronte all’opacità del processo, proiettare un collaboratore umano è la soluzione cognitivamente più economica e psicologicamente più tollerabile.
+</p>
+<p>
+È più tollerabile perché il collaboratore umano è un modello familiare di delega. Delegare a un essere umano competente implica fiducia, ma una fiducia che ha radici comprensibili: l’altro ha esperienza, intenzioni, responsabilità. La delega a una macchina opaca è strutturalmente diversa e molto più difficile da collocare entro schemi cognitivi consolidati.
+</p>
+<p>
+Si produce così una forma di antropomorfizzazione funzionale: non ingenua, ma quasi inevitabile. Serve a mantenere un senso minimo di continuità e di comprensibilità nell’interazione, in assenza di strumenti concettuali adeguati a descrivere che cosa sia davvero l’agente e come operi.
+</p>
+<p>
+C’è però una conseguenza che vale la pena evidenziare. Se l’utente gestisce l’opacità proiettando un collaboratore umano, tende anche ad attribuire all’agente caratteristiche che il collaboratore umano possiede e che il sistema non ha: intenzione, responsabilità, giudizio autentico. La fiducia riposta nell’agente si costruisce dunque su un modello che non corrisponde alla natura reale del sistema. Non è una fiducia mal riposta in senso morale; è una fiducia strutturalmente mal fondata, perché poggia su categorie che qui non si applicano fino in fondo.
+</p>
+<p>
+È da questo scarto che bisogna partire. E da qui si aprono i due problemi che occorre affrontare: quello <em>epistemologico</em>, che riguarda le condizioni della fiducia e della conoscenza, e quello <em>etico</em>, che riguarda la distribuzione della responsabilità in un sistema che rende possibile, e in parte incoraggia, questo disallineamento.
+</p>
+<p>
+Su che cosa si fonda, in realtà, la fiducia dell’utente nell’agente? Anzitutto non su una conoscenza del processo, ma su un’<em>esperienza dell’esito</em>. L’utente non vede come l’agente arrivi al risultato; vede che qualcosa arriva, spesso in forma ordinata, plausibile, utile. La fiducia nasce prima di tutto da questa efficacia percepita. Se il sistema restituisce risultati che appaiono pertinenti, coerenti e operativi, l’utente tende naturalmente a riconoscergli una competenza. Spesso il risultato viene percepito come più profondo di quanto l’utente stesso avrebbe saputo produrre: capace di mettere in relazione elementi dispersi, di dare forma a un problema, di portare alla luce implicazioni non immediatamente visibili. Anche per questo la fiducia tende a consolidarsi. Ma resta una competenza inferita dall’esito, non verificata nel percorso.
+</p>
+<p>
+Si fonda poi su un secondo elemento, più sottile: la <em>continuità dell’interfaccia e del linguaggio</em>. L’agente parla come un interlocutore, risponde in linguaggio naturale, mantiene il ritmo del dialogo, usa formule che richiamano comprensione, valutazione, iniziativa. Anche quando l’utente sa di avere a che fare con un sistema artificiale, questa forma dell’interazione favorisce la proiezione di un modello umano. Non perché il sistema sia davvero assimilato a una persona, ma perché il linguaggio e l’interfaccia rendono spontaneo interpretarlo così.
+</p>
+<p>
+C’è infine un terzo fondamento, ancora più importante: la <em>necessità pratica della delega</em>. Quando l’utente affida un compito a un agente, non può sospendere indefinitamente il giudizio in attesa di capire tutto ciò che accade nel mezzo. Deve, a un certo punto, fidarsi. La fiducia quindi non nasce solo da un’impressione soggettiva o da un errore cognitivo; nasce anche dalla struttura stessa della situazione. L’utente delega perché non può seguire ogni passaggio, e proprio per questo è portato a colmare l’opacità del processo con una rappresentazione che renda quella delega sopportabile e comprensibile.
+</p>
+<p>
+Il problema epistemologico comincia qui. Questa <em>fiducia</em> non si fonda su un accesso diretto alle ragioni del processo, ma su una combinazione di efficacia apparente, impressione di profondità, continuità conversazionale e necessità pratica. La domanda diventa allora inevitabile: si tratta di fondamenti sufficienti? Oppure la fiducia nell’agente si regge su indizi che funzionano bene psicologicamente, ma non garantiscono davvero una conoscenza adeguata di ciò in cui si confida?
+</p>
+<p>
+E veniamo così a un altro ordine di problemi. Se il risultato prodotto dal sistema supera visibilmente ciò che l’utente avrebbe saputo produrre da solo — quella che potremmo chiamare un’<em>eccedenza cognitiva del sistema</em> — allora il sistema cessa di essere percepito come un semplice ausilio. Comincia piuttosto a occupare una posizione di superiorità cognitiva: non solo aiuta, ma orienta; non solo assiste, ma condiziona il modo in cui il problema viene visto, compreso e affrontato. 
+</p>
+<p>
+È qui che si profila una possibile asimmetria di potere. Perché quando l’utente non è più in grado di misurare fino in fondo questa eccedenza cognitiva, il rapporto con il sistema tende a rovesciarsi: da uso dello strumento a dipendenza dal suo giudizio apparente.
+</p>
+<p>
+Quando l’utente non è più in grado di misurare l’eccedenza cognitiva del sistema, la <em>delega</em> non comincia forse a trasformarsi in <em>subordinazione</em>? 
+</p>
+
+</div>
+
+<hr class="chapter-separator">
+
+
+
+<div class="chapter-nav">
+    <a href="2026-04-04-articolo-13.html">← L’Agente AI - 2</a>
+    <a href="2026-04-04-articolo-15.html">L’Agente AI - 4 →</a>
+</div>
+
+
+<br>
+<h3>Fonti essenziali</h3>
+
+
+<ul>
+<li>
+<a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf?utm_source=chatgpt.com" target="_blank">
+Open AI – A practical guide to building agents
+</a>
+</li>
+
+<li>
+<a href="https://www.anthropic.com/engineering/building-effective-agents?utm_source=chatgpt.com" target="_blank">
+Anthropic – Building Effective AI Agents
+</a>
+</li>
+
+<li>
+<a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank">
+NIST – Artificial Intelligence Risk Management Framework: Generative AI Profile
+</a>
+</li>
+
+</ul>
+
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+  </div>
+</div>
+</body>
+</html>
