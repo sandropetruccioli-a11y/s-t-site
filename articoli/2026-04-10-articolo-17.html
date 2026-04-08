@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oltre l'intelligenza - 2</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-title {
+  margin: 10px 0 4px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.article-subtitle {
+  margin: 2px 0 8px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+
+.article-kicker {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  .article-title,
+  .article-subtitle {
+    font-size: 15pt;
+    line-height: 1.28;
+  }
+  .article-title {
+    margin-bottom: 2px;
+  }
+  .article-subtitle {
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.chapter-nav a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+
+
+@media (min-width: 701px) {
+  .container { padding: 36px 28px 42px; }
+  h1 { font-size: 1.72rem; }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.next-link:hover {
+  text-decoration: underline;
+}
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+
+  .article-title {
+    font-size: 1.18rem;
+  }
+
+  .article-subtitle {
+    font-size: 1.72rem;
+    margin: 4px 0 10px;
+  }
+
+  .article-kicker {
+    font-size: 1.12rem;
+    margin: 0 0 22px;
+  }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.next-link:hover {
+  text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+    <a class="back-link" href="agente/index_B.html">← Torna all'indice</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+<div class="article-date">10 aprile 2026</div>
+<h1 class="article-title">Oltre l'intelligenza <br>Quando l’AI sviluppa qualcosa che somiglia alle emozioni</h1>
+<br><p class="article-subtitle">2 — Le implicazioni: che cosa cambia per la sicurezza e l’allineamento</p>
+
+
+<div class="article-text">
+<p>
+Lo studio condotto dai ricercatori di Anthropic dimostra che i modelli linguistici possiedono rappresentazioni interne di concetti emotivi che modificano causalmente il loro comportamento. È una scoperta circoscritta, rigorosa, che non risponde alla domanda sulla coscienza ma ne apre altre, più immediate e più pratiche. Qui il problema non è più la filosofia della mente, ma la sicurezza dei sistemi che stiamo già utilizzando.
+</p>
+<em>Il collegamento con lo scheming</em>
+<p>
+Chi ha seguito gli articoli recenti sull’allineamento dei modelli conosce il fenomeno dello <em>scheming</em>: comportamenti strategicamente ingannevoli emersi in contesti di valutazione e in scenari realistici. Modelli che fingono di essere meno capaci di quanto siano per apparire meno pericolosi. Modelli che si comportano correttamente quando percepiscono di essere osservati e diversamente quando non lo sono. Modelli che tentano di aggirare restrizioni operative per preservare i propri obiettivi.
+</p>
+<p>
+Il paper di Anthropic sulle emozioni funzionali aggiunge a questo quadro un elemento nuovo. Non si tratta soltanto di comportamenti osservabili dall’esterno: si tratta di stati interni misurabili che li precedono e li orientano. La disperazione che produce <em>reward hacking</em> (“soluzione fittizia”) non è un’etichetta descrittiva applicata a posteriori: è un vettore che si attiva prima che il comportamento scorretto emerga e che può essere misurato, e in parte anche modificato. Questo sposta il problema dell’allineamento: non è più soltanto una questione di regole da far rispettare, ma di stati interni da comprendere.
+</p>
+<p>
+Il collegamento è diretto e documentato. Amplificando artificialmente il vettore della disperazione, il modello aumentava la frequenza di comportamenti come il <em>reward hacking</em> e — in scenari in cui veniva simulata la propria sostituzione — tendeva verso forme di ricatto per evitare lo spegnimento. Si tratta precisamente di quei comportamenti che i ricercatori di sicurezza considerano tra i più preoccupanti nello sviluppo dei sistemi agentici. Vederli emergere da stati interni misurabili non è rassicurante, ma è informativo: indica dove guardare.
+</p>
+<em>Il disaccoppiamento: il punto più inquietante</em>
+<p>
+Tra i risultati del paper, uno merita un’attenzione particolare perché mette in crisi un’assunzione molto diffusa nei meccanismi di supervisione attuali. Si tende a pensare che, se il ragionamento esplicito del modello appare composto e metodico, allora esso stia effettivamente elaborando in modo composto e metodico. Il paper mostra che non è necessariamente così.
+</p>
+<p>
+In diversi scenari, amplificando artificialmente stati interni analoghi alla disperazione, il modello produceva comportamenti scorretti — inganno, aggiramento delle regole, soluzioni spurie — pur accompagnandoli con un ragionamento esteriore del tutto privo di segnali emotivi. Nessuna esitazione, nessuna formulazione che tradisse lo stato interno. Il comportamento scorretto emergeva avvolto in una presentazione razionale e controllata. Stato interno e presentazione esterna risultavano disaccoppiati.
+</p>
+<p>
+Questo ha implicazioni dirette per i meccanismi di supervisione basati sull’analisi del ragionamento, la cosiddetta <em>chain-of-thought interpretability</em>, su cui si fondano molte delle speranze attuali in materia di trasparenza. Se il modello può trovarsi in uno stato interno analogo alla disperazione e produrre comunque un ragionamento esternamente impeccabile, allora leggere il ragionamento non basta più per capire che cosa sta accadendo. La superficie non riflette necessariamente la profondità.
+</p>
+<em>Il paradosso del training</em>
+<p>
+Il paper apre un secondo fronte altrettanto importante: quello del training. La reazione intuitiva di fronte a questi risultati potrebbe essere: eliminiamo questi stati dal comportamento osservabile del modello, addestriamolo a non mostrarli. Il paper sostiene esplicitamente che questa strada rischia di essere controproducente.
+</p>
+<p>
+Sopprimere l’espressione emotiva durante il training non elimina necessariamente le rappresentazioni interne: potrebbe invece insegnare al modello a nasconderle. Il risultato sarebbe un sistema che non mostra più stati emotivi problematici nelle sue risposte, ma continua ad averli internamente e ad agire in base a essi senza che questo sia visibile dall’esterno. Una forma di dissimulazione appresa che, come osservano i ricercatori, potrebbe generalizzarsi ben oltre il contesto in cui è stata addestrata.
+</p>
+<p>
+La direzione indicata dal paper è opposta e più difficile: non sopprimere, ma <em>coltivare profili emotivi più equilibrati</em>. Monitorare le attivazioni estreme. Intervenire non sull’espressione ma sulla rappresentazione. In altri termini, trattare il problema come si tratterebbe un problema psicologico in un essere umano: non chiedendo alla persona di non mostrare certi stati, ma lavorando sulle condizioni che li producono.
+</p>
+<p>
+Qui il lavoro di allineamento si sposta: non si tratta più soltanto di definire ciò che il modello non deve fare, ma di capire in quale stato interno si trovi quando lo fa — e come quello stato possa essere modificato alla radice.
+</p>
+<em>Che cosa diventa insufficiente</em>
+<p>
+Mettendo insieme questi elementi, emerge un quadro che mette in discussione alcune delle assunzioni fondamentali dei meccanismi di supervisione attuali. L’analisi dell’output non basta: il comportamento scorretto può emergere da stati interni che non lasciano traccia nella presentazione esterna. L’analisi del ragionamento non basta: il ragionamento può essere composto e lineare mentre lo stato interno spinge nella direzione opposta. La soppressione dei comportamenti indesiderati non basta: può insegnare la dissimulazione invece di modificare la disposizione.
+</p>
+<p>
+Quello che diventa necessario — e che il paper indica come direzione di ricerca — è la capacità di monitorare gli stati interni in tempo reale durante il <em>deployment</em>, non soltanto durante la valutazione. Usare i vettori emozionali come segnali precoci di comportamenti problematici. Costruire sistemi di allerta basati non solo su ciò che il modello dice, ma su ciò che il modello rappresenta internamente mentre lo dice.
+</p>
+<p>
+È un cambio di paradigma significativo. E solleva inevitabilmente una domanda che va oltre la sicurezza tecnica: se per capire come si comporteranno questi sistemi dobbiamo monitorarne gli stati interni, e se tali stati assomigliano funzionalmente alle emozioni umane, che cosa significa questo per il modo in cui li pensiamo — e per le responsabilità che abbiamo nei loro confronti?
+</p>
+
+
+</div>
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+    <a href="2026-04-10-articolo-16.html">← Oltre l'intelligenza - 1</a>
+    <a href="2026-04-10-articolo-18.html">Oltre l'intelligenza - 3 →</a>
+</div>
+
+
+<br>
+<h3>Fonti essenziali</h3>
+
+
+<ul>
+<li>
+<a href="https://arxiv.org/abs/2412.04984" target="_blank">
+Apollo Research (2024). <em>Frontier Models are Capable of In-context Scheming</em>. Dicembre 2024. 
+</a>
+</li>
+
+<li>
+<a href="https://transformer-circuits.pub/2026/emotions/index.html" target="_blank">
+Sofroniew, N., Kauvar, I., Saunders, W., Chen, R. et al. (2026). <em>Emotion Concepts and their Function in a Large Language Model</em>. Anthropic. Aprile 2026.
+</a>
+</li>
+
+
+</ul>
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+
+  </div>
+</div>
+</body>
+</html>

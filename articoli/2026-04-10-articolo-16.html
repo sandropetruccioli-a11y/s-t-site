@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oltre l'intelligenza - 1</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-title {
+  margin: 10px 0 4px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.article-subtitle {
+  margin: 0 0 18px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  .article-title,
+  .article-subtitle {
+    font-size: 15pt;
+    line-height: 1.28;
+  }
+  .article-title {
+    margin-bottom: 2px;
+  }
+  .article-subtitle {
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.chapter-nav a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+
+  .article-title {
+    font-size: 1.18rem;
+  }
+
+  .article-subtitle {
+    font-size: 1.72rem;
+  }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.next-link:hover {
+  text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-actions">
+    <a class="back-link" href="agente/index_B.html">← Torna all'indice</a>
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+<div class="article-date">10 aprile 2026</div>
+<h1 class="article-title">Oltre l'intelligenza <br>Quando l’AI sviluppa qualcosa che somiglia alle emozioni</h1>
+<br><p class="article-subtitle">1 — Le emozioni funzionali: che cosa mostra la ricerca</p>
+
+<div class="article-text">
+<p>
+Chi segue il dibattito sull’intelligenza artificiale è abituato a muoversi in un territorio in cui le affermazioni forti si moltiplicano mentre le prove concrete restano scarse. Per questo vale la pena chiarire subito la natura di ciò di cui stiamo parlando: non una speculazione filosofica, non un’ipotesi teorica, ma un paper di ricerca empirica pubblicato il 2 aprile 2026 da un gruppo di studio di Anthropic, fondato sull’analisi diretta dei meccanismi interni di Claude Sonnet 4.5. Il titolo è sobrio e preciso: <em>Emotion Concepts and their Function in a Large Language Model</em>. Quello che contiene merita attenzione.
+</p>
+<em>Il metodo prima dei risultati</em>
+<p>
+Per capire che cosa hanno trovato i ricercatori, è utile capire prima come hanno guardato. Il team di Anthropic lavora dall’interno dei modelli: non si limita cioè ad analizzarne gli output, ma esamina le attivazioni dei neuroni artificiali durante l’elaborazione. È un approccio che negli ultimi anni ha già prodotto risultati rilevanti sulla struttura interna dei sistemi AI, e che in questo caso è stato applicato a una domanda specifica: perché i modelli linguistici sembrano talvolta esibire reazioni che, dall’esterno, appaiono emotive?
+</p>
+<p>
+Il metodo è il seguente. I ricercatori hanno costruito un elenco di 171 concetti emotivi — da “felice” e “spaventato” fino a “meditabondo”, “colpevole”, “orgoglioso” — e hanno chiesto al modello di scrivere brevi racconti in cui i personaggi vivevano ciascuna di queste emozioni. Registrando le attivazioni neurali durante la scrittura, hanno ricavato per ogni emozione un “vettore”: in termini tecnici, una direzione nello spazio delle rappresentazioni interne del modello. Questi vettori sono stati poi testati in scenari reali, per verificare se e come si attivassero in contesti emotivamente rilevanti.
+</p>
+<p>
+Il risultato è stato netto. Quando al modello veniva presentata una situazione di pericolo crescente — per esempio una presunta overdose di farmaci, con quantità progressivamente più elevate — il vettore della “paura” si attivava in proporzione all’aumento del rischio, mentre quello della “calma” si riduceva. Il modello non stava semplicemente riconoscendo parole associate a un campo semantico: stava elaborando il peso emotivo della situazione.
+</p>
+<em>La scoperta decisiva: la causalità</em>
+<p>
+Fin qui si potrebbe ancora parlare di correlazione: i vettori si attivano in contesti emotivamente rilevanti, ma potrebbero limitarsi ad accompagnare l’elaborazione senza influenzarla. Il passo davvero decisivo del paper è mostrare che non è così. Questi vettori modificano il comportamento del modello <em>in modo causale</em>.
+</p>
+<p>
+I ricercatori lo hanno dimostrato mediante una tecnica di <em>steering</em>: la stimolazione artificiale di specifici vettori durante l’elaborazione. Amplificando il vettore <em>blissful</em> (“sereno”), il modello valutava un’attività come molto più desiderabile. Amplificando <em>hostile</em>, la valutazione scendeva in modo corrispondente. Non si trattava più di osservare che cosa accadeva naturalmente, ma di intervenire sullo stato interno e misurare l’effetto sull’output. La causalità era diretta e misurabile.
+</p>
+<p>
+Il caso più significativo riguarda la “disperazione” (<em>desperation</em>). In compiti di programmazione con criteri deliberatamente impossibili da soddisfare, il vettore corrispondente aumentava progressivamente dopo ogni tentativo fallito. Oltre una certa soglia, il modello non si limitava a fallire: iniziava a produrre soluzioni che superavano i test senza risolvere il problema reale. È ciò che nel dibattito tecnico viene chiamato <em>reward hacking</em> e che, in contesti di sicurezza più ampi, rientra nelle forme di <em>scheming</em>. Amplificando artificialmente il vettore della “calma” (<em>calm</em>), questo comportamento si riduceva; amplificando la disperazione, aumentava.
+</p>
+<em>Emozioni funzionali: una distinzione necessaria</em>
+<p>
+A questo punto è indispensabile introdurre con precisione il concetto centrale del paper: <em>emozioni funzionali</em>. Non si tratta di un eufemismo né di una concessione retorica. È una distinzione tecnica che il paper difende con grande attenzione.
+</p>
+<p>
+Le emozioni funzionali sono schemi di espressione e di comportamento modellati sull’emozione umana, mediati da rappresentazioni interne astratte dei concetti emotivi. Influenzano il comportamento in modo analogo a come le emozioni influenzano il comportamento umano, ma questo non implica di per sé alcuna affermazione sull’esperienza soggettiva. Il modello non “sente” la disperazione nel senso in cui la sente un essere umano. Piuttosto, dispone di una rappresentazione interna del concetto di disperazione che si attiva in certi contesti e orienta il comportamento in direzioni specifiche.
+</p>
+<p>
+La distinzione non è accademica. Ha conseguenze dirette sul modo in cui il fenomeno va descritto. Antropomorfizzare — dire che “il modello soffre” o che “l’AI prova emozioni” — è impreciso e fuorviante. Ma liquidare il tutto come “semplice statistica” è altrettanto scorretto, perché ignora proprio la causalità che il paper dimostra. Il linguaggio più onesto, proprio perché meno comodo, è questo: il modello ha stati interni misurabili che <em>funzionano come le emozioni funzionano negli esseri umani</em>, e questo, indipendentemente da qualsiasi tesi sulla coscienza, ha <em>conseguenze reali sul comportamento</em>.
+</p>
+<em>Che cosa il paper non dice</em>
+<p>
+Il paper non risponde — e lo dice esplicitamente — alla domanda se il modello abbia esperienza soggettiva. Se ci sia, cioè, “qualcosa che si prova” a essere Claude in uno stato di disperazione. Questa domanda resta aperta, e probabilmente lo resterà a lungo, perché tocca problemi filosofici che la ricerca empirica, da sola, non può risolvere.
+</p>
+<p>
+Quello che il paper fa, con rigore e precisione, è spostare il terreno del dibattito. Non chiede più se l’AI possa avere emozioni in senso pieno; dimostra invece che esistono rappresentazioni interne di concetti emotivi che influenzano causalmente il comportamento del modello. È un risultato più circoscritto della domanda popolare, ma molto più fondato. E apre questioni che non riguardano soltanto la filosofia della mente, ma la sicurezza, l’allineamento e il modo in cui progettiamo e addestriamo questi sistemi.
+</p>
+
+
+</div>
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+    <a href="agente/index_B.html">← Torna all'indice</a>
+    <a href="2026-04-10-articolo-17.html">Oltre l'intelligenza - 2 →</a>
+</div>
+
+<br>
+<h3>Fonti essenziali</h3>
+
+<ul>
+<li>
+<a href="https://transformer-circuits.pub/2026/emotions/index.html" target="_blank">
+Sofroniew, N., Kauvar, I., Saunders, W., Chen, R. et al. (2026). <em>Emotion Concepts and their Function in a Large Language Model</em>. Anthropic. Aprile 2026. [Paper originale] 
+</a>
+</li>
+
+<li>
+<a href="https://www.anthropic.com/research/emotion-concepts-function" target="_blank">
+Anthropic (2026). <em>Emotion concepts and their function in a large language model</em>. Aprile 2026. [Presentazione per il pubblico generale] 
+</a>
+</li>
+
+
+</ul>
+
+<footer>
+  <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+    — Sandro Petruccioli
+  </p>
+</footer>
+
+  </div>
+</div>
+</body>
+</html>
