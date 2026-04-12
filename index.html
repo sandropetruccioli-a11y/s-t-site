@@ -352,6 +352,143 @@ h2 {
         right: 18px;
     }
 }
+
+/* ── Mappa laterale ── */
+.mappa-trigger {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 900;
+    width: 24px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0;
+    opacity: 0.22;
+    transition: opacity 0.25s ease;
+}
+.mappa-trigger:hover { opacity: 0.7; }
+.mappa-trigger span {
+    display: block;
+    height: 1.5px;
+    background: var(--accent);
+    border-radius: 1px;
+}
+.mappa-trigger span:nth-child(1) { width: 14px; }
+.mappa-trigger span:nth-child(2) { width: 14px; }
+.mappa-trigger span:nth-child(3) { width: 9px; }
+
+.mappa-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
+}
+.mappa-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(250px, 78vw);
+    height: 100dvh;
+    background: #f6f5f1;
+    border-right: 1px solid rgba(10, 70, 82, 0.15);
+    box-shadow: 6px 0 18px rgba(0,0,0,0.09);
+    transform: translateX(-102%);
+    transition: transform 0.22s ease;
+    z-index: 1100;
+    overflow-y: auto;
+    padding: 16px 14px 28px;
+}
+body.mappa-open .mappa-overlay { opacity: 1; pointer-events: auto; }
+body.mappa-open .mappa-panel { transform: translateX(0); }
+
+.mappa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(10, 70, 82, 0.12);
+}
+.mappa-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.mappa-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    padding: 2px 4px;
+    opacity: 0.6;
+}
+.mappa-close:hover { opacity: 1; color: var(--accent); }
+
+.mappa-group-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 8px;
+}
+.mappa-section { margin-bottom: 4px; }
+.mappa-list {
+    list-style: none;
+    margin: 0 0 6px;
+    padding: 0 0 0 8px;
+    display: grid;
+    gap: 4px;
+}
+.mappa-list a {
+    display: block;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 1px 0;
+    opacity: 0.85;
+}
+.mappa-list a:hover { text-decoration: underline; color: #07333d; opacity: 1; }
+.mappa-divider {
+    border: none;
+    border-top: 1px solid rgba(10, 70, 82, 0.1);
+    margin: 12px 0;
+}
+.mappa-other-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 6px;
+    opacity: 0.7;
+}
+.mappa-other a {
+    display: block;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 1px 0;
+    opacity: 0.85;
+}
+.mappa-other a:hover { text-decoration: underline; color: #07333d; opacity: 1; }
 </style>
 </head>
 
@@ -458,6 +595,60 @@ Qui osserviamo questi mutamenti per comprenderne le implicazioni politiche e ist
             setOpen(false);
         });
     });
+})();
+</script>
+
+<!-- Icona mappa -->
+<button class="mappa-trigger" id="mappa-trigger" aria-label="Apri mappa contenuti" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- Overlay -->
+<div class="mappa-overlay" id="mappa-overlay"></div>
+
+<!-- Pannello -->
+<aside class="mappa-panel" id="mappa-panel" aria-label="Mappa dei contenuti">
+    <div class="mappa-header">
+        <span class="mappa-title">Contenuti</span>
+        <button class="mappa-close" id="mappa-close" aria-label="Chiudi">✕</button>
+    </div>
+
+    <a href="articoli/dossier/index.html" class="mappa-group-title" style="text-decoration:none; display:block;">Dossier</a>
+
+    <div class="mappa-section">
+        <ul class="mappa-list">
+            <li><a href="articoli/dossier/primo-approccio.html">Primo approccio all'AI</a></li>
+            <li><a href="articoli/dossier/agente.html">L'Agente AI</a></li>
+            <li><a href="articoli/dossier/oltre.html">Oltre l'intelligenza</a></li>
+            <li><a href="articoli/2026-04-12-articolo-19.html">La resa cognitiva</a></li>
+        </ul>
+    </div>
+
+    <hr class="mappa-divider">
+
+    <div class="mappa-other-title">Articoli</div>
+    <div class="mappa-other">
+        <a href="articoli/2026-02-27-articolo-01.html">Quando un sistema artificiale firma un articolo di fisica teorica</a>
+    </div>
+
+</aside>
+
+<script>
+(function() {
+    var body = document.body;
+    var trigger = document.getElementById('mappa-trigger');
+    var overlay = document.getElementById('mappa-overlay');
+    var closeBtn = document.getElementById('mappa-close');
+    function setOpen(open) {
+        body.classList.toggle('mappa-open', open);
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    trigger.addEventListener('click', function() { setOpen(!body.classList.contains('mappa-open')); });
+    overlay.addEventListener('click', function() { setOpen(false); });
+    closeBtn.addEventListener('click', function() { setOpen(false); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') setOpen(false); });
 })();
 </script>
 </body>
