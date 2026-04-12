@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Costituzione di AI - 1</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+h1 {
+  margin: 8px 0 14px;
+  font-size: 1.28rem;
+  line-height: 1.3;
+  color: var(--accent);
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  h1 {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+  h1 { font-size: 1.72rem; }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.next-link:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<style>
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid rgba(21, 58, 68, 0.15);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    flex-wrap: wrap;
+}
+
+.site-nav-home {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.site-nav-home:hover { color: #07333d; }
+
+.site-nav-links {
+    display: flex;
+    gap: 10px 14px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.site-nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.site-nav-links a:hover { color: var(--accent); }
+
+.site-nav-links a.active {
+    color: var(--accent);
+    border-bottom: 2px solid #c9a227;
+    padding-bottom: 1px;
+}
+
+@media (max-width: 480px) {
+    .site-nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px 12px;
+    }
+    .site-nav-links a { font-size: 0.78rem; }
+}
+</style>
+
+<nav class="site-nav">
+    <a href="../index.html" class="site-nav-home">← Home</a>
+    <div class="site-nav-links">
+        <a href="dossier/index.html">← Dossier AI</a>
+    </div>
+</nav>
+
+
+<div class="container">
+  <div class="top-actions">
+    
+    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V3h12v6"></path>
+        <path d="M6 18h12v3H6z"></path>
+        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+      </svg>
+      Stampa
+    </button>
+  </div>
+  <div class="article-date">7 marzo 2026</div>
+  <h1>La Costituzione di AI - 1</h1>
+  <div class="article-text">
+    <p>
+Stiamo entrando in una fase in cui le tecnologie che costruiamo iniziano a superare le nostre capacità di controllo? Non è ancora l’era delle macchine autonome, ma non è più quella degli strumenti passivi. È una fase intermedia, instabile — un’adolescenza tecnologica.
+</p>
+<p>
+Dario Amodei è un ricercatore formatosi in fisica a Stanford e in biofisica a Princeton. È noto per aver fondato Anthropic, una delle principali aziende attive nel settore dell’intelligenza artificiale. Claude è il nome del modello di punta di Anthropic, uno dei più avanzati oggi disponibili.
+</p>
+<p>
+Amodei è tra le figure più influenti nel campo delle tecnoscienze contemporanee e tuttavia si distingue per una posizione che potremmo definire lucidamente prudente. Non è un catastrofista né indulge in scenari apocalittici. Sta però conducendo una campagna di sensibilizzazione per prevenire — o quantomeno contenere — le implicazioni indesiderate e potenzialmente pericolose dei nuovi modelli di intelligenza artificiale.
+</p>
+<p>
+Nel gennaio 2026 ha pubblicato sul suo sito un lungo saggio intitolato <em>The Adolescence of Technology</em>.
+</p>
+<p>
+In questo contributo, suddiviso in tre parti, ripercorreremo il suo ragionamento per metterne in luce le implicazioni più rilevanti e, infine, per individuare alcuni interrogativi sui quali avviare una riflessione e un confronto.
+</p>
+<p>
+Naturalmente, l’interpretazione proposta da Amodei non è l’unica possibile. Su alcuni punti esistono già letture differenti. Tra queste merita particolare attenzione il saggio di Andrea Pignataro <em>The Wrong Apocalypse</em>, che propone una diversa chiave di lettura delle trasformazioni in corso. 
+</p>
+<p>
+Amodei paragona la fase attuale dell’AI a un’adolescenza tecnologica — un periodo di potere enorme ma di immaturità socio-istituzionale. Siamo vicini a sistemi di intelligenza artificiale estremamente potenti, ma non è affatto chiaro se le nostre istituzioni, la politica e la cultura siano capaci di gestirli in modo responsabile.
+</p>
+<p>
+Per definizione, una “AI potente” è un sistema che presenta alcune caratteristiche decisive: in molte discipline è più competente di un premio Nobel; è capace di operare autonomamente su compiti complessi; è in grado di gestire interfacce attraverso le quali agire su internet, software e robotica; è infine dotato della capacità di essere moltiplicato in milioni di istanze parallele, creando ciò che Amodei definisce uno “Stato di geni in un data center”.
+</p>
+<p>
+A partire da questa definizione è possibile analizzare con maggiore rigore metodologico i principali rischi che, a giudizio dell’autore, dovrebbero essere affrontati con urgenza.
+</p>
+<p>
+Un’AI potente potrebbe generare diverse categorie di rischio:
+<ul>
+<li><em>Autonomia incontrollata</em> – Un sistema molto più intelligente degli esseri umani potrebbe agire in modi imprevedibili e indipendenti dal controllo umano, perseguendo obiettivi non pienamente allineati ai nostri interessi o valori.
+</li>
+<li>
+<em>Utilizzo improprio per distruzione o potere </em>– Tali sistemi potrebbero essere sfruttati da attori malevoli — Stati, gruppi terroristici, oligopoli tecnologici — per ottenere vantaggi militari, economici o persino forme di dominio globale.
+</li>
+<li>
+<em>Disgregazione socio-economica</em> – Anche in assenza di intenzioni malevole, l’introduzione di una tecnologia così potente potrebbe provocare disoccupazione di massa, concentrazione estrema della ricchezza e destabilizzazione sociale.
+</li>
+<li>
+<em>Effetti indiretti sistemici</em> – Cambiamenti rapidi e imprevedibili nei mercati, nella geopolitica e nelle dinamiche sociali possono generare instabilità anche senza che vi sia un agente deliberatamente ostile.
+</li>
+</ul>
+<p>
+Amodei ribadisce di non essere un fatalista e non ritiene inevitabile un collasso globale. Considera tuttavia questi rischi reali e misurabili. Critica la narrazione pessimista e “apocalittica” diffusa in alcuni ambienti della comunità AI, poiché rischia di polarizzare il dibattito e di rallentare l’elaborazione di soluzioni efficaci.
+</p>
+<p>
+Al contrario, propone alcune azioni concrete. Da un lato, le aziende di AI dovrebbero adottare misure di sicurezza robuste e verificabili; dall’altro, Stati e organismi internazionali dovrebbero intervenire con strumenti normativi adeguati in materia di trasparenza, sicurezza e controllo degli usi pericolosi. A ciò si aggiunge una più ampia responsabilità sociale e civica delle élite tecnologiche.
+</p>
+<p>
+Amodei non intravede un “armageddon certo”. La sua tesi di fondo è la seguente: non disponiamo ancora di una mappa affidabile per governare questa nuova potenza tecnologica. Se non costruiamo strumenti di governance appropriati, potremmo andare incontro a conseguenze serie — e potenzialmente gravi — per l’umanità.
+</p>
+<p>
+Per restare alla responsabilità delle aziende e alle misure di sicurezza, è particolarmente interessante soffermarsi sulla “Costituzione dell’Intelligenza Artificiale” di Anthropic e sul modo in cui essa si collega ai modelli comportamentali ed etici incorporati durante l’addestramento.
+</p>
+<p>
+La <em>Costituzione di Claude</em> è un documento esplicito e pubblico che descrive i valori e i comportamenti che un modello come Claude dovrebbe incorporare. Funziona come guida normativa centrale per l’intero processo di training, nel senso che tutti gli altri segnali, le regole operative e le indicazioni devono essere coerenti con essa.
+</p>
+<p>
+Non si tratta di un semplice manuale di sicurezza, ma come scrive Amodei “è un elenco di principi che il modello è addestrato a utilizzare per criticare e rivedere le proprie risposte”.
+</p>
+<p>
+Perché avremmo bisogno di una Costituzione invece che di semplici regole?
+</p>
+<p>
+Amodei afferma, sulla base delle esperienze raccolte nei laboratori di Anthropic, che le regole rigide “non possono anticipare tutte le possibili situazioni” di interazione e tendono a fallire quando i contesti diventano nuovi o imprevedibili.
+</p>
+<p>
+L’idea è quindi quella di addestrare il modello non soltanto a rispettare divieti specifici, ma a ragionare su principi più ampi, valutando concetti come valore, beneficio e rischio. In questo modo si cerca di favorire lo sviluppo di una forma di giudizio contestuale, capace di applicare valori umani anche in situazioni non previste da casistiche predefinite.
+</p>
+<p>
+Questo approccio — noto come <em>Constitutional AI</em> — combina la trasparenza dei principi (una lista esplicita di valori), una procedura di auto-critica e revisione e l’integrazione sistematica di tali principi nei cicli di addestramento.
+</p>
+<p>
+Nel metodo della <em>Constitutional AI</em>, il modello viene inizialmente addestrato con dati standard e successivamente messo in dialogo con la propria <em>Costituzione</em>. “Il modello genera una risposta, la critica in base alla <em>Costituzione</em> e poi la rivede” quando necessario.
+</p>
+<p>
+Questo processo riduce la necessità di etichette umane esplicite per ogni possibile comportamento indesiderato, poiché la <em>Costituzione</em> funge da “giudice” interno. Segue poi una fase di <em>reinforcement learning</em> basata su questi giudizi automatici, oppure su un modello che valuta il grado di conformità delle risposte ai principi costituzionali.
+</p>
+<p>
+L’obiettivo è evitare di istruire manualmente il modello su una molteplicità di regole particolari — impresa sempre più ardua con l’aumentare della complessità — e fornirgli invece una sorta di criterio normativo interno per interpretare casi nuovi: “invece di addestrare il modello solo su quali risposte sono buone o cattive, lo addestriamo sui principi alla base di tali giudizi.”
+</p>
+<p>
+È importante notare che la Costituzione include anche indicazioni su come il modello debba affrontare temi moralmente complessi e rispondere a domande sulla propria natura. Come si legge nei documenti di Anthropic, “la costituzione specifica i principi che l’IA dovrebbe seguire, comprese le linee guida su argomenti delicati o moralmente complessi”.
+</p>
+<p>
+In particolare, viene richiesto di evitare qualsiasi affermazione che possa suggerire coscienza, intenzionalità o esperienza soggettiva: il modello deve “evitare di suggerire che abbia coscienza, intenzioni o esperienze soggettive”.
+</p>
+<p>
+La trasparenza su questi limiti non è un dettaglio secondario, ma parte integrante dell’impianto normativo della <em>Constitutional AI</em>, che si fonda su principi “espliciti e verificabili”.
+</p>
+<p>
+La <em>Costituzione</em> si colloca così oltre un semplice insieme di protocolli di sicurezza e tocca questioni di filosofia della mente, etica normativa e antropologia digitale, suggerendo che chi sviluppa sistemi di AI assume inevitabilmente una responsabilità nella definizione di valori condivisibili e robusti.
+</p>
+<p>
+
+Diversi commentatori e ricercatori hanno tuttavia sottolineato alcuni punti critici:</p>
+<ul>
+<li>scegliere quale <em>Costituzione</em> adottare implica decisioni normative fondamentali — non esiste una selezione neutrale dei valori; </li>
+<li>anche in presenza di principi espliciti, non è garantito che modelli complessi li seguano coerentemente in ogni contesto; </li>
+<li>resta aperta la questione di chi debba definire tali principi etici — esperti tecnici, filosofi, rappresentanti pubblici, o una combinazione di questi — e di come includere la pluralità delle prospettive culturali. </li>
+</ul></p>
+
+<p>
+Queste osservazioni riguardano soprattutto l’efficacia e i limiti dello strumento proposto da Amodei. Esistono tuttavia critiche che si collocano su un piano diverso. Tra queste merita particolare attenzione la posizione di Andrea Pignataro in <em>The Wrong Apocalypse</em>, che non mette in discussione la necessità di forme di governo dell’AI, ma propone una diversa diagnosi del fenomeno. 
+</p>
+<p>
+A suo giudizio il problema principale non è la sostituzione di compiti cognitivi, bensì il modo in cui le piattaforme AI possono apprendere e incorporare la grammatica delle istituzioni economiche.
+</p>
+<p>
+Su questa prospettiva torneremo in seguito. Per il momento conviene restare sul terreno dell’analisi di Amodei e approfondire il funzionamento della Costituzione dell’AI, che rappresenta il cuore della sua proposta.
+</p>
+<br>
+<p>Nel prossimo contributo analizzeremo la proposta della “Costituzione dell’AI” elaborata da Anthropic e i problemi teorici che essa solleva.</p>
+
+<p style="text-align:right; margin-top:40px;">
+<a href="2026-03-10-articolo-03.html" class="next-link">La Costituzione di AI - 2 →</a>
+</p>
+
+
+
+
+<br>
+<h3>Testi e documenti citati</h3>
+<p>
+Per chi desideri confrontarsi direttamente con i testi citati in questa analisi,
+sono disponibili qui i saggi di Dario Amodei, il documento di Anthropic sulla <em>Constitutional AI</em> e l'intervento di Andrea Pignataro.
+</p>
+
+<ul>
+<li>
+<a href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank">
+Dario Amodei – The Adolescence of Technology
+</a>
+</li>
+
+<li>
+<a href="https://www.anthropic.com/constitution" target="_blank">
+Anthropic – Constitutional AI
+</a>
+</li>
+
+<li>
+<a href="https://www.darioamodei.com/essay/machines-of-loving-grace" target="_blank">
+Dario Amodei – Machines of Loving Grace
+</a>
+</li>
+
+<li>
+<a href="https://ionanalytics.com/wp-content/uploads/2026/02/The_Wrong_Apocalypse.pdf" target="_blank">
+Andrea Pignataro – The Wrong Apocalypse
+</a>
+</li>
+</ul>
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+
+  </div>
+</div>
+</body>
+</html>

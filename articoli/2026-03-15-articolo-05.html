@@ -25,12 +25,7 @@ body {
   margin: 0 auto;
   padding: 22px 16px 32px;
 }
-.top-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
+
 .print-button {
   display: inline-flex;
   align-items: center;
@@ -52,11 +47,7 @@ body {
   width: 16px;
   height: 16px;
 }
-.back-link {
-  text-decoration: none;
-  color: var(--accent);
-  font-weight: 700;
-}
+
 .article-date {
   margin-top: 14px;
   font-size: 0.78rem;
@@ -111,6 +102,8 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   color: var(--accent);
+  white-space: nowrap;
+  font-size: 0.9rem;
 }
 
 .next-link:hover {
@@ -140,21 +133,51 @@ h1 {
     text-align: right;
   }
 }
+
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21, 58, 68, 0.2);
+}
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: #07333d; }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="top-actions">
-  <a class="back-link" href="2026-03-25-guida-09.html">← Torna alla guida</a>
-  <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
-    <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 9V3h12v6"></path>
-      <path d="M6 18h12v3H6z"></path>
-      <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
-    </svg>
-    Stampa
-  </button>
-</div>
+    <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="dossier/index.html">← Dossier</a>
+      <a class="back-link" href="dossier/primo-approccio.html">← Primo approccio all'AI</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+        <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path>
+          <path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
   <div class="article-date">15 marzo 2026</div>
   <h1>I rischi di AI: intelligenza o infrastruttura?</h1>
   <div class="article-text">
@@ -220,6 +243,12 @@ Allora, se davvero le piattaforme AI acquisissero la grammatica delle istituzion
 <p>
 Sono due problemi completamente diversi. E non è escluso che proprio il secondo sia quello decisivo.
 </p>
+
+<p class="article-nav">
+  <a href="2026-03-13-articolo-04.html" class="next-link">← Cost. di AI - 3</a>
+  <a href="2026-03-18-articolo-06.html" class="next-link">Neuroscienze →</a>
+</p>
+
 <br>
 
 <h3>Testi e documenti citati</h3>

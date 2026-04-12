@@ -25,12 +25,7 @@ body {
   margin: 0 auto;
   padding: 22px 16px 32px;
 }
-.top-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
+
 .print-button {
   display: inline-flex;
   align-items: center;
@@ -52,11 +47,7 @@ body {
   width: 16px;
   height: 16px;
 }
-.back-link {
-  text-decoration: none;
-  color: var(--accent);
-  font-weight: 700;
-}
+
 .article-date {
   margin-top: 14px;
   font-size: 0.78rem;
@@ -205,20 +196,50 @@ body {
   text-decoration: underline;
 }
 
+
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21, 58, 68, 0.2);
+}
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: #07333d; }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="top-actions">
-    <a class="back-link" href="agente/index_B.html">← Torna all'indice</a>
-    <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
-      <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 9V3h12v6"></path>
-        <path d="M6 18h12v3H6z"></path>
-        <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
-      </svg>
-      Stampa
-    </button>
+    <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="dossier/index.html">← Dossier</a>
+      <a class="back-link" href="dossier/oltre.html">← Oltre l'intelligenza</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+        <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path>
+          <path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
   </div>
 <div class="article-date">10 aprile 2026</div>
 <h1 class="article-title">Oltre l'intelligenza <br>Quando l’AI sviluppa qualcosa che somiglia alle emozioni</h1>

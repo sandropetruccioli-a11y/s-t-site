@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier — Una introduzione all'AI</title>
+<meta name="description" content="Un primo itinerario per orientarsi nei problemi fondamentali dell'intelligenza artificiale: dalla governance dei modelli agli sviluppi più recenti su agenti, stati interni e resa cognitiva.">
+
+<style>
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+    --highlight: #c9a227;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+/* ── Top actions ── */
+.top-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.back-link:hover { color: #07333d; }
+
+.print-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.print-button:hover { background: rgba(10, 70, 82, 0.08); }
+
+.print-icon { width: 16px; height: 16px; }
+
+/* ── Dossier header ── */
+.dossier-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.dossier-title {
+    margin: 0 0 8px;
+    font-size: 1.28rem;
+    line-height: 1.25;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.dossier-subtitle {
+    margin: 0 0 22px;
+    font-size: 1rem;
+    line-height: 1.45;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+/* ── Testo introduttivo ── */
+.dossier-text {
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-size: 1.04rem;
+    line-height: 1.68;
+    color: #2b2f31;
+    margin-bottom: 30px;
+}
+
+.dossier-text p { margin: 0 0 1em; }
+
+.dossier-signature {
+    margin-top: 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+/* ── Details unificato ── */
+details summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35em;
+}
+
+details summary::-webkit-details-marker { display: none; }
+
+details summary::after {
+    content: "⌄";
+    font-size: 0.85em;
+    font-style: normal;
+    color: var(--muted);
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+details[open] summary::after { transform: rotate(180deg); }
+
+.dossier-toggle summary {
+    font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
+    font-size: 1.04rem;
+    line-height: 1.68;
+    color: #2b2f31;
+}
+
+.dossier-more { margin-top: 12px; }
+.dossier-more p { margin: 0 0 1em; }
+
+.dossier-close {
+    display: inline;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.95em;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0.2em;
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+.dossier-close:hover { color: var(--accent); }
+
+/* ── Sezioni ── */
+.section-block {
+    border-top: 1px solid rgba(21, 58, 68, 0.2);
+    padding-top: 18px;
+    margin-top: 24px;
+}
+
+.section-title {
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.section-link {
+    display: block;
+    font-size: 1.14rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.section-link:hover { color: #07333d; }
+
+.section-note {
+    font-size: 0.96rem;
+    color: var(--text);
+    margin: 0 0 4px;
+}
+
+.section-meta {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+/* ── Conclusione ── */
+.conclusion-block {
+    border-top: 1px solid rgba(21, 58, 68, 0.2);
+    padding-top: 18px;
+    margin-top: 24px;
+}
+
+.conclusion-title {
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* ── Print ── */
+@media print {
+    @page { size: A4; margin: 16mm; }
+    body { background: #fff; color: #111; font-size: 11pt; }
+    .container { max-width: none; padding: 0; }
+    .top-actions, .print-button { display: none !important; }
+}
+
+/* ── Desktop ── */
+@media (min-width: 700px) {
+    .container { padding: 38px 28px 48px; }
+    .dossier-title { font-size: 1.8rem; }
+    .dossier-subtitle { font-size: 1.08rem; }
+    .dossier-text { font-size: 1.08rem; }
+    .dossier-toggle summary { font-size: 1.08rem; }
+    .section-link { font-size: 1.26rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-actions">
+        <a class="back-link" href="../../index.html">← home</a>
+        <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa pagina in PDF">
+            <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V3h12v6"></path>
+                <path d="M6 18h12v3H6z"></path>
+                <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+            </svg>
+            Stampa
+        </button>
+    </div>
+
+    <div class="dossier-label">Dossier</div>
+    <h1 class="dossier-title">Una introduzione all'AI</h1>
+    <div class="dossier-subtitle">
+        Un primo itinerario per orientarsi nei problemi fondamentali
+        dell'intelligenza artificiale: dalla governance dei modelli agli
+        sviluppi più recenti su agenti, stati interni e resa cognitiva.
+    </div>
+
+    <div class="dossier-text">
+        <details class="dossier-toggle">
+            <summary>
+                Questo dossier raccoglie un primo ciclo di articoli dedicati
+                all'intelligenza artificiale. Il percorso prende avvio dall'idea
+                formulata da Dario Amodei di una costituzione per l'AI, attraversa
+                gli aspetti teorici, tecnici, filosofici e politici del fenomeno,
+                entra nel merito dell'AI agentica e giunge alle ricerche più recenti,
+                che mettono in evidenza comportamenti assimilabili alle emozioni umane
+                e la tendenza degli utenti verso una progressiva resa cognitiva.
+            </summary>
+
+            <div class="dossier-more">
+                <p>
+                    L'intenzione non è stata quella di offrire una spiegazione
+                    complessiva di un campo che cambia troppo rapidamente e che eccede,
+                    per natura, ogni singola competenza disciplinare. Più modestamente,
+                    questo dossier prova a costruire alcuni primi strumenti di
+                    orientamento. Ci siamo avvicinati a un tema al tempo stesso
+                    affascinante e inquietante con prudenza e rispetto: rifiutando le
+                    visioni apocalittiche così come le infatuazioni facili e spesso
+                    poco fondate, e cercando di evitare quegli atteggiamenti disinvolti
+                    che talvolta si osservano persino in autorevoli uomini di scienza,
+                    inclini a parlare di questi temi più come influencer che come
+                    ricercatori.
+                </p>
+                <p>
+                    Siamo sulla soglia di una nuova rivoluzione — quella delle
+                    tecnoscienze — destinata a modificare profondamente la nostra vita.
+                    Le sue implicazioni sono, insieme, promettenti e inquietanti. Da un
+                    lato, si intravedono ricadute importanti sulla sanità e sulla
+                    ricerca biomedica, sulla possibilità di accelerare scoperte che per
+                    decenni hanno richiesto tempi e risorse enormi. Dall'altro, si
+                    profilano usi e sviluppi che suscitano interrogativi radicali, a
+                    cominciare da ciò che già oggi accade nelle applicazioni militari
+                    dell'AI, un capitolo che merita da solo un'analisi separata e
+                    approfondita.
+                </p>
+                <p>
+                    I testi raccolti qui non pretendono di dare risposte definitive.
+                    Cercano piuttosto di delimitare un campo di problemi e di
+                    descrivere uno stato dell'arte: quello che, all'inizio dell'aprile
+                    2026, appare come un primo livello di comprensione possibile. Siamo
+                    consapevoli che già si annunciano progressi e innovazioni destinati
+                    a modificare e approfondire i temi qui affrontati, e certamente a
+                    portarne alla luce di nuovi.
+                </p>
+                <p>
+                    Queste pagine offrono dunque primi lineamenti, prime coordinate
+                    utili per orientarsi in una materia estremamente complessa, che
+                    chiama in causa competenze disciplinari diverse e che non si lascia
+                    ridurre a nessuna di esse. Una cosa, tuttavia, sembra già
+                    abbastanza chiara: non è ammessa la delega. Delegare il pensiero
+                    critico sull'AI all'AI stessa — o a chiunque altro — significherebbe
+                    rinunciare a una parte della nostra libertà e, in ultima analisi,
+                    della nostra identità.
+                </p>
+                <p>
+                    Il compito di queste note è, per quanto possibile, informare e
+                    documentare: rendere più consapevoli di strumenti che, volenti o
+                    nolenti, entreranno nelle nostre case e sono già destinati a
+                    modificare la nostra vita e quella di quanti verranno dopo di noi.
+                    <button type="button" class="dossier-close"
+                        onclick="this.closest('details').removeAttribute('open')"
+                        aria-label="Chiudi introduzione">⌃</button>
+                </p>
+                <div class="dossier-signature">
+                    Sandro Petruccioli<br>
+                    10 aprile 2026
+                </div>
+            </div>
+        </details>
+    </div>
+
+
+    <!-- Sezione 1 -->
+    <section class="section-block">
+        <div class="section-title">Primo approccio all'AI</div>
+        <a href="primo-approccio.html" class="section-link">Costituzione, rischi, neuroscienze, etica e orizzonti politici →</a>
+        <p class="section-note">
+            Sette articoli che attraversano le principali prospettive sul fenomeno AI:
+            dalla proposta di governance di Amodei alle neuroscienze di Damasio e Dehaene,
+            dall'etica di <em>Antiqua et Nova</em> agli orizzonti del transumanesimo.
+        </p>
+        <div class="section-meta">7 articoli</div>
+    </section>
+
+    <!-- Sezione 2 -->
+    <section class="section-block">
+        <div class="section-title">Nuovi sviluppi</div>
+
+        <a href="agente.html" class="section-link">L'Agente AI →</a>
+        <p class="section-note">
+            Non più soltanto modelli che rispondono, ma sistemi che interpretano
+            obiettivi, scompongono compiti e ridefiniscono il rapporto tra azione,
+            controllo e responsabilità.
+        </p>
+        <div class="section-meta" style="margin-bottom: 20px;">4 articoli</div>
+
+        <a href="oltre.html" class="section-link">Oltre l'intelligenza →</a>
+        <p class="section-note">
+            Rappresentazioni interne di concetti emotivi che modificano causalmente
+            il comportamento dei modelli: emozioni funzionali, implicazioni per la
+            sicurezza e domande aperte sul benessere dei sistemi.
+        </p>
+        <div class="section-meta">3 articoli</div>
+    </section>
+
+    <!-- Conclusione -->
+    <section class="conclusion-block">
+        <div class="conclusion-title">Una conclusione provvisoria</div>
+        <a href="../2026-04-12-articolo-19.html" class="section-link">La resa cognitiva →</a>
+        <p class="section-note">
+            Quando l'utente abbassa la guardia: la tendenza a delegare il giudizio
+            critico all'AI e i rischi che ne derivano.
+        </p>
+    </section>
+
+</div>
+
+</body>
+</html>

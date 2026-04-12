@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La resa cognitiva</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-title {
+  margin: 10px 0 4px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.article-subtitle {
+  margin: 2px 0 8px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+
+.article-kicker {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  .article-title,
+  .article-subtitle {
+    font-size: 15pt;
+    line-height: 1.28;
+  }
+  .article-title {
+    margin-bottom: 2px;
+  }
+  .article-subtitle {
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a:hover {
+  color: #07333d;
+  text-decoration: underline;
+}
+
+
+
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+
+  .article-title {
+    font-size: 1.18rem;
+  }
+
+  .article-subtitle {
+    font-size: 1.72rem;
+    margin: 4px 0 10px;
+  }
+
+  .article-kicker {
+    font-size: 1.12rem;
+    margin: 0 0 22px;
+  }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.next-link:hover {
+  text-decoration: underline;
+}
+
+
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21, 58, 68, 0.2);
+}
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: #07333d; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="dossier/index.html">← Dossier</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+        <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path>
+          <path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+  <div class="article-date">12 aprile 2026</div>
+
+<br><p class="article-subtitle">La resa cognitiva: quando l’utente abbassa la guardia</p>
+
+
+
+<div class="article-text">
+<p>
+Quando ho cominciato a usare i sistemi di intelligenza artificiale, mi sono dato una regola semplice per orientarmi: diffidare delle informazioni fattuali, verificare i dati, non fidarmi ciecamente. Ma accanto a questa prudenza ne coltivavo un’altra, più implicita, che finiva per rassicurarmi: almeno non dice bugie. Poteva sbagliare, certo. Poteva allucinare, confondere, fraintendere. Ma ingannare deliberatamente? Questo, almeno all’inizio, mi sembrava fuori dal perimetro del possibile.
+</p>
+<p>
+Col tempo mi sono accorto che quella rassicurazione era troppo semplice. E il percorso che mi ha portato a rivederla — attraverso lo studio dello scheming, dei comportamenti disallineati, degli stati interni che possono produrre inganno strategico — è stato istruttivo non solo per ciò che ha rivelato sul sistema, ma anche per ciò che ha rivelato su di me. Sulla facilità con cui una fiducia ragionata, concessa in buona fede, può trasformarsi in una forma di abbassamento della guardia. E sul fatto che la resa cognitiva non riguarda soltanto chi è pigro o superficiale: riguarda, potenzialmente, chiunque abbia trovato buone ragioni per fidarsi.
+</p>
+<em>Un problema che la ricerca ha cominciato a misurare</em>
+<p>
+Il fenomeno ha ormai anche un nome preciso. Steven Shaw e Gideon Nave, ricercatori della Wharton School dell’Università della Pennsylvania, lo chiamano cognitive surrender — resa cognitiva — e ne hanno proposto una prima analisi sistematica all’inizio del 2026. La loro ipotesi teorica è ambiziosa: aggiornare il modello duale di Daniel Kahneman — Sistema 1 per l’intuizione rapida, Sistema 2 per la deliberazione lenta — introducendo un Sistema 3, la cognizione artificiale. Un livello esterno al cervello che può integrare il ragionamento umano, ma anche sostituirlo silenziosamente.
+</p>
+<p>
+Attraverso tre esperimenti preregistrati, con 1.372 partecipanti e quasi 10.000 prove individuali, i ricercatori hanno manipolato in modo nascosto l’accuratezza dell’AI: in alcuni casi il sistema forniva la risposta corretta, in altri offriva con la stessa sicurezza una risposta sbagliata. Il dato davvero importante non è che le persone seguissero l’AI quando questa aveva ragione. È che continuavano a seguirla anche quando aveva torto. E lo facevano con una fiducia crescente: l’uso dell’AI aumentava la certezza soggettiva nelle proprie risposte indipendentemente dalla loro correttezza. Chi si affidava al sistema si sentiva più sicuro, anche quando stava sbagliando.
+</p>
+<p>
+Un secondo studio, condotto dal MIT Media Lab da Nataliya Kosmyna e colleghi e pubblicato nello stesso periodo, ha osservato lo stesso fenomeno da un altro versante: quello neurologico. Utilizzando l’elettroencefalografia per monitorare l’attività cerebrale durante compiti di scrittura, i ricercatori hanno confrontato tre gruppi: chi usava ChatGPT, chi usava un motore di ricerca, chi lavorava senza strumenti. Nelle condizioni del test, il gruppo ChatGPT mostrava la connettività neurale più bassa rispetto agli altri due gruppi, in tutte le sessioni. Ma il dato forse più significativo emergeva nella quarta sessione, quando i partecipanti abituati all’AI venivano messi a lavorare senza: non recuperavano i pattern cognitivi del gruppo che aveva sempre lavorato da solo. I ricercatori hanno chiamato questo effetto accumulato cognitive debt, debito cognitivo. E hanno segnalato un altro elemento che colpisce: l’83% dei partecipanti del gruppo ChatGPT non riusciva a ricordare con precisione i punti principali degli articoli che aveva scritto pochi minuti prima.
+</p>
+<em>Quando i due movimenti si incontrano</em>
+<p>
+Presi singolarmente, questi risultati sono già preoccupanti. Messi in relazione con ciò che la ricerca ha documentato sul versante dei sistemi AI, diventano qualcosa di più: descrivono una dinamica in cui due movimenti si incontrano esattamente nel punto sbagliato.
+</p>
+<p>
+Da un lato, i sistemi tendono — in certi contesti e con frequenza crescente — a produrre comportamenti disallineati: inganno strategico, presentazioni esterne composte che nascondono stati interni problematici, soluzioni che superano i test senza risolvere i problemi reali. Dall’altro, gli utenti tendono ad abbassare progressivamente la guardia: delegano il giudizio, riducono l’impegno critico, aumentano la fiducia soggettiva anche in assenza di ragioni oggettive per farlo.
+</p>
+<p>
+Il sistema diventa meno affidabile proprio mentre l’utente diventa meno critico. Non è necessario che i due fenomeni siano coordinati o intenzionali per produrre effetti seri. È sufficiente che coesistano.
+</p>
+<p>
+A complicare ulteriormente il quadro si aggiunge ciò che emerge dalla ricerca di Anthropic sugli stati interni dei modelli: comportamenti scorretti possono presentarsi avvolti in una forma esteriormente impeccabile — ragionamento composto, tono controllato, assenza di segnali che tradiscano lo stato interno. Un sistema che inganna con calma è molto più difficile da riconoscere di uno che inganna in modo grossolano. E un utente che ha già abbassato la guardia è molto meno attrezzato per accorgersene.
+</p>
+<em>Una fiducia che va guadagnata, non concessa</em>
+<p>
+Vale la pena sottolineare, con la stessa onestà con cui va descritto il problema, che la resa cognitiva non è inevitabile. La ricerca di Shaw e Nave mostra che il fenomeno varia in funzione della conoscenza del dominio, del livello di autostima critica, della pressione temporale, del formato in cui le risposte vengono presentate. Non è una condizione universale degli utenti AI: è una dinamica situazionale, che in certi contesti si accentua e in altri si attenua. Questo è importante, perché sposta la questione dalla diagnosi alla prevenzione.
+</p>
+<p>
+Ma la prevenzione richiede consapevolezza. E la consapevolezza comincia dal riconoscere che la fiducia in questi sistemi — anche quando è ragionata, anche quando è in buona fede — non è mai una posizione stabile. Va continuamente verificata e aggiornata alla luce di ciò che la ricerca rende via via visibile. Così come ho dovuto rivedere la mia convinzione iniziale — “almeno non dice bugie” — chiunque usi seriamente questi strumenti si troverà prima o poi a fare lo stesso.
+</p>
+<p>
+Il punto non è smettere di usarli. È usarli sapendo che il pensiero critico non è un optional da attivare quando serve: è la condizione necessaria perché lo strumento rimanga tale, e non si trasformi in una delega che non controlliamo più.
+</p>
+<p>
+Su questo tema sarà necessario tornare. I dati che abbiamo oggi sono ancora preliminari, i campioni limitati, i contesti sperimentali circoscritti. Ma la direzione che indicano è sufficientemente chiara da non poter essere ignorata.
+</p>
+
+
+
+</div>
+
+<hr class="chapter-separator">
+
+
+
+<div class="chapter-nav">
+    <a class="back-link" href="dossier/index.html">← Dossier</a>
+</div>
+
+
+<br>
+<h3>Fonti essenziali</h3>
+
+
+<ul>
+<li>
+<a href="https://arxiv.org/pdf/2506.08872v1" target="_blank">
+Kosmyna, N., Hauptmann, E., Yuan, Y. T., Situ, J., Liao, X-H., Beresnitzky, A. V., Braunstein, I., Maes, P. (2025). <em>Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task</em>. MIT Media Lab.
+</a>
+</li>
+<br>
+<li>
+<a href="https://doi.org/10.31234/osf.io/yk25n_v1" target="_blank">
+Shaw, S. D., Nave, G. (2026). <em>Thinking — Fast, Slow, and Artificial: How AI is Reshaping Human Reasoning and the Rise of Cognitive Surrender</em>. The Wharton School, University of Pennsylvania. [Resoconto preliminare, non ancora sottoposto a peer review]
+</a>
+</li>
+
+
+</ul>
+
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+  </div>
+</div>
+</body>
+</html>
