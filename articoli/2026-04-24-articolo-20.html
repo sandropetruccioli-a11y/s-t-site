@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insegnare l’intelligenza artificiale</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-title {
+  margin: 10px 0 4px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.article-subtitle {
+  margin: 2px 0 8px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+
+.article-kicker {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  .article-title,
+  .article-subtitle {
+    font-size: 15pt;
+    line-height: 1.28;
+  }
+  .article-title {
+    margin-bottom: 2px;
+  }
+  .article-subtitle {
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a:hover {
+  color: #07333d;
+  text-decoration: underline;
+}
+
+
+
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+
+  .article-title {
+    font-size: 1.18rem;
+  }
+
+  .article-subtitle {
+    font-size: 1.72rem;
+    margin: 4px 0 10px;
+  }
+
+  .article-kicker {
+    font-size: 1.12rem;
+    margin: 0 0 22px;
+  }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.next-link:hover {
+  text-decoration: underline;
+}
+
+
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21, 58, 68, 0.2);
+}
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: #07333d; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+        <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path>
+          <path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+  <div class="article-date">24 aprile 2026</div>
+
+<br><p class="article-subtitle">Insegnare l’intelligenza artificiale</p>
+
+
+
+<div class="article-text">
+
+<p> 
+Tra i molti problemi che l’intelligenza artificiale pone alla società contemporanea, ce n’è uno che riceve ancora poca attenzione: come si insegna un sapere che cambia mentre lo si trasmette?
+</p> <p> 
+Non è una domanda secondaria. È una domanda educativa fondamentale. I ragazzi usano già strumenti di intelligenza artificiale ogni giorno, spesso con naturalezza, mentre la scuola non ha ancora deciso con chiarezza che cosa dovrebbe insegnare su di essi, chi dovrebbe farlo e con quale linguaggio.
+</p> <p> 
+Per molto tempo il sistema scolastico ha potuto contare su una relativa stabilità del sapere. L’Ottocento aveva costruito le grandi discipline scientifiche — la matematica, la fisica, la chimica — come edifici solidi, con confini riconoscibili, metodi consolidati, programmi trasmissibili. Il Novecento ha incrinato quell’edificio dall’interno: le specializzazioni si sono moltiplicate dentro ogni disciplina fino al punto in cui un fisico delle particelle non ha più gli strumenti concettuali per leggere un articolo di climatologia, e un climatologo non segue più la teoria delle stringhe. La frammentazione non è avvenuta tra le discipline, ma dentro ciascuna di esse. La scuola, tuttavia, ha continuato a funzionare come se i saperi potessero ancora essere ordinati, separati e trasmessi in modo lineare. 
+</p> <p> 
+Le tecnoscienze, oggi, mettono in crisi proprio questo assetto. Non si limitano a produrre nuove conoscenze: rimescolano campi diversi, attraversano discipline, trasformano rapidamente gli strumenti con cui pensiamo, lavoriamo e decidiamo. L’intelligenza artificiale è il caso più evidente di questo mutamento, perché entra nella vita quotidiana prima ancora di essere compresa.
+</p> <p> 
+Per questo il problema non è insegnare semplicemente a usarla. I ragazzi la usano già. Non basta nemmeno elencarne i rischi, come se l’educazione consistesse in un catalogo di allarmi. Il punto è più impegnativo: fornire strumenti per capire che cosa si ha tra le mani.
+</p> <p> 
+Capire, in questo caso, significa almeno tre cose.
+</p> <p> 
+La prima è comprendere come funziona l’AI, almeno nei suoi principi di base. Che cos’è un modello linguistico, come viene addestrato, perché può generare risposte efficaci e insieme sbagliate, perché produce testi plausibili anche quando non sono veri. Non serve formare ingegneri. Ma serve una cultura di base sufficiente a distinguere tra competenza reale del sistema e semplice apparenza di competenza.
+</p> <p> 
+La seconda è saper leggere criticamente ciò che il sistema produce. Non con diffidenza pregiudiziale, ma nemmeno con fiducia automatica. Un modello linguistico può costruire una risposta ben scritta, convincente, persino elegante, e tuttavia includere un riferimento inventato, una citazione inesatta, una sintesi deformante. Saper riconoscere questa differenza non è una competenza tecnica in senso stretto: è una forma di maturità culturale.
+</p> <p> 
+La terza è collocare l’intelligenza artificiale dentro una storia. L’AI non è un fatto naturale, né il risultato inevitabile di un progresso lineare. È l’esito di decisioni scientifiche, economiche e politiche. È stata sviluppata in certi modi e non in altri; risponde a interessi particolari; produce determinati effetti istituzionali e sociali. Insegnarla davvero significa anche mostrare che ciò che è stato costruito può essere discusso, orientato e regolato.
+</p> <p> 
+Il luogo giusto per questo lavoro è la scuola secondaria. Non la primaria, dove la priorità resta la formazione degli strumenti fondamentali del pensiero; non l’università, dove la specializzazione è già avanzata. La scuola secondaria è il momento in cui si può ancora introdurre la complessità senza arrivare troppo tardi.
+</p> <p> 
+Eppure la scuola secondaria, oggi, non è attrezzata per farlo. Non per mancanza di volontà o di risorse, ma per un problema di struttura.
+</p> <p> 
+La prima soluzione che viene spontanea è formare gli insegnanti già presenti. È una risposta necessaria, ma non sufficiente. Un insegnante di lettere può aiutare a leggere criticamente un testo generato dall’AI; un insegnante di storia può collocare queste tecnologie in una traiettoria più ampia. Ma i tempi della formazione istituzionale sono lenti, mentre il fenomeno cambia con una velocità molto maggiore. Il rischio è arrivare sempre in ritardo.
+</p> <p> 
+La seconda soluzione è affidarsi agli studenti stessi, partendo dal fatto che usano già questi strumenti. Anche qui c’è una parte di verità, ma anche un equivoco. La familiarità con uno strumento non coincide con la sua comprensione. Anzi, spesso produce l’effetto contrario: aumenta la fiducia, riduce la distanza critica, rende più facile delegare. Usare bene un sistema non significa capire che cosa sta facendo su di noi e al posto nostro.
+</p> <p> 
+Per questo si intravede una terza possibilità: la necessità di figure nuove, che oggi non hanno ancora una forma istituzionale stabile. Non semplici tecnici, non insegnanti tradizionali, non divulgatori occasionali. Figure capaci di tenere insieme competenza tecnica e riflessione culturale, spiegazione del funzionamento e interpretazione del contesto, uso degli strumenti e discussione dei loro effetti.
+</p> <p> 
+Una figura di questo tipo potrebbe entrare nella scuola come presenza trasversale: lavorare con i docenti, costruire moduli comuni, accompagnare gli studenti nell’analisi concreta degli strumenti che già usano. In pratica: mostrare come funziona un modello linguistico partendo da un testo che la classe ha già prodotto con l’AI, individuarne insieme gli errori tipici e le zone di incertezza, discutere perché certe risposte sembrano convincenti anche quando non lo sono. Non un ospite esterno chiamato una volta l’anno, ma un presidio educativo stabile, capace di lavorare trasversalmente tra le materie esistenti.
+</p> <p> 
+Qualcosa di simile esiste già, in forma frammentaria, in alcuni progetti culturali, in qualche iniziativa editoriale, in esperimenti didattici isolati. Ma resta episodico, diseguale, accessibile a pochi: non è ancora una risposta di sistema. La domanda decisiva resta aperta: come rendere strutturale questa mediazione? Con quale formazione, con quale ruolo, dentro quale assetto scolastico? Oggi non abbiamo ancora una risposta compiuta. Ma sappiamo che il problema non può più essere rimandato.
+</p> <p> 
+I ragazzi che oggi frequentano la scuola secondaria vivranno da adulti in un mondo già profondamente trasformato dall’intelligenza artificiale. Se arriveranno impreparati a quel mondo, non sarà per mancanza di tecnologia. Sarà per mancanza di pensiero.
+</p> 
+
+
+
+
+</div>
+
+<hr class="chapter-separator">
+
+
+
+<div class="chapter-nav">
+    <a class="back-link" href="../index.html">← Torna agli articoli</a>
+</div>
+
+
+
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+  </div>
+</div>
+</body>
+</html>

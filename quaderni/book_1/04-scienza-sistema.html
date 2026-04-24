@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4. La scienza che si fa Sistema</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* TITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO */
+
+.chapter-text {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-style: normal;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p { margin: 0 0 1.15em; }
+
+/* CAPOLETTERA SOLO TESTI NON DIALOGICI */
+
+.chapter-text:not(.dialogue) p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* DIALOGO */
+
+.dialogue { margin-top: 8px; }
+
+.turn { margin-bottom: 1.35rem; }
+
+.speaker {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.28rem;
+}
+
+.speech p { margin: 0 0 0.75em; }
+
+/* CITAZIONE LUNGA */
+
+.citation-block {
+    margin: 1.4em 0;
+    padding: 0.9em 1.2em 0.9em 1.4em;
+    border-left: 3px solid var(--accent);
+    background: rgba(10,70,82,0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.citation-block p {
+    margin: 0 0 0.6em;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.citation-block p:last-of-type { margin-bottom: 0; }
+
+.citation-source {
+    display: block;
+    margin-top: 0.75em;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+/* DESKTOP */
+
+@media (min-width:700px){
+
+    .turn{
+        display:grid;
+        grid-template-columns:110px 1fr;
+        column-gap:18px;
+        align-items:start;
+    }
+
+    .speaker{
+        margin-bottom:0;
+        padding-top:0.15em;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+    .chapter-text{
+        font-size:1.02rem;
+        line-height:1.55;
+    }
+
+    .chapter-title{
+        font-size:1.35rem;
+        margin-bottom:20px;
+    }
+
+    .turn{
+        display:block;
+        margin-bottom:1rem;
+    }
+
+    .speaker{
+        font-size:0.8rem;
+        margin-bottom:0.2rem;
+    }
+
+    .speech p{
+        margin:0 0 0.55em;
+    }
+
+    .speech {
+        padding-left: 6px;
+        border-left: 2px solid rgba(10,70,82,0.15);
+    }
+
+    .citation-block {
+        padding: 0.75em 0.9em 0.75em 1em;
+        border-left-width: 2px;
+        margin: 1em 0;
+    }
+
+    .citation-block p { font-size: 0.97rem; line-height: 1.58; }
+
+    .citation-source { font-size: 0.75rem; }
+
+    .chapter-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .chapter-nav a:last-child {
+        text-align: right;
+    }
+
+}
+
+/* SEPARATORE */
+
+.chapter-separator{
+    margin-top:36px;
+    border:none;
+    border-top:1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+    font-size:0.9rem;
+}
+
+.chapter-nav a{
+    text-decoration:none;
+    color:var(--muted);
+}
+
+.chapter-nav a:hover{ color:var(--accent); }
+
+/* PULSANTE STAMPA */
+
+.chapter-tools{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+
+.print-button{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:none;
+    background:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:0.85rem;
+}
+
+.print-button:hover{ color:var(--accent); }
+
+.print-icon{
+    width:16px;
+    height:16px;
+}
+
+/* DRAWER NAVIGAZIONE */
+
+#nav-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#nav-toggle:hover { background: var(--muted); }
+
+#nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,30,35,0.38);
+    z-index: 1001;
+}
+
+#nav-overlay.open { display: block; }
+
+#nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: #fff;
+    z-index: 1002;
+    transition: right 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(10,70,82,0.15);
+    overflow: hidden;
+}
+
+#nav-drawer.open { right: 0; }
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgba(10,70,82,0.12);
+}
+
+.drawer-header span {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+#nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 20px;
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+#nav-close:hover { color: var(--accent); }
+
+.drawer-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.drawer-list li a {
+    display: block;
+    padding: 10px 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+}
+
+.drawer-list li a:hover { background: rgba(10,70,82,0.06); }
+
+.drawer-list li a.current {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(10,70,82,0.05);
+}
+
+.drawer-list li.section-label {
+    padding: 14px 20px 4px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+/* STILE DI STAMPA */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
+
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+    }
+
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator,
+    #nav-toggle,
+    #nav-overlay,
+    #nav-drawer {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Stampa capitolo">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">4. La scienza che si fa Sistema</h1>
+
+<div class="chapter-text dialogue">
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+La partita, sul fronte che dicevamo, è persa. Ma tu apri una prospettiva culturale praticabile: salvare lo spazio in cui la scienza può ancora essere pensata, fuori dal sistema che misura tutto.
+</p>
+<p>
+Resta però una domanda che non possiamo eludere. Che cosa ne è della cosiddetta autonomia della scienza nel momento stesso in cui, avendo smarrito — o deliberatamente rifiutato — i termini di un confronto culturale, la scienza si è fatta Sistema?
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+La domanda che poni è davvero centrale, ma andrebbe corretta. Non dobbiamo chiederci “che fine ha fatto l’autonomia della scienza”, quanto piuttosto che cosa possa significare oggi “autonomia” nel momento stesso in cui la scienza è diventata Sistema. È una domanda che non ammette risposte consolatorie, e per questo vale la pena affrontarla con la massima chiarezza concettuale.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Provo a seguirti. Per prima cosa dobbiamo aver presente che l’autonomia della scienza non è mai stata un dato naturale, né una condizione originaria. È stata, piuttosto, una conquista storica, che ha assunto significati diversi in epoche diverse. 
+</p>
+<p>
+Autonomia ha voluto dire emancipazione dalla teologia, dal potere politico diretto, dalla committenza immediata, dai criteri extra-cognitivi di verità. 
+Ma in tutti questi casi l’autonomia non ha mai significato isolamento. Presupponeva un contesto culturale condiviso, un riconoscimento reciproco tra scienza e società, un orizzonte di senso che non si esauriva nella produttività. 
+</p>
+<p>
+L’autonomia, insomma, era una relazione regolata, non ha mai contemplato forme più o meno rigide di chiusura.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Questo è ciò che ha visto e che vede lo storico. Ma oggi accade qualcosa di inedito. La scienza non è più subordinata a un potere esterno, non è censurata, non è marginale. Al contrario, è centrale, finanziata, strategica, indispensabile. 
+</p>
+<p>
+Ed è proprio per questo, paradossalmente, che perde la sua autonomia culturale. Non perché qualcuno gliela sottragga dall’esterno, ma perché viene assorbita dall’interno. La scienza non è più eterodiretta: è auto-amministrata secondo criteri sistemici.
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+         <p>
+Aiutami a capire meglio.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+A tal fine, diventa indispensabile distinguere, con precisione, tra due livelli che oggi tendono a sovrapporsi.
+</p>
+<p>
+Da un lato c’è l’<em>autonomia epistemica</em>: la scienza continua a produrre risultati validi, conoscenze controllabili, tecniche efficaci. Sotto questo profilo, l’autonomia sembra intatta. 
+</p>
+<p>
+Dall’altro lato, però, c’è l’<em>autonomia istituzionale</em> e culturale, ed è qui che avviene la frattura. Le decisioni su che cosa valga la pena studiare, su quali problemi siano rilevanti, su quali percorsi siano legittimi non sono più oggetto di confronto culturale, ma di policy, di valutazione, di pianificazione. 
+</p>
+<p>
+L’autonomia epistemica sopravvive, ma all’interno di una perdita di autonomia culturale. Questo, mi pare, è il cuore del problema.
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Forse un esempio concreto potrebbe aiutarmi a capire meglio questa distinzione tra ‘autonomia epistemica’ e ‘autonomia culturale’.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Se vuoi un esempio concreto, prendiamo qualcosa che conosco bene: il <em>Future Circular Collider</em>, un acceleratore di particelle circolare lungo circa 100 chilometri, la cui progettazione e costruzione richiedono decenni. Anche nelle stime più ottimistiche, non potrebbe entrare in funzione prima della metà degli anni Cinquanta.
+</p>
+<p>
+Dal punto di vista scientifico, il progetto è impeccabile. Le motivazioni fisiche sono solide, le domande legittime, le tecnologie al limite ma non irrealistiche. Difficilmente si mette in discussione la qualità epistemica dell’impresa.
+</p>
+<p>
+Eppure, il punto decisivo non è se il FCC sia scientificamente giustificato.
+Il punto è <em>come</em> una decisione di questo tipo prende forma oggi.
+</p>
+<p>
+Un progetto di questa scala non matura all’interno di un dibattito culturale sulla direzione della fisica fondamentale, né da una riflessione condivisa sul senso di investire decenni di risorse in una singola infrastruttura. 
+Nasce principalmente all’interno di una logica di sistema: competizione globale, mantenimento della leadership, attrazione di capitali, continuità istituzionale, inerzia delle grandi macchine scientifiche.
+</p>
+<p>
+Nessuno impone il FCC. Nessuno lo decreta per autorità.
+</p>
+<p>
+Ma una volta che la possibilità tecnica esiste, che l’infrastruttura è immaginabile, che altri attori globali — penso esplicitamente al progetto analogo in Cina — si muovono nella stessa direzione, la scelta diventa sempre meno deliberabile nei termini tradizionali. Diventa una necessità strategica.
+</p>
+<p>
+Non ci si chiede più se sia giusto farlo ora, o se questa sia la priorità scientifica più feconda. Ci si chiede se possiamo permetterci di <em>non</em> farlo.
+</p>
+<p>
+Ed è in questo slittamento che l’autonomia cambia natura.
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+         <p>
+Non ti sembra di esasperare la dimensione sociale e strumentale della ricerca a scapito delle motivazioni genuinamente scientifiche?
+</p>
+
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+La fisica che verrà prodotta al FCC potrà essere rigorosa, elegante, vera. Non ne ho alcun dubbio.
+</p>
+<p>
+Sto dicendo un’altra cosa. Provo ad essere più chiara. Nella decisione di costruire il FCC il peso di una discussione culturale sul senso della ricerca fondamentale è relativo. Quella decisione nasce piuttosto all’interno di una architettura di competizione sistemica che nessun singolo scienziato, nessun gruppo, nessuna comunità disciplinare controlla davvero.
+</p>
+<p>
+Qui l’autonomia epistemica è intatta.
+</p>
+<p>
+Ma l’autonomia culturale — la possibilità di interrogarsi collettivamente su quali domande contino e quando — è già stata assorbita dal sistema. 
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Quindi il problema non è il FCC in sé, ma il fatto che una scelta di quel tipo non possa più essere davvero rifiutata senza apparire irrazionale.
+</p>
+<p>
+È questo che ci obbligherebbe a declinare il tema dell’autonomia della scienza in termini completamente nuovi.  La scienza non sarebbe meno libera perché è oppressa, ma perché è troppo potente. In passato l’autonomia andava difesa contro il dogma, l’autorità, l’arbitrio. 
+</p>
+<p>
+Oggi, mi stai dicendo, il vincolo non assume la forma del divieto, ma quella dell’integrazione, della funzionalizzazione, della misurazione. La scienza è autonoma nel risolvere i problemi che il sistema le pone, ma non nel decidere quali problemi contino. È autonoma localmente, ma eterodiretta globalmente.
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+La tua sintesi lascia da parte un aspetto che ha qui un rilievo non marginale. 
+</p>
+<p>
+La scienza contemporanea non dimentica la filosofia e la storia per distrazione: le dichiara irrilevanti per il proprio funzionamento. Non perché siano false, ma perché non producono valore sistemico. 
+Quindi, la scienza non ha più bisogno di legittimarsi culturalmente, perché è già legittimata funzionalmente. Ed è proprio questo che la rende opaca a se stessa.
+</p>
+<p>
+Possiamo allora formulare una tesi forte, ma credo corretta: una scienza che non ha più bisogno di pensarsi non è più autonoma, anche se è potentissima. 
+Perché l’autonomia non coincide soltanto con la capacità di produrre risultati, ma con la capacità di interrogare il proprio statuto, i propri limiti, i propri effetti. 
+Quando questa capacità viene marginalizzata o esternalizzata, la scienza continua a funzionare, ma smette di rispondere di sé.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Ora capisco dove mi sta portando il tuo ragionamento. Se la scienza, in quanto Sistema, non può più pensarsi dall’interno, lo spazio della riflessione non è più interno alla scienza stessa, ma diventa laterale, esterno, critico, culturale. 
+</p>
+<p>
+Non è contro la scienza, non al posto della scienza, ma accanto ad essa, come istanza di traduzione, interrogazione e memoria. È allora in questo spazio che si collocano, per me, la storiografia critica, il saggio civile, la riflessione pubblica sul sapere, testi come il mio <em>Crossing the System</em>.
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+La domanda che mi hai rivolto all’inizio trova così, dal mio punto di vista, una risposta forse scomoda ma coerente. L’autonomia della scienza non è scomparsa: è stata ricodificata come autonomia funzionale, al prezzo della perdita di autonomia culturale. 
+</p>
+<p>
+La scienza è libera di operare, ma non più libera di decidere che cosa significhi operare. Per questo non può più garantire da sola la propria legittimità culturale, né produrre la propria autocoscienza storica. 
+Quel compito si è spostato altrove. E se quello spazio non viene abitato consapevolmente, non resta vuoto: viene occupato da narrazioni semplificate, tecnocratiche o ideologiche.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Mi resta qualche perplessità. La tua risposta non risolve completamente il tema dell’autonomia. 
+</p>
+<p>
+La scienza non è eterodiretta: è auto-amministrata secondo criteri sistemici. Questo è vero. Ma c’è un altro aspetto non meno importante. 
+</p>
+<p>
+Noi eravamo abituati a pensare la ricerca scientifica condizionata più o meno invasivamente dal potere statale, o militare o dei grandi gruppi economici. Si trattava, comunque di una scienza che si sviluppava all’interno di strutture socialmente riconoscibili. 
+</p>
+<p>
+Oggi sta accadendo qualcosa di diverso. La dimensione finanziaria e strategica in molti settori della ricerca scientifica è affidata a pochi individui che detengono un potere sovrastatale. 
+</p>
+
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Hai ragione a correggere e, soprattutto, a spingere oltre quel punto. Finora stavamo parlando di Sistema; ora siamo costretti a parlare di Sovrasistema. E questo cambia profondamente il quadro.
+</p>
+<p>
+È vero quanto dicevamo prima: la scienza ha perso autonomia culturale perché si è auto-amministrata secondo criteri sistemici. Ma oggi accade qualcosa di ulteriore, e più inquietante. 
+</p>
+<p>
+Il centro di gravità non coincide più con lo Stato, né con il complesso militare-industriale classico, né con il “mercato” inteso come spazio diffuso e impersonale. 
+Si concentra invece in pochissimi nodi individuali, dotati di un potere economico sovrastatuale, capaci di orientare infrastrutture globali, di controllare piattaforme comunicative e, soprattutto, di intervenire direttamente sugli immaginari collettivi. 
+</p>
+<p>
+Qui la scienza non è più soltanto un Sistema: diventa una componente interna di strategie personali a scala planetaria. Questo, storicamente, è nuovo.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Ci sono poche decine di persone al mondo che detengono un potere economico impressionante; che occupano lo spazio con infrastrutture satellitari, controllano piattaforme comunicative, orientano la traiettoria dell’IA. 
+</p>
+<p>
+E questi individui hanno un potere che non è controllato da nessuno. Una scienza che si fa Sistema cosa potrà diventare in un contesto di questo tipo? Il tutto poi sta procedendo con una rapidità impressionante.
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Quello che dici è drammaticamente vero. Nel modello novecentesco, per quanto contraddittorio, la scienza era inserita in istituzioni riconoscibili. C’erano conflitti, pressioni, compromessi, ma anche contropoteri. La legittimazione, almeno formalmente, passava attraverso processi pubblici, bilanci statali, decisioni politiche discutibili ma visibili. 
+</p>
+<p>
+Nel modello attuale, invece, la ricerca tende a configurarsi come un asset strategico. Il finanziamento non segue più priorità pubbliche, le scelte non sono il risultato di deliberazioni, ma di decisioni, e il tempo non è quello della riflessione o della negoziazione, bensì quello dell’investimento. 
+La scienza non risponde più a qualcuno in senso politico: si trova al servizio di strategie che non devono giustificarsi.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Vorrei dare maggiore concretezza a questa analisi. 
+</p>
+<p>
+I soggetti che esercitano questo potere non sono scienziati nel senso classico, non sono filosofi, non sono decisori politici responsabili, non sono titolari di un mandato. 
+</p>
+<p>
+Usano la scienza come leva simbolica, come acceleratore tecnologico, come strumento di colonizzazione — materiale e immaginaria — e come dispositivo di legittimazione del proprio potere. 
+In questo passaggio, la scienza rischia di trasformarsi da luogo di verità in linguaggio di autorità. Ed è questo il punto più pericoloso.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Vedo con piacere che non hai perso la capacità di sintesi di un tempo. 
+</p>
+<p>
+Come hai giustamente fatto notare, a rendere tutto ancora più drammatico è la rapidità. La velocità non è un semplice effetto collaterale del progresso tecnologico: diventa una vera tecnica di dominio. 
+Impedisce la sedimentazione critica, rende inefficace ogni controllo ex post, svuota di senso la deliberazione democratica. 
+</p>
+<p>
+Inserita in questo regime, la scienza non ha più tempo per pensarsi, né per storicizzarsi, né per negoziare il proprio senso. L’accelerazione non è neutra: è una forma di potere.
+</p>
+<p>
+Possiamo allora formulare una tesi forte, ma credo inevitabile. La scienza contemporanea non è più eterodiretta da un potere esterno riconoscibile; è incorporata in strategie di potere non istituzionalizzate e non responsabili. 
+</p>
+<p>
+Questo la distingue sia dal controllo statale, sia da quello militare, sia dal controllo industriale classico. Ci troviamo di fronte a un potere personale, opaco, globale, privo di controparti simmetriche.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Torno a chiederti: che cosa può diventare una scienza che si fa Sistema in un contesto del genere? Lo chiedo a te come persona più indicata per tentare una risposta. Quel Sistema non solo lo hai attraversato ma ne hai seguito la genesi da osservatori privilegiati. 
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            
+<p>
+Tento una risposta. Ma sono pienamente consapevole che qui siamo su un terreno estremamente scivoloso e dove ogni certezza rischia di essere annientata dall’imprevedibilità del reale. 
+</p>
+<p>
+Una risposta, per quanto scomoda, potrebbe essere la seguente: la scienza può diventare infrastruttura di un progetto di mondo che non è stato discusso. 
+Non nel senso di una distopia facile, ma nel senso più sottile e più efficace: decide ciò che è pensabile, orienta ciò che è desiderabile, definisce ciò che appare inevitabile. 
+È qui che la perdita di autonomia culturale potrebbe tradursi in perdita di funzione critica.
+</p>
+<p>
+E torniamo così all’interrogativo implicito nelle tue sollecitazioni e che sta a cuore a entrambi: che fare? 
+Il cerchio si chiude con quanto dicevamo prima. Se la scienza non è più in grado di difendere da sola la propria autonomia, se le istituzioni pubbliche vengono scavalcate, se il potere è insieme sovrastatuale e personale, allora lo spazio in cui la scienza può essere pensata non è più quello della riforma interna, ma quello della resistenza culturale. 
+Lo avevi già ammesso, dicendo che “la partita è persa”.
+</p>
+<p>
+Non illudiamoci. Questo spazio non ha il potere di fermare i processi, né di governare l’innovazione, né di competere economicamente. 
+È uno spazio apparentemente angusto, che tuttavia conserva ancora un potere decisivo: nominare ciò che accade, restituire genealogie, smontare la retorica dell’inevitabile, ricordare che “possibile” non significa “necessario”.
+</p>
+<p>
+La tua osservazione porta così a una conclusione ancora più dura, ma difficile da eludere. 
+Una scienza che si fa Sistema, in un mondo dominato da poteri sovrastatuali individuali, rischia di diventare una forza senza cultura e, simmetricamente, di lasciare alla cultura uno spazio senza potere. 
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+In tutto quello che abbiamo detto, il rapporto tra scienza e democrazia diventa centrale. Soprattutto in un momento in cui, da una parte, assistiamo a una crisi della tradizione liberal-democratica in tutto l’Occidente e, dall’altra, il mito del successo tecnologico ha ormai legittimato e reso addirittura attrattivi non pochi regimi illiberali, autocratici se non apertamente dittatoriali.
+</p>
+
+
+
+        </div>
+
+</div>
+
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        <p>
+Sono d’accordo con te. Scienza e democrazia non sono più semplicemente “in dialogo”: si trovano in una relazione di tensione strutturale, che oggi diventa visibile proprio perché la cornice liberal-democratica in cui eravamo abituati a pensarle insieme si sta incrinando. Non è un incidente di percorso; si tratta anche in questo caso di una trasformazione storica.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Per buona parte del secondo dopoguerra abbiamo vissuto dentro un’illusione potente, raramente esplicitata ma largamente condivisa: che il progresso scientifico e tecnologico rafforzasse naturalmente la democrazia. 
+</p>
+<p>
+Questa convinzione aveva basi storiche precise — la sconfitta dei totalitarismi novecenteschi, il ruolo della scienza nella ricostruzione, il welfare tecnologico, l’idea di razionalità come antidoto all’arbitrio. Ma non era una necessità storica. Era una congiuntura favorevole. 
+</p>
+<p>
+Oggi quella congiuntura si sta chiudendo, e il legame, che appariva ovvio, mostra tutta la sua fragilità. Per alcuni è stato un brusco risveglio. Per moltissimi, è ancora un brutto sogno da rimuovere.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+A questo aggiungerei che il successo tecnologico è diventato una fonte autonoma di legittimazione politica. 
+Sempre più spesso si afferma, esplicitamente o implicitamente, che ciò che funziona non deve essere discusso, che ciò che produce risultati è di per sé giusto, che l’efficienza rende superflua la deliberazione. 
+</p>
+<p>
+Qui sta la frattura. La democrazia vive di lentezza, di conflitto, di procedure, ammette l’errore e lo incorpora. 
+La tecnoscienza sistemica, invece, è rapida, decisionista, orientata all’output, poco tollerante verso l’indecisione. 
+Non è una questione morale: i due regimi temporali sono difficilmente compatibili.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Così diventa più comprensibile — e anche più inquietante — il fatto che molti regimi illiberali appaiano oggi “razionali”. 
+Non rifiutano la scienza, non la censurano; al contrario, la esibiscono come prova di modernità. 
+</p>
+
+
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Non è un paradosso morale: è un effetto strutturale. La scienza intesa come sistema produttivo si integra senza attriti con strutture di comando verticali; la tecnocrazia riduce il bisogno di consenso; l’efficienza può sostituire la legittimità. 
+Il mito del successo tecnologico consente di dire: non siamo democratici, ma funzioniamo. Ed è un argomento potentissimo, soprattutto in tempi di crisi.
+</p>
+<p>
+A questo punto dobbiamo introdurre una distinzione scomoda, ma imprescindibile. 
+</p>
+<p>
+La scienza non è intrinsecamente democratica. 
+È gerarchica, selettiva, esigente, elitaria in senso cognitivo, non politico. 
+Nel Novecento la democrazia la incorniciava: ne limitava gli effetti, ne redistribuiva i benefici, ne discuteva gli usi. Oggi quella cornice si sta sgretolando. 
+E la scienza, lasciata sola, non genera da sé valori democratici.
+</p>
+<p>
+È qui che si profila il rischio più delicato. Quando la politica appare inefficiente, la democrazia rumorosa, il conflitto una perdita di tempo, la tecnoscienza tende a occupare lo spazio lasciato vuoto. 
+Diventa criterio di decisione, fonte di autorità, narrazione del futuro. Non perché lo voglia, ma perché è ciò che resta. 
+</p>
+<p>
+È su questo terreno che attecchiscono forme nuove di autoritarismo “razionale”: non violento, non ideologico in senso classico, ma legittimato dall’argomento dell’efficacia.
+</p>
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Mi sembra che tutto ciò che abbiamo detto finora torna a tenersi insieme. Se la scienza non è più in grado di garantire da sola la propria autonomia culturale, e se la democrazia non può più fondarsi sul solo successo tecnico, allora la mediazione culturale diventa essenziale. 
+</p>
+<p>
+Torno così ai temi che sono più miei. La storiografia della scienza potrebbe continuare a svolgere un ruolo decisivo proprio qui: mostrando che i successi tecnici non sono mai stati neutri, ricostruendo i costi politici delle scelte scientifiche, ricordando che ogni infrastruttura incorpora valori, smontando l’equazione tra “efficace” e “legittimo”. Non per opporsi alla scienza, ma per restituirla allo spazio della discussione pubblica.
+</p>
+
+
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+A questo punto si può formulare una tesi forte, che non va attenuata. La democrazia non ha bisogno di meno scienza. Ha bisogno di una scienza che non venga sottratta al giudizio culturale. E questo giudizio, oggi, non può più venire dall’interno del sistema scientifico. Deve essere costruito ai margini, negli spazi che consentono ancora lentezza, memoria, elaborazione.
+</p>
+<p>
+Perché l’urgenza è tutta qui. La crisi della democrazia non è astratta: è già presente, è già legittimata da risultati, è già raccontata come inevitabile. Se la cultura abdica, la tecnoscienza non colma il vuoto. Lo normalizza.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+ 
+
+
+
+
+
+
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="03-raccontare-scienza.html">← 3. Come raccontare la scienza</a>
+<a href="05-avvento-tecnoscienze.html">5. L'avvento delle tecnoscienze →</a>
+</div>
+
+</div>
+<!-- PULSANTE HAMBURGER FISSO -->
+<button id="nav-toggle" aria-label="Apri indice capitoli">☰</button>
+
+<!-- OVERLAY -->
+<div id="nav-overlay"></div>
+
+<!-- DRAWER -->
+<nav id="nav-drawer" aria-label="Indice capitoli">
+  <div class="drawer-header">
+    <span>Indice</span>
+    <button id="nav-close" aria-label="Chiudi indice">✕</button>
+  </div>
+  <ul class="drawer-list">
+    <li class="section-label">Apertura</li>
+    <li><a href="prefazione.html">Prefazione</a></li>
+    <li><a href="prologo.html">Prologo</a></li>
+    <li class="section-label">Capitoli</li>
+    <li><a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve</a></li>
+    <li><a href="02-memoria-storica.html">2. La perdita della memoria storica</a></li>
+    <li><a href="03-raccontare-scienza.html">3. Come raccontare la scienza</a></li>
+    <li><a href="04-scienza-sistema.html" class="current">4. La scienza che si fa Sistema</a></li>
+    <li><a href="05-avvento-tecnoscienze.html">5. L'avvento delle tecnoscienze</a></li>
+    <li><a href="06-scegliere-democrazia.html">6. Scegliere la democrazia?</a></li>
+    <li><a href="07-tecnoscienze-democrazia.html">7. Tecnoscienze vs democrazia</a></li>
+    <li><a href="08-messaggio-bottiglia.html">8. Un messaggio nella bottiglia</a></li>
+    <li><a href="09-domani.html">9. Livia e Olivia, domani</a></li>
+    <li class="section-label">Chiusura</li>
+    <li><a href="conclusione.html">In luogo di una conclusione</a></li>
+    <li><a href="post_scriptum.html">Post Scriptum</a></li>
+    <li><a href="personaggi.html">I personaggi</a></li>
+    <li><a href="indicazioni.html">Indicazioni di lettura</a></li>
+  </ul>
+</nav>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const overlay = document.getElementById('nav-overlay');
+const drawer = document.getElementById('nav-drawer');
+const close = document.getElementById('nav-close');
+
+function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+toggle.addEventListener('click', openDrawer);
+close.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+</script>
+
+</body>
+</html>

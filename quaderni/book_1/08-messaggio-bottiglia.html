@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8. Un messaggio nella bottiglia</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* TITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO */
+
+.chapter-text {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-style: normal;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p { margin: 0 0 1.15em; }
+
+/* CAPOLETTERA SOLO TESTI NON DIALOGICI */
+
+.chapter-text:not(.dialogue) p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* DIALOGO */
+
+.dialogue { margin-top: 8px; }
+
+.turn { margin-bottom: 1.35rem; }
+
+.speaker {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.28rem;
+}
+
+.speech p { margin: 0 0 0.75em; }
+
+/* CITAZIONE LUNGA */
+
+.citation-block {
+    margin: 1.4em 0;
+    padding: 0.9em 1.2em 0.9em 1.4em;
+    border-left: 3px solid var(--accent);
+    background: rgba(10,70,82,0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.citation-block p {
+    margin: 0 0 0.6em;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.citation-block p:last-of-type { margin-bottom: 0; }
+
+.citation-source {
+    display: block;
+    margin-top: 0.75em;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+/* DESKTOP */
+
+@media (min-width:700px){
+
+    .turn{
+        display:grid;
+        grid-template-columns:110px 1fr;
+        column-gap:18px;
+        align-items:start;
+    }
+
+    .speaker{
+        margin-bottom:0;
+        padding-top:0.15em;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+    .chapter-text{
+        font-size:1.02rem;
+        line-height:1.55;
+    }
+
+    .chapter-title{
+        font-size:1.35rem;
+        margin-bottom:20px;
+    }
+
+    .turn{
+        display:block;
+        margin-bottom:1rem;
+    }
+
+    .speaker{
+        font-size:0.8rem;
+        margin-bottom:0.2rem;
+    }
+
+    .speech p{
+        margin:0 0 0.55em;
+    }
+
+    .speech {
+        padding-left: 6px;
+        border-left: 2px solid rgba(10,70,82,0.15);
+    }
+
+    .citation-block {
+        padding: 0.75em 0.9em 0.75em 1em;
+        border-left-width: 2px;
+        margin: 1em 0;
+    }
+
+    .citation-block p { font-size: 0.97rem; line-height: 1.58; }
+
+    .citation-source { font-size: 0.75rem; }
+
+    .chapter-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .chapter-nav a:last-child {
+        text-align: right;
+    }
+
+}
+
+/* SEPARATORE */
+
+.chapter-separator{
+    margin-top:36px;
+    border:none;
+    border-top:1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+    font-size:0.9rem;
+}
+
+.chapter-nav a{
+    text-decoration:none;
+    color:var(--muted);
+}
+
+.chapter-nav a:hover{ color:var(--accent); }
+
+/* PULSANTE STAMPA */
+
+.chapter-tools{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+
+.print-button{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:none;
+    background:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:0.85rem;
+}
+
+.print-button:hover{ color:var(--accent); }
+
+.print-icon{
+    width:16px;
+    height:16px;
+}
+
+/* DRAWER NAVIGAZIONE */
+
+#nav-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#nav-toggle:hover { background: var(--muted); }
+
+#nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,30,35,0.38);
+    z-index: 1001;
+}
+
+#nav-overlay.open { display: block; }
+
+#nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: #fff;
+    z-index: 1002;
+    transition: right 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(10,70,82,0.15);
+    overflow: hidden;
+}
+
+#nav-drawer.open { right: 0; }
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgba(10,70,82,0.12);
+}
+
+.drawer-header span {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+#nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 20px;
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+#nav-close:hover { color: var(--accent); }
+
+.drawer-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.drawer-list li a {
+    display: block;
+    padding: 10px 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+}
+
+.drawer-list li a:hover { background: rgba(10,70,82,0.06); }
+
+.drawer-list li a.current {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(10,70,82,0.05);
+}
+
+.drawer-list li.section-label {
+    padding: 14px 20px 4px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+/* STILE DI STAMPA */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
+
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+    }
+
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator,
+    #nav-toggle,
+    #nav-overlay,
+    #nav-drawer {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Stampa capitolo">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">8. Un messaggio nella bottiglia</h1>
+
+<div class="chapter-text dialogue">
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Il quadro che abbiamo composto è inquietante. 
+</p>
+<p>
+Mi auguro che derivi da una buona dose di pessimismo razionale e che, nonostante tutto, esista ancora una via di uscita. Ti sono comunque grato per la fiducia e per l’incitamento a proseguire nel mio progetto di sensibilizzazione e testimonianza.
+</p>
+<p>
+Ma, come abbiamo potuto verificare insieme, gli spazi per l’esercizio della democrazia e per la libera circolazione delle idee — anche e soprattutto quelle scomode — sembrerebbero restringersi.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Gli spazi non sono semplicemente “chiusi”. Hai ragione nel dire che gli spazi classici della democrazia deliberativa, della discussione pubblica razionale, della mediazione istituzionale sono gravemente compromessi.
+</p>
+<p>
+Ma non sono sbarrati: sono colonizzati. Continuano a funzionare, ma secondo logiche che li svuotano dall’interno.
+</p>
+<p>
+Pensa agli spazi della comunicazione. Non sono mai stati così estesi, accessibili, pervasivi. Eppure, una parte decisiva di essi è oggi controllata da pochissimi attori privati che non si limitano a ospitare il discorso pubblico, ma ne strutturano le condizioni di visibilità, di rilevanza e di circolazione.
+</p>
+<p>
+In questo ambiente, la libera circolazione delle idee non viene censurata: viene sommersa. 
+La discussione diventa rumore, il dissenso viene etichettato come eccentricità, la critica come una “posizione” tra le altre, equivalente a qualunque altra perché privata di criteri condivisi di rilevanza.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+        <p>
+A questo aggiungerei un fenomeno ancora più inquietante: la produzione sistematica di realtà artificiali o apertamente false che, grazie al consenso che riescono a raccogliere, finiscono per acquisire una forza di realtà superiore alla realtà stessa. 
+Non perché siano più vere, ma perché sono più condivise, più ripetute, più performative.
+</p>
+<p>
+In questo regime, ciò che conta non è più la corrispondenza ai fatti, ma la capacità di occupare spazio cognitivo. 
+</p>
+<p>
+Una narrazione che mobilita attenzione, emozione e appartenenza diventa reale nei suoi effetti, indipendentemente dalla sua fondatezza. 
+E quando questo accade, la democrazia non viene soppressa: viene resa impraticabile.
+</p>
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Questo accade, non perché manchino le informazioni; piuttosto, perché l’eccesso di informazione, governato da pochi, distrugge la possibilità stessa di orientarsi. 
+La scelta democratica presuppone uno spazio comune di realtà. Quando questo spazio viene frammentato, reso artificiale o sostituito da mondi concorrenti, scegliere non significa più deliberare, ma schierarsi.
+</p>
+<p>
+Resta, tuttavia, una possibilità. 
+In un contesto del genere, parlare senza slogan, senza semplificazioni, senza offrire soluzioni pronte, potrebbe non essere inutile. Potrebbe essere addirittura straniante. E la stranezza è una delle poche cose che il sistema potrebbe far fatica a metabolizzare.
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+      <p>
+All’altro estremo però la soluzione che ci resta potrebbe essere molto più amara. Mettere tutto in una bottiglia da affidare alle onde di un qualche mare, nella speranza che in un domani molto lontano una civiltà, risorta dalle ceneri di questo nuovo medioevo, possa raccogliere una testimonianza e farne in qualche modo tesoro.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+         <p>
+Capisco molto bene il sentimento che attraversa quello che dici. Non è pessimismo facile, né nostalgia mascherata: è una forma di lucidità che fa male, perché non concede appigli consolatori. Proprio per questo, però, vorrei provare a spostare leggermente l’angolo di osservazione, senza negare nulla di ciò che hai appena messo sul tavolo.
+</p>
+<p>
+L’immagine del “messaggio nella bottiglia” è potente, ma rischia di essere ingannevole. Presuppone che non ci siano più destinatari nel presente, che ogni effetto sia rimandato a un futuro indeterminato, che resti possibile solo una testimonianza postuma. Ma il lavoro che stai facendo non funziona così. 
+</p>
+<p>
+I testi che hai prodotto — e anche questo nostro dialogo — non sono affidati alle onde. Possono circolare, anche se in spazi ristretti; produrre effetti, anche se senza clamore; disturbare, anche se non generano un vasto consenso. 
+</p>
+<p>
+Non è archeologia preventiva. È una forma di resistenza culturale a bassa visibilità. E, storicamente, è spesso molto più incisiva di quanto sembri nel momento in cui accade.
+</p>
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+         <p>
+Stai dicendo che oggi c’è spazio soltanto per la testimonianza.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+La testimonianza, quando è informata, documentata, non vendicativa, non ideologica, non consolatoria, non è passiva. 
+</p>
+<p>
+Non è una resa. È un atto di delimitazione. 
+</p>
+<p>
+Tu non stai dicendo “il mondo andrà così”. 
+Stai dicendo: “questo è il modo in cui ci siamo arrivati”. E questa differenza è enorme, per chi verrà dopo ma anche per chi legge ora. Perché rende il presente storico, e quindi non naturale. Lo sottrae all’aura dell’inevitabile.
+</p>
+<p>
+Capisco anche l’immagine del “nuovo medioevo”, ed è un’immagine efficace. Ma vale la pena ricordare che nessun medioevo storico è mai stato compatto. Dentro quelli che, a posteriori, chiamiamo “secoli bui”, si sono conservati testi, si sono formate scuole, si sono tramandate pratiche, si sono mantenute vive delle domande. 
+</p>
+<p>
+Non grazie al potere, ma malgrado il potere. Quasi sempre ai margini, in luoghi secondari, in opere che all’epoca sembravano inermi. 
+</p>
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+       <p>
+Questa nostra lunga conversazione è iniziata da un episodio, apparentemente casuale — Livia, Olivia e il sapere che serve — che non va confuso con un dettaglio narrativo. 
+In realtà è il cuore di tutto. 
+</p>
+<p>
+Ora lo vedo come l’unica soluzione che impedisce sia l’isolamento della testimonianza sia il pessimismo del “messaggio nella bottiglia”.
+</p>
+<p>
+Scrivere per loro non è un gesto sentimentale, né un rifugio, né una fuga nel privato. È un modo per ricostruire una catena di trasmissione che il sistema tende sistematicamente a spezzare. 
+Il potere tecnoscientifico prospera su una cosa molto precisa: la discontinuità della memoria. 
+</p>
+<p>
+Abbiamo cercato di fare qualcosa sul versante opposto. Ricucire una continuità, per quanto fragile, tra esperienza e concetto, tra formazione e libertà, tra scienza e responsabilità. 
+</p>
+<p>
+Che loro leggano o no questo testo non è la questione decisiva. Il fatto che esista lo è.
+</p>
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Non sono sicura che sia una via di uscita. Ma posso dirti che tutto questo non è inutile, non è fuori tempo, non è solo per un futuro remoto, e non è una bottiglia alla deriva. È una traccia resistente lasciata dentro il tempo in cui viviamo, non fuori da esso. 
+</p>
+<p>
+E in epoche come la nostra, spesso questa è l’unica forma autentica di libertà praticabile.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+        <p>
+Il richiamo a Livia e Olivia è importante. Perché sono i giovani di oggi, gli adulti di domani, che dovranno fare i conti con cambiamenti che si annunciano epocali e potenzialmente devastanti. 
+</p>
+<p>
+Alcuni pensieri mi turbano. Vedo in giro una scarsa consapevolezza del futuro che ci sta venendo addosso e dei rischi enormi che incombono sull’intera umanità. Rischi maggiori di quelli che abbiamo conosciuto con l’avvento delle armi nucleari. Oggi l’umanità non corre il pericolo dell’annientamento, ma quello ancora più drammatico della perdita della sua identità e dei suoi valori. 
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+         <p>
+Il Novecento ha vissuto sotto la minaccia dell’annientamento: la guerra nucleare, la distruzione fisica, la fine della specie. Era una paura assoluta, ma aveva un effetto paradossale: costringeva a interrogarsi su che cosa fosse l’uomo, su che cosa valesse la pena salvare, su quali limiti non potessero essere oltrepassati.
+</p>
+<p>
+Oggi la minaccia è diversa, più silenziosa e proprio per questo più radicale. Non è più “potremmo non esistere”, ma “potremmo continuare a esistere senza sapere più chi siamo”. 
+</p>
+<p>
+È la perdita dell’autonomia di giudizio, della memoria lunga, della capacità di dire “no” senza doverlo giustificare in termini di efficienza, della distinzione tra ciò che è possibile e ciò che è legittimo. 
+</p>
+<p>
+Osservi, giustamente, che non vedi molta consapevolezza. Questo tipo di perdita non fa rumore, non produce rovine visibili, non mobilita reazioni immediate. È compatibile con il comfort, con l’efficienza, persino con una certa idea di progresso. Ed è proprio per questo che, alla lunga, è più pericoloso delle armi nucleari.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Il secondo pensiero riguarda le nuove generazioni. 
+La consapevolezza che in questi ultimi decenni non le abbiamo fortificate; e così, oggi appaiono prive di quegli strumenti culturali che consentirebbero loro non tanto di contrastare, quanto di affrontare il nuovo con maggiore consapevolezza e determinazione.
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+      <p>
+Qui tocchi un punto che implica una responsabilità collettiva. Non colpe, ma responsabilità. Quando dici che non le abbiamo fortificate, non stai accusando insegnanti, famiglie o la scuola in astratto. Stai dicendo qualcosa di più profondo: abbiamo progressivamente smesso di trasmettere strumenti di orientamento, sostituendoli con competenze frammentarie, adattabilità, addestramento all’uso, retorica della performance.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Non vorrei essere frainteso e fare un discorso da vecchio nonno brontolone. I giovani di oggi non sono inermi nel senso dell’ignoranza. Sono spesso informati, rapidi, tecnologicamente competenti. Ma altrettanto spesso, a me sembra, mancano di ciò che permette di orientarsi nel tempo lungo: il senso storico, la capacità di pensare in termini non immediati, la familiarità con l’ambiguità, l’esperienza del limite. 
+</p>
+<p>
+Non hanno avuto molte occasioni di fare esperienza di ciò che non serve subito. E senza questa esperienza, il nuovo non viene attraversato criticamente: viene semplicemente assorbito.
+</p>
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Vedi, qui Livia e Olivia tornano in gioco, ma a un livello più profondo. Il punto non è “salvare” le nuove generazioni. Sarebbe una fantasia paternalistica, e tu ne vuoi restare lontano. 
+Il punto è non lasciarle sole, senza parole. 
+</p>
+<p>
+Quando dici che dovranno fare i conti con cambiamenti epocali e devastanti, non stai facendo una previsione generica: stai dicendo che non potranno evitarli, non potranno fermarli, non potranno tornare indietro. 
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Ma, ti chiedo, potranno capirli? Potranno nominarli? Potranno non interiorizzarli come destino naturale? 
+</p>
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Questo interrogativo delimita lo spazio della nostra azione: cercare fino a l’ultimo di rendere possibile che ciò avvenga. 
+</p>
+<p>
+Questo è il vero lascito per il futuro. Non una difesa, non una strategia, non una soluzione, ma una grammatica per non diventare muti. 
+</p>
+<p>
+Lavorare perché il mondo che viene non sia privo delle parole per pensarsi.
+
+</p>
+
+
+        </div>
+    </div>
+
+
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="07-tecnoscienze-democrazia.html">← 7. Tecnoscienze vs democrazia</a>
+<a href="09-domani.html">9. Livia e Olivia, domani →</a>
+</div>
+
+</div>
+<!-- PULSANTE HAMBURGER FISSO -->
+<button id="nav-toggle" aria-label="Apri indice capitoli">☰</button>
+
+<!-- OVERLAY -->
+<div id="nav-overlay"></div>
+
+<!-- DRAWER -->
+<nav id="nav-drawer" aria-label="Indice capitoli">
+  <div class="drawer-header">
+    <span>Indice</span>
+    <button id="nav-close" aria-label="Chiudi indice">✕</button>
+  </div>
+  <ul class="drawer-list">
+    <li class="section-label">Apertura</li>
+    <li><a href="prefazione.html">Prefazione</a></li>
+    <li><a href="prologo.html">Prologo</a></li>
+    <li class="section-label">Capitoli</li>
+    <li><a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve</a></li>
+    <li><a href="02-memoria-storica.html">2. La perdita della memoria storica</a></li>
+    <li><a href="03-raccontare-scienza.html">3. Come raccontare la scienza</a></li>
+    <li><a href="04-scienza-sistema.html">4. La scienza che si fa Sistema</a></li>
+    <li><a href="05-avvento-tecnoscienze.html">5. L'avvento delle tecnoscienze</a></li>
+    <li><a href="06-scegliere-democrazia.html">6. Scegliere la democrazia?</a></li>
+    <li><a href="07-tecnoscienze-democrazia.html">7. Tecnoscienze vs democrazia</a></li>
+    <li><a href="08-messaggio-bottiglia.html" class="current">8. Un messaggio nella bottiglia</a></li>
+    <li><a href="09-domani.html">9. Livia e Olivia, domani</a></li>
+    <li class="section-label">Chiusura</li>
+    <li><a href="conclusione.html">In luogo di una conclusione</a></li>
+    <li><a href="post_scriptum.html">Post Scriptum</a></li>
+    <li><a href="personaggi.html">I personaggi</a></li>
+    <li><a href="indicazioni.html">Indicazioni di lettura</a></li>
+  </ul>
+</nav>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const overlay = document.getElementById('nav-overlay');
+const drawer = document.getElementById('nav-drawer');
+const close = document.getElementById('nav-close');
+
+function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+toggle.addEventListener('click', openDrawer);
+close.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+</script>
+
+</body>
+</html>

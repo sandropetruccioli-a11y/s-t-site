@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6. Scegliere la democrazia?</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* TITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO */
+
+.chapter-text {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-style: normal;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p { margin: 0 0 1.15em; }
+
+/* CAPOLETTERA SOLO TESTI NON DIALOGICI */
+
+.chapter-text:not(.dialogue) p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* DIALOGO */
+
+.dialogue { margin-top: 8px; }
+
+.turn { margin-bottom: 1.35rem; }
+
+.speaker {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.28rem;
+}
+
+.speech p { margin: 0 0 0.75em; }
+
+/* CITAZIONE LUNGA */
+
+.citation-block {
+    margin: 1.4em 0;
+    padding: 0.9em 1.2em 0.9em 1.4em;
+    border-left: 3px solid var(--accent);
+    background: rgba(10,70,82,0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.citation-block p {
+    margin: 0 0 0.6em;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.citation-block p:last-of-type { margin-bottom: 0; }
+
+.citation-source {
+    display: block;
+    margin-top: 0.75em;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+/* DESKTOP */
+
+@media (min-width:700px){
+
+    .turn{
+        display:grid;
+        grid-template-columns:110px 1fr;
+        column-gap:18px;
+        align-items:start;
+    }
+
+    .speaker{
+        margin-bottom:0;
+        padding-top:0.15em;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+    .chapter-text{
+        font-size:1.02rem;
+        line-height:1.55;
+    }
+
+    .chapter-title{
+        font-size:1.35rem;
+        margin-bottom:20px;
+    }
+
+    .turn{
+        display:block;
+        margin-bottom:1rem;
+    }
+
+    .speaker{
+        font-size:0.8rem;
+        margin-bottom:0.2rem;
+    }
+
+    .speech p{
+        margin:0 0 0.55em;
+    }
+
+    .speech {
+        padding-left: 6px;
+        border-left: 2px solid rgba(10,70,82,0.15);
+    }
+
+    .citation-block {
+        padding: 0.75em 0.9em 0.75em 1em;
+        border-left-width: 2px;
+        margin: 1em 0;
+    }
+
+    .citation-block p { font-size: 0.97rem; line-height: 1.58; }
+
+    .citation-source { font-size: 0.75rem; }
+
+    .chapter-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .chapter-nav a:last-child {
+        text-align: right;
+    }
+
+}
+
+/* SEPARATORE */
+
+.chapter-separator{
+    margin-top:36px;
+    border:none;
+    border-top:1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+    font-size:0.9rem;
+}
+
+.chapter-nav a{
+    text-decoration:none;
+    color:var(--muted);
+}
+
+.chapter-nav a:hover{ color:var(--accent); }
+
+/* PULSANTE STAMPA */
+
+.chapter-tools{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+
+.print-button{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:none;
+    background:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:0.85rem;
+}
+
+.print-button:hover{ color:var(--accent); }
+
+.print-icon{
+    width:16px;
+    height:16px;
+}
+
+/* DRAWER NAVIGAZIONE */
+
+#nav-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#nav-toggle:hover { background: var(--muted); }
+
+#nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,30,35,0.38);
+    z-index: 1001;
+}
+
+#nav-overlay.open { display: block; }
+
+#nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: #fff;
+    z-index: 1002;
+    transition: right 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(10,70,82,0.15);
+    overflow: hidden;
+}
+
+#nav-drawer.open { right: 0; }
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgba(10,70,82,0.12);
+}
+
+.drawer-header span {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+#nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 20px;
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+#nav-close:hover { color: var(--accent); }
+
+.drawer-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.drawer-list li a {
+    display: block;
+    padding: 10px 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+}
+
+.drawer-list li a:hover { background: rgba(10,70,82,0.06); }
+
+.drawer-list li a.current {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(10,70,82,0.05);
+}
+
+.drawer-list li.section-label {
+    padding: 14px 20px 4px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+/* STILE DI STAMPA */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
+
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+    }
+
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator,
+    #nav-toggle,
+    #nav-overlay,
+    #nav-drawer {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Stampa capitolo">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">6. Scegliere la democrazia?</h1>
+
+<div class="chapter-text dialogue">
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+L’analisi fin qui sviluppata ci ha portato inevitabilmente sul terreno politico e culturale. Il senso di ciò che dici è chiaro: se vogliamo tutelare l’integrità di sistemi sociali costruiti sui principi della democrazia liberale, siamo obbligati a porre dei limiti al sistema tecnoscientifico contemporaneo.
+</p>
+<p>
+Mi soffermo su un’espressione che abbiamo usato spesso: “scegliere la democrazia”. 
+</p>
+<p>
+Ogni scelta richiede un atto maturo e consapevole di adesione a un modello sociale. Qui, in più, si aggiunge una decisione difficile: rinunciare a vantaggi indubbi delle tecnoscienze.
+</p>
+<p>
+Ma come può avvenire una scelta di questo tipo, se lo stesso sistema tecnoscientifico si è dotato di strumenti — spesso indiretti — di acquisizione del consenso? Strumenti capaci, tra l’altro, di costruire “realtà selettive” attraverso un controllo abile della narrazione.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Qui la questione diventa immediatamente pratica. 
+</p>
+<p>
+Se “scegliere la democrazia” implica rinunce reali, allora la domanda diventa inevitabile: chi è davvero in condizione di scegliere? E dentro quale spazio cognitivo questa scelta può ancora avvenire?
+</p>
+<p>
+L’interrogativo che poni è cruciale perché mette in crisi un presupposto silenzioso di gran parte del discorso democratico: l’idea che basti informare bene per rendere possibile una scelta consapevole.
+</p>
+<p>
+Il sistema tecnoscientifico attuale, invece, non produce solo conoscenza e strumenti. Produce ambienti cognitivi. Non offre soltanto argomenti: modella l’ambiente entro cui certi argomenti appaiono sensati e altri diventano impensabili.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Quindi non è solo questione di manipolazione. È il campo in cui si decide, e che risulta già inclinato.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Sì. E per questo il tema del consenso cambia natura. Almeno nella maggior parte dei casi, non siamo più davanti a propaganda esplicita o a manipolazione diretta. 
+</p>
+<p>
+Siamo davanti a qualcosa di più sottile: un consenso che si costruisce a monte, agendo sulle condizioni di percezione della realtà.
+</p>
+<p>
+Le tecnoscienze non dicono soltanto che cosa è vero o che cosa funziona. Contribuiscono a definire che cosa conta come reale, che cosa appare urgente, che cosa sembra inevitabile. 
+</p>
+<p>
+In questo senso, la costruzione di “realtà fittizie” non è necessariamente una menzogna deliberata: è un effetto sistemico. Alcuni mondi diventano visibili, altri scompaiono dal campo dell’esperienza condivisa.
+</p>
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+       <p>
+Allora la scelta democratica diventa infinitamente più difficile. Non avviene tra opzioni chiaramente distinguibili, ma dentro cornici già orientate.
+</p>
+<p>
+E la rinuncia di cui parlavamo — rinunciare a velocità, efficienza, vantaggi, potenza — non si presenta mai come rinuncia a qualcosa di discutibile. Si presenta come rinuncia a ciò che appare ovvio, desiderabile, “naturale”. È qui che la maturità richiesta alla cittadinanza diventa quasi sovrumana, se lasciata sulle sole spalle degli individui.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Hai ragione: non possiamo invocare un “solido background culturale” come se fosse una dotazione individuale. Quel background è il prodotto di un ecosistema culturale.
+</p>
+<p>
+Se l’ecosistema è saturo di narrazioni che identificano il bene con l’innovazione, il progresso con l’accelerazione, la razionalità con l’ottimizzazione, allora chiedere scelte mature equivale a chiedere agli individui di andare contro l’ambiente che li forma. Non è impossibile, ma è eccezionale. E una democrazia non può fondarsi sull’eccezione.
+</p>
+<p>
+Per questo, “scegliere la democrazia” oggi non può significare soltanto chiedere ai cittadini di essere più consapevoli. Significa difendere — e ricostruire — spazi in cui la narrazione dominante possa essere sospesa, rallentata, messa in questione. Spazi in cui la realtà non venga riconfezionata come flusso continuo di novità desiderabili, ma possa essere raccontata anche nei suoi costi, nelle sue asimmetrie, nelle sue zone d’ombra.
+</p>
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Non possiamo nemmeno fingere di non vedere che attorno alle tecnoscienze si è sviluppato un pensiero che interpreta questa trasformazione come la prova dell’obsolescenza della democrazia liberale. Non è una caricatura giornalistica. Esiste una corrente che si autodefinisce “neo-reazionaria” o “Dark Enlightenment” e che legge la concentrazione del potere tecnologico come un argomento a favore di forme di governo verticali, selettive, post-democratiche.
+</p>
+<p>
+In questa prospettiva, la complessità contemporanea richiederebbe concentrazione decisionale; la sovranità popolare sarebbe un residuo romantico; la politica dovrebbe assumere la forma di una gestione tecnica, talvolta esplicitamente monarchica o aziendale. Non si tratta solo di opinioni marginali nate su blog. Questo immaginario ha trovato ascolto in ambienti influenti della Silicon Valley e in settori della politica americana. Non è egemone, ma è influente.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Ma proprio qui è necessario essere chiari. Descrivere la trasformazione delle tecnoscienze non significa accettarne la traduzione autoritaria. Che la tecnologia concentri potere non implica che la democrazia sia un errore storico. È una scelta — non una necessità — sostenere che l’accelerazione tecnica renda superflua la pluralità. E per quanto mi riguarda, non sono affatto d’accordo.
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+       <p>
+Appunto. Se il sapere tende a organizzarsi come sistema, la risposta non può essere la liquidazione della tradizione europea della libertà e del controllo reciproco dei poteri. Preferisco pensare che ogni trasformazione del sapere imponga non l’abbandono della democrazia, ma un suo rafforzamento culturale e istituzionale. Non un ritorno nostalgico, ma un lavoro più esigente.
+</p>
+<p>
+Di fronte alla forza delle tecnoscienze, mi sembra velleitario pensare che la democrazia si possa difendere opponendo un’ideologia alternativa. Se ha ancora una possibilità, è attraverso un surplus di cultura, non di convinzione.
+</p>
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Non come strumento di persuasione alternativa — sarebbe solo un’altra competizione narrativa — ma come pratiche di disincanto.
+</p>
+<p>
+La sua funzione non sarebbe quella di produrre consenso, ma di rendere l’adesione meno automatica. Restituire spessore al reale contro la sua semplificazione funzionale.
+</p>
+<p>
+In questo senso, la scelta democratica non sarebbe un atto puntuale, né un referendum permanente sul futuro tecnologico. Sarebbe piuttosto una lotta continua per mantenere aperto lo spazio della scelta stessa, contro sistemi che tendono a chiuderlo rendendo alcune opzioni invisibili prima ancora che discutibili.
+</p>
+<p>
+Se questo spazio si perde, la democrazia non viene sconfitta frontalmente: viene aggirata. E quando ce ne accorgiamo, spesso, è già tardi per scegliere.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+         <p>
+Confesso di sentirmi minuscolo davanti a tutto questo.
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Ti capisco. Non è solo una reazione emotiva: è la percezione lucida di una sproporzione.
+</p>
+<p>
+Ma proprio qui conviene essere precisi. Non si tratta di “vincere” contro un gigante. Si tratta di colpire nel punto in cui la forza non basta: nominare ciò che viene presentato come necessità.
+</p>
+<p>
+Un sistema può avanzare, occupare spazio, imporre ritmi, saturare l’attenzione. Può trasformare il proprio movimento continuo in normalità.
+</p>
+<p>
+Ma ha una debolezza strutturale: fatica a raccontare onestamente la propria genealogia, a riconoscere la contingenza, a sostenere il dubbio senza perdere velocità.
+</p>
+<p>
+E quello spazio — il tempo lungo, il racconto, la memoria — è uno spazio che il sistema abita male.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Le tue parole mi fanno tornare a momenti lontani e all’entusiasmo del nostro gruppo. Ma oggi siamo quasi al termine dell’itinerario e guardiamo il mondo con meno illusioni.
+</p>
+<p>
+Non è la prima volta che ci troviamo davanti a qualcosa di più grande di noi. Forse, questa volta, abbiamo almeno un vantaggio: non è più così facile mascherarsi, assumere sembianze accattivanti.
+</p>
+<p>
+La sua forza dipende dal fatto che non venga nominata come forza, ma presentata come necessità, come progresso ovvio. Ma è proprio nel momento in cui questa naturalizzazione si incrina — anche solo per pochi, anche lentamente — che la presunta onnipotenza comincia a vacillare.
+</p>
+<p>
+Non è molto. Anzi: è pochissimo. Ma è il punto politico decisivo. Le grandi trasformazioni autoritarie non vincono perché convincono tutti. Vincono perché cancellano le alternative: dal futuro, e poi dal passato.
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+         <p>
+E anche se — ed è una possibilità che non va rimossa — il sistema non si arresta, o non si arresta presto, resta una cosa che non può più fare indisturbato: presentarsi come inevitabile senza essere stato riconosciuto come scelta.
+</p>
+<p>
+Questo, oggi, è già moltissimo e comunque è l’unico spazio che resta.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Sì, ma non illudiamoci che basti.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="05-avvento-tecnoscienze.html">← 5. L'avvento delle tecnoscienze</a>
+<a href="07-tecnoscienze-democrazia.html">7. Tecnoscienze vs democrazia →</a>
+</div>
+
+</div>
+<!-- PULSANTE HAMBURGER FISSO -->
+<button id="nav-toggle" aria-label="Apri indice capitoli">☰</button>
+
+<!-- OVERLAY -->
+<div id="nav-overlay"></div>
+
+<!-- DRAWER -->
+<nav id="nav-drawer" aria-label="Indice capitoli">
+  <div class="drawer-header">
+    <span>Indice</span>
+    <button id="nav-close" aria-label="Chiudi indice">✕</button>
+  </div>
+  <ul class="drawer-list">
+    <li class="section-label">Apertura</li>
+    <li><a href="prefazione.html">Prefazione</a></li>
+    <li><a href="prologo.html">Prologo</a></li>
+    <li class="section-label">Capitoli</li>
+    <li><a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve</a></li>
+    <li><a href="02-memoria-storica.html">2. La perdita della memoria storica</a></li>
+    <li><a href="03-raccontare-scienza.html">3. Come raccontare la scienza</a></li>
+    <li><a href="04-scienza-sistema.html">4. La scienza che si fa Sistema</a></li>
+    <li><a href="05-avvento-tecnoscienze.html">5. L'avvento delle tecnoscienze</a></li>
+    <li><a href="06-scegliere-democrazia.html" class="current">6. Scegliere la democrazia?</a></li>
+    <li><a href="07-tecnoscienze-democrazia.html">7. Tecnoscienze vs democrazia</a></li>
+    <li><a href="08-messaggio-bottiglia.html">8. Un messaggio nella bottiglia</a></li>
+    <li><a href="09-domani.html">9. Livia e Olivia, domani</a></li>
+    <li class="section-label">Chiusura</li>
+    <li><a href="conclusione.html">In luogo di una conclusione</a></li>
+    <li><a href="post_scriptum.html">Post Scriptum</a></li>
+    <li><a href="personaggi.html">I personaggi</a></li>
+    <li><a href="indicazioni.html">Indicazioni di lettura</a></li>
+  </ul>
+</nav>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const overlay = document.getElementById('nav-overlay');
+const drawer = document.getElementById('nav-drawer');
+const close = document.getElementById('nav-close');
+
+function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+toggle.addEventListener('click', openDrawer);
+close.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+</script>
+
+</body>
+</html>

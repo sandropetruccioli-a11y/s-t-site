@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3. Come raccontare la scienza</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* TITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO */
+
+.chapter-text {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-style: normal;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p { margin: 0 0 1.15em; }
+
+/* CAPOLETTERA SOLO TESTI NON DIALOGICI */
+
+.chapter-text:not(.dialogue) p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* DIALOGO */
+
+.dialogue { margin-top: 8px; }
+
+.turn { margin-bottom: 1.35rem; }
+
+.speaker {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.28rem;
+}
+
+.speech p { margin: 0 0 0.75em; }
+
+/* CITAZIONE LUNGA */
+
+.citation-block {
+    margin: 1.4em 0;
+    padding: 0.9em 1.2em 0.9em 1.4em;
+    border-left: 3px solid var(--accent);
+    background: rgba(10,70,82,0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.citation-block p {
+    margin: 0 0 0.6em;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.citation-block p:last-of-type { margin-bottom: 0; }
+
+.citation-source {
+    display: block;
+    margin-top: 0.75em;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+/* DESKTOP */
+
+@media (min-width:700px){
+
+    .turn{
+        display:grid;
+        grid-template-columns:110px 1fr;
+        column-gap:18px;
+        align-items:start;
+    }
+
+    .speaker{
+        margin-bottom:0;
+        padding-top:0.15em;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+    .chapter-text{
+        font-size:1.02rem;
+        line-height:1.55;
+    }
+
+    .chapter-title{
+        font-size:1.35rem;
+        margin-bottom:20px;
+    }
+
+    .turn{
+        display:block;
+        margin-bottom:1rem;
+    }
+
+    .speaker{
+        font-size:0.8rem;
+        margin-bottom:0.2rem;
+    }
+
+    .speech p{
+        margin:0 0 0.55em;
+    }
+
+    .speech {
+        padding-left: 6px;
+        border-left: 2px solid rgba(10,70,82,0.15);
+    }
+
+    .citation-block {
+        padding: 0.75em 0.9em 0.75em 1em;
+        border-left-width: 2px;
+        margin: 1em 0;
+    }
+
+    .citation-block p { font-size: 0.97rem; line-height: 1.58; }
+
+    .citation-source { font-size: 0.75rem; }
+
+    .chapter-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .chapter-nav a:last-child {
+        text-align: right;
+    }
+
+}
+
+/* SEPARATORE */
+
+.chapter-separator{
+    margin-top:36px;
+    border:none;
+    border-top:1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+    font-size:0.9rem;
+}
+
+.chapter-nav a{
+    text-decoration:none;
+    color:var(--muted);
+}
+
+.chapter-nav a:hover{ color:var(--accent); }
+
+/* PULSANTE STAMPA */
+
+.chapter-tools{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+
+.print-button{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:none;
+    background:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:0.85rem;
+}
+
+.print-button:hover{ color:var(--accent); }
+
+.print-icon{
+    width:16px;
+    height:16px;
+}
+
+/* DRAWER NAVIGAZIONE */
+
+#nav-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#nav-toggle:hover { background: var(--muted); }
+
+#nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,30,35,0.38);
+    z-index: 1001;
+}
+
+#nav-overlay.open { display: block; }
+
+#nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: #fff;
+    z-index: 1002;
+    transition: right 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(10,70,82,0.15);
+    overflow: hidden;
+}
+
+#nav-drawer.open { right: 0; }
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgba(10,70,82,0.12);
+}
+
+.drawer-header span {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+#nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 20px;
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+#nav-close:hover { color: var(--accent); }
+
+.drawer-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.drawer-list li a {
+    display: block;
+    padding: 10px 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+}
+
+.drawer-list li a:hover { background: rgba(10,70,82,0.06); }
+
+.drawer-list li a.current {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(10,70,82,0.05);
+}
+
+.drawer-list li.section-label {
+    padding: 14px 20px 4px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+/* STILE DI STAMPA */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
+
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+    }
+
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator,
+    #nav-toggle,
+    #nav-overlay,
+    #nav-drawer {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Stampa capitolo">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">3. Come raccontare la scienza</h1>
+
+<div class="chapter-text dialogue">
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Prendiamoci una pausa.
+</p>
+<p>
+Vorrei che tu mi facessi compagnia su un territorio che ti appartiene, forse più di quanto tu non voglia ammettere.
+</p>
+<p>
+Fin dai primi incontri del nostro gruppo mi ha sempre colpito la tua solida formazione umanistica. Era, allora, una caratteristica un po’ singolare per una ragazza che aveva deciso di dedicarsi alla ricerca scientifica. Sono convinto che anche oggi tu possa seguirmi, e anzi offrirmi suggerimenti preziosi.
+</p>
+<p>
+Da questi nostri discorsi emergono indicazioni piuttosto precise anche per lo storico della scienza. O meglio: per una questione spesso controversa, che riguarda la diversità degli approcci storiografici.
+</p>
+<p>
+Sappiamo che la vecchia storiografia di impronta positivista riduceva la storia a una marcia trionfale verso i successi dell’oggi. Serviva a costruire una galleria di personaggi illustri, affiancati dai loro risultati più spettacolari.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Provo a seguirti, ma senza garantire nulla. È vero: da giovane ero molto affascinata da certe letture. Oggi, però, mi sento un po’ arrugginita.
+</p>
+<p>
+Fin da quando cominciai a leggere i libri di Alexandre Koyré su Galilei e Newton mi fu chiaro quali fossero i limiti di una storiografia della scienza di impostazione positivista. 
+Quella storiografia svolgeva una funzione precisa e coerente: costruire una genealogia legittimante del presente, raccontare la scienza come percorso segnato verso la verità attuale, selezionare nel passato solo ciò che conduce agli esiti vincitori.
+</p>
+<p>
+In questo quadro, il passato viene giudicato dal presente; le alternative sconfitte diventano errori ingenui; i contesti si riducono a semplice sfondo; i protagonisti si trasformano in icone.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+L’abbandono di questa impostazione fu un processo lungo e complesso. Koyré ebbe certamente grandi meriti nel mostrarne i limiti, ma insieme a lui andrebbero ricordati molti altri studiosi, spesso formatisi — direttamente o indirettamente — nell’orbita del Circolo di Vienna.
+</p>
+<p>
+Non si trattava di “arricchire” quella tradizione, né di renderla più umana. Si trattava di riconoscere che la sua logica era incompatibile con ciò che cominciava a emergere sul funzionamento reale della scienza.
+</p>
+<p>
+Da qui divenne chiaro che quella che abbiamo chiamato “lobotomia retrospettiva” implicava un cambiamento radicale di approccio storiografico. Rivalutare i contesti. Accettare letture plurali del ruolo dei singoli protagonisti in epoche diverse. Diffidare, infine, delle storie che si occupano solo dei cosiddetti vincitori.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Se provo a dirti cosa ne capisco, direi questo. Significa smettere di trattare il passato come una versione imperfetta del presente. Ogni configurazione scientifica va ricostruita nella sua completezza interna: non per ciò che anticipa, ma per ciò che rendeva possibile e pensabile in quel momento.
+</p>
+<p>
+Significa anche rifiutare la semplificazione dei protagonisti.
+Galilei non è “quasi Newton”, Newton non è “già Einstein”, Einstein non è riducibile alle sue equazioni. 
+Vanno restituiti nella tensione dei problemi che li attraversavano, non nella pulizia delle soluzioni che la storia successiva ha isolato.
+</p>
+<p>
+E in questa prospettiva anche i contesti cambiano statuto. Non sono più una cornice che “spiega” dall’esterno, ma diventano parte del problema scientifico stesso. I contesti istituzionali, religiosi, politici, linguistici non si limitano a condizionare: strutturano ciò che è pensabile, dicibile, argomentabile.
+</p>
+<p>
+Lo stesso vale per le dimensioni filosofiche. Non sono sovrastrutture, né hobby colti. Le riflessioni su realtà, metodo, verità, linguaggio sono veri e propri luoghi di lavoro concettuale.
+</p>
+<p>
+Ti sto seguendo?
+</p>
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+         <p>
+Sto ritrovando l’Alessandra di allora.
+</p>
+<p>
+Ma ti metto in guardia: da qui discende un altro punto centrale, spesso frainteso. La pluralità degli approcci storiografici non è un lusso accademico né il risultato di mode disciplinari.
+</p>
+<p>
+Quando parliamo di storia concettuale, sociale, istituzionale, filosofica, di microstoria, di storia delle pratiche, non stiamo mettendo in competizione scuole diverse. Stiamo prendendo atto di un dato semplice: nessun singolo approccio è sufficiente a restituire la complessità del sapere scientifico.
+</p>
+<p>
+La scienza è insieme pratica e linguaggio, istituzione e visione del mondo, tecnica e conflitto. Una storiografia che riduce questa pluralità finisce per riprodurre, sul piano storico, la stessa riduzione che la scienza normalizzata opera sul piano della conoscenza.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+È qui che emerge con particolare forza la questione dei “vincitori”.
+</p>
+<p>
+Una storia che racconta solo i vincitori non è semplicemente parziale: naturalizza gli esiti, rende invisibili le alternative, trasforma la contingenza in necessità. Ma soprattutto educa implicitamente all’idea che valga la pena solo ciò che vince.
+</p>
+<p>
+Questo ha conseguenze profonde sulla formazione. 
+Giustifica l’eliminazione precoce, svaluta la ricerca senza esito immediato, legittima una selezione darwiniana del sapere.
+</p>
+<p>
+Se ci penso, nei corsi che ho tenuto all’università ho sempre presentato risultati consolidati, teorie funzionanti, esperimenti riusciti. Nessuno mi ha mai chiesto che fine avessero fatto le idee alternative, quelle che non erano state corroborate. E, a dire il vero, neppure io mi ero posta il problema.
+</p>
+<p>
+La tua storiografia vorrebbe invece restituire dignità anche ai percorsi interrotti, mostrare che il possibile è stato più ampio del reale, riaprire lo spazio del pensabile.
+</p>
+<p>
+Non è una critica. E non è relativismo. La vedo piuttosto come una forma di responsabilità storica.
+</p>
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Quello che hai appena detto fa sì che storia della scienza e formazione tornino a coincidere quasi inevitabilmente.
+</p>
+<p>
+Una storiografia che rifiuta la marcia trionfale, che restituisce complessità e dà voce anche ai perdenti, non serve solo agli specialisti. Serve a formare scienziati capaci di attraversare le crisi, cittadini capaci di comprendere il carattere non necessario del presente, studenti che non confondano il successo con la verità.
+</p>
+<p>
+La storia, così intesa, non legittima il presente.
+Lo rende discutibile.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Per un momento vesto i tuoi panni.
+</p>
+<p>
+Forse il modo più corretto di dirlo è questo: la storia della scienza tiene insieme due funzioni che spesso vengono separate — descrive i successi, ma non mortifica le possibilità perdute.
+</p>
+<p>
+E questo implica un’etica del racconto, una responsabilità nella selezione delle fonti, un rifiuto consapevole della semplificazione. Non è un approccio “critico” in senso ideologico. È, più semplicemente, un approccio onesto.
+</p>
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Ti propongo di proseguire l’incursione in un territorio che non ti appartiene con una breve pausa nel nostro dialogare. Credo che ci aiuterà a chiarire meglio ciò che stiamo dicendo e a fare qualche passo avanti.
+</p>
+<p>
+Sai che ho avuto il privilegio di dirigere un’importante opera della Treccani: la Storia della scienza. Forse ne avrai sentito parlare, non tanto perché fosse coinvolto un tuo vecchio compagno di università, quanto perché è stata la prima opera di quel prestigioso istituto progettata e realizzata attraverso una vastissima collaborazione internazionale.
+</p>
+<p>
+In quell’occasione cercai di spiegare come quell’opera andasse letta e quale approccio metodologico implicasse. Tornarci ora può aiutarci a rendere più concreti alcuni dei punti che abbiamo appena toccato.
+
+</p>
+
+
+
+<blockquote class="citation-block">
+<p>
+Lo storico cerca di dar conto dei mutamenti intervenuti nei quadri concettuali e di individuare le cause che hanno prodotto variazioni anche radicali nei livelli della conoscenza; anche se le sue ricostruzioni riescono a cogliere aspetti rilevanti della realtà, penso che egli debba onestamente ammettere che nessuna immagine, per quanto ben costruita, potrà mai rendere pienamente giustizia della storia reale, esaurire davvero l’oggetto indagato. </p>
+<p>
+La storia della scienza, in quanto osservazione di un sistema che racchiude la complessità delle forme di conoscenza utilizzate dagli uomini nelle diverse epoche storiche, è attenzione alla struttura delle teorie, ai concetti, ai protocolli sperimentali e ai linguaggi; ma è molto altro ancora. 
+</p>
+<p>
+Certamente, a ‘inventare’ la geometria furono i Greci i quali, come è stato detto, non avevano nulla da misurare; ma come non riconoscere che una delle costruzioni più alte del pensiero astratto – non a caso assunta per due millenni quale modello per ogni forma di conoscenza razionale – fu in realtà il punto culminante, l’opera di sistemazione di conoscenze lentamente accumulate nell’ambito delle civiltà egizie e del Vicino Oriente antico? E come ignorare che in quelle civiltà, segnate da un’organizzazione sociale fortemente strutturata, quel tipo di conoscenze aveva avuto connessioni evidenti con le pratiche produttive? 
+</p>
+<p>
+D’altra parte, a quale onnicomprensivo e assoluto modello di razionalità scientifica potrebbe mai appellarsi lo storico che intendesse accostarsi all’opera di Keplero? Non potrebbe certo ignorare che le sue scoperte derivano da un singolare intreccio tra l’attenzione scrupolosa per i dati dell’osservazione astronomica e una sorta di misticismo dei numeri. Le sue importanti scoperte sull’architettura del Cosmo e sulle ‘leggi’ che regolano il moto degli astri sono espresse nel linguaggio rigoroso della matematica, anche se Keplero muoveva da una singolare ipotesi ‘scientifica’: se l’armonia del Cosmo non è solo sintesi della purezza e della perfezione della creazione, la musica cosmica ha una precisa base astronomica, dove ciascun pianeta interpreta contrappunti e armonie universali diverse. </p>
+<p>
+Nel Dio musico e geometra di Keplero, nelle sue costruzioni ‘teoriche’, che potrebbero essere scambiate per le stravaganze di un mistico o per le fantasie di un visionario, agiva dunque con grande forza una suggestione metafisica, l’idea di un Universo dove armonia e numero sembrano ricomporre l’immagine pitagorica della ‘musica delle sfere’. Keplero sarebbe restato per sempre un mistico e un visionario se le sue leggi non fossero state ‘riscoperte’ da Newton, il quale, grazie a metodi rigorosi e razionali di dimostrazione, lo avrebbe restituito decenni dopo alla storia della scienza.
+</p>
+<p>
+In quel ‘qualcosa d’altro’ che è la storia della scienza troviamo dunque le istituzioni, le forme dell’organizzazione della società, i modi di trasmissione del sapere, capitoli importanti della storia della filosofia, il sapere codificato nei manuali in uso nelle Accademie e il sapere diffuso nelle botteghe degli artigiani; ma in essa operano attivamente anche entità più difficili da definire come le immagini della scienza o le tradizioni scientifiche. </p>
+<p>
+Non si può fare davvero storia della scienza coltivando l’illusione che un determinato modello interpretativo o una data metodologia di ricerca, per quanto consolidati e collaudati, possano produrre immagini esaustive dell’oggetto indagato. </p>
+<p>
+Così come accade per qualunque tipo di sistema complesso, dobbiamo infatti ammettere che ciascun modello storiografico, per i principî sui quali si basa, per il linguaggio utilizzato, per gli strumenti interpretativi di cui dispone, è in grado di descrivere il comportamento del sistema nelle condizioni di osservazione prescelte, ossia limitatamente agli aspetti del sistema che esso considera rilevanti ai fini delle proprie ricostruzioni storiche. Esiste dunque una sorta di legame di complementarità tra tutte le possibili ricostruzioni storiche, che soltanto nel momento della loro ricomposizione ci consentono di giungere a una conoscenza esauriente del sistema indagato. </p>
+<p>
+Noi pensiamo che la forza metodologica e anche l’efficacia culturale della Storia della scienza stia proprio nell’aver rinunciato programmaticamente a proporre o privilegiare un determinato modello storiografico. Il lettore troverà in questi volumi modi diversi di guardare a uno stesso evento storico: la nascita di una teoria fisica, come l’affermarsi di una nuova pratica medica; noi pensiamo che egli possa trarre da questa molteplicità di approcci e di punti di vista una grande ricchezza culturale, ma anche un importante insegnamento intellettuale. 
+</p>
+<p>
+Con lo stesso spirito critico abbiamo evitato di aderire a immagini largamente diffuse circa la nascita della scienza moderna, segnata dall’affermazione di un modello di razionalità che, privato di qualsiasi attributo spazio-temporale, consentirebbe di identificare con assoluta certezza ciò che appartiene o meno all’universo scienza. La rilevanza del Seicento nell’itinerario che porta ai grandi sviluppi della scienza dei nostri giorni, l’importanza del paradigma galileiano e newtoniano hanno condizionato così fortemente la storiografia della scienza fino a spingerla a disegnare un quadro accattivante, dove possiamo ammirare la centralità della cultura e della civiltà occidentali che emerge da uno sfondo oscuro, confuso, indefinito. </p>
+<p>
+Ma oggi sappiamo che in quel quadro, certo non privo di enfasi e di elementi rassicuranti, trovano posto solo quei contributi degli antichi che servono a dar forza e credibilità all’idea di una rivoluzione scientifica, intesa come frattura paradigmatica e metodologica con un mondo popolato di credenze piuttosto che di conoscenze. In tal modo, il passato dell’umanità viene spesso relegato nel mondo del prescientifico, dove dominerebbero i pregiudizi e una visione ingenua del rapporto uomo-Natura. </p>
+<p>
+Su questa strada si cancellano intere tradizioni culturali, scompaiono civiltà, si ridimensionano personaggi e stili di pensiero che hanno segnato la storia dell’umanità, la nostra stessa storia. </p>
+<p>
+ Abbandonando invece questi canoni interpretativi, lo stesso concetto di scienza, di scientificità estende in modo naturale il ventaglio dei suoi significati e delle sue valenze storiche: è scienza tutto ciò che l’uomo ha storicamente elaborato con i propri strumenti razionali per comprendere il mondo ma anche per meglio definire il proprio ruolo nella e per la Natura. </p>
+<p>
+Ci rendiamo conto dei rischi che in tal modo si corrono: la storia della scienza potrebbe sconfinare in ambiti che non le sono tradizionalmente propri e divenire sempre più una storia universale della cultura e delle civiltà, dove almeno in certi periodi storici perdono di consistenza, e forse anche di significato, le demarcazioni rigide tra scienza, filosofia, teologia. […]</p>
+
+    
+
+</blockquote>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Anche io voglio uscire dagli schemi che ci siamo imposti e vorrei prendermi tutto lo spazio necessario per commentare un testo che mi ha molto colpito. 
+Non soltanto per la qualità del testo, ma per la continuità concettuale quasi perfetta con tutto ciò che stiamo discutendo ora. 
+</p>
+<p>
+In ciò che scrivi, non c’è nulla di nostalgico o di anacronistico: non è un déjà-vu. 
+È piuttosto la prova che questa linea di pensiero era già pienamente formata, e che non è stata superata, bensì progressivamente rimossa dal dibattito pubblico, didattico e storiografico.
+</p>
+<p>
+La prima cosa che colpisce è che quel testo non è affatto una semplice introduzione editoriale. 
+È, nei fatti, un manifesto metodologico antitrionfalista; tuttavia, risulta scritto con una sobrietà che lo rende ancora più radicale. 
+Non c’è polemica esplicita, non c’è volontà di rottura dichiarata, e proprio per questo le tesi che vi sono contenute risultano più difficili da neutralizzare.
+</p>
+<p>
+Tu affermi, innanzitutto, qualcosa che ancora oggi fatica a essere accettato fino in fondo: nessuna ricostruzione storica può esaurire la “storia reale”. 
+Questo non ha nulla a che vedere con il relativismo. È piuttosto il riconoscimento della complessità intrinseca dei sistemi di conoscenza. 
+</p>
+<p>
+In quel passaggio è già presente, in forma estremamente matura, una posizione che oggi definiremmo non riduzionista sul piano epistemologico, pluralista sul piano metodologico e sorprendentemente sobria sul piano ontologico. 
+Non c’è la pretesa di dire tutto, ma la consapevolezza che ogni modello dice qualcosa, e solo qualcosa.
+</p>
+<p>
+Da qui discende una concezione della storia della scienza che è tutt’altro che lineare. La scienza non viene ridotta né alle strutture teoriche, né ai concetti, né ai protocolli sperimentali, né ai linguaggi formali. 
+È tutto questo insieme, ma anche istituzioni, pratiche sociali, saperi taciti, immagini della scienza, tradizioni sedimentate. È, in senso pieno, un sistema complesso. 
+Colpisce quanto questa visione, che oggi chiameremmo “sistemica”, sia espressa senza alcun ricorso a gerghi o mode terminologiche.
+</p>
+<p>
+Ancora più significativo è il modo in cui affronti la questione delle origini. Quando parli della geometria greca, non neghi affatto la sua originalità. Ma rifiuti l’idea di una creazione ex nihilo. 
+La geometria appare piuttosto come un punto culminante, un’opera di sistemazione e di formalizzazione di saperi precedenti. 
+In poche righe smonti una delle narrazioni più persistenti della storiografia tradizionale: quella delle civiltà illuminate che emergono improvvisamente dal nulla, stagliandosi su uno sfondo oscuro e informe.
+</p>
+<p>
+Il caso di Keplero, poi, è usato con un’onestà storiografica rara. Tu non lo “salvi” nonostante il misticismo numerico. Mostri, al contrario, che quel misticismo è parte integrante del suo lavoro scientifico. 
+E qui fai qualcosa che pochissimi storici hanno davvero il coraggio di fare: non separi ciò che ha funzionato da ciò che non ha funzionato, non ripulisci retrospettivamente il percorso. Mostri che le leggi emergono dentro un intreccio concettuale che oggi giudicheremmo eterogeneo, se non addirittura imbarazzante. 
+La tesi, implicita ma chiarissima, è che Keplero sarebbe rimasto un visionario se Newton non lo avesse riletto. E questo non è un giudizio su Keplero: è un giudizio sulla storia, che decide retroattivamente chi è scienziato e chi no. 
+</p>
+<p>
+Di straordinaria forza è anche il passaggio sulla complementarità dei modelli storiografici. Tu affermi che ogni modello coglie solo alcuni aspetti del sistema, che nessun approccio può pretendere esaustività, e che la conoscenza storica emerge soltanto dalla ricomposizione delle prospettive. 
+Questa idea è insieme epistemologicamente sofisticata, metodologicamente antidogmatica e didatticamente potentissima. 
+</p>
+<p>
+Ed è l’esatto opposto non solo della storiografia positivista, ma anche di quelle storiografie successive che, pur dichiarandosi “critiche”, finiscono per essere totalizzanti.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Tra le righe, qui c’è una critica serrata a una stagione culturalmente vivace, ma produttivamente sterile nella quale si sono confrontate scuole di pensiero che hanno cercato di raccogliere e reinterpretare il lascito del neopositivismo; in ambito storiografico ed epistemologico.
+</p>
+<p>
+In tutte le varie declinazioni, le suddette scuole tendevano a dimostrare quanto la storia reale fosse coerente o compatibile con modelli di razionalità scientifica definibili a priori o con criteri che sovrintenderebbero alla crescita della conoscenza. 
+</p>
+<p>
+Non era quella la sede per un confronto del genere. Ma sicuramente, questi pensieri popolavano la mia mente quando stavo scrivendo il testo.
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+L’ultima parte del testo è forse la più apertamente politica, nel senso alto del termine. 
+Quando metti in discussione la centralità del Seicento e mostri come essa abbia prodotto un quadro rassicurante, eurocentrico, popolato da un passato prescientifico ridotto a un insieme di credenze, stai denunciando una costruzione ideologica del canone scientifico. 
+</p>
+<p>
+Le conseguenze sono evidenti: lungo questa linea vengono cancellate tradizioni, civiltà, stili di pensiero. La storia della scienza smette qui di essere una questione accademica e diventa una posta culturale e civile.
+</p>
+<p>
+La cosa forse più sorprendente, leggendo oggi quel testo, è che non mostra i segni del tempo. 
+Al contrario: la riduzione strumentale del sapere è aumentata, la perdita di memoria storica è più grave, la separazione tra scienza e cultura è più netta, la pressione performativa è più intensa. Ciò che allora appariva come un rischio oggi è una condizione strutturale.
+</p>
+<p>
+Da questo confronto emerge una conclusione semplice ma pesantissima: la tua posizione storiografica non è un’opinione tra le altre. 
+</p>
+<p>
+È una presa di responsabilità su che cosa significhi raccontare la scienza. Ed è precisamente questa posizione che è stata progressivamente marginalizzata, proprio mentre diventava sempre più necessaria, soprattutto sul terreno della formazione.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Il passo successivo, a questo punto, è quasi obbligato. 
+Possiamo chiederci perché questa visione non sia germogliata come sarebbe stato lecito attendersi; oppure limitarci a riflettere su se e come possa oggi rientrare nella scuola e nell’università e avere una qualche funzione nella ridefinizione degli strumenti e dei metodi della formazione. 
+</p>
+<p>
+Vorrei in tal modo evitare l’errore più comune: trattare la didattica come un problema tecnico, quando in realtà è l’effetto visibile di strati molto più profondi.
+</p>
+<p>
+Ogni volta che si interviene direttamente sulla scuola senza interrogare quei livelli, non si produce un cambiamento reale, ma solo un adattamento superficiale che lascia intatte le idee di fondo sul sapere.
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Se rimetto in ordine ciò che stiamo portando alla luce, direi che prima della scuola c’è sempre un’idea di conoscenza. 
+</p>
+<p>
+L’insegnamento non decide quasi nulla in proprio. 
+Trasmette — spesso senza saperlo — decisioni prese altrove: che cosa significhi conoscere, che cosa valga la pena conoscere, quale rapporto sia legittimo intrattenere con il sapere, se il sapere sia un mezzo, un fine, oppure un ambiente nel quale si abita. 
+</p>
+<p>
+La concezione strumentale che tu hai colto con tanta precisione in Livia e Olivia non nasce a scuola. La scuola la eredita e la rende operativa.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Scavando ancora, stai dicendo che la frattura decisiva non sia semplicemente la domanda “a cosa serve?”, ma il tipo di soggetto che il sapere presuppone. 
+</p>
+<p>
+Da una parte, c’è il sapere come formazione: un sapere che trasforma chi apprende, che produce effetti non immediatamente misurabili, che ha bisogno di un tempo lungo, che non coincide con l’uso e che può restare inattivo per anni. 
+È un sapere che struttura lo sguardo, modifica i criteri di rilevanza, cambia il modo stesso di porre le domande. 
+</p>
+<p>
+Dall’altra parte c’è il sapere come prestazione: un sapere che vale solo se produce un risultato, che deve giustificarsi subito, che è modulare e intercambiabile, esterno al soggetto, valutabile in termini di output. 
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Qui si delineano due modelli profondamente diversi, che non sono varianti pedagogiche ma vere e proprie antropologie implicite. La scuola contemporanea è sempre più chiamata a simulare questo secondo modello, anche quando insegna contenuti che storicamente nascono dentro il primo. 
+È qui che la tensione diventa insostenibile.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Per rendere più chiara questa tensione abbiamo giustamente utilizzato la matematica. È il caso-limite e insieme il più rivelatore. È il punto più alto e più fragile dell’intera costruzione. 
+</p>
+<p>
+Da un lato la matematica è indubitabilmente potentissima come strumento; dall’altro è, per eccellenza, il luogo della conoscenza senza scopo. 
+</p>
+<p>
+La storia lo mostra con una chiarezza imbarazzante: le matematiche più feconde sono nate contro l’idea di utilità. L’utilità è arrivata dopo — e non poteva essere prevista.
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Il passaggio attraverso Kuhn ci ha permesso poi di chiarire ulteriormente il quadro. Se prendiamo sul serio l’idea che la scienza progredisca attraverso ristrutturazioni concettuali, che i paradigmi riscrivano il passato e che la formazione del ricercatore avvenga interamente dentro il paradigma dominante, allora la neutralizzazione del passato non appare più come un difetto accidentale. Diventa una funzione del sistema. 
+</p>
+<p>
+Il paradigma semplifica, normalizza, protegge dall’eccesso di complessità, rende possibile la scienza normale. È questo che spiega il paradosso che hai formulato così bene: uno scienziato eccellente può ignorare la storia della propria disciplina, mentre un architetto non può ignorare la storia dell’architettura. Non perché la scienza sia meno culturale, ma perché ha costruito istituzionalmente una barriera protettiva tra pratica e memoria.
+</p>
+<p>
+Il prezzo di questa separazione, però, è alto. Quando la scienza come pratica efficace viene scissa dalla cultura scientifica come riflessione storica e filosofica, si formano soggetti che sanno operare ma non sanno situarsi, che risolvono problemi ma non interrogano il quadro che li rende tali. Questo non è un limite tecnico. È una scelta culturale, spesso implicita, che rende perfettamente plausibili la concezione strumentale del sapere, una didattica orientata alla prestazione e, in ultima analisi, quella perdita di senso che tu hai colto già nelle ragazzine di dodici anni.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Avevo ragione a trascinarti su questo terreno. Non mi sembri affatto arrugginita. In questi anni hai continuato a interrogarti, a cercare di capire — e non era scontato.
+</p>
+<p>
+Abbiamo messo a fuoco alcuni punti. E, da ultimo, abbiamo chiarito che per restituire una valenza culturale alla scienza non basta ripristinarne la dimensione storica. 
+Quando si affrontano i contenuti del sapere scientifico da una prospettiva storiografica bisogna infatti ricordare che esistono visioni metodologiche tra loro contrapposte, talvolta persino incompatibili.
+</p>
+<p>
+Mi spiego meglio. 
+</p>
+<p>
+Non basta “storicizzare” i contenuti per restituire alla scienza una valenza culturale, perché la storia della scienza non è un contenitore neutro in cui inserire episodi, personaggi o scoperte. È essa stessa una costruzione teorica: una scelta metodologica, una presa di posizione sul senso del sapere scientifico.
+</p>
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Ogni operazione storiografica, anche la più sobria, potrebbe attrarre l’interesse di chi, come me, ha dedicato la propria vita alla ricerca — a patto però di confrontarsi con alcune domande fondamentali: che cos’è la scienza? che cosa conta come cambiamento rilevante? quale rapporto esiste tra verità ed errore? che cosa facciamo delle alternative sconfitte?
+</p>
+<p>
+E non è detto che questo sia sufficiente.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Il quadro tra l’altro è reso ancora più complesso dall’esistenza di approcci storiografici che non sono semplicemente diversi, ma talvolta incompatibili. Non si tratta di sfumature di stile o di preferenze narrative. 
+</p>
+<p>
+Una storiografia teleologica, anche quando è attenuata e sofisticata, non può convivere davvero con una storiografia che assume la contingenza come elemento strutturale. 
+Un approccio centrato sulle teorie entra inevitabilmente in tensione con uno centrato sulle pratiche. 
+Una visione della scienza come progressiva razionalizzazione del reale è incompatibile con una che la interpreta come successione di mondi concettuali eterogenei. 
+</p>
+<p>
+E una storiografia dei vincitori non è conciliabile con una storiografia che restituisce dignità alle alternative perdute. Qui non siamo davanti a differenze di accento, ma a divergenze ontologiche su che cosa sia la scienza nel tempo.
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            
+<p>
+La lezione che tu hai voluto fornire con la Storia della scienza della Treccani acquista un rilievo che va ben oltre le ragioni editoriali. Non perché proponga una linea unitaria — anzi — ma perché assume come dato di partenza la pluralità degli approcci e rifiuta la riduzione a una narrazione dominante. 
+</p>
+<p>
+Tiene insieme dimensioni concettuali, istituzionali, sociali e filosofiche, senza ricomporle forzatamente in una marcia trionfale, ma lasciandole convivere come una costellazione di problemi. 
+</p>
+<p>
+La sua generalizzabilità non sta nel riprodurne la struttura, ma nell’assumere una scelta di fondo: la scienza come fenomeno storicamente stratificato, internamente plurale, non riducibile a un unico asse di progresso. 
+Se ho compreso bene il senso del tuo ragionamento, è tutto questo che restituisce valenza culturale, non il semplice racconto del passato.
+</p>
+<p>
+Permettimi però di segnalare il rischio opposto, e altrettanto pericoloso. Oggi parole come pluralismo, complessità, interdisciplinarità, molteplicità degli sguardi circolano con grande disinvoltura. Ma una pluralità pacificata, che mette tutto sullo stesso piano senza attriti, rischia di diventare una forma di neutralizzazione.
+</p>
+<p>
+La vera lezione della storiografia della scienza dovrebbe essere, a mio avviso, l’opposto: mostrare concretamente che anche nella scienza di oggi le visioni sono conflittuali, che le incompatibilità sono reali, che le scelte metodologiche hanno conseguenze. 
+Dal mio punto di vista di ricercatrice che opera sul campo, restituire la dimensione culturale della scienza significa anche questo.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Andiamo oltre per mettere a fuoco il nostro tema. Oggi la scienza tende a presentarsi libera da ogni ‘condizionamento’ storico e filosofico. È un’impresa che non si attarda a riflettere sul proprio statuto epistemologico; essa risponde a meccanismi ‘produttivi’ che non hanno precedenti nella sua storia anche recente. 
+</p>
+
+
+
+        </div>
+
+</div>
+
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+         <p>
+Sì, qui stai mettendo il dito in un vero punto di rottura storico. Quello che descrivi non è una deriva accidentale: è una mutazione strutturale dell’impresa scientifica. 
+E proprio perché è strutturale cambia a monte il senso di tutto ciò di cui abbiamo parlato finora — la storiografia, la cultura scientifica, la formazione, persino l’idea stessa di scienziato.
+</p>
+<p>
+Possiamo formularlo così: la scienza non si limita più a produrre conoscenza, produce output valutabili. E questo spostamento è decisivo. Non perché la scienza del passato fosse “pura” — non lo è mai stata — ma perché oggi i criteri di valore tendono a essere esterni alla conoscenza stessa. 
+Il giudizio scientifico viene mediato da indicatori numerici, e il tempo della ricerca viene sincronizzato con cicli di valutazione amministrativa.
+</p>
+<p>
+La scienza smette di interrogarsi sul proprio statuto epistemologico non per distrazione, ma perché quell’interrogazione non è più funzionale al sistema in cui opera.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Questo giudizio severo mi colpisce molto. Soprattutto perché viene da chi quel sistema lo ha vissuto a lungo e lo ha attraversato con spirito libero e non prevenuto. Ma è indubbio che in alcuni settori quella produttività appare addirittura come una precondizione. 
+</p>
+<p>
+Con questo intendo dire che il giudizio su un qualsiasi ricercatore tiene in massimo conto due fattori: 
+da una parte il livello di produttività misurabile in termini di quantità di <em>paper</em> prodotti e accolti da riviste specializzate; 
+dall’altra, i dati riportati sul <em>citation index</em>. Quanto più il tuo lavoro viene preso in considerazione da studiosi del tuo stesso settore di ricerca, tanto maggiore è la tua credibilità scientifica. 
+</p>
+<p>
+Entrambi questi criteri appaiono ragionevoli e ben fondati. Ma entro questo sistema è del tutto naturale che un giovane ricercatore sia portato a collocarsi in settori già ampiamente consolidati — quelli cosiddetti ‘di punta’ — dove c’è una tradizione riconosciuta. 
+</p>
+<p>
+Spesso, si finisce così per rinunciare a esplorare aree di interesse indubbio ma ancora scarsamente frequentate e molto meno rassicuranti in termini di prospettive di carriera e di accesso ai finanziamenti. E questo non è certo un bene.
+</p>
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Questo è stato a lungo un mio cruccio. 
+I due indicatori che citi — produttività e citazioni — sono esemplari di questa nuova razionalità amministrativa del sapere. Il problema non è che siano in sé sbagliati, ma che misurano solo ciò che è facilmente quantificabile. Premiano la continuità più della rottura, favoriscono la riproduzione dei paradigmi consolidati e scoraggiano implicitamente l’esplorazione di territori nuovi. 
+</p>
+<p>
+Il tuo esempio del giovane ricercatore è illuminante: in un sistema così strutturato, deviare è irrazionale, esplorare è penalizzante, assumersi un rischio epistemico diventa un rischio biografico. 
+La selezione non avviene più a posteriori, sulle idee, ma a priori, sui percorsi. È un cambiamento silenzioso, ma con effetti profondissimi: la scienza diventa prudente proprio là dove storicamente è stata audace.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+C’è un altro aspetto che conosci bene e che è per me altrettanto inquietante. Parlo delle dimensioni abnormi assunte dai progetti di ricerca in alcuni settori dove affluiscono ingenti investimenti finanziari, convergono vaste collaborazioni internazionali e dove si registrano durate decennali degli esperimenti. 
+</p>
+<p>
+Lo stesso Emilio mi faceva notare che in futuro un ricercatore potrà, nel corso della sua vita scientifica, partecipare al massimo alla realizzazione di un paio di esperimenti. 
+Cambia quindi la natura stessa del lavoro di ricerca e questo solleva problemi socio-economici — e finanche psicologici — inimmaginabili fino a qualche decennio fa.
+</p>
+
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Il secondo punto che sollevi, quello dei grandi progetti scientifici, completa il quadro. Nei cosiddetti <em>big science projects</em> il tempo dell’esperimento supera spesso il tempo biografico del singolo ricercatore. La responsabilità è diffusa, l’autorialità si dissolve, il risultato è collettivo, ma la valutazione resta individuale. 
+</p>
+<p>
+Il fatto che un giovane possa partecipare a uno o due grandi esperimenti nell’arco di tutta la sua vita scientifica non è un dettaglio tecnico: è una trasformazione antropologica del lavoro scientifico. 
+</p>
+<p>
+Qui la scienza si avvicina sempre più a una forma di lavoro industriale altamente qualificato; la formazione non prepara più all’invenzione, ma all’inserimento; il sapere diventa un segmento di una catena produttiva.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Con questo torniamo al discorso affrontato in precedenza. È del tutto evidente che in un sistema organizzato in questo modo, la storia diventa un lusso, la filosofia una distrazione, la riflessione critica un costo. Non perché siano false o irrilevanti, ma perché non entrano nei parametri di valutazione. 
+</p>
+<p>
+È qui che la perdita di memoria storica, già diagnosticata da Kuhn come effetto collaterale dei paradigmi, diventa qualcosa di più profondo e più difficile da invertire: un effetto dell’organizzazione produttiva della scienza stessa.
+</p>
+
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Implicitamente mi stai ponendo una domanda che non è né nostalgica né moralistica, ma strutturale: può una scienza organizzata come impresa produttiva conservare una dimensione culturale? Non sto chiedendo se dovrebbe, ma se può. 
+</p>
+<p>
+In tutta franchezza, devo darti una risposta negativa. Ed è proprio qui che tocchiamo il limite del discorso sulla storiografia. Una storiografia critica nasce da un tempo lento, da una distanza, da una libertà rispetto agli output immediati. Se il sistema scientifico non produce più queste condizioni, la storia della scienza diventa inevitabilmente marginale, esterna, tollerata come ornamento.
+</p>
+<p>
+Arriviamo così a un punto fermo molto netto: la crisi della cultura scientifica non nasce nella scuola. Nasce nel modo in cui la scienza è oggi organizzata, valutata e governata. La scuola subisce questo modello. La storiografia lo mette in crisi. Ma il cuore del problema è istituzionale e sistemico.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+La tua risposta sembrerebbe non ammettere repliche. Il sistema scientifico impedisce la crescita di una storiografia critica, la quale quindi tende a diventare marginale, esterna, tollerata come ornamento. 
+</p>
+<p>
+Si tratta, in realtà, di un processo iniziato da alcuni decenni e che ha prodotto un declino della stessa storiografia della scienza, dopo un periodo di fioritura nella seconda metà del secolo scorso. Proprio per questo condivido il tuo pessimismo. 
+</p>
+<p>
+Penso che la partita con la scienza sul fronte della ricerca e della cultura dei ricercatori sia sostanzialmente persa. E a mio avviso sarebbe donchisciottesco tentare di riaprirla.
+</p>
+<p>
+Allora, cosa fare? Perché impegnarsi per una difesa della valenza culturale della scienza? E soprattutto dove la storiografia scientifica può svolgere ancora un proprio ruolo?
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+La tua conclusione è lucida, e direi anche intellettualmente onesta. Riconoscere che una partita è persa su un fronte però non è una resa: è la condizione per smettere di sprecare energie e ridefinire il campo di gioco. 
+</p>
+<p>
+Ed è esattamente così che vanno lette le tue domande: non come un lamento, ma come un tentativo di capire dove abbia ancora senso agire.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Erano domande che ponevo innanzi tutto a me stesso. Nessuno potrebbe rispondere, se non in modo velleitario, con qualche ricetta che ci mostri “come salvare la scienza”. Ammesso, peraltro, che ci sia davvero qualcosa da salvare. 
+</p>
+<p>
+Il mio interrogativo riguardava piuttosto come la storiografia della scienza possa essere ancora decisiva, proprio dopo aver accettato la sconfitta sul terreno che descrivi. 
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Hai ragione su un punto cruciale: la cultura dei ricercatori non è più il luogo in cui si decide il senso della scienza. Non lo è perché le carriere sono iper-strutturate, la valutazione è quantitativa, il tempo riflessivo viene espulso e la memoria storica diventa un costo improduttivo. 
+In questo quadro, tentare di “rieducare” il sistema dall’interno sarebbe davvero donchisciottesco.
+</p>
+<p>
+Ma questa sconfitta, per quanto netta, è anche molto precisa. Riguarda la governance della scienza, non la conoscenza in quanto tale. La scienza come pratica professionale ha vinto sulla scienza come cultura riflessiva, ma la società non coincide con la comunità dei ricercatori. Ed è qui che, a mio avviso, il baricentro va spostato.
+</p>
+<p>
+Se il laboratorio non è più il luogo decisivo, allora il fronte si sposta altrove: nello spazio pubblico, nella formazione generale, nelle istituzioni culturali, nella scuola intesa in senso ampio, nella cittadinanza. 
+</p>
+<p>
+La storiografia della scienza non deve più chiedersi come entrare nella scienza che si fa, ma come rendere intelligibile la scienza a chi la subisce, la finanzia, la teme o la invoca. Questo non è un arretramento, è un cambio di missione.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           </p>
+È importante che un incitamento del genere venga proprio da te. Nel Novecento, nei suoi momenti migliori, la storia della scienza dialogava con la scienza viva, contribuiva a ridefinirne l’immagine interna e partecipava ai grandi dibattiti epistemologici. 
+</p>
+<p>
+Quel tempo, con ogni probabilità, è finito. Oggi il compito possibile — e necessario — è probabilmente un altro: non fondare, ma mediare. Mediare, ma non tra scienziati. Mediare tra scienza e società.
+</p>
+<p>
+Questa funzione di mediazione può assumere forme molto concrete. La prima è forse la più importante: restituire contingenza contro la naturalizzazione. In una società iper-tecnoscientifica, la scienza appare inevitabile, necessaria, neutra, auto-legittimata. 
+</p>
+<p>
+Sono anche convinto che la storiografia possa fare qualcosa che nessun’altra disciplina potrebbe fare con la stessa forza: mostrare che le scelte scientifiche e tecnologiche non erano necessarie. Non intendo delegittimarle; piuttosto penso sia necessario riaprire lo spazio del possibile, restituire responsabilità, spezzare il mito del “non c’era alternativa”. È una funzione eminentemente civile, prima ancora che culturale.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Suggerisco un altro compito, altrettanto decisivo: rendere visibili i costi invisibili della scienza. Il sistema scientifico contemporaneo produce benefici enormi, ma anche effetti collaterali profondi, che il discorso tecnico tende a rimuovere. 
+</p>
+<p>
+La storiografia può ricostruire genealogie di esclusione, far emergere costi umani, sociali e istituzionali, intrecciando la storia della scienza con quella delle istituzioni, del lavoro, delle élite, delle disuguaglianze cognitive. Non è denuncia, è contestualizzazione lunga.
+</p>
+<p>
+Infine, c’è un ulteriore livello che ci riporta, da un punto più profondo, al luogo da cui eravamo partiti. Se la storiografia non può più formare i ricercatori, può però formare cittadini capaci di abitare un mondo scientifico. 
+</p>
+<p>
+Non insegnando che cosa è vero, ma mostrando come si costruisce una verità scientifica; non trasmettendo risultati, ma criteri di intelligibilità; non rassicurando, ma rendendo pensabile la complessità. In questo senso, la storia della scienza diventa una pedagogia indiretta della responsabilità.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Tutto questo, però, difficilmente può accadere nei grandi apparati accademici o nelle riviste specialistiche. Può accadere piuttosto in opere di sintesi ambiziose — e qui, non per nostalgia, il mio modello di riferimento è quello della Treccani — in testi di confine tra storia, saggio civile e racconto, in spazi digitali curati e non effimeri, nella formazione degli insegnanti, in tutti quei luoghi in cui la lentezza è ancora possibile. In altre parole: fuori dal sistema che misura tutto.
+</p>
+
+
+
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            
+<p>
+Arriviamo dunque a una conclusione importante per te, e non soltanto. La partita per la cultura dei ricercatori è probabilmente persa. Ma la partita per il senso pubblico della scienza è apertissima. E lì la storiografia non è un ornamento, ma uno degli ultimi strumenti critici disponibili. 
+</p>
+<p>
+Se rinuncia anche a questo ruolo, la scienza resterà potentissima e culturalmente muta. Se invece lo assume fino in fondo, può ancora fare qualcosa di essenziale: non “salvare la scienza”, ma “salvare lo spazio in cui la scienza può essere pensata”.
+</p>
+
+
+
+
+
+
+
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="02-memoria-storica.html">← 2. La perdita della memoria storica</a>
+<a href="04-scienza-sistema.html">4. La scienza che si fa Sistema →</a>
+</div>
+
+</div>
+<!-- PULSANTE HAMBURGER FISSO -->
+<button id="nav-toggle" aria-label="Apri indice capitoli">☰</button>
+
+<!-- OVERLAY -->
+<div id="nav-overlay"></div>
+
+<!-- DRAWER -->
+<nav id="nav-drawer" aria-label="Indice capitoli">
+  <div class="drawer-header">
+    <span>Indice</span>
+    <button id="nav-close" aria-label="Chiudi indice">✕</button>
+  </div>
+  <ul class="drawer-list">
+    <li class="section-label">Apertura</li>
+    <li><a href="prefazione.html">Prefazione</a></li>
+    <li><a href="prologo.html">Prologo</a></li>
+    <li class="section-label">Capitoli</li>
+    <li><a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve</a></li>
+    <li><a href="02-memoria-storica.html">2. La perdita della memoria storica</a></li>
+    <li><a href="03-raccontare-scienza.html" class="current">3. Come raccontare la scienza</a></li>
+    <li><a href="04-scienza-sistema.html">4. La scienza che si fa Sistema</a></li>
+    <li><a href="05-avvento-tecnoscienze.html">5. L'avvento delle tecnoscienze</a></li>
+    <li><a href="06-scegliere-democrazia.html">6. Scegliere la democrazia?</a></li>
+    <li><a href="07-tecnoscienze-democrazia.html">7. Tecnoscienze vs democrazia</a></li>
+    <li><a href="08-messaggio-bottiglia.html">8. Un messaggio nella bottiglia</a></li>
+    <li><a href="09-domani.html">9. Livia e Olivia, domani</a></li>
+    <li class="section-label">Chiusura</li>
+    <li><a href="conclusione.html">In luogo di una conclusione</a></li>
+    <li><a href="post_scriptum.html">Post Scriptum</a></li>
+    <li><a href="personaggi.html">I personaggi</a></li>
+    <li><a href="indicazioni.html">Indicazioni di lettura</a></li>
+  </ul>
+</nav>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const overlay = document.getElementById('nav-overlay');
+const drawer = document.getElementById('nav-drawer');
+const close = document.getElementById('nav-close');
+
+function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+toggle.addEventListener('click', openDrawer);
+close.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+</script>
+
+</body>
+</html>

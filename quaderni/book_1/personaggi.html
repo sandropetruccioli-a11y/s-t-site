@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I personaggi</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* TITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO INTRODUTTIVO */
+
+.chapter-text {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p { margin: 0 0 1.15em; }
+
+/* SEZIONE PERSONAGGI */
+
+.persona-section {
+    margin-top: 2rem;
+}
+
+.persona-section-label {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(10,70,82,0.2);
+}
+
+.persona-entry {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-size: 1.08rem;
+    line-height: 1.72;
+    margin-bottom: 1.4rem;
+}
+
+.persona-alias {
+    font-style: italic;
+    color: var(--muted);
+}
+
+.persona-name {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* CITAZIONI IN FONDO */
+
+.citations-section {
+    margin-top: 2.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.citations-title {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.citations-section p {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 0.8em;
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+    .chapter-text {
+        font-size: 1.02rem;
+        line-height: 1.55;
+    }
+
+    .chapter-title {
+        font-size: 1.35rem;
+        margin-bottom: 20px;
+    }
+
+    .persona-entry {
+        font-size: 1.02rem;
+        line-height: 1.58;
+    }
+
+    .chapter-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .chapter-nav a:last-child {
+        text-align: right;
+    }
+
+}
+
+/* SEPARATORE */
+
+.chapter-separator {
+    margin-top: 36px;
+    border: none;
+    border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+
+.chapter-nav a {
+    text-decoration: none;
+    color: var(--muted);
+}
+
+.chapter-nav a:hover { color: var(--accent); }
+
+/* PULSANTE STAMPA */
+
+.chapter-tools {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.print-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.print-button:hover { color: var(--accent); }
+
+.print-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* DRAWER NAVIGAZIONE */
+
+#nav-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#nav-toggle:hover { background: var(--muted); }
+
+#nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,30,35,0.38);
+    z-index: 1001;
+}
+
+#nav-overlay.open { display: block; }
+
+#nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: #fff;
+    z-index: 1002;
+    transition: right 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(10,70,82,0.15);
+    overflow: hidden;
+}
+
+#nav-drawer.open { right: 0; }
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgba(10,70,82,0.12);
+}
+
+.drawer-header span {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+#nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 20px;
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+#nav-close:hover { color: var(--accent); }
+
+.drawer-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.drawer-list li a {
+    display: block;
+    padding: 10px 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+}
+
+.drawer-list li a:hover { background: rgba(10,70,82,0.06); }
+
+.drawer-list li a.current {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(10,70,82,0.05);
+}
+
+.drawer-list li.section-label {
+    padding: 14px 20px 4px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+/* STAMPA */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body { background: white; color: black; }
+
+    .chapter-container { max-width: none; margin: 0; padding: 0; }
+
+    .chapter-title { font-size: 16pt; }
+
+    .back-link, .chapter-nav, .print-button, .chapter-separator,
+    #nav-toggle, #nav-overlay, #nav-drawer { display: none; }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button" onclick="window.print()" aria-label="Stampa">
+<svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"
+     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+</svg>
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">I personaggi</h1>
+
+<div class="chapter-text">
+<p>
+Alcuni dei personaggi che compaiono in questo dialogo appartengono alla vita privata dell'autore, altri alla storia della scienza del Novecento. Altri ancora occupano una posizione intermedia, in cui esperienza personale e memoria pubblica si intrecciano.
+</p>
+</div>
+
+<!-- PERSONAGGI PRIVATI -->
+
+<div class="persona-section">
+
+<div class="persona-section-label">Personaggi</div>
+
+<div class="persona-entry">
+<span class="persona-alias">Livia</span> è <span class="persona-name">Livia Battaglia</span>, ha dodici anni e frequenta la prima media.
+</div>
+
+<div class="persona-entry">
+<span class="persona-alias">Olivia</span> è <span class="persona-name">Olivia Petrocchi</span>, ha undici anni e frequenta la prima media.
+</div>
+
+<div class="persona-entry">
+<span class="persona-alias">Emilio</span> è <span class="persona-name">Emilio Petrolo</span> (1945), ricercatore nel campo della fisica delle particelle elementari. Ha partecipato alla collaborazione UA1, diretta da Carlo Rubbia, per la ricerca dei bosoni W e Z ed alla collaborazione ATLAS presso il CERN, per la ricerca del Bosone di Higgs.
+</div>
+
+<div class="persona-entry">
+<span class="persona-alias">Roberto</span> è <span class="persona-name">Roberto Purini</span> (1945), fisico e oceanografo. Ha diretto gruppi di ricerca in oceanografia e climatologia presso il Consiglio Nazionale delle Ricerche ed è stato Delegato Nazionale presso la Commissione Oceanografica Intergovernativa (IOC) dell'UNESCO.
+</div>
+
+</div>
+
+<!-- SCIENZIATI STORICI -->
+
+<div class="persona-section">
+
+<div class="persona-section-label">Scienziati del Novecento</div>
+
+<div class="persona-entry">
+<span class="persona-name">Gaetano Fichera</span> (1922–1996), figura di primo piano della matematica italiana del XX secolo. È noto soprattutto per i suoi contributi all'analisi matematica, all'elasticità lineare e alle equazioni differenziali alle derivate parziali. Ha insegnato Analisi matematica e Analisi superiore all'Università di Roma.
+</div>
+
+<div class="persona-entry">
+<span class="persona-name">Edoardo Amaldi</span> (1908–1989), negli anni Trenta lavorò con Enrico Fermi alla scoperta dei neutroni lenti, che gettò le basi per l'energia nucleare e la fissione. Svolse ricerche in fisica delle particelle e nel campo delle onde gravitazionali, ed ebbe un ruolo determinante nella costruzione dell'infrastruttura della grande ricerca europea, dal CERN all'ESA.
+</div>
+
+<div class="persona-entry">
+<span class="persona-name">Marcello Conversi</span> (1917–1988), fisico sperimentale, ebbe un ruolo fondamentale nell'introduzione dell'informatica elettronica in Italia. Il suo nome è legato in particolare all'esperimento del 1944 condotto insieme a Ettore Pancini e Oreste Piccioni, il cui risultato, come riconobbe il premio Nobel Luis Alvarez, segnò l'inizio della moderna fisica delle particelle.
+</div>
+
+<div class="persona-entry">
+<span class="persona-name">Nicola Cabibbo</span> (1935–2010), fisico teorico di fama mondiale. Il suo lavoro ha gettato le basi per la moderna comprensione dell'interazione debole nella fisica delle particelle. È noto soprattutto per aver introdotto il cosiddetto 'angolo di Cabibbo', una costante fondamentale che descrive la miscelazione dei diversi "sapori" dei quark.
+</div>
+
+<div class="persona-entry">
+<span class="persona-alias">Gianni</span> è <span class="persona-name">Giovanni Jona-Lasinio</span> (1932), ha dato contributi fondamentali alla teoria del gruppo di rinormalizzazione e alla teoria delle transizioni di fase. Nel 1961, formulò insieme a Yoichiro Nambu la teoria quantistica dei campi che introduce il concetto di rottura spontanea di simmetria. Nel 2008, per il modello di Nambu–Jona-Lasinio, Yoichiro Nambu è stato insignito del premio Nobel per la fisica.
+</div>
+
+<div class="persona-entry">
+<span class="persona-alias">Giorgio</span> è <span class="persona-name">Giorgio Parisi</span> (1948), fisico teorico noto per i suoi lavori sulla teoria quantistica dei campi, sulla meccanica statistica e sui sistemi complessi. Nel 2021 è stato insignito del premio Nobel per la fisica "per la scoperta dell'interazione tra disordine e fluttuazioni nei sistemi fisici, dal livello atomico alla scala planetaria".
+</div>
+
+</div>
+
+<!-- AUTORE E PERSONAGGIO DI FINZIONE -->
+
+<div class="persona-section">
+
+<div class="persona-section-label">Infine</div>
+
+<div class="persona-entry">
+<span class="persona-alias">Sandro</span> è <span class="persona-name">Sandro Petruccioli</span> (1947), professore di Storia della scienza e direttore dell'opera Treccani. <em>Storia della scienza</em> (10 volumi), insignita della Médaille Alexandre Koyré dall'Académie Internationale d'Histoire des Sciences.
+</div>
+
+<div class="persona-entry">
+<span class="persona-alias">Alessandra</span> è l'unico personaggio di finzione. Non è però una figura arbitraria né un espediente narrativo. Non è la maschera di una persona reale, né la somma di più biografie riconoscibili. È una costruzione intenzionale: una voce che rende possibile il dialogo, incarnando dall'interno il punto di vista della scienza nel momento in cui essa diventa oggetto di interrogazione critica. Alessandra non chiede di essere riconosciuta, ma ascoltata.
+</div>
+
+</div>
+
+<!-- CITAZIONI -->
+
+<div class="citations-section">
+<div class="citations-title">Le citazioni</div>
+<p>Nel corso del dialogo compaiono alcune citazioni testuali o riferimenti puntuali a documenti e opere specifiche.</p>
+<p>pag. 47 e segg.: S. Petruccioli, "La storia della scienza Treccani", in <em>Storia della scienza</em>, Roma, Istituto della Enciclopedia Italiana, 10 voll., 2000-2004, vol. I, pp. XVIII-XIX.</p>
+<p>pag. 102 e segg.: OpenAI, <em>Planning for AGI and Beyond</em>,<br>
+<a href="https://openai.com/index/planning-for-agi-and-beyond/" style="color:var(--muted);">https://openai.com/index/planning-for-agi-and-beyond/</a><br>
+</p>
+<p>pag. 116 e segg.: G. Parisi, <em>Le simmetrie nascoste</em>, Milano, Rizzoli, 2026, pp. 256-261.</p>
+</div>
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="conclusione.html">← In luogo di una conclusione</a>
+<a href="indicazioni.html">Indicazioni di lettura →</a>
+</div>
+
+</div>
+
+<!-- PULSANTE HAMBURGER FISSO -->
+<button id="nav-toggle" aria-label="Apri indice capitoli">☰</button>
+
+<!-- OVERLAY -->
+<div id="nav-overlay"></div>
+
+<!-- DRAWER -->
+<nav id="nav-drawer" aria-label="Indice capitoli">
+  <div class="drawer-header">
+    <span>Indice</span>
+    <button id="nav-close" aria-label="Chiudi indice">✕</button>
+  </div>
+  <ul class="drawer-list">
+    <li class="section-label">Apertura</li>
+    <li><a href="prefazione.html">Prefazione</a></li>
+    <li><a href="prologo.html">Prologo</a></li>
+    <li class="section-label">Capitoli</li>
+    <li><a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve</a></li>
+    <li><a href="02-memoria-storica.html">2. La perdita della memoria storica</a></li>
+    <li><a href="03-raccontare-scienza.html">3. Come raccontare la scienza</a></li>
+    <li><a href="04-scienza-sistema.html">4. La scienza che si fa Sistema</a></li>
+    <li><a href="05-avvento-tecnoscienze.html">5. L'avvento delle tecnoscienze</a></li>
+    <li><a href="06-scegliere-democrazia.html">6. Scegliere la democrazia?</a></li>
+    <li><a href="07-tecnoscienze-democrazia.html">7. Tecnoscienze vs democrazia</a></li>
+    <li><a href="08-messaggio-bottiglia.html">8. Un messaggio nella bottiglia</a></li>
+    <li><a href="09-domani.html">9. Livia e Olivia, domani</a></li>
+    <li class="section-label">Chiusura</li>
+    <li><a href="conclusione.html">In luogo di una conclusione</a></li>
+    <li><a href="post_scriptum.html">Post Scriptum</a></li>
+    <li><a href="personaggi.html" class="current">I personaggi</a></li>
+    <li><a href="indicazioni.html">Indicazioni di lettura</a></li>
+  </ul>
+</nav>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const overlay = document.getElementById('nav-overlay');
+const drawer = document.getElementById('nav-drawer');
+const close = document.getElementById('nav-close');
+
+function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+toggle.addEventListener('click', openDrawer);
+close.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+</script>
+
+</body>
+</html>

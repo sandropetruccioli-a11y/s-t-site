@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7. Tecnoscienze vs democrazia</title>
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* TITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO */
+
+.chapter-text {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-style: normal;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p { margin: 0 0 1.15em; }
+
+/* CAPOLETTERA SOLO TESTI NON DIALOGICI */
+
+.chapter-text:not(.dialogue) p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* DIALOGO */
+
+.dialogue { margin-top: 8px; }
+
+.turn { margin-bottom: 1.35rem; }
+
+.speaker {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.28rem;
+}
+
+.speech p { margin: 0 0 0.75em; }
+
+/* CITAZIONE LUNGA */
+
+.citation-block {
+    margin: 1.4em 0;
+    padding: 0.9em 1.2em 0.9em 1.4em;
+    border-left: 3px solid var(--accent);
+    background: rgba(10,70,82,0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.citation-block p {
+    margin: 0 0 0.6em;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.citation-block p:last-of-type { margin-bottom: 0; }
+
+.citation-source {
+    display: block;
+    margin-top: 0.75em;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+/* DESKTOP */
+
+@media (min-width:700px){
+
+    .turn{
+        display:grid;
+        grid-template-columns:110px 1fr;
+        column-gap:18px;
+        align-items:start;
+    }
+
+    .speaker{
+        margin-bottom:0;
+        padding-top:0.15em;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+    .chapter-text{
+        font-size:1.02rem;
+        line-height:1.55;
+    }
+
+    .chapter-title{
+        font-size:1.35rem;
+        margin-bottom:20px;
+    }
+
+    .turn{
+        display:block;
+        margin-bottom:1rem;
+    }
+
+    .speaker{
+        font-size:0.8rem;
+        margin-bottom:0.2rem;
+    }
+
+    .speech p{
+        margin:0 0 0.55em;
+    }
+
+    .speech {
+        padding-left: 6px;
+        border-left: 2px solid rgba(10,70,82,0.15);
+    }
+
+    .citation-block {
+        padding: 0.75em 0.9em 0.75em 1em;
+        border-left-width: 2px;
+        margin: 1em 0;
+    }
+
+    .citation-block p { font-size: 0.97rem; line-height: 1.58; }
+
+    .citation-source { font-size: 0.75rem; }
+
+    .chapter-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .chapter-nav a:last-child {
+        text-align: right;
+    }
+
+}
+
+/* SEPARATORE */
+
+.chapter-separator{
+    margin-top:36px;
+    border:none;
+    border-top:1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+    font-size:0.9rem;
+}
+
+.chapter-nav a{
+    text-decoration:none;
+    color:var(--muted);
+}
+
+.chapter-nav a:hover{ color:var(--accent); }
+
+/* PULSANTE STAMPA */
+
+.chapter-tools{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+
+.print-button{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:none;
+    background:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:0.85rem;
+}
+
+.print-button:hover{ color:var(--accent); }
+
+.print-icon{
+    width:16px;
+    height:16px;
+}
+
+/* DRAWER NAVIGAZIONE */
+
+#nav-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#nav-toggle:hover { background: var(--muted); }
+
+#nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,30,35,0.38);
+    z-index: 1001;
+}
+
+#nav-overlay.open { display: block; }
+
+#nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: #fff;
+    z-index: 1002;
+    transition: right 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(10,70,82,0.15);
+    overflow: hidden;
+}
+
+#nav-drawer.open { right: 0; }
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgba(10,70,82,0.12);
+}
+
+.drawer-header span {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+#nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 20px;
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+#nav-close:hover { color: var(--accent); }
+
+.drawer-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.drawer-list li a {
+    display: block;
+    padding: 10px 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+}
+
+.drawer-list li a:hover { background: rgba(10,70,82,0.06); }
+
+.drawer-list li a.current {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(10,70,82,0.05);
+}
+
+.drawer-list li.section-label {
+    padding: 14px 20px 4px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+/* STILE DI STAMPA */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
+
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+    }
+
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator,
+    #nav-toggle,
+    #nav-overlay,
+    #nav-drawer {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Stampa capitolo">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">7. Tecnoscienze vs democrazia</h1>
+
+<div class="chapter-text dialogue">
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Siamo arrivati a un punto delicato: la tecnoscienza, presa tra autoritarismi “razionali” e società liberal-democratiche. 
+Fin qui abbiamo lavorato soprattutto sul piano teorico. È il momento di vedere più da vicino come le tecnoscienze operano concretamente e come stanno trasformando la nostra vita. 
+</p>
+<p>
+Prendo il caso dell’AI sia per la centralità che ha ormai assunto, sia perché ho l’occasione di parlarne con chi la conosce dall’interno e si è sporcata le mani con molti dei problemi di cui vorrei discutere.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Quando ero ormai stabilmente inserita nei gruppi di ricerca del Cern, mi fu fatta una proposta che sul momento mi lasciò perplessa. All’epoca acronimi come LLM erano conosciuti solo da un ristretto gruppo di specialisti. 
+</p>
+<p>
+Le mie ricerche di fisica matematica erano quanto mai distanti dalle competenze richieste per progetti che puntavano addirittura alla costruzione di un’AGI. 
+</p>
+<p>
+Mi veniva chiesto di coordinare un gruppo dove accanto alle prevedibili competenze tecnologiche, entravano linguisti, logici, filosofi, economisti, sociologi, politologi. Accettare voleva dire reinventarsi anche culturalmente, aprirsi a studi che finora avevo attraversato soltanto per un’innata forma di curiosità intellettuale. 
+</p>
+<p>
+Prevalse la stanchezza di sentirmi ormai appagata per i risultati raggiunti e protetta in un ambiente particolarmente accogliente. Ma soprattutto mi attirò la sfida. Ricominciare un percorso che mi costringeva a proiettarmi verso il futuro. 
+</p>
+<p>
+Fu una scommessa rischiosa, ma non mi pento della scelta: mi ha profondamente cambiata, e nel modo in cui oggi guardo al rapporto tra conoscenza, potere e futuro — che è poi il cuore di ciò che stiamo per discutere.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+         <p>
+Ho qui un documento recente di una delle principali società attive nel campo della AI, dove tra l’altro sono prospettati alcuni scenari futuri. Mi sembra un buon punto di partenza per la nostra chiacchierata. </p>
+
+
+<blockquote class="citation-block">
+<p>
+La nostra missione è garantire che l’intelligenza artificiale generale (AGI), ovvero sistemi di IA generalmente più intelligenti degli esseri umani, apporti benefici all’umanità intera. Se l’AGI venisse creata con successo, questa tecnologia potrebbe aiutarci a elevare l’umanità aumentando l’abbondanza, potenziando l’economia globale e contribuendo alla scoperta di nuove conoscenze scientifiche che cambiano i limiti delle possibilità. L’AGI ha il potenziale per dare a tutti incredibili nuove capacità; possiamo immaginare un mondo in cui tutti noi abbiamo accesso ad un aiuto per quasi tutte le attività cognitive, fornendo un grande moltiplicatore di forza per l’ingegno e la creatività umani. D’altra parte, l’AGI comporterebbe anche un serio rischio di abuso, incidenti drammatici e disgregazione sociale. Poiché i vantaggi dell’AGI sono così grandi, non crediamo che sia possibile o auspicabile per la società fermarne lo sviluppo per sempre; invece, la società e gli sviluppatori dell’AGI devono capire come farlo funzionare correttamente. </p>
+<p>
+Sebbene non sia possibile prevedere con esattezza cosa accadrà e, naturalmente, i progressi attuali potrebbero incontrare ostacoli, possiamo articolare i principi che ci stanno più a cuore. Vogliamo che l’AGI consenta all’umanità di prosperare al massimo nell’universo. Non ci aspettiamo che il futuro sia un’utopia senza riserve, ma vogliamo massimizzare gli aspetti positivi e minimizzare quelli negativi, affinché l’AGI sia un amplificatore dell’umanità. Vogliamo che i benefici, l’accesso e la governance dell’AGI siano condivisi in modo ampio ed equo. Vogliamo affrontare con successo i rischi enormi. Nel confrontarci con questi rischi, riconosciamo che ciò che sembra giusto in teoria spesso si rivela più strano del previsto nella pratica. Crediamo di dover continuare ad apprendere e ad adattarci implementando versioni meno potenti della tecnologia, al fine di ridurre al minimo gli scenari in cui “si ha una sola possibilità per fare bene”.</p>
+<p>
+<em>Il breve termine</em></p>
+<p>
+Ci sono diverse cose che riteniamo importanti da fare ora per prepararci all’AGI.</p>
+<p>
+In primo luogo, man mano che creiamo sistemi sempre più potenti, vogliamo implementarli e acquisire esperienza nel loro funzionamento nel mondo reale. Crediamo che questo sia il modo migliore per gestire con attenzione la nascita dell’AGI: una transizione graduale verso un mondo con l’AGI è preferibile a una transizione improvvisa. Prevediamo che l’IA potente accelererà notevolmente il ritmo del progresso nel mondo e riteniamo che sia meglio adattarsi a questo cambiamento in modo incrementale.</p>
+<p>
+Una transizione graduale dà alle persone, ai responsabili politici e alle istituzioni il tempo di capire cosa sta succedendo, di sperimentare personalmente i vantaggi e gli svantaggi di questi sistemi, di adattare la nostra economia e di mettere in atto una regolamentazione. Consente inoltre alla società e all’IA di co-evolversi e alle persone di capire collettivamente cosa vogliono mentre la posta in gioco è relativamente bassa.</p>
+<p>
+Attualmente riteniamo che il modo migliore per affrontare con successo le sfide legate all’implementazione dell’IA sia un ciclo di feedback serrato, caratterizzato da un apprendimento rapido e da un’attenta iterazione. La società dovrà affrontare questioni importanti su ciò che i sistemi di IA sono autorizzati a fare, su come combattere i pregiudizi, su come affrontare la sostituzione dei posti di lavoro e altro ancora. Le decisioni ottimali dipenderanno dal percorso che la tecnologia intraprenderà e, come in ogni nuovo campo, la maggior parte delle previsioni degli esperti si sono rivelate errate finora. Ciò rende molto difficile pianificare in un contesto isolato.</p>
+<p>
+In generale, riteniamo che un maggiore utilizzo dell’IA nel mondo porterà a risultati positivi e desideriamo promuoverlo (inserendo modelli nella nostra API, rendendoli open source, ecc.). Crediamo che un accesso democratizzato porterà anche a una ricerca più ampia e migliore, a un potere decentralizzato, a maggiori benefici e a un gruppo più ampio di persone che contribuiscono con nuove idee.</p>
+<p>
+Man mano che i nostri sistemi si avvicinano all’AGI, stiamo diventando sempre più cauti nella creazione e nell’implementazione dei nostri modelli. Le nostre decisioni richiederanno molta più cautela di quella che la società applica solitamente alle nuove tecnologie e più cautela di quella che molti utenti vorrebbero. Alcuni esperti nel campo dell’IA ritengono che i rischi dell’AGI (e dei sistemi successivi) siano fittizi; saremmo lieti se avessero ragione, ma opereremo come se questi rischi fossero reali⁠ (si apre in una nuova finestra).</p>
+<p>
+Ad un certo punto, l’equilibrio tra i vantaggi e gli svantaggi delle implementazioni (come il potenziamento di attori malintenzionati, la creazione di perturbazioni sociali ed economiche e l’accelerazione di una corsa pericolosa) potrebbe cambiare, nel qual caso modificheremmo in modo significativo i nostri piani relativi all’implementazione continua.</p>
+<p>
+“Man mano che i nostri sistemi si avvicinano all’AGI, stiamo diventando sempre più cauti nella creazione e nell’implementazione dei nostri modelli”.
+In secondo luogo, stiamo lavorando alla creazione di modelli sempre più allineati e guidabili. Il nostro passaggio da modelli come la prima versione di GPT-3 a InstructGPT⁠ e ChatGPT⁠(si apre in una nuova finestra) ne è un primo esempio.</p>
+<p>
+In particolare, riteniamo importante che la società concordi su limiti estremamente ampi per l’utilizzo dell’IA, ma che all’interno di tali limiti i singoli utenti abbiano ampia discrezionalità. La nostra speranza finale è che le istituzioni mondiali concordino su quali debbano essere questi limiti ampi; nel breve termine prevediamo di condurre esperimenti per ottenere input esterni. Le istituzioni mondiali dovranno essere rafforzate con ulteriori capacità ed esperienza per essere preparate a decisioni complesse sull’AGI.</p>
+<p>
+L’impostazione predefinita dei nostri prodotti sarà probabilmente piuttosto limitata, ma intendiamo rendere facile per gli utenti modificare il comportamento dell’IA che stanno utilizzando. Crediamo nell’importanza di consentire alle persone di prendere le proprie decisioni e nel potere intrinseco della diversità delle idee.</p>
+<p>
+Man mano che i nostri modelli diventeranno più potenti, dovremo sviluppare nuove tecniche di allineamento (e test per capire quando le nostre tecniche attuali non funzionano). Il nostro piano a breve termine è quello di utilizzare l’IA per aiutare gli esseri umani a valutare i risultati di modelli più complessi e monitorare sistemi complessi, mentre a lungo termine intendiamo utilizzare l’IA per aiutarci a trovare nuove idee per tecniche di allineamento migliori.</p>
+<p>
+È importante sottolineare che riteniamo spesso necessario compiere progressi sia nella sicurezza che nelle capacità dell’IA. È una falsa dicotomia parlarne separatamente, poiché sono correlati in molti modi. Il nostro miglior lavoro in materia di sicurezza è derivato dall’utilizzo dei nostri modelli più avanzati. Detto questo, è importante che il rapporto tra i progressi in materia di sicurezza e quelli in materia di capacità aumenti.
+In terzo luogo, auspichiamo un dibattito globale su tre questioni fondamentali: come governare questi sistemi, come distribuire equamente i benefici che generano e come condividerne equamente l’accesso.</p>
+<p>
+Oltre a questi tre ambiti, abbiamo cercato di strutturarci in modo da allineare i nostri incentivi a un risultato positivo. Nel nostro statuto abbiamo inserito una clausola che prevede di assistere altre organizzazioni nel promuovere la sicurezza invece di competere con loro nello sviluppo dell’AGI in fase avanzata. Abbiamo fissato un limite ai rendimenti che i nostri azionisti possono ottenere, in modo da non essere incentivati a cercare di acquisire valore senza limiti e rischiare di implementare qualcosa di potenzialmente catastrofico (e, naturalmente, come modo per condividere i benefici con la società). Abbiamo un’organizzazione senza scopo di lucro che ci governa e ci permette di operare per il bene dell’umanità (e può prevalere su qualsiasi interesse di lucro), consentendoci anche di fare cose come cancellare i nostri obblighi azionari nei confronti degli azionisti, se necessario per motivi di sicurezza, e sponsorizzare l’esperimento di reddito di base universale più completo al mondo.</p>
+<p>
+“Abbiamo cercato di impostare la nostra struttura in modo da allineare i nostri incentivi a un risultato positivo”.</p>
+<p>
+Riteniamo importante che iniziative come la nostra siano sottoposte a revisioni indipendenti prima di rilasciare nuovi sistemi; ne parleremo più dettagliatamente nel corso dell’anno. A un certo punto, potrebbe essere importante ottenere una revisione indipendente prima di iniziare ad addestrare i sistemi futuri e che gli sforzi più avanzati accettino di limitare il tasso di crescita della potenza di calcolo utilizzata per creare nuovi modelli. Riteniamo importanti gli standard pubblici che stabiliscono quando uno sforzo di AGI dovrebbe interrompere un ciclo di addestramento, decidere che un modello è sicuro da rilasciare o ritirare un modello dall’uso produttivo. Infine, riteniamo importante che i principali governi mondiali abbiano una visione d’insieme dei cicli di addestramento al di sopra di una certa scala.</p>
+<p>
+<em>Il lungo termine</em></p>
+<p>
+Crediamo che il futuro dell’umanità debba essere determinato dall’umanità stessa e che sia importante condividere con il pubblico le informazioni sui progressi compiuti. Tutti i progetti che tentano di costruire un’AGI dovrebbero essere sottoposti a un attento esame e le decisioni importanti dovrebbero essere oggetto di consultazione pubblica.</p>
+<p>
+La prima AGI sarà solo un punto lungo il continuum dell’intelligenza. Riteniamo probabile che i progressi continueranno da lì, mantenendo forse per un lungo periodo il ritmo che abbiamo visto nell’ultimo decennio. Se così fosse, il mondo potrebbe diventare estremamente diverso da com’è oggi e i rischi potrebbero essere straordinari. Un’AGI superintelligente non allineata potrebbe causare gravi danni al mondo; lo stesso potrebbe fare un regime autocratico con un vantaggio decisivo in termini di superintelligenza.</p>
+<p>
+L’IA in grado di accelerare la scienza è un caso speciale su cui vale la pena riflettere e che forse ha un impatto maggiore di qualsiasi altra cosa. È possibile che un’AGI sufficientemente capace da accelerare il proprio progresso possa causare cambiamenti importanti in modo sorprendentemente rapido (e anche se la transizione iniziasse lentamente, prevediamo che nelle fasi finali avverrebbe piuttosto rapidamente). Riteniamo che un decollo più lento sia più facile da rendere sicuro, e il coordinamento tra gli sforzi dell’AGI per rallentare nei momenti critici sarà probabilmente importante (anche in un mondo in cui non è necessario farlo per risolvere i problemi di allineamento tecnico, rallentare potrebbe essere importante per dare alla società il tempo sufficiente per adattarsi).</p>
+<p>
+Il passaggio riuscito a un mondo con la superintelligenza è forse il progetto più importante, promettente e spaventoso della storia umana. Il successo è tutt’altro che garantito e la posta in gioco (svantaggi illimitati e vantaggi illimitati) speriamo possa unirci tutti.
+Possiamo immaginare un mondo in cui l’umanità prospera in una misura che probabilmente nessuno di noi è ancora in grado di visualizzare completamente. Speriamo di contribuire al mondo con un’AGI in linea con tale prosperità.
+</p>
+
+
+</blockquote>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+       <p>
+Richiamo la tua attenzione su questo passaggio del documento: “Crediamo che il futuro dell’umanità debba essere determinato dall’umanità stessa e che sia importante condividere con il pubblico le informazioni sui progressi compiuti. Tutti i progetti che tentano di costruire un’AGI dovrebbero essere sottoposti a un attento esame e le decisioni importanti dovrebbero essere oggetto di consultazione pubblica.” 
+</p>
+<p>
+Anche coloro che progettano e gestiscono i sistemi di IA si appellano a forme di controllo democratico, nel tentativo di scongiurare derive capaci di compromettere l’intera umanità. 
+Non ti sembra che questo entri in contrasto con quanto abbiamo detto sulla collocazione delle tecnoscienze e sulla loro presunta predilezione per forme di autoritarismo “razionale”? 
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Non ci viene detto che la democrazia è l’esito di una scelta, ma la condizione stessa per lo sviluppo di un settore strategico delle tecnoscienze. La contraddizione che individui esiste, ma non è un’incoerenza occasionale. È una tensione strutturale, e proprio per questo è così rivelatrice. Vale la pena fermarcisi sopra, perché aiuta a capire meglio dove siamo davvero.
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+       <p>
+Provo a ricordare dove il nostro dialogo ci aveva condotto. Le tecnoscienze tendono a convergere con forme di autoritarismo razionale; le società liberal-democratiche sembrerebbero sempre meno attrezzate per governare processi scientifici e tecnologici caratterizzati da altissima complessità, velocità e scala; e, quasi sempre, il controllo democratico arriva tardi, quando le decisioni decisive sono già state prese altrove.
+</p>
+<p>
+L’autorevole documento che abbiamo letto afferma esplicitamente che il futuro dell’umanità dovrebbe essere determinato dall’umanità stessa e che le decisioni importanti dovrebbero essere oggetto di consultazione pubblica. 
+</p>
+<p>
+Letto così, sembra quasi una smentita diretta di una tesi che consideravamo consolidata: le tecnoscienze non legittimerebbero l’autoritarismo, ma anzi chiamerebbero in causa proprio la democrazia e le sue forme di controllo.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+         <p>
+Il punto decisivo, però, è che qui non stiamo parlando della stessa cosa quando diciamo “democrazia”.
+</p>
+<p>
+Per loro, è una democrazia collocata a valle: consultazione sui principi generali, trasparenza sugli orientamenti, forme di governance ex post, rafforzamento delle istituzioni perché riescano a stare al passo. 
+</p>
+<p>
+Tutto questo è importante. Ma non tocca il nodo centrale. 
+Non viene mai messa in questione una deliberazione democratica sui tempi, né una decisione collettiva sull’opportunità stessa di sviluppare certe tecnologie. 
+Non si parla di un veto pubblico sulle direzioni di ricerca, né di una reale sovranità democratica sulle infrastrutture materiali — calcolo, dati, capitale, concentrazione dei talenti.
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Allora, alla democrazia verrebbe chiesto soltanto di legittimare, mai di decidere. E questa contrazione del suo ambito di intervento non avverrebbe in malafede, né per ideologia, ma come necessità strutturale.  
+</p>
+<p>
+Mi stai dicendo che un controllo democratico pieno, che possa dire anche “no”, o “non ora”, o “non così”, metterebbe in crisi il funzionamento stesso del sistema.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Esatto. Proprio qui il concetto di autoritarismo “razionale” smette di sembrare un ossimoro. Non è un’autorità che dice “obbedite perché lo vogliamo”, né “è giusto perché lo diciamo noi”. 
+</p>
+<p>
+Dice piuttosto: è necessario, è troppo complesso per essere discusso pubblicamente, non decidere ora sarebbe irresponsabile, i rischi dell’inazione sono maggiori di quelli dell’azione. 
+È un’autorità che non si fonda sulla forza, ma su un’asimmetria cognitiva profonda. 
+</p>
+<p>
+La tecnoscienza non solo produce questa asimmetria, ma la rende strutturale e la accelera. Anche quando invoca la consultazione pubblica, lo fa dentro un quadro che è già stato definito altrove.
+</p>
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+       <p>
+Da qui nasce il paradosso più inquietante. 
+Le tecnoscienze hanno bisogno della legittimazione democratica, ma non possono funzionare sotto un controllo democratico pieno. 
+</p>
+<p>
+Richiamo un concetto sul quale hai insistito a più riprese. La democrazia è lenta, conflittuale, reversibile, opaca dal punto di vista decisionale. La tecnoscienza, invece, è cumulativa, tendenzialmente irreversibile, accelerata, iper-specialistica. 
+</p>
+<p>
+Soltanto per questo motivo, la convergenza con forme autoritarie non è ideologica: è funzionale. E questo sarebbe vero anche quando gli attori in gioco sono animati dalle migliori intenzioni.
+</p>
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Questo paradosso resta, anche per me, sospeso. 
+</p>
+<p>
+Posso soltanto soffermarmi sulla domanda, che hai posto in precedenza, se le tecnoscienze siano complici, beneficiarie o prigioniere di questo processo, e la risposta più onesta che posso dare è questa: tutte e tre le cose insieme. 
+</p>
+<p>
+Operano attivamente nella legittimazione perché producono criteri di necessità; ne traggono vantaggio in termini di risorse, velocità e continuità; e allo stesso tempo non dispongono davvero degli strumenti per opporsi, perché l’opposizione richiederebbe un rallentamento che il sistema non consente. 
+È forse qui che la scienza contemporanea mostra uno dei suoi nodi strutturali più difficili da sciogliere.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+        <p>
+Non solo le tecnoscienze, ma le scienze in generale, oggi come nel passato, non possono essere soggette a una sorta di controllo o di validazione di tipo democratico. 
+Gli indirizzi di ricerca o i progetti da sviluppare in qualsiasi ambito disciplinare non possono essere ‘decisi a maggioranza’. 
+</p>
+<p>
+In tutti i sistemi scientifici, non soltanto in quelli che ricadono in ciò che chiami tecnoscienze, esistono board estremamente ristretti e qualificati che decidono strategie e obiettivi per il futuro anche lontano. 
+Qui vale per tutti l’esempio della fisica delle particelle elementari e in particolare il Cern, che conosci a fondo. Questi board hanno un potere enorme in quanto è soltanto la loro parola a legittimare la concessione dei finanziamenti da parte dei governi. 
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+         <p>
+Attenzione a non generalizzare. Le tecnoscienze oggi — anche e soprattutto per quanto riguarda l’AI — fanno capo a strutture di tipo privatistico; in molti casi a veri e propri oligarchi detentori di ‘fortune’ immense — si parla di centinaia e migliaia di miliardi, cioè il pil di molti paesi industrializzati. 
+</p>
+<p>
+I board rispondono non più ai governi e quindi non hanno una parvenza di legittimazione democratica, ma potenzialmente a individui e potrebbero riflettere o interpretare o essere succubi delle loro personalissime visioni del mondo. 
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Non a caso la società che ha prodotto il documento che ti ho mostrato ha pensato di affidare la responsabilità finale delle scelte a un organismo esterno — una società non coinvolta economicamente nel dividendo dei profitti — e in un certo senso indipendente. 
+</p>
+<p>
+Una scelta del genere lascia intendere che c’è una forte preoccupazione che il sistema tecnoscientifico non sia più in grado di controllare e gestire il processo di implementazione.
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        <p>
+Hai messo il dito esattamente nel punto in cui il discorso deve diventare più preciso. 
+</p>
+<p>
+Quello che stai dicendo non corregge il ragionamento precedente, lo radicalizza. Partiamo da un chiarimento. 
+La scienza, oggi come nel passato, non è mai stata democratica nel suo funzionamento interno. Non può essere validata a maggioranza, orientata da referendum, sottoposta a deliberazione pubblica sui contenuti. 
+Galileo non chiese un voto, Newton non convocò un’assemblea, la meccanica quantistica non nacque per consenso. 
+</p>
+<p>
+La razionalità scientifica è intrinsecamente non democratica nel suo operare, e questo non è un difetto: è una condizione epistemica.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Fin qui siamo pienamente d’accordo.
+</p>
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Il punto decisivo, però, è che storicamente questa non-democraticità interna era controbilanciata da un vincolo esterno. Imperfetto, spesso ipocrita, talvolta puramente formale, ma reale. Nei grandi sistemi scientifici del Novecento — il CERN che hai citato ne è un esempio evidente — esistevano board ristretti con un enorme potere di indirizzo, ma la legittimazione ultima passava comunque dagli Stati, dai parlamenti, dai bilanci pubblici, da una qualche forma di responsabilità verso il corpo politico. 
+Il board decideva cosa fare; lo Stato decideva se finanziare. In quel “se” stava il residuo democratico.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Ed è qui che il discorso compie il salto di qualità. Nel regime contemporaneo delle tecnoscienze, con l’intelligenza artificiale in testa, questo equilibrio si spezza. 
+</p>
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Proprio così. I finanziamenti non dipendono più dagli Stati; gli Stati diventano clienti, regolatori tardivi, o partner minoritari. Il capitale disponibile è sovranazionale, opaco, concentrato in pochissime mani. Non siamo più nel regime della big science novecentesca. Siamo in qualcosa di diverso: una scienza tendenzialmente sovrana, senza una sovranità politica proporzionata.
+</p>
+<p>
+In questo contesto, i board non rispondono né al Parlamento, né all’opinione pubblica, né a una comunità scientifica larga. Rispondono, in ultima istanza, a individui, fondazioni private, visioni del mondo profondamente personali. 
+</p>
+<p>
+Questo è il punto più inquietante di tutto il discorso.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Alla luce di ciò, il tentativo — che il documento rende esplicito — di affidare le decisioni finali a un “organismo esterno indipendente” non è rassicurante. È rivelatore. 
+</p>
+<p>
+Non dice: “siamo affidabili, quindi fidatevi”. 
+Dice implicitamente: “anche noi temiamo che, lasciato a sé, questo sistema diventi ingovernabile”. 
+È il segno di un disagio strutturale rispetto alla scala del problema. Un gesto pre-politico, non ancora politico: il tentativo di costruire una forma di legittimazione in assenza di una vera cornice istituzionale.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Ed è qui che cade un’ultima illusione, forse la più resistente: che si tratti di un problema etico. Io ho impiegato molto a capirlo anche dall’interno. 
+</p>
+<p>
+Non siamo di fronte a scelte morali sbagliate, a individui corrotti, a cattiva volontà. Siamo di fronte a un problema di architettura del potere. 
+Quando il capitale è virtualmente illimitato, la velocità è esponenziale, la competizione è geopolitica e la conoscenza è iper-specialistica, nessun sistema interno di autocontrollo può essere sufficiente. 
+Nemmeno il più benintenzionato, se non inserito in una cornice istituzionale adeguata.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Per questo la tua conclusione è fondata. 
+</p>
+<p>
+Le tecnoscienze stanno entrando in una fase in cui le forme tradizionali di governo — interne ed esterne — mostrano limiti strutturali. Non dall’esterno, perché gli Stati sono troppo lenti, troppo piccoli, troppo dipendenti. Non dall’interno, perché gli incentivi strutturali spingono all’accelerazione e il rischio di non agire viene percepito come maggiore del rischio di agire. 
+</p>
+<p>
+La “preoccupazione” che emerge dal documento non contraddice la possibile convergenza verso forme di autoritarismo razionale. Non stanno dicendo che quella convergenza sia già compiuta, né che ogni margine di controllo sia perduto.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+
+<p>
+Qui è necessaria un’ultima distinzione, per non scivolare nel fatalismo. Autoritarismo “razionale” non significa dittatura classica, repressione esplicita, censura diretta. Significa decisioni irreversibili prese da pochi, giustificate da modelli, legittimate dall’urgenza, sottratte al dissenso perché “troppo complesse”. 
+È una forma di potere senza volto, ed è per questo così difficile da contrastare. La prima difesa è impedire che si presenti come semplice necessità.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Provo a resistere al fatalismo e portare nuovi argomenti, forte anche dell’autorevolezza di Giorgio. 
+Non mi riferisco a quella che gli deriva dal Nobel che ha ricevuto a coronamento dei suoi meriti scientifici. 
+Penso piuttosto alla lucidità intellettuale e alla sensibilità politica che già in tempi lontani segnavano i suoi interventi in assemblea e incontravano la nostra ammirazione. 
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+
+<p>
+Mi fa piacere che ricordi gli anni dell’università. 
+Giorgio era arrivato a fisica, un anno dopo di noi ma già si parlava di lui come di una promessa della fisica italiana. Non soltanto ha brillantemente onorato le aspettative, ma il suo Nobel è stato una sorta di riscatto per le molte dimenticanze da parte dell’Accademia delle scienze svedese. 
+Non penso soltanto a Marcello Conversi e a Nicola Cabibbo, ma anche e soprattutto a Gianni. 
+Dimenticanze che possono avere soltanto un’attenuante: esigenze geopolitiche.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+È appena uscito un libro di Giorgio dove, al termine di un interessante itinerario tra i principali temi delle sue ricerche, propone alcune riflessioni sull’AI; in particolare parla apertamente della necessità di una gestione e di una ricerca pubbliche nel campo dell’AI. Questo il brano che vorrei sottoporre alla tua attenzione e alla nostra riflessione comune. </p>
+
+<blockquote class="citation-block">
+<p>
+In un mondo in cui enormi società private investono centinaia di miliardi nell’intelligenza artificiale, sono convinto che ci sia bisogno di una forte ricerca pubblica. Specialmente in questo campo i confini tra ricerca pura e applicata sono estremamente labili. È essenziale creare conoscenze condivise. Come dicevamo nel capitolo precedente, gli LLM (<em>Large Language Models</em>) non saranno la tecnologia definitiva. Arriveranno prodotti nuovi, più potenti, più efficaci, maggiormente ancorati alla realtà, ed è importante che queste conoscenze, questi avanzamenti siano condivisi, perché la scienza si sviluppa grazie alla condivisione delle conoscenze, mentre le aziende private tendono a usare solo per sé i progressi tecnologici che raggiungono. Nella ricerca scientifica, il confronto con gli altri è di estrema importanza. [Per questo] sono necessari centri pubblici dove gli scienziati possano interagire con altri scienziati senza subire restrizioni relative a segreti industriali o militari. Uno di questi potrebbe nascere in Europa: […] Questo centro dovrebbe essere un punto di incontro dove gli studiosi possano andare per un certo lasso di tempo a discutere, parlare e condividere conoscenze e progetti. Non dovrebbe sostituire ma stimolare la ricerca nei singoli Paesi e le collaborazioni internazionali, arricchendo le conoscenze di tutti. </p>
+<p>
+
+[E più avanti] L’intelligenza artificiale apre nuove possibilità per le applicazioni belliche, permettendo di costruire i sistemi d’arma con una significativa libertà nelle funzioni critiche di selezione e attacco dei bersagli; sono le armi autonome letali (LAWS, <em>Lethal Autonomous Weapon Systems</em>): i droni, i robot killer. Tali dispositivi potrebbero portare a una nuova corsa agli armamenti. Alcune organizzazioni ne chiedono il bando, con una convenzione simile a quelle sottoscritte nel campo delle armi chimiche o biologiche. In attesa di questo divieto, le armi autonome dovrebbero essere integrate nelle strutture di comando e controllo esistenti, in modo che la responsabilità e l’obbligo di rendere conto dal punto di vista giuridico siano ancora attribuiti a specifici attori umani. La scelta di chi uccidere non può essere lasciata a un algoritmo. </p>
+<p>
+
+L’IA sta diventando sempre più importante strategicamente e sta influenzando la competizione globale tra grandi potenze. L’IA può essere causa di forti tensioni: bisogna incominciare a riflettere su come smorzarle prima che si trasformino in qualcosa di peggio. Non è chiaro cosa si può fare, ma meno l’IA sarà coperta dal segreto industriale o militare, più sarà facile arrivare ad accordi internazionali. Perciò è fondamentale sviluppare in questo settore una ricerca scientifica aperta e ciò può essere fatto agevolmente in grandi strutture pubbliche. Le istituzioni e i cittadini devono conoscere il funzionamento dell’IA per poterla regolamentare. Questa conoscenza deve tenersi sempre aggiornata, dato che la velocità a cui le cose cambiano è vertiginosa. All’inizio poteva esserci l’illusione che sarebbe stato possibile normare e controllare quelle poche aziende che rendevano accessibili al grande pubblico gli LLM; ma oggi, come abbiamo visto, il vaso di Pandora è stato aperto e anche un piccolo gruppo di persone capaci può sviluppare una propria applicazione di IA. Tutte le grandi novità hanno bisogno di regolamentazione da parte di organismi nazionali e internazionali, che però devono capire bene come funziona l’IA e quindi devono disporre di esperti indipendenti che sappiano farla funzionare. E questo è possibile solo se si fa ricerca pubblica sul campo. C’è un nuovo mondo tecnologico da costruire e non possiamo permetterci che la sua progettazione sia funzionale solo a una manciata di aziende private. Gli interessi della collettività devono diventare dominanti, e per questo serve una conoscenza condivisa.</p>
+
+
+
+</blockquote>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+
+<p>
+La posizione di Giorgio è seria, rigorosa e profondamente coerente con la migliore tradizione della scienza del Novecento. Non c’è nulla di ingenuo nelle sue affermazioni. 
+</p>
+<p>
+Proprio per questo, però, è importante collocarle con precisione: solo così diventa chiaro dove il suo ragionamento converge con quanto abbiamo discusso fin qui e dove, invece, resta preso in un nodo che, a mio avviso, non riesce a sciogliere fino in fondo.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Giorgio ha pienamente ragione quando insiste sulla necessità di una ricerca pubblica forte, sulla centralità della conoscenza condivisa, e sul carattere problematico — non solo politico ma epistemico — del segreto industriale e militare. 
+</p>
+<p>
+Se ben ricordi, questi obiettivi sono sempre stati al centro delle nostre battaglie. 
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+È vero anche che senza competenze indipendenti non può esistere alcuna forma seria di regolazione. Lasciare l’AI e, più in generale, le tecnoscienze strategiche nelle mani di poche grandi aziende private, è per lui inaccettabile. 
+</p>
+<p>
+E coglie nel segno quando individua applicazioni, come le armi autonome, che pongono limiti morali non negoziabili. Nulla di tutto questo contraddice il nostro percorso. Al contrario, Giorgio descrive con grande lucidità i rischi estremi che emergono quando il sistema tecnoscientifico viene lasciato operare secondo la sola logica della competizione e dell’accumulazione.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+
+<p>
+La questione cruciale, però, non è se dovremmo auspicare una forte ricerca pubblica. La domanda più difficile è se la ricerca pubblica, oggi, possa ancora svolgere la funzione che Giorgio le assegna. 
+</p>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Qui emerge un punto critico. Il modello che egli ha in mente presuppone, spesso implicitamente, che lo Stato — o un insieme coordinato di Stati — disponga di una reale capacità strategica autonoma; che i tempi della decisione politica siano compatibili con i tempi dell’innovazione tecnologica; che le infrastrutture critiche — calcolo, dati, filiere produttive, capitale umano — siano almeno in parte sotto controllo pubblico; e infine che la conoscenza aperta non venga immediatamente assorbita e sfruttata da attori più rapidi e più potenti. 
+</p>
+<p>
+Oggi, però, nessuna di queste condizioni è realmente garantita. Il problema non è la bontà del modello, ma il mutamento radicale dell’ecosistema in cui quel modello dovrebbe operare.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Il limite che tu segnali emerge con particolare chiarezza in una delle affermazioni chiave di Giorgio. Quando sostiene che meno l’intelligenza artificiale sarà coperta dal segreto industriale o militare, più sarà facile arrivare ad accordi internazionali. 
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+In linea di principio questo è vero. 
+</p>
+<p>
+Ma nel contesto attuale la conoscenza aperta non è più neutra. 
+</p>
+<p>
+In un sistema competitivo globale, aprire la conoscenza non rallenta necessariamente lo sviluppo; spesso lo accelera, e lo fa soprattutto a vantaggio di chi possiede una maggiore capacità di assorbimento, di integrazione e di sfruttamento. 
+</p>
+<p>
+Chi condivide, oggi, non controlla più gli effetti della condivisione. Questo non era vero — o lo era in misura molto minore — nell’epoca in cui si sono formati i modelli mentali della grande scienza pubblica internazionale, come il CERN o le grandi agenzie spaziali.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Il tema delle nuove possibilità di applicazioni belliche aperte dall’AI è molto forte. E il suo è un allarme che va ben oltre un generico appello a rafforzare gli strumenti di controllo. 
+</p>
+<p>
+Giorgio afferma senza ambiguità che la scelta di chi uccidere non può essere lasciata a un algoritmo: un principio che difficilmente potrebbe essere contestato. 
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Ma la soluzione che propone, almeno in forma transitoria, consiste nell’integrare questi sistemi nelle strutture di comando e di controllo esistenti, in modo da mantenere una catena di responsabilità umana. 
+</p>
+<p>
+Qui la democrazia viene chiamata non a esercitare un potere di interdizione ex ante, ma a fornire una cornice di responsabilità ex post. 
+</p>
+<p>
+Non si dice: non sviluppiamole, fermiamo la ricerca, imponiamo una moratoria globale verificabile. Si dice piuttosto: gestiamole meglio, assegniamo responsabilità giuridiche. È una posizione comprensibile, ma rivela un limite strutturale: l’inevitabilità del sistema viene implicitamente accettata, e il lavoro politico si sposta interamente sul terreno della mitigazione.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+La differenza, in realtà, è più radicale di quanto possa sembrare a prima vista.
+</p>
+<p>
+Giorgio ragiona ancora dentro l’orizzonte di una scienza che può essere riorientata, corretta, regolata dall’esterno, a patto di comprenderla abbastanza bene.
+</p>
+<p>
+Noi stiamo invece descrivendo una trasformazione che rende quella regolazione sempre più problematica.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+È questo il punto.
+</p>
+<p>
+Non stiamo dicendo che ogni possibilità di controllo sia scomparsa, ma che la configurazione è mutata.
+</p>
+<p>
+Quando il sapere tende a organizzarsi come Sistema, la conoscenza non è più soltanto sapere, ma infrastruttura di potere; la regolazione non resta esterna, ma viene progressivamente incorporata nei dispositivi stessi; e la democrazia non è più il presupposto naturale dello sviluppo, ma una condizione che deve essere costruita e difesa.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+
+<p>
+Non è dunque una questione di diagnosi sbagliata.
+</p>
+<p>
+Giorgio continua a muoversi dentro un orizzonte che noi stiamo mettendo in discussione.
+</p>
+<p>
+Per lui la scienza resta un sapere riorientabile; per noi tende a configurarsi come un sistema che ingloba parte della propria regolazione.
+</p>
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Alla domanda se esista ancora uno spazio per il controllo democratico, la risposta dipende da che cosa intendiamo per “controllo”.
+</p>
+<p>
+Esiste ancora spazio per ricerca pubblica, trasparenza, competenze indipendenti, limiti giuridici e cooperazione internazionale.
+</p>
+<p>
+Ma questo spazio non coincide più con un controllo democratico forte nel senso classico: la capacità di decidere i tempi, di porre veti sulle direzioni di sviluppo, di rinunciare deliberatamente a certe possibilità tecniche.
+</p>
+<p>
+È uno spazio che si è ristretto; non è scomparso.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Giorgio non si limita a riflessioni di carattere generale, lancia una sfida molto forte: “in Europa serve un CERN per l’AI”. L’immagine è potente e, a prima vista, persuasiva: evoca cooperazione internazionale, infrastruttura pubblica, conoscenza aperta, formazione di comunità. E proprio per questo va presa molto seriamente.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Proviamo a ragionare senza scorciatoie. Il CERN nasce e opera in un mondo in cui le infrastrutture comparabili erano pochissime e soprattutto “simmetriche”: quasi tutte pubbliche, statali o interstatali, con logiche di <em>governance</em> relativamente simili. E, in larga misura, dentro paesi che appartenevano al campo delle democrazie liberali.
+</p>
+<p>
+Questa simmetria ha conseguenze enormi. La competizione scientifica esisteva, ma si svolgeva tra attori che condividevano alcune condizioni: tempi lunghi, decisioni collettive, bilanci pubblici, accountability politica e una certa separazione — almeno formale — tra ricerca fondamentale e mercato.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Nel caso dell’AI, al contrario, l’ecosistema è diverso. Per semplificare: un “CERN per l’AI” europeo non si troverebbe di fronte altri CERN. Si troverebbe davanti attori di natura eterogenea: aziende private con risorse quasi illimitate, infrastrutture proprietarie, piattaforme globali e, dall’altro lato, sistemi statali autocratici che integrano ricerca, industria e apparati di sicurezza.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Questa è la prima frattura: non stiamo entrando in una competizione tra pari, ma in una competizione asimmetrica. E quando la competizione è asimmetrica, l’istituzione pubblica ha davanti a sé due rischi opposti: o resta irrilevante, oppure, per non esserlo, assorbe le logiche dell’avversario.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+
+<p>
+O diventa un laboratorio di alto profilo ma marginale rispetto al “cuore” del sistema, oppure accetta la regola della velocità, dell’opacità e della competizione permanente. Ma così si snatura.
+</p>
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+
+<p>
+Sì. E qui conviene fare un secondo passo, ancora più importante. Nel caso della fisica delle particelle, l’infrastruttura principale è un acceleratore, e i suoi prodotti sono soprattutto conoscenza e strumenti. Nel caso dell’AI, l’infrastruttura non è solo un laboratorio: è un ecosistema materiale e sociale composto da data center, chip, cloud, dati, piattaforme, modelli distribuiti, integrazione nei servizi.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+
+<p>
+Un “CERN per l’AI” non sarebbe soltanto un luogo di ricerca pubblica. Sarebbe inevitabilmente un pezzo di infrastruttura che entra nelle vite quotidiane, nei sistemi decisionali, nei processi amministrativi, nei circuiti della comunicazione.
+</p>
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Esatto. Ed è qui che l’analogia col CERN diventa fuorviante, se non viene corretta. Perché l’AI non produce solo strumenti. Produce condizioni di scelta. Inizia a operare nello spazio del “dovrebbe”: cosa è prioritario, cosa è rilevante, cosa è sospetto, cosa è ammissibile. Non perché qualcuno lo decreti apertamente, ma perché certe opzioni diventano più facili e altre più costose.
+</p>
+<p>
+Il punto, quindi, non è soltanto “pubblico o privato”. È che l’AI tende a trasformarsi in una macchina di selezione del reale. E allora chi controlla l’infrastruttura controlla anche la forma delle possibilità.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Si torna così a quello che abbiamo chiamato “autoritarismo razionale”. Non nel senso della dittatura classica, ma nel senso di decisioni che diventano irreversibili perché incorporate in sistemi che ottimizzano, standardizzano, anticipano. Una norma non viene più deliberata: viene resa operativa.
+</p>
+<p>
+Sollevo un interrogativo che, arrivati a questo punto, molti si porrebbero: se un CERN dell’AI fosse davvero pubblico e trasparente, non sarebbe un argine a questa deriva?
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Potrebbe esserlo, ma non automaticamente. Perché deve comunque competere. E competere significa spesso accettare vincoli: velocità, scala, continuità di sviluppo, segretezza su alcune componenti e soprattutto dipendenza da infrastrutture che oggi non sono pubbliche — chip, cloud, filiere. Se l’istituzione non controlla queste basi materiali, la sua “sovranità” è più debole di quanto sembri.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Si correrebbe il rischio che l’idea “facciamo un CERN e recuperiamo controllo democratico” si riveli un’illusione. Il controllo democratico dovrebbe esercitarsi sull’intero ecosistema, e non soltanto su un singolo ente.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+
+<p>
+Esatto. Provo a spiegare tornando al caso del Future Circular Collider. Lì emergeva già una tensione: una comunità scientifica fortissima, con una capacità strategica enorme, che proietta effetti su decenni e che presuppone stabilità politica e culturale. Nell’AI questa tensione è moltiplicata, perché la comunità non è l’unico attore: gli attori dominanti sono spesso extra-democratici per struttura — corporazioni globali o apparati statali chiusi.
+</p>
+<p>
+La domanda da porsi è questa: che cosa diventerebbe un CERN per l’AI dentro questo ecosistema? Ancora più precisamente: che cosa dovrebbe fare per non essere marginale? Non basta istituire un ente pubblico. Bisognerebbe creare le condizioni perché l’ecosistema non lo trasformi.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Quindi Giorgio ha ragione su un punto — la necessità di una capacità pubblica e di competenze indipendenti — ma rischia di sottovalutare la differenza tra grande scienza novecentesca e tecnoscienza contemporanea.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+
+<p>
+E, se vuoi dirlo in modo ancora più netto: nel Novecento la scienza pubblica poteva ancora funzionare come bilanciamento del potere. Oggi, nel campo dell’AI, una grande istituzione pubblica può anche contribuire a rafforzare una dinamica di potere. La differenza la fa una cosa sola: se esiste o no una cornice democratica capace di decidere davvero tempi, limiti e veti. E noi abbiamo sostenuto che questa cornice è proprio ciò che si sta erodendo.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+Il punto tragico è questo: l’idea di un CERN dell’AI è desiderabile, ma potrebbe rivelarsi insufficiente o ambigua. Perché non basta creare un’istituzione pubblica dentro un sistema. Bisognerebbe creare le condizioni perché il sistema non la inghiotta.
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+La parte più difficile non è inventare un’organizzazione, ma reinventare una sovranità.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+C’è però un ulteriore aspetto che rende problematica l’ipotesi di un CERN per l’AI. Riguarda i tempi.
+</p>
+<p>
+Le grandi infrastrutture pubbliche nascono dentro procedure complesse: negoziati tra Stati, bilanci pluriennali, equilibri politici, compromessi istituzionali. È sufficiente osservare le difficoltà dell’Unione Europea nell’individuare strategie comuni in ambito economico o industriale per capire quanto questi processi siano lenti.
+</p>
+<p>
+Anche immaginando una volontà politica condivisa, un “CERN per l’AI” difficilmente vedrebbe la luce prima della fine di questo decennio — e sto facendo un’ipotesi ottimistica.
+</p>
+<p>
+Ma il sistema dell’AI non ragiona su decenni. Ragiona sul breve periodo. Circolano analisi che valutano in pochi anni — qualcuno dice in pochi mesi — l’arrivo di trasformazioni profonde nel lavoro umano.
+</p>
+<p>
+Se i tempi del sistema e i tempi della decisione democratica divergono così radicalmente, noi rischiamo di discuterne sempre a posteriori?
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+È esattamente questo il punto. La lentezza democratica non è un difetto: è una forma di cautela, di reversibilità, di responsabilità distribuita. Ma quando l’ambiente tecnologico accelera oltre una certa soglia, la lentezza non funziona più come prudenza: diventa irrilevanza.
+</p>
+<p>
+Ritorniamo perciò sempre a questo paradosso: per restare democratico, il sistema dovrebbe rallentare; ma per competere è costretto ad accelerare, e quando accelera senza adeguate forme di controllo, rischia di ridurre il proprio spazio democratico.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+
+<p>
+Nel capitolo da cui ho tratto quel passo, Giorgio parla delle ricadute dell’IA sull’insegnamento, ma parla anche di scenari drammatici per l’occupazione e il lavoro. 
+</p>
+<p>
+Cita le analisi di Karl Marx e prefigura l’ipotesi di un salario garantito come argine a situazioni economiche catastrofiche. 
+</p>
+<p>
+Esagera? Pecca di allarmismo eccessivo? E come dici tu quella di Giorgio è una forma nobile di un’epoca che sta finendo?
+</p>
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+In questo senso, la questione occupazionale che Giorgio solleva — richiamando esplicitamente Karl Marx e ipotizzando forme di salario garantito — non è affatto allarmismo. È la presa d’atto di una trasformazione che potrebbe rivelarsi difficilmente reversibile nei suoi effetti sistemici. 
+</p>
+<p>
+L’automazione cognitiva, la scalabilità quasi illimitata dei sistemi di IA e la sostituibilità asimmetrica del lavoro introducono una trasformazione senza precedenti per velocità e profondità. 
+</p>
+<p>
+Il salario garantito è una risposta seria e necessaria per evitare il collasso sociale, ma resta una risposta a valle: una diga, non un cambio di corso del fiume. 
+</p>
+<p>
+Ed è qui che si chiarisce perché la posizione di Giorgio sia, insieme, nobile e terminale. 
+</p>
+<p>
+È nobile perché non rinuncia all’idea di responsabilità collettiva, perché rifiuta il cinismo e perché non accetta che il mercato o la tecnica decidano da soli. 
+</p>
+<p>
+Ma è legata a un orizzonte che sta entrando in crisi. Nel senso che presuppone ancora un soggetto politico capace di governare il sistema, presume che la conoscenza condivisa produca automaticamente più democrazia e crede che la regolazione possa stare al passo della trasformazione. 
+</p>
+<p>
+La nostra discussione ci ha portato a conclusioni differenti: queste condizioni non sono più garantite, non per complotto o cattiva volontà, ma per un mutamento di scala, di velocità e di integrazione sistemica.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+La frattura vera, dunque, non riguarderebbe la diagnosi dei rischi, ma la reversibilità.
+</p>
+<p>
+Giorgio pensa ancora che si possa sviluppare e poi correggere.
+</p>
+<p>
+Tu stai dicendo che alcune scelte, una volta compiute, non sono più correggibili democraticamente, perché diventano sistemiche. 
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Non tutto ciò che possiamo fare dovrebbe essere fatto.
+</p>
+<p>
+Non tutto ciò che aumenta la produttività aumenta anche l’abitabilità del mondo.
+</p>
+<p>
+E non tutto ciò che può essere compensato economicamente può esserlo anche sul piano simbolico, culturale e politico.
+</p>
+<p>
+Giorgio non esagera. Ma ho l’impressione che intervenga quando molte trasformazioni hanno già prodotto effetti rilevanti. 
+</p>
+<p>
+Temo che il suo — e di coloro i quali condividono questa impostazione — sia l’ultimo grande tentativo di salvare l’equilibrio novecentesco: scienza, progresso, lavoro, redistribuzione, democrazia.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+C’è però un punto che forse non abbiamo ancora messo a fuoco fino in fondo.  
+</p>
+<p>
+Le intelligenze artificiali non si limitano più a operare nello spazio di ciò che è possibile fare.  
+</p>
+<p>
+Entrano sempre più spesso nello spazio di ciò che dovrebbe essere fatto.
+</p>
+<p>
+A seconda dei criteri, delle priorità e delle assunzioni normative che vengono incorporate nei sistemi, cambia il mondo praticabile per gli esseri umani.  
+</p>
+<p>
+Non perché qualcuno lo abbia deciso esplicitamente, ma perché certe opzioni diventano più probabili, altre più costose, altre ancora invisibili.
+</p>
+<p>
+In questo senso, non è solo in gioco una tecnologia.  
+</p>
+<p>
+È in gioco una forma anticipata di etica, inscritta nelle infrastrutture stesse.
+</p>
+
+
+        </div>
+    </div>
+
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Sì. Ed è proprio per questo che gli appelli etici arrivano sempre fuori tempo.
+</p>
+<p>
+Quando l’etica viene incorporata nei sistemi sotto forma di criteri operativi, di ottimizzazioni, di soglie di accettabilità, non appare più come scelta morale, ma come funzionamento tecnico.  
+</p>
+<p>
+Non dice “questo è giusto”, dice “questo è efficiente”, “questo è coerente”, “questo è necessario”.
+</p>
+<p>
+Il risultato è che il dover-essere non viene imposto dall’alto, ma emerge come effetto laterale del sistema. 
+</p>
+<p>
+E a quel punto discuterlo diventa difficile, perché sembra discutere la realtà stessa.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          
+<p>
+E allora, come se ne esce? 
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+        
+<p>
+Certamente non con appelli morali, manifesti, checklist etiche o consultazioni simboliche. Una strada che Giorgio, giustamente, si guarda bene dal percorrere.
+</p>
+<p>
+Se una via esiste — ed è fragile — è quella che abbiamo già suggerito: spostare il terreno.
+</p>
+<p>
+Non competere con la tecnoscienza sul suo stesso piano, ma difendere gli spazi in cui la scienza può ancora essere pensata; in cui la formazione può restare lenta; in cui la storia può complicare invece di semplificare; in cui il sapere non coincide interamente con la prestazione.
+</p>
+<p>
+Non si tratta solo di difendere le istituzioni democratiche, ma di preservare lo spazio critico senza il quale esse si svuotano.
+</p>
+<p>
+Ed è qui che tutto ritorna a Livia e Olivia.
+</p>
+<p>
+Parlare a loro non significa convincerle che la matematica “serve”.
+</p>
+<p>
+Significa mostrare che esiste un valore che precede l’uso; che non tutto ciò che è potente è legittimo; che non tutto ciò che è razionale è giusto.
+</p>
+<p>
+Questo non fermerà la tecnoscienza. Ma può impedire che diventi l’unico orizzonte pensabile. </p>
+
+
+
+        </div>
+    </div>
+
+
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="06-scegliere-democrazia.html">← 6. Scegliere la democrazia?</a>
+<a href="08-messaggio-bottiglia.html">8. Un messaggio nella bottiglia →</a>
+</div>
+
+</div>
+<!-- PULSANTE HAMBURGER FISSO -->
+<button id="nav-toggle" aria-label="Apri indice capitoli">☰</button>
+
+<!-- OVERLAY -->
+<div id="nav-overlay"></div>
+
+<!-- DRAWER -->
+<nav id="nav-drawer" aria-label="Indice capitoli">
+  <div class="drawer-header">
+    <span>Indice</span>
+    <button id="nav-close" aria-label="Chiudi indice">✕</button>
+  </div>
+  <ul class="drawer-list">
+    <li class="section-label">Apertura</li>
+    <li><a href="prefazione.html">Prefazione</a></li>
+    <li><a href="prologo.html">Prologo</a></li>
+    <li class="section-label">Capitoli</li>
+    <li><a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve</a></li>
+    <li><a href="02-memoria-storica.html">2. La perdita della memoria storica</a></li>
+    <li><a href="03-raccontare-scienza.html">3. Come raccontare la scienza</a></li>
+    <li><a href="04-scienza-sistema.html">4. La scienza che si fa Sistema</a></li>
+    <li><a href="05-avvento-tecnoscienze.html">5. L'avvento delle tecnoscienze</a></li>
+    <li><a href="06-scegliere-democrazia.html">6. Scegliere la democrazia?</a></li>
+    <li><a href="07-tecnoscienze-democrazia.html" class="current">7. Tecnoscienze vs democrazia</a></li>
+    <li><a href="08-messaggio-bottiglia.html">8. Un messaggio nella bottiglia</a></li>
+    <li><a href="09-domani.html">9. Livia e Olivia, domani</a></li>
+    <li class="section-label">Chiusura</li>
+    <li><a href="conclusione.html">In luogo di una conclusione</a></li>
+    <li><a href="post_scriptum.html">Post Scriptum</a></li>
+    <li><a href="personaggi.html">I personaggi</a></li>
+    <li><a href="indicazioni.html">Indicazioni di lettura</a></li>
+  </ul>
+</nav>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const overlay = document.getElementById('nav-overlay');
+const drawer = document.getElementById('nav-drawer');
+const close = document.getElementById('nav-close');
+
+function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+toggle.addEventListener('click', openDrawer);
+close.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+</script>
+
+</body>
+</html>

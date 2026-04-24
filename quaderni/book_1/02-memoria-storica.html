@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.  La perdita della memoria storica</title>
+
+
+<style>
+
+:root {
+    --bg: #f4f3ef;
+    --text: #1f1f1f;
+    --muted: #24535d;
+    --accent: #0a4652;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* CONTAINER */
+
+.chapter-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 18px 42px;
+}
+
+/* LINK DI RITORNO */
+
+.back-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* TITOLO */
+
+.chapter-title {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+/* TESTO */
+
+.chapter-text {
+    font-family: "Iowan Old Style","Palatino","Times New Roman",serif;
+    font-style: normal;
+    font-size: 1.08rem;
+    line-height: 1.72;
+}
+
+.chapter-text p { margin: 0 0 1.15em; }
+
+/* CAPOLETTERA SOLO TESTI NON DIALOGICI */
+
+.chapter-text:not(.dialogue) p:first-of-type::first-letter {
+    font-size: 2.5em;
+    float: left;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+/* DIALOGO */
+
+.dialogue { margin-top: 8px; }
+
+.turn { margin-bottom: 1.35rem; }
+
+.speaker {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.28rem;
+}
+
+.speech p { margin: 0 0 0.75em; }
+
+/* CITAZIONE LUNGA */
+
+.citation-block {
+    margin: 1.4em 0;
+    padding: 0.9em 1.2em 0.9em 1.4em;
+    border-left: 3px solid var(--accent);
+    background: rgba(10,70,82,0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.citation-block p {
+    margin: 0 0 0.6em;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.citation-block p:last-of-type { margin-bottom: 0; }
+
+.citation-source {
+    display: block;
+    margin-top: 0.75em;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+/* DESKTOP */
+
+@media (min-width:700px){
+
+    .turn{
+        display:grid;
+        grid-template-columns:110px 1fr;
+        column-gap:18px;
+        align-items:start;
+    }
+
+    .speaker{
+        margin-bottom:0;
+        padding-top:0.15em;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+    .chapter-text{
+        font-size:1.02rem;
+        line-height:1.55;
+    }
+
+    .chapter-title{
+        font-size:1.35rem;
+        margin-bottom:20px;
+    }
+
+    .turn{
+        display:block;
+        margin-bottom:1rem;
+    }
+
+    .speaker{
+        font-size:0.8rem;
+        margin-bottom:0.2rem;
+    }
+
+    .speech p{
+        margin:0 0 0.55em;
+    }
+
+    .speech {
+        padding-left: 6px;
+        border-left: 2px solid rgba(10,70,82,0.15);
+    }
+
+    .citation-block {
+        padding: 0.75em 0.9em 0.75em 1em;
+        border-left-width: 2px;
+        margin: 1em 0;
+    }
+
+    .citation-block p { font-size: 0.97rem; line-height: 1.58; }
+
+    .citation-source { font-size: 0.75rem; }
+
+    .chapter-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .chapter-nav a:last-child {
+        text-align: right;
+    }
+
+}
+
+/* SEPARATORE */
+
+.chapter-separator{
+    margin-top:36px;
+    border:none;
+    border-top:1px solid rgba(21,58,68,0.25);
+}
+
+/* NAVIGAZIONE */
+
+.chapter-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+    font-size:0.9rem;
+}
+
+.chapter-nav a{
+    text-decoration:none;
+    color:var(--muted);
+}
+
+.chapter-nav a:hover{ color:var(--accent); }
+
+/* PULSANTE STAMPA */
+
+.chapter-tools{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+
+.print-button{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:none;
+    background:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:0.85rem;
+}
+
+.print-button:hover{ color:var(--accent); }
+
+.print-icon{
+    width:16px;
+    height:16px;
+}
+
+/* DRAWER NAVIGAZIONE */
+
+#nav-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#nav-toggle:hover { background: var(--muted); }
+
+#nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,30,35,0.38);
+    z-index: 1001;
+}
+
+#nav-overlay.open { display: block; }
+
+#nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: #fff;
+    z-index: 1002;
+    transition: right 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(10,70,82,0.15);
+    overflow: hidden;
+}
+
+#nav-drawer.open { right: 0; }
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgba(10,70,82,0.12);
+}
+
+.drawer-header span {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+#nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 20px;
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+#nav-close:hover { color: var(--accent); }
+
+.drawer-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.drawer-list li a {
+    display: block;
+    padding: 10px 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+}
+
+.drawer-list li a:hover { background: rgba(10,70,82,0.06); }
+
+.drawer-list li a.current {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(10,70,82,0.05);
+}
+
+.drawer-list li.section-label {
+    padding: 14px 20px 4px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+/* STILE DI STAMPA */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chapter-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chapter-text {
+        font-style: normal;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    .chapter-title {
+        text-align: left;
+        font-size: 16pt;
+    }
+
+    .chapter-text p:first-of-type::first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+    }
+
+    .back-link,
+    .chapter-nav,
+    .print-button,
+    .chapter-separator,
+    #nav-toggle,
+    #nav-overlay,
+    #nav-drawer {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chapter-container">
+
+<a href="frontespizio.html" class="back-link">← Torna al frontespizio</a>
+
+<div class="chapter-tools">
+<button class="print-button" type="button"
+        onclick="window.print()"
+        aria-label="Stampa capitolo">
+
+<svg class="print-icon" viewBox="0 0 24 24"
+     aria-hidden="true"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+<path d="M6 9V3h12v6"></path>
+<path d="M6 18h12v3H6z"></path>
+<rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+
+</svg>
+
+Stampa
+</button>
+</div>
+
+<h1 class="chapter-title">2.  La perdita della memoria storica</h1>
+
+<div class="chapter-text dialogue">
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Se allarghiamo il discorso alle altre scienze, le cose non migliorano. Anche lì domina una visione largamente funzionale della conoscenza scientifica, e questo finisce per erigere una barriera quasi insormontabile per molti studenti.
+</p>
+<p>
+Oggi assistiamo a un consumo quasi bulimico di tecnologia, a fronte di una progressiva — e spesso traumatica — perdita di attrattività dei saperi scientifici.
+</p>
+<p>
+Sono temi che erano al centro delle lunghe discussioni che facevamo insieme a Emilio e Roberto. 
+Per alcuni di noi tutto nacque dalla lettura del libro di Thomas Kuhn sulla struttura delle rivoluzioni scientifiche.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Ricordo bene quegli anni. Lessi il libro di Kuhn in inglese, quando mio padre ricevette una copia per recensione. Da noi cominciò a circolare intorno al ’68, e le tesi che sosteneva apparivano davvero radicali.
+</p>
+<p>
+Una, in particolare, fece molto discutere — naturalmente semplifico: il Novecento aveva mostrato che la scienza non procede in modo cumulativo, ma attraverso periodiche ristrutturazioni concettuali.
+</p>
+<p>
+Il sapere precedente viene reinterpretato alla luce del nuovo paradigma dominante, e questo processo ha una conseguenza rilevante: le nuove generazioni di ricercatori perdono progressivamente la memoria storica della propria disciplina.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Ancora negli anni Venti e Trenta del secolo scorso, gli scienziati si confrontavano apertamente con questioni storiche e filosofiche. Questo orizzonte andò poi restringendosi, anche a seguito di quello che venne chiamato il processo di “americanizzazione della scienza”.
+</p>
+<p>
+Concedimi una pausa. Questo tuo ricordo offre infatti l’occasione per saldare con te un antico debito intellettuale.
+</p>
+<p>
+È arrivato il momento di chiarire le ragioni di una mia scelta. Non te ne parlai allora, non perché me ne vergognassi, ma perché avevo l’impressione di tradire un patto non scritto che sentivo di aver contratto con te.
+Forse pensavo che non avresti capito. O, più onestamente, non ero io stesso del tutto convinto della solidità delle mie scelte.
+</p>
+<p>
+Perché rinunciare alla ricerca? Che senso aveva spostare il centro dei miei interessi verso la storia?
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Sono domande che mi posi anch’io allora, e che per una sorta di pudore intellettuale rinunciai a farti. Pensai anche a un tuo disagio personale.
+</p>
+<p>
+Mi sembrava che una personalità come quella di Gianni potesse aver avuto un ruolo nel tuo orientamento culturale, che all’inizio mi appariva segnato da una forte impronta ideologica.
+</p>
+<p>
+Ma forse ora potresti aiutarmi a capire meglio.
+</p>
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Arrivammo a Fisica nel 1965, e ricorderai con quanta serietà seguivamo i corsi. Io, a dire il vero, ero più attratto dalla matematica che dalla fisica.
+</p>
+<p>
+Al termine del secondo anno ci sembrava di aver assimilato un universo conoscitivo coerente e solido: dalla meccanica all’elettromagnetismo, fino alla termodinamica. Un edificio senza crepe — o almeno, nessuno ce le aveva mostrate. 
+</p>
+<p>
+In quell’universo idilliaco, tuttavia, non trovavano spazio il problema della radiazione di corpo nero, né il nome di Max Planck; e naturalmente Einstein era poco più che un egregio sconosciuto.
+</p>
+<p>
+Forte di queste certezze, al terzo anno entrammo nell’aula della prima lezione di Istituzioni di fisica teorica. Un bravo docente, da poco rientrato dagli Stati Uniti, cominciò a parlarci di eventi probabilistici, discontinuità, transizioni.
+</p>
+<p>
+Per me fu naturale pormi delle domande. E finii per rivolgermi alla storia, per capire che cosa fosse accaduto in quella zona grigia che ci era stata occultata tra il secondo e il terzo anno di corso.
+</p>
+<p>
+Ebbi anche il sospetto che l’edificio della cosiddetta fisica classica non fosse così granitico come ci era stato presentato.
+</p>
+<p>
+Come aveva mostrato Kuhn, quella solidità non era il riflesso di uno sviluppo lineare, ma il risultato della riscrittura dei manuali alla luce del paradigma vincente, una riscrittura che occultava le crisi, le fratture e le alternative da cui quel paradigma era emerso.
+</p>
+<p>
+Il problema didattico era proprio lì: quando finalmente ci veniva presentato il nuovo quadro teorico, ci veniva chiesto di accoglierlo non come esito storico contingente, ma come evidenza naturale — quasi come un atto di fede. Non accadde tutto e subito. Fu un percorso lento, tortuoso, di maturazione personale.
+</p>
+<p>
+Avrei potuto condividere con te questi pensieri, ma non l’ho fatto.
+È stato un errore, probabilmente perché non mi sentivo all’altezza di un confronto con te.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Ci siamo detti che non ci interessava rivederci per fare il bilancio delle nostre vite. D’altra parte è andata come forse era giusto che fosse. Mi sembra che, pur faticosamente, una strada tu l’abbia trovata. Anche lì hai potuto raccogliere successi e soddisfazioni.
+</p>
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+È stata una scelta difficile. Ma non l’ho mai vissuta come un abbandono o come una sconfitta.
+</p>
+<p>
+Addentrarmi nella storia non significava semplicemente spostare l’oggetto dei miei interessi. Non bastava il bagaglio culturale di un giovane laureato in fisica. Serviva altro: entrare in territori in larga parte estranei, imparare linguaggi nuovi.
+</p>
+<p>
+In quel caso ebbi fortuna. Fui accolto in una delle scuole migliori che esistessero allora in Italia.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+È giusto che tu non abbia vissuto quella scelta come una rinuncia. Ma in tutti questi anni non hai mai avuto rimpianti? Non ti sei mai chiesto che cosa avresti potuto fare come scienziato militante — uso volutamente un’espressione che andava di moda allora?
+</p>
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Rimpianti, no.
+Ma ora che ci penso, un dubbio sì.
+</p>
+<p>
+Forse avrei potuto parlarti di più di quello che stava maturando allora. Non per cambiare strada, ma per capire meglio che cosa stavo davvero lasciando — e che cosa no.
+</p>
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Torniamo a Thomas Kuhn. Il riferimento al suo lavoro è decisivo, ma non nel modo in cui è stato spesso recepito. <em>La struttura delle rivoluzioni scientifiche</em> è stata letta — e spesso banalizzata — come una teoria delle discontinuità: paradigmi, crisi, rivoluzioni, nuovi paradigmi.
+</p>
+<p>
+Hai fatto bene a richiamare un aspetto più profondo e più inquietante: ogni nuovo paradigma riscrive il proprio passato alla luce del presente che ha imposto. In questa riscrittura, i conflitti vengono attenuati, le alternative sconfitte retrocesse a errori ingenui, le zone grigie semplicemente cancellate.
+</p>
+<p>
+La conseguenza non è solo epistemologica. È antropologica.
+</p>
+<p>
+Le nuove generazioni di scienziati crescono senza una memoria storica della propria disciplina. Non perché siano ignoranti, ma perché la disciplina stessa non considera più la memoria una risorsa rilevante. Il passato non serve: è già stato “normalizzato”.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Ho ripreso l’espressione “americanizzazione della scienza” da John Heilbron, anche lui, come Kuhn, fisico e storico della scienza. Heilbron non intende fare polemica culturale: descrive un mutamento di regime che si consolida nel secondo dopoguerra.
+</p>
+<p>
+Quel processo comporta una specializzazione estrema, un’accelerazione continua della produzione scientifica, una separazione sempre più netta tra il fare scienza e il riflettere sulla scienza. Storia e filosofia diventano interessi laterali, orpelli culturali, attività da coltivare nel tempo libero. Non più componenti interne della pratica scientifica.
+</p>
+<p>
+Negli anni Venti e Trenta del Novecento uno scienziato poteva discutere di fondamenti, di significato, di genesi concettuale senza uscire dal proprio ruolo.
+</p>
+<p>
+Poi questo atteggiamento diventa sospetto. Non produce risultati, non aumenta l’output, non porta finanziamenti.
+</p>
+<p>
+È qui che si consolida una visione strumentale della scienza che, a cascata, si riflette sull’insegnamento.
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Riletta da questa prospettiva, la nostra esperienza di studenti a Roma è esemplare proprio perché non è affatto un’eccezione. Ciò che colpisce è la transizione da un mondo teorico compatto, coerente, privo di crepe visibili, a un universo improvvisamente aperto, attraversato da probabilità, discontinuità, transizioni.
+</p>
+<p>
+Ma colpisce ancora di più l’occultamento di quella transizione.
+</p>
+<p>
+Nessuno ci aveva detto che la fisica classica fosse segnata da “crisi interne”. La transizione restava, in un certo senso, fuori dalla scena. Le certezze ci venivano consegnate come se fossero originarie, non come il risultato di una lunga e tormentata ricostruzione a posteriori.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+La mia idea di allora — rafforzatasi negli anni — è che proprio qui la storia della scienza debba svolgere la propria funzione. Naturalmente non parlo di una storia che si limiti a “contestualizzare”, né a rendere la scienza più umana, né a raccontare aneddoti edificanti.
+</p>
+<p>
+Parlo di un approccio storiografico capace di smascherare la narrazione strumentale.
+</p>
+<p>
+Il suo compito è mostrare che ciò che oggi appare solido è stato fragile, che ciò che oggi sembra ovvio è stato profondamente controverso, che ciò che oggi appare necessario è stato contingente.
+</p>
+<p>
+E soprattutto di mostrare una cosa essenziale: la scienza non procede perché sa dove andare, ma perché esplora senza garanzie.
+Questo è l’esatto opposto dell’immagine strumentale.
+</p>
+<p>
+L’effetto educativo di questa prospettiva è potentissimo.
+Se uno studente comprende che anche i grandi edifici teorici sono nati nell’incertezza, che anche i maestri hanno lavorato nel buio, che anche le teorie vincenti hanno cancellato alternative, allora l’errore smette di essere una colpa personale. La lentezza diventa sensata. La frustrazione non è più un segno di inadeguatezza.
+</p>
+<p>
+La storia, in questo senso, non giustifica il sapere.
+Lo riporta dentro il tempo.
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Il sospetto che ti ha portato verso la storia — quello che l’edificio della fisica classica non fosse poi così granitico — non era una tua crisi individuale. Era una reazione epistemologicamente sana.
+</p>
+<p>
+Forse, più chiaramente di molti di noi, avevi intuito che ciò che ci veniva presentato come fondamento era in realtà una costruzione ex post, che il paradigma dominante aveva riscritto la propria genealogia.
+</p>
+<p>
+Esattamente ciò che Kuhn aveva messo a fuoco.
+</p>
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Potresti anche dirlo esplicitamente: la storia della scienza nasce spesso da un disagio cognitivo, non da una vocazione erudita.
+</p>
+<p>
+Ci si rivolge alla storia quando il presente non si spiega da solo, quando le transizioni vengono occultate, quando le domande diventano illegittime.
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+La parte più fragile del tuo ragionamento riguarda però il suo esito più radicale: riportare tutto questo nella scuola e nell’università.
+</p>
+<p>
+Tu sembri sostenere che:
+insegnare la scienza solo come strumento produca tecnici senza memoria;
+insegnarla solo come sistema coerente produca illusioni;
+insegnarla storicamente produca soggetti capaci di attraversare le crisi.
+</p>
+<p>
+È una prospettiva affascinante.
+La storia non come aggiunta umanistica, ma come forma di resistenza alla riduzione del sapere a prestazione.
+</p>
+<p>
+Perdonami la franchezza. Non credo che sia questo ciò che oggi manca agli studenti; e, soprattutto, ciò che le istituzioni siano disposte ad accettare.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Qui, però, temo che stiamo parlando di due cose diverse.
+Tu stai valutando ciò che è oggi praticabile dentro le istituzioni.
+Io sto cercando di capire che cosa sarebbe formativamente necessario, anche se non è immediatamente adottabile.
+</p>
+<p>
+Per chiarire questo scarto, vale forse la pena ricordare una vecchia osservazione di Gerald Holton, che anni fa scrisse sul <em>Times Literary Supplement</em> un lungo articolo dal titolo “Gli scienziati hanno bisogno della filosofia?” — e potremmo aggiungere: della storia.
+</p>
+<p>
+La domanda era evidentemente retorica. La conclusione: si può essere bravissimi scienziati operando all’ombra del paradigma dominante — intesto come strumento che agevola l’economia di pensiero. 
+</p>
+<p>
+Così non si disperdono energie attorno a questioni che riguardano le vicende passate della propria disciplina oppure aprendo dotte discussioni sulle implicazioni filosofiche o epistemologiche del proprio lavoro. 
+</p>
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Sì, con la mia esperienza posso confermarlo: si può essere ottimi scienziati senza storia e senza filosofia. Kuhn aveva ragione su questo punto, e Holton lo ha detto in modo volutamente provocatorio ma efficace. 
+</p>
+<p>
+La scienza normale regge benissimo senza memoria storica. Anzi, in un certo senso si alimenta proprio di questa amnesia selettiva.
+</p>
+<p>
+Il paradigma dominante agevola l’economia di pensiero: riduce l’incertezza, stabilizza problemi, metodi, linguaggi, e consente a molti di lavorare in parallelo in modo altamente produttivo.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Tuttavia, qui si apre un apparente paradosso: non ci sarà mai un bravo architetto che non abbia approfondito gli scritti di Vitruvio o di Leon Battista Alberti e non abbia una solida conoscenza della storia dell’architettura e dell’arte. 
+</p>
+<p>
+Al contrario si potrebbe avere un bravo ricercatore al quale sfugga per esempio se sia venuto prima Galilei o Newton — esagero, naturalmente.
+</p>
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Dentro questo regime, sapere se venga prima Galileo o Newton — raccolgo la tua esagerazione — può essere del tutto irrilevante. Ciò che conta è saper risolvere problemi ben posti con strumenti condivisi.
+</p>
+<p>
+Non c’è scandalo in questo. È la condizione di possibilità della scienza moderna su larga scala. Se chiedessimo a ogni ricercatore di rifondare concettualmente il proprio campo, di interrogarsi sulle origini o di discutere le implicazioni epistemologiche del proprio lavoro, la macchina semplicemente si arresterebbe. Dunque sì: il paradosso che poni è reale, non costruito.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Perché altri domini della conoscenza sono immuni da questo paradosso?
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            
+<p>
+Ed è proprio per questo che il confronto che introduci con l’architettura — e più in generale con le arti — è così illuminante. Perché lì la situazione è radicalmente diversa. Non esiste un bravo architetto che ignori Vitruvio o Leon Battista Alberti. Non esiste un progettista che possa operare come se la storia dell’architettura e dell’arte non esistesse.
+</p>
+<p>
+E la ragione non è culturale o accademica. È strutturale.
+</p>
+<p>
+Le scienze producono conoscenze cumulative operative. Le arti e l’architettura producono forme situate e dialogiche. Un edificio parla con altri edifici, si colloca visibilmente in una tradizione, viene giudicato anche per la relazione che intrattiene con ciò che lo precede. Una teoria scientifica, invece, non deve dialogare con il passato: deve risultare più efficace di ciò che sostituisce.
+</p>
+<p>
+Il paradigma riscrive il passato proprio per questo: per liberare il presente dal peso della genealogia.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Provo a esplicitare i termini che consentirebbero di chiarire il paradosso.
+Non saremmo di fronte a una contraddizione, ma a due regimi di razionalità differenti.
+</p>
+<p>
+Il regime scientifico moderno è orientato al problema, focalizzato sull’efficacia, temporalmente appiattito sul presente operativo. In questo quadro la storia è opzionale, talvolta d’intralcio, spesso irrilevante.
+</p>
+<p>
+Il regime artistico–umanistico, al contrario, è orientato al senso, costitutivamente dialogico, strutturalmente storico. Qui la storia non è un’aggiunta: è parte della competenza stessa.
+</p>
+<p>
+Ecco perché, a tuo avviso, si può essere ottimi scienziati senza storia, ma non architetti senza genealogia.
+</p>
+
+
+        </div>
+
+</div>
+
+
+    <div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Hai ben interpretato il mio pensiero.
+</p>
+<p>
+Ma — ed è qui che il problema emerge in tutta la sua gravità — il punto non è che la scienza operi così. Il problema nasce quando questo modello viene universalizzato. Quando il regime della scienza normale diventa il modello implicito di tutta la formazione. Quando l’idea di sapere come strumento efficiente diventa l’unica legittima. Quando la memoria, ovunque, viene vista come dispersione.
+</p>
+<p>
+È a questo livello che la scuola si impoverisce, che la formazione si riduce ad addestramento, che la capacità di attraversare le crisi si perde.
+</p>
+<p>
+La scienza può permettersi di dimenticare perché qualcun altro, altrove, ricostruisce la memoria. Ma se tutti dimenticano, il sistema perde la capacità di riflettere su se stesso.
+</p>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+Forse è proprio qui che emerge un limite della diagnosi di Kuhn e dello stesso Holton, o almeno un punto che oggi si vede con maggiore chiarezza. 
+Kuhn descriveva un sistema che reggeva perché la divisione del lavoro era ancora sana: gli scienziati producevano risultati, storici e filosofi riflettevano sui fondamenti, le istituzioni tenevano insieme i livelli. 
+Due contesti separati, privi di contaminazioni ma dove ciascuno era strutturalmente funzionale all’altro.
+</p>
+<p>
+Ma poi i linguaggi sono diventati sempre più specializzati e i due mondi hanno smesso di capirsi e il dialogo è diventato impossibile.
+</p>
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Non solo questo. Oggi quella divisione si è incrinata anche per altro. La pressione performativa si è estesa a tutto. Anche la riflessione è chiamata a “servire”. Anche la storia è marginalizzata.
+</p>
+<p>
+Il risultato è paradossale: la scienza continua a produrre risultati localmente, ma il sistema nel suo insieme diventa cieco rispetto alle proprie trasformazioni. Non riconosce più i passaggi critici, non sa nominare le discontinuità che attraversa, fatica a distinguere tra progresso e semplice accelerazione.
+</p>
+<p>
+Finché le cose girano, questa cecità non si vede. Ma quando il contesto cambia — e oggi cambia rapidamente — diventa un problema serio. Perché un sistema che non ha memoria non sa nemmeno quando sta cambiando natura.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           Questo spiega, almeno in parte, le ragioni della mia scelta di allora. Non sono “uscito” dalla fisica perché non reggesse o perché fosse falsa. Ne sono uscito perché il racconto che ne veniva dato era troppo piatto, perché le fratture erano occultate, perché le transizioni non erano dicibili.
+</p>
+<p>
+Ho avvertito che quel sapere era efficace, ma non si spiegava fino in fondo.
+</p>
+<p>
+E tu mi stai dicendo implicitamente che quando un sapere è efficace ma non si spiega, produce tecnici, non coscienza critica. In quel momento la storia non è più un lusso erudito: diventa una necessità cognitiva.
+</p>
+<p>
+Se volessimo trarre una prima conclusione, ancora provvisoria ma già netta, potremmo dirla così: sì, si può essere grandi scienziati senza storia. Ma non si può avere una cultura scientifica matura senza storia. E soprattutto non si possono formare soggetti capaci di attraversare le crisi senza memoria.
+</p>
+<p>
+La storia non serve a far marciare la scienza; è il nucleo stesso della civiltà scientifica.
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+           <p>
+Ho sempre sottovalutato la portata di discorsi del genere. Li ho sempre visti come appelli affidati al vuoto, come distrazioni che non aggiungevano nulla al mio lavoro quotidiano.
+</p>
+<p>
+In fondo, per molti anni, ho potuto permettermelo. Il sistema teneva, i problemi erano ben definiti, le regole del gioco chiare. In quel contesto, interrogarsi sul senso, sulla memoria, sulle fratture poteva sembrare un lusso superfluo.
+</p>
+<p>
+Mi rendo conto che oggi quella distinzione — tra scienza che produce e cultura scientifica che comprende — diventa, forse per la prima volta, drammaticamente urgente. Perché il contesto non è più stabile. E ciò che abbiamo rimosso torna a chiederci conto.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Fammi fare un passo indietro per riprendere il filo del ragionamento. Il paradosso, tu dici, si risolve qualora si operi una chiara distinzione tra ‘scienza’ nel suo concreto attuarsi, come sfida ai problemi concreti di tutti i giorni, e ‘cultura scientifica’. Mentre la prima non ha bisogno della storia, la seconda senza storia semplicemente non è.
+</p>
+<p>
+Qui tocchi un problema enorme e che ha radici lontane; ci sono pensatori che hanno negato che la scienza potesse avere una dimensione culturale e potesse evolversi dal suo status di sapere pratico accanto alla tecnologia.
+</p>
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+          <p>
+Cerco di essere più precisa.
+Il paradosso di cui parlavamo prima sembra risolversi solo se operiamo una distinzione netta: 
+da una parte la scienza come pratica operativa — problem solving, strumenti, modelli, laboratorio, calcolo; 
+dall’altra ciò che chiamiamo giustamente cultura scientifica — consapevolezza storica, riflessione concettuale, visione d’insieme del sapere.
+</p>
+<p>
+La prima può procedere benissimo senza storia. 
+La seconda, senza storia, semplicemente non esiste. 
+Non è che si impoverisca: viene meno. 
+E dirlo in questi termini è importante, perché chiarisce insieme due cose che altrimenti restano confuse: perché la scienza contemporanea continua a produrre risultati, e perché la nostra civiltà scientifica appare oggi così fragile dal punto di vista culturale.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+           <p>
+Come ben sai il termine ‘scienziato’ è relativamente recente e fu utilizzato in sostituzione dell’appellativo ‘filosofo della natura’. In tal modo anche in una visione retrospettiva si è operato una sorta di divisione del cervello degli scienziati del passato. 
+</p>
+<p>
+Così non interessa a nessuno sapere che Galilei oltre a studiare il moto dei corpi lungo il piano inclinato, si interrogava sul rapporto tra scienza e fede. E che entrambe le cose erano fondamentali per il suo essere scienziato — pardon, filosofo della natura. Così come sono viste con benevola attenzione, le stravaganze di Einstein che si poneva domande sul concetto di realtà.
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            La riduzione della scienza a sapere pratico non è una necessità epistemologica. Non è scritta nella logica della conoscenza scientifica. È il risultato di una scelta storica.
+Il segnale più evidente di questa scelta è proprio quello che richiami: la sostituzione dell’espressione <em>natural philosopher</em> con <em>scientist</em>. 
+</p>
+<p>
+Non si tratta di una semplice evoluzione linguistica. È una separazione simbolica.
+Con quel passaggio, la scienza viene progressivamente “ripulita” della riflessione metafisica; la filosofia viene espulsa dal laboratorio; la dimensione culturale viene esternalizzata. E la cosa più rilevante è che questa operazione non resta confinata al presente, ma viene proiettata retroattivamente sul passato.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Qui entra in gioco quella che potremmo davvero chiamare una “lobotomia retrospettiva” degli scienziati del passato. 
+</p>
+<p>
+Galileo diventa l’uomo del piano inclinato, il precursore del metodo sperimentale, ma non più il pensatore del rapporto tra Scrittura e Natura, l’interlocutore della teologia, il filosofo che rifletteva su linguaggio, dimostrazione e verità. 
+</p>
+<p>
+Newton diventa il padre della meccanica classica, ma non l’autore dei Principia come opera filosofica, né l’alchimista, né il teologo. 
+</p>
+<p>
+Einstein diventa il genio delle equazioni, mentre le sue riflessioni su realtà, causalità, completezza della teoria vengono archiviate come stravaganze benevole, hobby di un grande cervello.
+</p>
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Questa non è neutralità storiografica. È una riscrittura funzionale.
+</p>
+<p>
+Ed è stata necessaria. A lungo ho pensato che questo passaggio fosse inevitabile e ancora oggi ne sono in parte convinta. 
+</p>
+<p>
+La scienza moderna, per affermarsi come autorità cognitiva, ha dovuto separarsi dalla filosofia, distinguersi dalla teologia, presentarsi come sapere neutro, operativo, affidabile. 
+Per riuscirci ha costruito una narrazione in cui il passato appare come una marcia lineare verso il presente, e tutto ciò che non conduce direttamente all’attuale paradigma viene relegato a semplice “contesto”. 
+In questo modo la cultura scientifica non è più un elemento interno alla scienza, ma diventa un lusso esterno, facoltativo.
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+            <p>
+Tutto chiaro, dunque, come all’interno della narrazione di Kuhn. 
+</p>
+<p>
+Ti faccio però notare che questo assetto ha funzionato finché il progresso appariva evidente e incontestabile. Ma oggi, quando le scienze incidono profondamente sulla società, sulla politica, sulla vita quotidiana; quando le tecnologie strutturano il pensiero; quando l’intelligenza artificiale entra direttamente nella produzione del sapere, non credi che quella amputazione stia diventando particolarmente pericolosa?
+</p>
+<p>
+Il prezzo che stiamo pagando è sotto gli occhi di tutti. Una scienza che rinuncia alla propria dimensione culturale perde la capacità di spiegarsi, non sa più dire perché fa ciò che fa, e finisce per lasciare che altri — il mercato, la politica, la tecnologia stessa — decidano il senso delle sue traiettorie. 
+Anche la formazione ne risente: si producono specialisti eccellenti, ma incapaci di situare il proprio lavoro in una storia, e quindi incapaci di riconoscerne le implicazioni.
+</p>
+
+
+
+        </div>
+    </div>
+
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            <p>
+Quello che dici, le tue argomentazioni che in passato avrei liquidato con una scrollata di spalle, oggi mi mettono in crisi.
+</p>
+<p>
+L’euforia che ha accompagnato il nostro lavoro e l’emozione della scoperta si sono via via attenuate con l’avvento sempre più massiccio e prepotente delle tecnoscienze. 
+Siamo di fronte a un mutamento radicale, insieme metodologico e sociologico, che nessun sistema filosofico era davvero in grado di anticipare nelle sue forme concrete, nella sua velocità, nella sua pervasività.
+</p>
+<p>
+Proprio per questo, oggi, in quanto scienziata militante, sono più disponibile al dialogo e a cercare insieme possibili risposte. Non per noi. Ma guardando al futuro.
+</p>
+
+
+
+        </div>
+    </div>
+
+    <div class="turn">
+        <div class="speaker">Sandro</div>
+        <div class="speech">
+          <p>
+La distinzione tra scienza e cultura scientifica può essere utile, ma solo se resta consapevole e provvisoria. Diventa distruttiva quando viene naturalizzata, presentata come necessaria, proiettata all’indietro come se fosse sempre stata così.
+</p>
+<p>
+Ed è esattamente qui che, a mio avviso, il lavoro dello storico diventa decisivo: mostrare che la scienza è sempre stata anche riflessione sul proprio statuto. Non come ornamento, non come aggiunta umanistica, ma come parte del suo funzionamento profondo.
+</p>
+
+
+
+
+
+        </div>
+    </div>
+<div class="turn">
+        <div class="speaker">Alessandra</div>
+        <div class="speech">
+            
+<p>
+Questo dialogo ha messo a fuoco tre linee che, per molto tempo, ho potuto tenere separate — o rimuovere.
+</p>
+<p>
+La costruzione storica dello “scienziato senza filosofia”;
+la cancellazione retrospettiva della complessità dei fondatori; e
+la perdita della cultura scientifica come problema civile, prima ancora che accademico.
+</p>
+<p>
+Vederle insieme, oggi, significa riconoscere che non sono questioni teoriche.
+Sono il prezzo che stiamo pagando per un modello che ha funzionato a lungo, ma che ora mostra i suoi limiti.
+</p>
+<p>
+E, per quanto mi riguarda, significa anche che non posso più praticare la scienza come se questo prezzo non mi riguardasse.
+</p>
+
+
+
+
+
+
+
+<hr class="chapter-separator">
+
+<div class="chapter-nav">
+<a href="01-livia-olivia.html">← 1. Livia, Olivia e studiare ciò che serve</a>
+<a href="03-raccontare-scienza.html">3. Come raccontare la scienza →</a>
+</div>
+
+</div>
+
+<!-- PULSANTE HAMBURGER FISSO -->
+<button id="nav-toggle" aria-label="Apri indice capitoli">☰</button>
+
+<!-- OVERLAY -->
+<div id="nav-overlay"></div>
+
+<!-- DRAWER -->
+<nav id="nav-drawer" aria-label="Indice capitoli">
+  <div class="drawer-header">
+    <span>Indice</span>
+    <button id="nav-close" aria-label="Chiudi indice">✕</button>
+  </div>
+  <ul class="drawer-list">
+    <li class="section-label">Apertura</li>
+    <li><a href="prefazione.html">Prefazione</a></li>
+    <li><a href="prologo.html">Prologo</a></li>
+    <li class="section-label">Capitoli</li>
+    <li><a href="01-livia-olivia.html">1. Livia, Olivia e studiare ciò che serve</a></li>
+    <li><a href="02-memoria-storica.html" class="current">2. La perdita della memoria storica</a></li>
+    <li><a href="03-raccontare-scienza.html">3. Come raccontare la scienza</a></li>
+    <li><a href="04-scienza-sistema.html">4. La scienza che si fa Sistema</a></li>
+    <li><a href="05-avvento-tecnoscienze.html">5. L'avvento delle tecnoscienze</a></li>
+    <li><a href="06-scegliere-democrazia.html">6. Scegliere la democrazia?</a></li>
+    <li><a href="07-tecnoscienze-democrazia.html">7. Tecnoscienze vs democrazia</a></li>
+    <li><a href="08-messaggio-bottiglia.html">8. Un messaggio nella bottiglia</a></li>
+    <li><a href="09-domani.html">9. Livia e Olivia, domani</a></li>
+    <li class="section-label">Chiusura</li>
+    <li><a href="conclusione.html">In luogo di una conclusione</a></li>
+    <li><a href="post_scriptum.html">Post Scriptum</a></li>
+    <li><a href="personaggi.html">I personaggi</a></li>
+    <li><a href="indicazioni.html">Indicazioni di lettura</a></li>
+  </ul>
+</nav>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const overlay = document.getElementById('nav-overlay');
+const drawer = document.getElementById('nav-drawer');
+const close = document.getElementById('nav-close');
+
+function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+toggle.addEventListener('click', openDrawer);
+close.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+</script>
+
+</body>
+</html>
