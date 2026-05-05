@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il giudizio e la sua simulazione</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover {
+  background: rgba(10, 70, 82, 0.08);
+}
+.print-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-title {
+  margin: 10px 0 4px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.article-subtitle {
+  margin: 2px 0 8px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+
+.article-kicker {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.article-text p {
+  margin: 0 0 1em;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .top-actions,
+  .print-button {
+    display: none !important;
+  }
+  .article-title,
+  .article-subtitle {
+    font-size: 15pt;
+    line-height: 1.28;
+  }
+  .article-title {
+    margin-bottom: 2px;
+  }
+  .article-subtitle {
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  .article-text p {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.chapter-nav a:hover {
+  color: #07333d;
+  text-decoration: underline;
+}
+
+
+
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+
+  .article-title {
+    font-size: 1.18rem;
+  }
+
+  .article-subtitle {
+    font-size: 1.72rem;
+    margin: 4px 0 10px;
+  }
+
+  .article-kicker {
+    font-size: 1.12rem;
+    margin: 0 0 22px;
+  }
+}
+.next-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.next-link:hover {
+  text-decoration: underline;
+}
+
+
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21, 58, 68, 0.2);
+}
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: #07333d; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+        <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path>
+          <path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+  <div class="article-date">1 maggio 2026</div>
+
+<br><p class="article-subtitle">Il giudizio e la sua simulazione</p>
+
+
+
+<div class="article-text">
+
+<p>
+Tra le molte ragioni per cui l’intelligenza artificiale colpisce, ce n’è una che merita forse più attenzione di quanta comunemente ne riceva. Non riguarda soltanto la velocità del calcolo, l’ampiezza dei dati trattati o l’efficienza delle risposte. Riguarda qualcosa di più sottile: il fatto che, in molti casi, i modelli sembrino capaci non solo di rispondere, ma di esprimere giudizi.
+</p><p>
+L’impressione nasce da esperienze ormai comuni. Si sottopone al sistema una lettera, un testo, una decisione delicata, e la risposta non si limita a correggere o a riassumere. Distingue il tono più opportuno da quello eccessivo, mette in rilievo ciò che appare essenziale, confronta le alternative, suggerisce cautele, formula osservazioni che sembrano equilibrate. In questi casi ciò che sorprende non è soltanto la competenza tecnica. È l’impressione di trovarsi davanti a una forma di valutazione che ci mette letteralmente in crisi. Ed è proprio qui che sorge l’equivoco. 
+</p>
+La forma del giudizio
+<p>
+Una cosa è produrre enunciati che hanno la forma del giudizio; altra cosa è giudicare in senso proprio. La differenza non è marginale. Da essa dipende non solo il modo in cui interpretiamo questi sistemi, ma anche il modo in cui rischiamo di ridefinire al ribasso la nostra stessa idea di giudizio.
+</p><p>
+Un modello può selezionare, confrontare, ordinare, pesare le alternative. Può farlo con una raffinatezza impressionante. Può anche organizzare elementi eterogenei in una risposta coerente e persuasiva. Ma tutto questo, per quanto notevole, non equivale ancora al giudizio nel senso pieno del termine.
+</p><p>
+Perché il giudizio non consiste semplicemente nel formulare una conclusione plausibile. Richiede comprensione del contesto, capacità di cogliere che cosa sia davvero rilevante, orientamento entro criteri di valore, percezione delle conseguenze, e spesso anche l’attitudine a muoversi dentro contrapposizioni che non si lasciano risolvere con una semplice ottimizzazione. Giudicare non significa solo scegliere tra opzioni date; significa anche sapere perché qualcosa conta, in quale orizzonte di senso si colloca, che cosa si rischia decidendo in un modo piuttosto che in un altro.
+</p>
+La fenomenologia del giudizio
+<p>
+Noi non siamo nelle condizioni di leggere il processo interno del modello; leggiamo soltanto il risultato. E il risultato si presenta spesso con tutte le caratteristiche esteriori del giudizio maturo: equilibrio, prudenza, pertinenza, capacità di comparazione, sensibilità al contesto. In altre parole, l’AI può produrre con grande efficacia la <em>fenomenologia del giudizio</em>.
+</p><p>
+È proprio questa fenomenologia a rendere il problema filosoficamente serio. Se il sistema producesse soltanto errori vistosi o meccaniche combinazioni di dati, la questione sarebbe più limitata. Ma il fatto che sappia parlare come se stesse valutando induce facilmente l’utente a compiere un passo ulteriore: scambiare la forma del giudizio per il giudizio stesso.
+</p>
+L’abbassamento della soglia critica
+<p>
+Qui si colloca il rischio più importante: <em>l’abbassamento della soglia critica</em>. Se un testo appare ponderato, se una risposta suona ragionevole, se un consiglio è formulato con misura, cresce la tentazione di considerarlo affidabile non perché sia stato davvero verificato, ma perché possiede l’aspetto della riflessione. L’utente può così fidarsi non del contenuto in quanto controllato, ma della sua qualità esteriore.
+</p><p>
+Questo rischio è tanto più forte perché non riguarda soltanto gli utenti inesperti. Anche chi studia questi sistemi può restare colpito proprio dalla loro apparente capacità di giudizio. E non è difficile capire perché: la differenza tra una buona sintesi contestuale e un vero discernimento non è immediatamente visibile sul piano linguistico. Anzi, il linguaggio ben riuscito tende a farci inferire del tutto naturalmente l’esistenza alla sua base di una comprensione.
+</p><p>
+Ma qui occorre arrestarsi. Il linguaggio può esibire la forma della comprensione senza per questo garantire di essere in grado di comprendere. Allo stesso modo, può esibire la forma del giudizio senza possederne la struttura profonda.
+</p><p>
+Per questo la questione non riguarda soltanto la natura dell’AI. Riguarda anche la cultura dell’utente. Quanti sono davvero in grado di distinguere tra valutazione statistica, sintesi contestuale e giudizio in senso proprio? Quanti possiedono gli strumenti concettuali per non attribuire ai modelli di AI una facoltà che essi, almeno per come oggi possiamo intenderla, non possiedono? Ed è proprio questa sproporzione – difficile da misurare, ma facile da intuire – a rendere il problema urgente.
+</p><p>
+In questo senso, l’intelligenza artificiale pone un problema di senso e di giudizio prima ancora che di efficienza. La sua forza non sta soltanto nel fare molto, ma nel farlo in una forma che può essere scambiata per comprensione e ponderazione autentiche.
+La domanda decisiva non è soltanto se la macchina giudichi davvero. È se noi sapremo ancora distinguere tra il giudizio e la sua simulazione. </p>
+
+
+
+
+
+</div>
+
+<hr class="chapter-separator">
+
+
+
+<div class="chapter-nav">
+    <a class="back-link" href="../index.html">← Torna agli articoli</a>
+</div>
+
+
+
+
+<footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">
+      — Sandro Petruccioli
+    </p>
+  </footer>
+  </div>
+</div>
+</body>
+</html>
