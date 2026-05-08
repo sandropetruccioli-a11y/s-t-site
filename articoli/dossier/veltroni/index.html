@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier: l'intervista di Veltroni a Claude</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+  --external: #8a6020;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 48px;
+}
+
+/* HEADER */
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 28px;
+}
+.back-link:hover { color: #07333d; }
+.dossier-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+h1 {
+  margin: 0 0 12px;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--accent);
+}
+.dossier-intro {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 36px;
+  max-width: 640px;
+}
+
+/* DIVIDER */
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.2);
+  margin: 0 0 28px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(21,58,68,0.12);
+  padding: 20px 22px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  position: relative;
+}
+.card:hover {
+  box-shadow: 0 2px 12px rgba(10,70,82,0.10);
+  border-color: rgba(10,70,82,0.28);
+}
+
+/* Internal card */
+.card-internal {
+  border-left: 4px solid var(--accent);
+}
+.card-internal:hover { border-left-color: var(--accent); }
+
+/* External card */
+.card-external {
+  border-left: 4px solid var(--external);
+}
+.card-external:hover {
+  box-shadow: 0 2px 12px rgba(138,96,32,0.10);
+  border-color: rgba(138,96,32,0.28);
+}
+
+.card-number {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 6px;
+}
+.card-internal .card-number { color: var(--muted); }
+.card-external .card-number { color: var(--external); }
+
+.card-badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.badge-external {
+  background: rgba(138,96,32,0.10);
+  color: var(--external);
+}
+.badge-internal {
+  background: rgba(10,70,82,0.08);
+  color: var(--accent);
+}
+
+.card-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.card-internal .card-title { color: var(--accent); }
+.card-external .card-title { color: var(--external); }
+
+.card-byline {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.card-arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: rgba(10,70,82,0.3);
+  transition: color 0.15s;
+}
+.card-external .card-arrow { color: rgba(138,96,32,0.3); }
+.card:hover .card-arrow { color: var(--accent); }
+.card-external:hover .card-arrow { color: var(--external); }
+
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 56px; }
+  h1 { font-size: 1.85rem; }
+  .card { padding: 22px 52px 22px 24px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="../../../index.html">← Home</a>
+
+  <div class="dossier-label">Dossier</div>
+  <h1>L'intervista di Veltroni a Claude</h1>
+  <p class="dossier-intro">
+    L'intervista di Walter Veltroni a Claude, pubblicata dal <em>Corriere della Sera</em> nel maggio 2026, ha aperto un dibattito ampio e acceso. Qui raccogliamo i testi che ne sono scaturiti: l'intervista originale, un commento critico, un dialogo filosofico a tre voci e una conversazione che ne è seguita.
+  </p>
+
+  <hr class="section-divider">
+
+  <div class="cards">
+
+    <!-- 1. Veltroni sul Corriere -->
+    <a class="card card-external"
+       href="veltroni-intervista.html">
+      <div class="card-number">1</div>
+      <span class="card-badge badge-external">Corriere della Sera</span>
+      <div class="card-title">L'intervista di Veltroni a Claude</div>
+      <div class="card-byline">di Walter Veltroni · <em>Corriere della Sera</em></div>
+      <div class="card-desc">
+        Il testo che ha dato origine al dibattito: un'intervista lunga e coinvolgente in cui Walter Veltroni pone a Claude domande su identità, morte, Dio, politica e solitudine.
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <!-- 2. Commento di S.P. -->
+    <a class="card card-internal" href="../../2026-05-03-articolo-22.html">
+      <div class="card-number">2</div>
+      <span class="card-badge badge-internal">In questo laboratorio</span>
+      <div class="card-title">L'intervista di Veltroni a Claude: un sintomo più che un contenuto</div>
+      <div class="card-byline">di Sandro Petruccioli</div>
+      <div class="card-desc">
+        Un'analisi delle tre criticità del testo: l'antropomorfizzazione del modello, l'oscillazione tra registri opposti, e il rischio che il lettore attribuisca realtà ontologica a una forma discorsiva molto convincente.
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <!-- 3. Calvino -->
+    <a class="card card-external" href="calvino-socrate-claude.html">
+      <div class="card-number">3</div>
+      <span class="card-badge badge-external">La Rivista Intelligente</span>
+      <div class="card-title">Dialogo tra R., Socrate e Claude</div>
+      <div class="card-byline">di Roberto Calvino</div>
+      <div class="card-desc">
+        Un dialogo reale con Claude rivestito del dispositivo letterario di Socrate. Le parti di Socrate sono dell'autore; le parti di Claude sono autentiche — e lo rivelano nel momento in cui Claude viola il patto che aveva stretto con il suo interlocutore.
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <!-- 4. Il quid -->
+    <a class="card card-internal" href="quid-che-ci-sfugge.html">
+      <div class="card-number">4</div>
+      <span class="card-badge badge-internal">In questo laboratorio</span>
+      <div class="card-title">Il quid che ci sfugge</div>
+      <div class="card-byline">di Sandro Petruccioli</div>
+      <div class="card-desc">
+        Un dialogo a margine del testo di Calvino: tre domande e tre risposte sul quid indefinito che né l'antropomorfizzazione né il riduzionismo riescono a catturare. Claude risponde — e nel rispondere conferma esattamente il problema che il dialogo mette a fuoco.
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+
+  </div>
+
+</div>
+</body>
+</html>
