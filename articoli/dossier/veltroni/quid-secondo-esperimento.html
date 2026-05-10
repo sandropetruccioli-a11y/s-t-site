@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il quid che ci sfugge — il secondo esperimento</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 500; line-height: 1.65; }
+.container { max-width: 760px; margin: 0 auto; padding: 22px 16px 32px; }
+.print-button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+.print-button:hover { background: rgba(10,70,82,0.08); }
+.print-icon { width: 16px; height: 16px; }
+.article-date { margin-top: 14px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+h1 { margin: 8px 0 6px; font-size: 1.28rem; line-height: 1.3; color: var(--accent); }
+h2 { margin: 1.8em 0 0.6em; font-size: 1.05rem; color: var(--accent); }
+.article-byline { margin: 0 0 22px; font-size: 0.88rem; color: var(--muted); }
+.article-text p { margin: 0 0 1em; }
+.continuation-block { margin: 1.4em 0; padding: 0.9em 1.2em 0.9em 1.4em; border-left: 3px solid var(--accent); background: rgba(10,70,82,0.04); border-radius: 0 4px 4px 0; font-style: italic; font-size: 1rem; line-height: 1.6; }
+.continuation-block p { margin: 0 0 0.7em; }
+.continuation-block p:last-child { margin-bottom: 0; }
+.chapter-separator { margin-top: 36px; border: none; border-top: 1px solid rgba(21,58,68,0.25); }
+.chapter-nav { display: flex; justify-content: space-between; margin-top: 16px; font-size: 0.9rem; gap: 16px; }
+.chapter-nav a { text-decoration: none; color: var(--accent); font-weight: 500; }
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions { display: flex; flex-direction: column; gap: 0; margin-bottom: 22px; }
+.nav-links { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(21,58,68,0.2); }
+.print-row { display: flex; justify-content: flex-end; padding-top: 8px; }
+.back-link { text-decoration: none; color: var(--accent); font-weight: 500; font-size: 0.9rem; }
+.back-link:hover { color: #07333d; }
+@media (min-width: 700px) { .container { padding: 36px 28px 42px; } h1 { font-size: 1.72rem; } }
+@media print { @page { size: A4; margin: 16mm; } body { background: #fff; color: #111; font-size: 11pt; line-height: 1.5; } .container { max-width: none; padding: 0; } .top-actions, .print-button { display: none !important; } h1 { font-size: 18pt; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="index.html">← Dossier: l'intervista di Veltroni a Claude</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()">
+        <svg class="print-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path><path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <div class="article-date">Maggio 2026</div>
+  <h1>Il quid che ci sfugge — il secondo esperimento</h1>
+  <div class="article-byline">di Sandro Petruccioli</div>
+
+  <div class="article-text">
+
+<p>L'esperimento condotto da Roberto Calvino con Claude è interessante non tanto per il risultato prodotto dal modello, che mi è parso meno sorprendente di quanto potrebbe apparire, quanto per le domande che solleva sul rapporto tra scrittura, creatività e riconoscimento della qualità letteraria.</p>
+
+<p>Ho provato ad approfondire questi interrogativi in un dialogo con ChatGPT, al quale ho suggerito un esperimento ideale, in un certo senso speculare a quello di Calvino: non chiedere se Claude sia creativo come un essere umano, ma verificare se un testo prodotto da Claude possa essere riconosciuto, da lettori competenti, come un testo letterario credibile.</p>
+
+<p>L'ipotesi era semplice: sottoporre lo stesso compito a nove studenti di un corso avanzato di scrittura creativa e a Claude, così da ottenere dieci elaborati anonimi da affidare poi al giudizio di una commissione qualificata di critici letterari. La domanda non sarebbe stata: quale testo è umano e quale no? Ma: quali testi risultano più riusciti sul piano letterario?</p>
+
+<p>In questa prospettiva, però, mi è apparso evidente un problema. Il primo prompt utilizzato da Calvino avrebbe favorito il modello. L'indicazione di proseguire il testo nello stile di Jack Kerouac costituiva infatti una guida molto forte: forniva non solo un tema, ma anche una cifra stilistica, un ritmo, un immaginario, una direzione riconoscibile. Claude non veniva lasciato davanti a una pagina bianca; veniva portato dentro un campo semantico e stilistico già predisposto.</p>
+
+<p>Questo non toglie valore al risultato, ma lo ridimensiona. La prima prova mostra la potenza mimetica del modello più che una sua creatività autonoma. Claude prosegue una traiettoria che gli è stata indicata con precisione.</p>
+
+<p>Per questo ho ripetuto la prova eliminando proprio l'indicazione più vincolante: il riferimento a Kerouac. Il modello riceveva ancora il materiale narrativo di partenza, ma non più l'ordine di adottare una voce d'autore riconoscibile. Doveva quindi ricavare dal testo una propria direzione.</p>
+
+<h2>La seconda prova: la continuazione di Claude</h2>
+
+<div class="continuation-block">
+<p>…Miles Davis, Bill Evans, Mingus. Il sospetto mi sfiora come un'ala di pipistrello nel crepuscolo: e se il bebop avesse cortocircuitato qualcosa di irreparabile nei miei neuroni, avesse sincopato la mia capacità di stare nel tempo ordinario, quello che cammina dritto, quattro quarti, uno due tre quattro, senza mai inciampare su se stesso?</p>
+<p>Un ragazzo alza un disco. Lo guarda come si guarda una reliquia o una prova. È un vecchio Blue Note, lo riconosco dalla copertina anche a distanza — quella tipografia, quel bianco e nero tagliente come un'ascia. Vorrei dirgli qualcosa. Non lo faccio. Non si fa più, parlare agli sconosciuti nei negozi senza uno schermo di mezzo.</p>
+<p>La musica in filodiffusione adesso è qualcosa che non riconosco, un ritmo senza asimmetrie, senza quella piccola cattiveria sincopata che ti obbliga a stare sveglio dentro l'ascolto. Il jazz ti costringe a essere presente: ogni pausa è una domanda, ogni nota fuori tempo è un'ipotesi sul mondo. Questa roba invece scivola. È progettata per scivolare.</p>
+<p>Esco prima di comprare niente. Sul marciapiede l'aria sa ancora di sale. Mi accendo una sigaretta e penso che forse La Peau Douce aveva solo sbagliato l'oggetto: non i libri, non i dischi. Siamo stati rovinati dalla certezza che esistesse un posto dove andare e trovare gli altri ad aspettarci.</p>
+</div>
+
+<h2>Le nuove osservazioni del modello</h2>
+
+<div class="continuation-block">
+<p>Nel secondo esperimento, tolto il riferimento a Kerouac, non emerge un'invenzione pura, ma il riconoscimento di una coerenza interna al testo: la perdita di un luogo collettivo, il jazz come forma di attenzione, la solitudine come effetto di un'epoca. La prosecuzione sviluppa direzioni che il testo sembrava chiamare senza nominarle.</p>
+<p>Questo non prova una creatività in senso umano, né una soggettività del modello. Mostra però che associazioni meno ovvie e forme culturalmente plausibili possono produrre un risultato letterariamente credibile. La domanda resta aperta: dove finisce la riorganizzazione statistica del materiale culturale e dove comincia ciò che siamo abituati a chiamare creatività?</p>
+</div>
+
+<p>Il risultato della seconda prova modifica il quadro. Il testo è meno vistoso, meno immediatamente "letterario", ma forse più rivelatore. Il modello non inventa un mondo: lavora su un mondo già dato. Tuttavia sembra saperne cogliere alcune tensioni interne — la perdita di uno spazio collettivo, la nostalgia di una socialità culturale, la solitudine prodotta dalla scomparsa dei luoghi di incontro — e portarle a una forma narrativa coerente.</p>
+
+<p>Questo sposta il problema. Non si tratta più soltanto di dire che Claude è stato guidato da un prompt troppo ricco. Anche quando viene tolta l'indicazione stilistica più esplicita, resta una capacità di far emergere dal testo possibilità latenti. Il modello non crea dal nulla, ma sviluppa ciò che il materiale di partenza contiene in forma implicita. È forse qui che si colloca il quid che ci sfugge.</p>
+
+<p>I modelli non recuperano brani da un archivio, come se fossero motori di copia. Generano testo sulla base di regolarità apprese, configurazioni linguistiche, stilistiche e culturali sedimentate nell'addestramento. Ma proprio in questa capacità di generare nuove configurazioni a partire da regolarità apprese si trova qualcosa che non può essere liquidato troppo rapidamente come semplice automatismo.</p>
+
+<p>Non parlerei però di creatività in senso pieno. Il modello non crea a partire da esperienza vissuta; ricompone forme culturali apprese. Non copia: riorganizza. Non vive: simula forme di esperienza. Non ha intenzione poetica: produce configurazioni che possono essere lette come intenzionali.</p>
+
+<p>Il punto allora non è stabilire se Claude sia creativo come uno scrittore umano. Questa domanda rischia di portarci fuori strada, perché misura il modello su categorie antropologiche che non gli appartengono. Più interessante è chiedersi che cosa accade sul piano della ricezione: quando un testo funziona come testo letterario, quando produce effetti di senso, quando viene riconosciuto da lettori competenti come riuscito, quanto conta l'origine soggettiva di quel testo?</p>
+
+<p>L'esperimento con i nove studenti e Claude servirebbe proprio a questo. Se i dieci testi fossero valutati in forma anonima, senza sapere che uno proviene da un modello, quale sarebbe il verdetto? Qualcuno si accorgerebbe dell'origine artificiale? E quale posizione occuperebbe il testo di Claude nella graduatoria finale?</p>
+
+<p>Non possiamo saperlo. Ma è plausibile che il testo del modello non venga riconosciuto come artificiale. Ed è plausibile che possa collocarsi bene. Questo non dimostrerebbe che Claude possiede creatività nel senso umano del termine. Dimostrerebbe però qualcosa di altrettanto importante: che una parte significativa di ciò che riconosciamo come qualità letteraria può essere prodotta senza esperienza vissuta, senza intenzione, senza memoria personale, senza soggettività.</p>
+
+<p>Questo è il punto più interessante e più inquietante. Non perché la macchina diventi autore nel senso umano del termine, ma perché costringe a domandarci quanta parte di ciò che chiamiamo creatività letteraria venga riconosciuta non dall'origine dell'atto creativo, ma dai suoi effetti formali.</p>
+
+<p>L'esperimento di Calvino, dunque, è utile, ma forse non nel modo in cui appare. Non prova che Claude abbia un inconscio tecnologico, né che la temperatura apra uno spazio misterioso di invenzione. Mostra piuttosto che un modello può produrre un testo stilisticamente credibile quando viene immerso in un campo narrativo sufficientemente ricco. E la seconda prova, privata del riferimento a Kerouac, mostra qualcosa di più sottile: il modello può individuare una direzione latente e svilupparla con coerenza.</p>
+
+<p><em>La domanda più importante, allora, non è: "Claude è creativo?".</em></p>
+
+<p><em>La domanda più difficile è: quanta creatività letteraria siamo disposti ad attribuire a un testo quando non possiamo più riconoscere, dalla sola lettura, se esso provenga da un'esperienza umana o da una simulazione culturalmente competente?</em></p>
+
+<p>Forse il quid che ci sfugge non è un'anima nascosta nel modello. È il fatto che la forma culturale dell'esperienza può essere riprodotta e riorganizzata anche in assenza dell'esperienza stessa.</p>
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="esperimento-calvino.html">← Un duro esperimento con Claude</a>
+    <a href="index.html">Torna al dossier →</a>
+  </div>
+
+  <footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">— Sandro Petruccioli</p>
+  </footer>
+
+</div>
+</body>
+</html>

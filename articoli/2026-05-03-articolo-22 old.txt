@@ -119,7 +119,7 @@ body {
 
   <div class="top-actions">
     <div class="nav-links">
-      <a class="back-link" href="dossier/veltroni/index.html">← Dossier: l'intervista di Veltroni a Claude</a>
+      <a class="back-link" href="../index.html">← Torna agli articoli</a>
     </div>
     <div class="print-row">
       <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">

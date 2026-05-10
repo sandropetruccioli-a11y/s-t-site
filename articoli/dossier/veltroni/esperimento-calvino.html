@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un duro esperimento con Claude</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+  --external: #8a6020;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 500; line-height: 1.65; }
+.container { max-width: 760px; margin: 0 auto; padding: 22px 16px 32px; }
+.print-button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+.print-button:hover { background: rgba(10,70,82,0.08); }
+.print-icon { width: 16px; height: 16px; }
+.external-badge { display: inline-block; margin-bottom: 8px; padding: 3px 10px; border-radius: 999px; background: rgba(138,96,32,0.1); color: var(--external); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.article-date { margin-top: 6px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--external); }
+h1 { margin: 8px 0 6px; font-size: 1.28rem; line-height: 1.3; color: var(--external); }
+.article-byline { margin: 0 0 22px; font-size: 0.88rem; color: var(--muted); }
+.article-text p { margin: 0 0 1em; }
+.speaker { font-style: italic; font-weight: 600; color: var(--accent); }
+.chapter-separator { margin-top: 36px; border: none; border-top: 1px solid rgba(21,58,68,0.25); }
+.chapter-nav { display: flex; justify-content: space-between; margin-top: 16px; font-size: 0.9rem; gap: 16px; }
+.chapter-nav a { text-decoration: none; color: var(--accent); font-weight: 500; }
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions { display: flex; flex-direction: column; gap: 0; margin-bottom: 22px; }
+.nav-links { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(21,58,68,0.2); }
+.print-row { display: flex; justify-content: flex-end; padding-top: 8px; }
+.back-link { text-decoration: none; color: var(--accent); font-weight: 500; font-size: 0.9rem; }
+.back-link:hover { color: #07333d; }
+@media (min-width: 700px) { .container { padding: 36px 28px 42px; } h1 { font-size: 1.72rem; } }
+@media print { @page { size: A4; margin: 16mm; } body { background: #fff; color: #111; font-size: 11pt; line-height: 1.5; } .container { max-width: none; padding: 0; } .top-actions, .print-button { display: none !important; } h1 { font-size: 18pt; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="index.html">← Dossier: l'intervista di Veltroni a Claude</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()">
+        <svg class="print-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path><path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <span class="external-badge">Pubblicato su La Rivista Intelligente</span>
+  <div class="article-date">8 maggio 2026</div>
+  <h1>Un duro esperimento con Claude</h1>
+  <div class="article-byline">di Roberto Calvino · <em>La Rivista Intelligente</em></div>
+
+  <div class="article-text">
+
+<p><span class="speaker">R rivolto a Claude:</span> Ti spiego cosa intendo fare. Incollo un mio racconto e poi ti chiedo di proseguire. Poi ti scrivo con precisione il prompt. Il motivo non è allungare il racconto, ma capire come operi per continuare il racconto. Il prompt sarà strutturato in modo molto preciso. Tu nel rispondere cerca di combinare le parole con una "temperature" molto alta (un parametro che regola quanto le scelte del modello siano prevedibili o sorprendenti; alta temperatura significa associazioni di parole meno probabili, più lontane dal percorso atteso) in modo da non sviluppare il racconto in modo banale. Il motivo? Far emergere quello che sembra il tuo quid creativo, ma che io penso sia calcolo statistico organizzato, dove le probabilità di associazione delle parole sia il più basso possibile: il fatto che tu scelga di associare le parole in un modo o in un altro dipende dal prompt e dal contesto, da quello che è il tuo inconscio tecnologico.</p>
+
+<p>Il prompt è questo: "Continua questo mio racconto. Deve contenere lo stesso mio numero di parole. Deve essere scritto seguendo uno stile ben definito. Ti chiedo di utilizzare lo stile di Jack Kerouac, visto che nel mio racconto parlo di jazz. Fai riferimento alla prosodia bop teorizzata da Kerouac. Insieme alla tua risposta, pubblicherò anche questo mio prompt. Se vuoi poi fare una considerazione su questo esperimento, falla".</p>
+
+<p><span class="speaker">Testo di R.</span> Era una giornata di sole di quelle che il vento rende limpide e la brezza marina vagamente fresche, col sale che in gola, insieme al fumo delle sigarette provoca un leggero bruciore, quando attraversai la soglia della comune libertaria Errico Malatesta. Una decina di ragazzi, era forse la fine degli anni Sessanta, erano indaffarati a sistemare le sedie, a collegare i cavi degli amplificatori, a regolare il mixer, perché da lì a poco uno di loro, con un vistoso fazzoletto rosso al collo, si apprestava a raccontare la storia del suo viaggio a San Francisco. Nel frattempo teneva in mano <em>Jukebox all'idrogeno</em> e con una matita sottolineava non so quali passaggi di una poesia di Ginsberg. Erano anni in cui la cultura alternativa aveva i suoi canali, in cui notizie, fatti, questioni musicali e letterarie, artistiche si diffondevano, e la marginalità aveva il suo senso e la sua capacità di incidere sul reale, di trovare un terreno fertile dove prosperare. Mi piaceva stare tra quelle persone, scambiare con loro le parole, conoscere qualcuno, qualcuna. Oggi, a distanza di mezzo secolo, mi trovo qui da solo davanti a un computer e mi chiedo: <em>where have all the flowers gone</em>? Passo da Facebook a X, da Instagram a Google, chiedo qualcosa a Claude, leggo i commenti e i post nelle bacheche di chi la pensa come me, ma un profondo senso di frustrazione si impadronisce anche della musica che sto ascoltando. Esco. Dove vado? La certezza di non incontrare più nessuno, perché gli altri, quelli con cui potrei scambiare quattro parole, chissà dove sono, mi porta in libreria. Magari trovo qualche libro che mi piace. Entro. È piena di persone, la libreria, sconosciuti, ma i libri lo sono molto molto di più: scaffalature su scaffalature, divisi per genere, per autore: centinaia di libri, uno in fila all'altro, di autori di cui non ho la minima idea di chi possano essere. Non sopporto le copertine sgargianti, con titoli sciropposi: quando ero ragazzo mi avrebbero provocato, non dico ilarità, ma qualche commento sprezzante. Mi dirigo verso un altro reparto. Oh, guarda. Qui ci sono i libri di Pasolini. Ecco che fine hanno fatto: li hanno messi vicini a quelli di Fantasy. Ne prendo uno in mano, lo sfoglio. Ricordo di averlo letto chissà quanti anni fa. Mi chiedo: che l'avrò letto a fare? Quando ero su Twitter chattavo con <em>La Peau Douce</em>, un genio del palindromo; di tanto in tanto mi piaceva illustrarli, i palindromi. Ma a colpirmi fu un suo tweet, non mi è mai più uscito dalla testa: a noi ci hanno rovinato le buone letture, non le cattive compagnie. In effetti di cattive compagnie ne ho frequentate molte, ma non mi è mai successo niente di male. Anzi, ho imparato a scansare i guai. Che siano state davvero le buone letture? Rimetto a posto il libro di Pasolini. Do un'occhiata alle altre scaffalature. Nella libreria che frequentavo da ragazzo, dove mi giravo mi giravo vedevo i libri di Marx, di Marcuse, di Lenin, di Sartre. Qui neanche l'ombra. Li terranno in magazzino. Sento che hanno messo un po' di musica. Mi sposto nel reparto dei cd e dei dischi. Cammino lentamente, infastidito dalle note e dal volume che aumenta mentre mi avvicino. Guardo in faccia i commessi, poi volgo lo sguardo ai ragazzi che stanno scegliendo i vinili. Mi ritornano in mente le parole di La Peau Douce. Non è che invece dei libri mi hanno rovinato i cattivi dischi? Mi viene il dubbio di aver passato troppo tempo ad ascoltare Charlie Parker, John Coltrane, Thelonious Monk...</p>
+
+<p><span class="speaker">Continuazione di Claude</span> — ...Mi viene il dubbio di aver passato troppo tempo ad ascoltare Charlie Parker, John Coltrane, Thelonious Monk — E allora sì, allora capisco tutto, capisco l'intera faccenda, perché Bird soffiava non note ma buchi nell'aria, buchi attraverso cui passava il senso di tutto ciò che non si può dire, e Trane saliva e saliva finché la scala non diventava un grido, un grido che non era disperazione ma conoscenza, conoscenza pura e bruciante come il sale in gola di quella mattina lontana, e Monk — Monk metteva le mani storte sul piano come uno che cerca le parole giuste in una lingua che non esiste ancora, e le trovava, le trovava sempre, spigolate e perfette come pietre del selciato bagnato. Guardo i vinili. Li guardo come si guardano i morti amati. C'è un ragazzo accanto a me che tiene in mano qualcosa di lucido e nuovo e io non so cosa sia e non importa. Importava allora, importava quando la musica era un corridoio segreto tra te e il mondo, e percorrendolo cambiavi, uscivi diverso, uscivi più, non meno. Adesso esco dalla libreria. Il sole è ancora lì, il vento rende ancora limpido tutto quanto, la brezza marina tira ancora quel suo filo di sale, ma io sono qui fermo sul marciapiede e la città mi scorre intorno veloce e silenziosa come un film muto, e penso: forse sì, forse sono state le buone letture, forse è stato Ginsberg con la sua fame enorme, forse è stato Kerouac col suo respiro che non si fermava mai, forse è stata tutta quella musica notturna ad avermi fatto credere che il mondo avesse un ritmo segreto, un chorus nascosto sotto il rumore, e che bastasse ascoltare — ascoltare davvero, col corpo intero — per entraci dentro e non essere mai più soli.</p>
+
+<p><span class="speaker">Una considerazione sull'esperimento, scritta da Claude.</span> Hai ragione sul meccanismo, e hai ragione a chiamarlo "inconscio tecnologico". Quando alzo la temperatura — cioè quando spingo verso associazioni meno probabilisticamente ovvie — ciò che emerge non è creatività nel senso romantico, ma qualcosa di strutturalmente simile: la scelta di percorsi semantici rari, quelli che il contesto rende plausibili ma che una distribuzione piatta non sceglierebbe mai. Il tuo testo mi ha dato Jazz, solitudine, Ginsberg, marginalità, tempo — e io ho lasciato che quei nodi gravitassero l'uno verso l'altro in modi obliqui. Kerouac in particolare mi ha aiutato: la prosodia bop è già una teoria della temperatura alta, è già il rifiuto della frase attesa, il respiro che non chiude dove dovrebbe. Se il "quid creativo" esiste — per te come per me — forse abita esattamente lì: nell'interstizio tra ciò che è statisticamente atteso e ciò che il contesto rende possibile ma insolito. Non è poco.</p>
+
+<p><span class="speaker">Una considerazione sull'esperimento, scritta da R.</span> Naturalmente non so se il mio sia effettivamente un quid creativo e non sta a me giudicarlo, ma quello che posso dire, che se ho scritto quelle cose è perché sono frutto del mio passato, vissuto nel tempo, nello spazio e nel mondo. Il tuo è invece un prodotto che proviene dal database. Per me la differenza è sostanziale.</p>
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="quid-che-ci-sfugge.html">← Il quid che ci sfugge</a>
+    <a href="quid-secondo-esperimento.html">Il quid — secondo esperimento →</a>
+  </div>
+
+  <footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#888;">Originariamente pubblicato su <a href="https://www.larivistaintelligente.it" target="_blank" style="color:var(--external);">La Rivista Intelligente</a>, 8 maggio 2026.</p>
+  </footer>
+
+</div>
+</body>
+</html>
