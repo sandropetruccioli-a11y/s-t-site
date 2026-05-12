@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quale AI per l'Europa? — Parte II</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 500; line-height: 1.65; }
+.container { max-width: 760px; margin: 0 auto; padding: 22px 16px 32px; }
+.print-button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+.print-button:hover { background: rgba(10,70,82,0.08); }
+.print-icon { width: 16px; height: 16px; }
+.article-date { margin-top: 14px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+h1 { margin: 8px 0 4px; font-size: 1.28rem; line-height: 1.3; color: var(--accent); }
+.article-kicker { margin: 0 0 20px; color: var(--muted); font-weight: 600; font-size: 0.95rem; }
+.article-text p { margin: 0 0 1em; }
+.bib { margin-top: 2em; padding-top: 1em; border-top: 1px solid rgba(21,58,68,0.2); font-size: 0.88rem; color: #555; }
+.bib h3 { font-size: 0.9rem; color: var(--accent); margin: 0 0 0.8em; }
+.bib ol { margin: 0; padding-left: 1.4em; }
+.bib li { margin-bottom: 0.6em; line-height: 1.5; }
+.bib a { color: var(--accent); }
+.chapter-separator { margin-top: 36px; border: none; border-top: 1px solid rgba(21,58,68,0.25); }
+.chapter-nav { display: flex; justify-content: space-between; margin-top: 16px; font-size: 0.9rem; gap: 16px; }
+.chapter-nav a { text-decoration: none; color: var(--accent); font-weight: 500; }
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions { display: flex; flex-direction: column; gap: 0; margin-bottom: 22px; }
+.nav-links { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(21,58,68,0.2); }
+.print-row { display: flex; justify-content: flex-end; padding-top: 8px; }
+.back-link { text-decoration: none; color: var(--accent); font-weight: 500; font-size: 0.9rem; }
+.back-link:hover { color: #07333d; }
+@media (min-width: 700px) { .container { padding: 36px 28px 42px; } h1 { font-size: 1.72rem; } }
+@media print { @page { size: A4; margin: 16mm; } body { background: #fff; color: #111; font-size: 11pt; } .container { max-width: none; padding: 0; } .top-actions, .print-button { display: none !important; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()">
+        <svg class="print-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path><path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <div class="article-date">12 maggio 2026</div>
+  <h1>Quale AI per l'Europa?</h1>
+  <p class="article-kicker">Parte II — Paradigmi scientifici ed ecosistema privato</p>
+
+  <div class="article-text">
+
+<p>La prima parte si chiudeva con una domanda: quali condizioni dovrebbero essere soddisfatte perché un'istituzione pubblica europea per l'AI non venga assorbita dal sistema che vorrebbe bilanciare? Almeno tre sembrano necessarie.</p>
+
+<p>La prima condizione è il controllo delle infrastrutture materiali. Un'istituzione che non controlla chip, cloud, filiere produttive, dati e capacità di calcolo dipende, per funzionare, dagli stessi soggetti di cui vorrebbe essere alternativa. La sovranità computazionale europea — ancora lontana dall'essere reale — è una precondizione, non un effetto collaterale.</p>
+
+<p>La seconda è una volontà politica capace di accettare tempi lunghi, costi reali e rischi di irrilevanza nel breve periodo. Il CERN non produsse risultati spettacolari nei suoi primi anni. Fu sostenuto nonostante l'incertezza, non grazie alla certezza dei risultati. Oggi i cicli politici sono più corti e la pazienza istituzionale è una risorsa scarsa.</p>
+
+<p>La terza condizione — la più difficile — è un consenso almeno parziale all'interno della comunità scientifica europea su architettura, priorità e governance. Senza questo, nessuna istituzione pubblica può costruire la legittimità necessaria per reggere alle pressioni esterne.</p>
+
+<p>Ma queste tre condizioni non esauriscono il problema. Un'istituzione europea per l'AI dovrebbe chiarire non solo come organizzarsi, dove collocarsi e con quali risorse operare. Dovrebbe anche rispondere a una domanda più profonda: quale idea di intelligenza artificiale intende sostenere?</p>
+
+<p>Ed è qui che la posizione di Yann LeCun — Premio Turing 2018, fondatore del laboratorio di ricerca AI di Meta e tra i padri del deep learning, che ha lasciato Meta alla fine del 2025 per fondare a Parigi Advanced Machine Intelligence — diventa rilevante. LeCun è un indicatore importante: mostra che la frattura non riguarda soltanto il modello istituzionale — centro unico o rete distribuita — ma anche il paradigma scientifico da privilegiare. LeCun non nega l'utilità degli LLM, ma contesta l'idea che la loro semplice espansione possa condurre a un'intelligenza assimilabile a quella umana. Nel paper <em>A Path Towards Autonomous Machine Intelligence</em> propone una direzione diversa: sistemi capaci di costruire modelli del mondo, prevedere, pianificare, apprendere rappresentazioni astratte e agire entro orizzonti temporali diversi.</p>
+
+<p>Un progetto pubblico europeo non può evitare questa domanda. Un "CERN per l'AI" pensato implicitamente come risposta pubblica alla corsa agli LLM rischierebbe di nascere già dentro una traiettoria contestata da una parte della ricerca. Al contrario, un'istituzione davvero pubblica dovrebbe forse avere il compito di sostenere anche linee meno immediatamente redditizie, meno dipendenti dalla logica dello scaling. Il dato geografico è indicativo: l'iniziativa di LeCun — Advanced Machine Intelligence, con sede a Parigi e un primo round di finanziamento di circa 890 milioni di euro — punta proprio a modelli di nuova generazione alternativi agli LLM dominanti. Non dimostra che la comunità scientifica europea si stia spostando compatta in quella direzione, ma mostra che attorno a quella linea esistono capitali, attenzione politica e competenze.</p>
+
+<p>C'è però una differenza ancora più importante tra il CERN storico e l'ecosistema dell'AI contemporanea. Il CERN operava in un mondo in cui i grandi attori della ricerca erano Stati nazionali o istituzioni sovranazionali, con finanziamenti pubblici, procedure politiche e forme di responsabilità pubblica. L'AI nasce invece in un ecosistema molto diverso: i soggetti decisivi non sono soltanto stati, università o organismi sovranazionali, ma imprese private globali che aggregano risorse finanziarie, competenze, dati e capacità computazionale secondo modalità che sfuggono ai tempi e alle logiche delle istituzioni pubbliche. Decidono più rapidamente, investono con orizzonti diversi, attraggono talenti su scala mondiale, controllano porzioni decisive della filiera tecnologica e fissano standard di fatto prima che il regolatore pubblico possa intervenire.</p>
+
+<p>Questa non è una differenza marginale. Il problema del "CERN per l'AI" non consiste soltanto nel fatto che l'Europa è lenta, frammentata o troppo regolatoria. Consiste nel fatto che un'istituzione pubblica europea dovrebbe entrare in un campo già dominato da soggetti privati con una velocità decisionale, una disponibilità di capitale e un controllo infrastrutturale che non hanno equivalenti nell'ecosistema in cui nacque il CERN.</p>
+
+<p>Da qui il rischio più serio: non che il progetto fallisca, ma che riesca a metà. Che nasca cioè un'istituzione nominalmente pubblica, ma dipendente da infrastrutture private, cloud privati, chip privati, competenze sottratte dal mercato e criteri di produttività importati dall'ecosistema che vorrebbe controbilanciare. In quel caso non avremmo una vera alternativa pubblica, ma una struttura pubblica costretta a operare secondo regole dettate da altri.</p>
+
+<p>La domanda finale va formulata in modo netto. Non basta chiedere se l'Europa voglia un CERN per l'AI. Bisogna chiedere se il modello CERN possa funzionare in un ecosistema in cui i principali attori non sono stati o istituzioni pubbliche, ma imprese globali che concentrano capitale, infrastrutture e capacità decisionale su una scala che le istituzioni europee faticano a eguagliare.</p>
+
+<p>Un "CERN per l'AI" avrebbe senso solo se fosse in grado di produrre una distanza critica reale da quell'ecosistema. Se invece dovesse nascere come istituzione pubblica dipendente dalle stesse infrastrutture, dagli stessi tempi e dagli stessi criteri dell'ecosistema privato che vorrebbe bilanciare, rischierebbe di diventare non una risposta europea al problema, ma una forma elegante di adattamento ad esso.</p>
+
+  <div class="bib">
+    <h3>Riferimenti bibliografici</h3>
+    <ol>
+      <li>LeCun, Yann. <em>A Path Towards Autonomous Machine Intelligence</em>. Version 0.9.2, 27 giugno 2022. <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf" target="_blank">https://openreview.net/pdf?id=BZ5a1r-kVsf</a></li>
+      <li>Chen, Caiwei. <em>Yann LeCun's new venture is a contrarian bet against large language models</em>. MIT Technology Review, 22 gennaio 2026. <a href="https://www.technologyreview.com/2026/01/22/1131661/yann-lecuns-new-venture-ami-labs/" target="_blank">https://www.technologyreview.com/2026/01/22/1131661/yann-lecuns-new-venture-ami-labs/</a></li>
+      <li><em>Le Monde</em> (ed. internazionale), <em>After leaving Meta, French AI pioneer Yann LeCun will launch his start-up in Paris</em>, 6 dicembre 2025.</li>
+      <li><em>Le Monde</em> (ed. internazionale), <em>Yann LeCun raises €900 million for his France-based AI start-up</em>, 10 marzo 2026.</li>
+    </ol>
+  </div>
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="2026-05-12-articolo-23.html">← Parte I — Il modello CERN e i suoi limiti</a>
+    <a href="../index.html">Torna agli articoli →</a>
+  </div>
+
+  <footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">— Sandro Petruccioli</p>
+  </footer>
+
+</div>
+</body>
+</html>

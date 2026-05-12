@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quale AI per l'Europa? — Parte I</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 500; line-height: 1.65; }
+.container { max-width: 760px; margin: 0 auto; padding: 22px 16px 32px; }
+.print-button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+.print-button:hover { background: rgba(10,70,82,0.08); }
+.print-icon { width: 16px; height: 16px; }
+.article-date { margin-top: 14px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+h1 { margin: 8px 0 4px; font-size: 1.28rem; line-height: 1.3; color: var(--accent); }
+.article-kicker { margin: 0 0 20px; color: var(--muted); font-weight: 600; font-size: 0.95rem; }
+.article-text p { margin: 0 0 1em; }
+.article-text h2 { font-size: 1rem; font-weight: 700; color: var(--accent); margin: 1.8em 0 0.5em; }
+.bib { margin-top: 2em; padding-top: 1em; border-top: 1px solid rgba(21,58,68,0.2); font-size: 0.88rem; color: #555; }
+.bib h3 { font-size: 0.9rem; color: var(--accent); margin: 0 0 0.8em; }
+.bib ol { margin: 0; padding-left: 1.4em; }
+.bib li { margin-bottom: 0.6em; line-height: 1.5; }
+.bib a { color: var(--accent); }
+.bib blockquote { margin: 0.4em 0 0.8em 1em; font-style: italic; color: #666; border-left: 2px solid rgba(10,70,82,0.2); padding-left: 0.8em; }
+.chapter-separator { margin-top: 36px; border: none; border-top: 1px solid rgba(21,58,68,0.25); }
+.chapter-nav { display: flex; justify-content: space-between; margin-top: 16px; font-size: 0.9rem; gap: 16px; }
+.chapter-nav a { text-decoration: none; color: var(--accent); font-weight: 500; }
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions { display: flex; flex-direction: column; gap: 0; margin-bottom: 22px; }
+.nav-links { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(21,58,68,0.2); }
+.print-row { display: flex; justify-content: flex-end; padding-top: 8px; }
+.back-link { text-decoration: none; color: var(--accent); font-weight: 500; font-size: 0.9rem; }
+.back-link:hover { color: #07333d; }
+@media (min-width: 700px) { .container { padding: 36px 28px 42px; } h1 { font-size: 1.72rem; } }
+@media print { @page { size: A4; margin: 16mm; } body { background: #fff; color: #111; font-size: 11pt; } .container { max-width: none; padding: 0; } .top-actions, .print-button { display: none !important; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()">
+        <svg class="print-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path><path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <div class="article-date">12 maggio 2026</div>
+  <h1>Quale AI per l'Europa?</h1>
+  <p class="article-kicker">Parte I — Il modello CERN e i suoi limiti</p>
+
+  <div class="article-text">
+
+<p>All'inizio di quest'anno la proposta di Giorgio Parisi — un CERN per l'intelligenza artificiale in Europa, avanzata già nell'autunno 2024 sulle pagine di <em>Nature</em> — ha ricevuto per la prima volta un sostegno politico istituzionale dichiarato.</p>
+
+<p>Il 26 febbraio, all'Accademia dei Lincei, la ministra dell'Università Anna Maria Bernini ha annunciato il sostegno italiano alla <em>Frontier AI Initiative</em>, promossa da Francia e Germania, proponendo l'Italia come partner fondante. In quell'occasione, Parisi ha ribadito la sua visione: una struttura pubblica, aperta, trasparente, senza fini di profitto, con un finanziamento iniziale nell'ordine di un miliardo l'anno per tre anni.</p>
+
+<p>Il richiamo al CERN non è solo simbolico. Quella istituzione nacque nel 1954 da un'Europa uscita a pezzi dalla guerra, capace tuttavia di mettere insieme paesi che fino a pochi anni prima erano nemici attorno a un progetto di ricerca fondamentale, aperto e non subordinato a interessi industriali immediati. Il World Wide Web — ideato al CERN e poi reso liberamente disponibile — non fu il risultato diretto della fisica delle particelle, ma una delle sue ricadute più rilevanti: il prodotto inatteso di un ecosistema scientifico pubblico, internazionale e aperto.</p>
+
+<p>Parisi immagina qualcosa di analogo per l'AI: un luogo in cui la conoscenza sia condivisa, i risultati non diventino proprietà di pochi, e l'Europa possa smettere di essere spettatrice di una trasformazione che altri stanno guidando. È una proposta seria, accompagnata da cifre concrete e da un consenso politico non trascurabile. Ma proprio la forza della metafora impone una domanda preliminare: siamo sicuri che il CERN sia davvero il modello adeguato per un'impresa come l'intelligenza artificiale?</p>
+
+<p>La risposta non è scontata. La proposta di un "CERN per l'AI" circola nell'ambiente della ricerca europea dal 2017. Come mostra uno studio di Anna-Lena Rüland pubblicato su <em>Minerva</em>, è entrata nell'agenda informale europea — nei dibattiti, nei convegni, nei documenti preparatori — senza tradursi in una decisione operativa. Quasi un decennio di advocacy, nessun impegno vincolante. L'annuncio italiano si inserisce dunque in una storia già lunga e già segnata da stagnazione: non è tanto un inizio quanto un nuovo tentativo di rilanciare una proposta che finora non ha trovato sbocchi istituzionali.</p>
+
+<p>Questa difficoltà può essere ricondotta ad almeno tre ragioni strutturali.</p>
+
+<p>La prima è una divisione profonda all'interno della stessa comunità scientifica europea. I promotori di una struttura centralizzata si sono trovati in contrasto con chi ritiene che l'infrastruttura computazionale per l'AI non richieda affatto centralizzazione, e che un grande hub unico rischierebbe di sottrarre risorse alle eccellenze distribuite già esistenti. Questa frattura ha scoraggiato i responsabili politici, che faticano a sostenere una proposta non condivisa dai suoi stessi potenziali beneficiari.</p>
+
+<p>La seconda ragione è istituzionale: la politica europea di ricerca sull'AI è frammentata tra più direzioni generali della Commissione, che non condividono né priorità né strategie. Una proposta di questa portata richiede un consenso che il sistema europeo non riesce a produrre con la velocità che il tema richiederebbe.</p>
+
+<p>La terza ragione è forse la più significativa: il nome stesso si è rivelato un ostacolo. L'etichetta "CERN per l'AI" è stata percepita come fuorviante, perché — a differenza degli acceleratori di particelle — l'infrastruttura computazionale per l'AI non richiede necessariamente un luogo fisico unico. La metafora che avrebbe dovuto aggregare consenso ha finito per polarizzare il dibattito. Il punto è decisivo: il CERN nacque in condizioni che oggi non esistono più. Nacque in un'Europa che aveva un interesse condiviso, quasi esistenziale, a costruire istituzioni comuni; in un campo in cui le infrastrutture decisive erano per natura centralizzate; in un ecosistema dominato da stati nazionali con bilanci pubblici. Nacque, infine, in un tempo in cui la velocità dell'innovazione consentiva alle istituzioni di stare al passo con i processi che finanziavano. Nessuna di queste condizioni è oggi pienamente replicabile nel campo dell'AI.</p>
+
+<p>A questo si aggiunge la scelta europea di privilegiare la regolazione. L'AI Act — entrato in vigore nell'agosto 2024 e in progressiva applicazione fino al 2026 — è un risultato rilevante: un quadro giuridico organico, fondato su un approccio basato sul rischio, che impone obblighi crescenti a seconda della pericolosità dei sistemi. Ma regolare non significa costruire. L'AI Act disciplina ciò che già esiste; non crea ciò che manca. La questione delle infrastrutture pubbliche di ricerca — chi addestra i modelli, chi controlla i dati, chi produce conoscenza di base, chi dispone della capacità computazionale — resta in larga misura ai margini dell'agenda comunitaria.</p>
+
+<p>La domanda da porre, allora, non è semplicemente: "vogliamo un CERN per l'AI?". A questa si può rispondere affermativamente senza troppe difficoltà.</p>
+
+<p>La domanda più impegnativa è un'altra: quali condizioni dovrebbero essere soddisfatte perché un'istituzione pubblica europea per l'AI non venga assorbita dal sistema che vorrebbe bilanciare?</p>
+
+  <div class="bib">
+    <h3>Riferimenti bibliografici</h3>
+    <ol>
+      <li>Rüland, A.-L. (2025). "We Need a CERN for AI": Organized Scientific Interests and Agenda-Setting in European Science, Technology, and Innovation Policy. <em>Minerva</em>, 63. <a href="https://doi.org/10.1007/s11024-024-09568-6" target="_blank">https://doi.org/10.1007/s11024-024-09568-6</a> [Open access]</li>
+      <li>ELLIS (2022). Ambitious Multi-Centric European AI Lighthouse Moving Forward. <a href="https://ellis.eu/news/ambitious-multi-centric-european-ai-lighthouse-moving-forward" target="_blank">https://ellis.eu/news/...</a></li>
+      <li>ELLIS (2018). ELLIS Letter. <a href="https://ellis.eu/letter" target="_blank">https://ellis.eu/letter</a>
+        <blockquote>Il documento fondativo del network ELLIS, firmato da centinaia di ricercatori europei di machine learning. Propone un modello distribuito ispirato all'EMBL come alternativa esplicita a un hub centralizzato.</blockquote>
+      </li>
+      <li>Parlamento europeo e Consiglio dell'UE (2024). Regolamento (UE) 2024/1689 — AI Act. <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32024R1689" target="_blank">EUR-Lex</a></li>
+      <li>Commissione europea (2025). AI in Science Strategy — Apply AI. COM(2025) 724 final. <a href="https://research-and-innovation.ec.europa.eu/document/download/c1afd7d0-ff65-4f84-be48-b0e0949596c5_en" target="_blank">Link</a></li>
+      <li>CEPS (2024). Towards a European Large-Scale Initiative on Artificial Intelligence. <a href="https://cdn.ceps.eu/wp-content/uploads/2024/07/2024-10_ID-A_Towards-a-European-large-scale-initiative-on-Artificial-Intelligence.pdf" target="_blank">PDF</a>
+        <blockquote>Mappa sistematicamente tutte le proposte in campo — CLAIRE, ELLIS, EDIRAS, il Moonshot da 100 miliardi, l'ALT-EDIC — mostrandone le sovrapposizioni e i conflitti.</blockquote>
+      </li>
+      <li>Hermann, A., Krige, J., Mersits, U., e Pestre, D. (1987). <em>History of CERN. Vol. I</em>. New York: North-Holland.</li>
+      <li>Parisi, G. (2026). <em>Le simmetrie nascoste</em>. Milano: Rizzoli.</li>
+    </ol>
+  </div>
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="../index.html">← Torna agli articoli</a>
+    <a href="2026-05-12-articolo-24.html">Parte II — Paradigmi scientifici ed ecosistema privato →</a>
+  </div>
+
+  <footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">— Sandro Petruccioli</p>
+  </footer>
+
+</div>
+</body>
+</html>
