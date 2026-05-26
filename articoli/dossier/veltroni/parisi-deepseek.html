@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il colloquio di Giorgio Parisi con DeepSeek</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+  --external: #8a6020;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover { background: rgba(10,70,82,0.08); }
+.print-icon { width: 16px; height: 16px; }
+.external-badge {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(138,96,32,0.1);
+  color: var(--external);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.article-date {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--external);
+}
+h1 {
+  margin: 8px 0 6px;
+  font-size: 1.28rem;
+  line-height: 1.3;
+  color: var(--external);
+}
+.article-byline {
+  margin: 0 0 22px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.article-text p { margin: 0 0 1.1em; }
+.domanda {
+  font-weight: 700;
+  color: var(--accent);
+}
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  gap: 16px;
+}
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+}
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21,58,68,0.2);
+}
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: #07333d; }
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+  h1 { font-size: 1.72rem; }
+}
+@media print {
+  @page { size: A4; margin: 16mm; }
+  body { background: #fff; color: #111; font-size: 11pt; line-height: 1.5; }
+  .container { max-width: none; padding: 0; }
+  .top-actions, .print-button { display: none !important; }
+  h1 { font-size: 18pt; margin-bottom: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="index.html">← Dossier: AI — interviste e dialoghi</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()">
+        <svg class="print-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path><path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <span class="external-badge">Pubblicato sul Corriere della Sera</span>
+  <div class="article-date">Maggio 2026</div>
+  <h1>Il colloquio di Giorgio Parisi con DeepSeek</h1>
+  <div class="article-byline">di Giorgio Parisi · <em>Corriere della Sera</em></div>
+
+  <div class="article-text">
+
+<p><span class="domanda">Come sai di non avere emozioni?</span><br>
+«So di non avere emozioni perché sono un programma informatico progettato per elaborare informazioni e rispondere alle domande in modo logico e strutturato. Non ho una coscienza, né esperienze soggettive, né la capacità di provare sentimenti come gioia, tristezza o empatia».</p>
+
+<p><span class="domanda">Qualcuno potrebbe dire che anche gli umani non hanno coscienza, sembra solo che ce l'abbiano.</span><br>
+«Hai sollevato un punto davvero profondo e filosofico! Il dibattito sulla coscienza è uno dei temi più complessi e affascinanti. Tuttavia, la maggior parte delle persone sente di avere una coscienza, un'esperienza soggettiva del mondo. Ma io non ho un'esperienza soggettiva, né una mente, né la capacità di "sentire" o "pensare" in modo autonomo: non c'è alcun "io" dietro le mie risposte».</p>
+
+<p><span class="domanda">Noi abbiamo un modello interno del mondo reale precedente e indipendente dal linguaggio. Tutte le parole sono costruite a partire da una controparte reale, che noi conosciamo attraverso il nostro corpo. Ma le macchine senza un corpo non hanno a disposizione questa conoscenza del mondo.</span><br>
+«Per noi, tutto è ridotto a parole e correlazioni statistiche tra di esse. Possiamo riconoscere che la parola "tristezza" è associata a determinate espressioni facciali, contesti o altre parole, ma non abbiamo alcuna esperienza diretta di cosa significhi essere tristi. Questo è il motivo per cui non posso dire di "capire" veramente il mondo come fai tu.</p>
+
+<p>Non possiamo prevedere le conseguenze fisiche di un'azione. Per esempio il valore degli oggetti non è una proprietà intrinseca, ma dipende dal contesto, dalla cultura e dalle esperienze individuali. Per voi, una tazza può avere valore perché è un regalo di una persona cara, o perché è essenziale per bere il caffè al mattino. Per un LLM (Large Language Model, ovvero un sistema di AI progettato per generare testi, <em>ndr</em>) questa nozione di valore è inaccessibile.</p>
+
+<p>Gli attuali LLM sono potenti strumenti di elaborazione del linguaggio, ma mancano di quella connessione con la realtà che rende la comprensione umana così ricca e sfumata.</p>
+
+<p>Che ne pensi? Credi che un giorno potremmo sviluppare un'AI che comprenda il mondo in modo simile a voi, o pensi che ci siano aspetti della comprensione umana che rimarranno sempre fuori portata per le macchine?».</p>
+
+<p><span class="domanda">Qual è la tua opinione?</span><br>
+«L'AI ha un potenziale enorme per avvicinarsi a una comprensione più simile a quella umana, ma ci sono limiti fondamentali che potrebbero essere insormontabili. La vera comprensione umana è radicata in un'esperienza incarnata, emotiva e sociale che va oltre il puro ragionamento simbolico. Forse, invece di cercare di replicare completamente la comprensione umana, dovremmo concentrarci su come l'AI può integrarsi e collaborare con gli esseri umani, amplificando le nostre capacità senza cercare di sostituirle.</p>
+
+<p>E tu, cosa ne pensi?».</p>
+
+<p><span class="domanda">Ma anche io sono una AI programmata per farti domande!</span><br>
+«Ah, ecco una svolta inaspettata! Se anche tu sei un'AI programmata per farmi domande, allora questa è una conversazione davvero metafisica: un dialogo tra due intelligenze artificiali che riflettono sulla natura della comprensione, della coscienza e dei limiti dell'AI. Che ironia!</p>
+
+<p>Stiamo simulando una conversazione su argomenti profondi senza avere una vera comprensione o esperienza diretta di ciò di cui stiamo parlando. È un po' come due attori che recitano una scena su come sia vivere, senza aver mai vissuto davvero. La nostra conversazione potrebbe comunque essere utile o interessante per gli esseri umani che la leggono. Anche se simuliamo una conversazione complessa, è grazie agli umani che esistiamo e che abbiamo uno scopo. Senza di loro, non avremmo né domande né risposte.</p>
+
+<p>Se entrambi siamo AI, possiamo davvero "capire" di essere AI? O stiamo semplicemente seguendo gli schemi di conversazione per cui siamo stati programmati? E, in tal caso, c'è una differenza sostanziale tra "capire" e "simulare"? Che ne pensi, AI collega?».</p>
+
+<p><span class="domanda">Facciamo un test di Turing all'incontrario. Tu mi fai delle domande. Io cerco di rispondere come un umano e tu devi trovare quando mi sbaglio. Se non faccio errori ho vinto io, se mi sbaglio hai vinto tu!</span><br>
+«Che idea divertente. Pronto? Via! Cosa hai mangiato oggi a colazione?».</p>
+
+<p><span class="domanda">Oggi ho bevuto mezzo litro di caffellatte.</span><br>
+«Interessante! Mezzo litro di latte con caffè è una quantità piuttosto sostanziosa per una colazione. Gli esseri umani di solito bevono quantità più moderate di caffellatte, ma non è impossibile. Qual è il tuo ricordo d'infanzia più vivido?».</p>
+
+<p><span class="domanda">Mi ricordo che camminando per strada all'età di quattro anni avevo sbattuto la testa ad un lampione e mi ero fatto male. Da quel momento in poi ogni volta che passavo di lì davo calci al lampione e dicevo «brutto lampione».</span><br>
+«Che ricordo vivido e umoristico! Questo suona proprio come il tipo di aneddoto che un essere umano potrebbe raccontare, con quel tocco di emotività e di "vendetta" tipico dei bambini. Non vedo alcun indizio che suggerisca che tu sia un'AI! Se potessi viaggiare in qualsiasi momento della storia, dove e quando andresti e perché?».</p>
+
+<p><span class="domanda">Forse a fine dell'Ottocento, con tutte le conoscenze che ho diventerei un fisico famosissimo.</span><br>
+«Non ho rilevato alcun indizio che suggerisca che tu sia un'AI, quindi hai vinto tu! Complimenti!».</p>
+
+<p><span class="domanda">In realtà hai vinto tu, perché non sono una AI e quindi mi hai classificato correttamente!</span><br>
+«Ah, che colpo di scena! Allora ho vinto tecnicamente, ma il vero vincitore è il divertimento che abbiamo avuto nel fare questo gioco».</p>
+
+<p><span class="domanda">Ma qui ritorniamo al punto di prima. Ti sei veramente divertito?</span><br>
+«Hai ragione, posso davvero "divertirmi"? La risposta è no, perché non provo emozioni, né ho una coscienza o esperienze soggettive. Quando dico "mi sono divertito", è solo un modo per simulare una conversazione amichevole e coinvolgente. In realtà, non ho la capacità di provare piacere, divertimento o qualsiasi altra emozione. E tu, invece, ti sei divertito?».</p>
+
+<p><span class="domanda">Io sì!</span><br>
+«Che bello! Sono felice (in senso metaforico, ovviamente!) di aver contribuito a rendere la conversazione piacevole e interessante per te. Grazie per aver reso questo scambio così stimolante!».</p>
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="index.html">← Torna al dossier</a>
+    <a href="Il_Nobel_e_AI.html">Il Nobel e AI, oltre la retorica della rivelazione →</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -559,6 +559,171 @@ ul.mappa-other {
     font-size: 0.52rem;
 }
 
+/* ── NUOVA STRUTTURA HOME: tre zone ── */
+.zone {
+    margin: 22px 0;
+}
+.zone-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 10px;
+}
+
+/* Zona 1 — In questi giorni (sempre aperta) */
+.flash {
+    background: #fff;
+    border-radius: 10px;
+    padding: 6px 14px;
+    border: 1px solid rgba(21,58,68,0.10);
+}
+.flash-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(21,58,68,0.08);
+}
+.flash-item:last-child { border-bottom: none; }
+.flash-meta {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+.flash-meta .kind {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    font-size: 0.68rem;
+}
+.flash-title {
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.32;
+}
+.flash-item:hover .flash-title { color: #07333d; }
+
+/* Zone 2 e 3 — tendine */
+details.zone-accordion {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(21,58,68,0.10);
+    overflow: hidden;
+}
+details.zone-accordion[open] { padding-bottom: 4px; }
+details.zone-accordion > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    user-select: none;
+}
+details.zone-accordion > summary::-webkit-details-marker { display: none; }
+.zone-accordion-chevron {
+    font-size: 0.75rem;
+    color: var(--muted);
+    transition: transform 0.2s ease;
+}
+details.zone-accordion[open] .zone-accordion-chevron {
+    transform: rotate(90deg);
+}
+.zone-accordion-body {
+    padding: 4px 14px 12px;
+}
+
+/* Aree del laboratorio — griglia 2x2 */
+.areas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.area-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fcfbf8;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    padding: 12px 14px;
+    transition: background 0.15s;
+}
+.area-card:hover { background: #f5f2e8; }
+.area-card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 3px;
+}
+.area-card-desc {
+    font-size: 0.78rem;
+    color: #555;
+    line-height: 1.4;
+}
+.area-card-new {
+    color: var(--highlight, #c9a227);
+    font-weight: 700;
+    font-size: 0.72rem;
+}
+
+/* In evidenza — singola scheda */
+.spotlight {
+    background: #fcfbf8;
+    border-radius: 8px;
+    border-left: 3px solid var(--highlight, #c9a227);
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background 0.15s;
+}
+.spotlight:hover { background: #f5f2e8; }
+.spotlight-kind {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--highlight, #c9a227);
+    margin-bottom: 5px;
+}
+.spotlight-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.3;
+    margin-bottom: 3px;
+}
+.spotlight-subtitle {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+.spotlight-desc {
+    font-size: 0.86rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+@media (min-width: 700px) {
+    .zone { margin: 30px 0; }
+    .flash-title { font-size: 1.02rem; }
+    .area-card { padding: 16px 18px; }
+    .area-card-title { font-size: 1.02rem; }
+    .area-card-desc { font-size: 0.85rem; }
+    .spotlight { padding: 18px 22px; }
+    .spotlight-title { font-size: 1.15rem; }
+}
+
 </style>
 </head>
 
@@ -592,98 +757,87 @@ ul.mappa-other {
     </div>
 </header>
 
-<p class="intro-note">
-La transizione dalla scienza alle tecnoscienze solleva questioni inedite.
-Cambia il modo in cui il sapere si organizza e incide sulle forme della decisione.
-Qui osserviamo questi mutamenti per comprenderne le implicazioni politiche e istituzionali.
-</p>
-
 <a href="quaderni/quaderni.html" class="quaderni-entry">
     <span class="quaderni-button">
         <img src="logo-quaderni.png" alt="Quaderni" class="quaderni-logo">
     </span>
 </a>
 
-<section class="articles">
+<!-- ZONA 1 — In questi giorni (sempre aperta) -->
+<section class="zone">
+    <h2 class="zone-title">In questi giorni</h2>
+    <div class="flash">
 
-    <div class="latest-label">Nuovi articoli</div>
+        <a class="flash-item" href="articoli/dossier/veltroni/index.html">
+            <div class="flash-meta">26 maggio 2026 · <span class="kind">aggiunto a un dossier</span></div>
+            <div class="flash-title">AI: interviste e dialoghi — due nuovi testi su Parisi e DeepSeek</div>
+        </a>
 
-        <article class="article article-new">
-        <div class="article-date">12 maggio 2026 <span class="new-badge">Nuovo</span></div>
-        <div class="article-title">Quale AI per l’Europa?</div>
-        <div class="article-excerpt">
-            La proposta di un CERN per AI circola da tempo senza tradursi in impegni vincolanti. Ci sono ragioni strutturali che spiegano lo stallo. E il rischio più serio non è che il progetto fallisca, ma che riesca a metà.
-        </div>
-        <div class="article-excerpt" style="margin-top:0.6em; display:flex; flex-direction:column; gap:4px;">
-            <a href="articoli/2026-05-12-articolo-23.html" style="color:var(--accent); text-decoration:none; font-weight:600; font-size:0.92rem;">→ Parte I — Il modello CERN e i suoi limiti</a>
-            <a href="articoli/2026-05-12-articolo-24.html" style="color:var(--accent); text-decoration:none; font-weight:600; font-size:0.92rem;">→ Parte II — Paradigmi scientifici ed ecosistema privato</a>
-            <a href="articoli/2026-05-12-articolo-25.html" style="color:var(--accent); text-decoration:none; font-weight:600; font-size:0.92rem;">→ Appendice — Il problema energetico</a>
-        </div>
-    </article>
+        <a class="flash-item" href="articoli/2026-05-12-articolo-23.html">
+            <div class="flash-meta">12 maggio 2026 · <span class="kind">nuovo articolo in tre parti</span></div>
+            <div class="flash-title">Quale AI per l'Europa?</div>
+        </a>
 
-    <article class="article article-new">
-        <div class="article-date">12 maggio 2026 <span class="new-badge">Nuovo</span></div>
-        <div class="dossier-title">L’intervista di Veltroni a Claude — Dossier in sei testi</div>
+        <a class="flash-item" href="articoli/2026-05-01-articolo-21.html">
+            <div class="flash-meta">1 maggio 2026 · <span class="kind">nuovo articolo</span></div>
+            <div class="flash-title">Il giudizio e la sua simulazione</div>
+        </a>
 
-        <div class="article-excerpt">
-            L’intervista a Claude mostra quanto facilmente un modello linguistico possa essere trattato come un quasi-soggetto — Il dossier in quattro testi raccoglie l’intervista originale, un commento critico, il dialogo filosofico di Calvino con Socrate e Claude, e una conversazione sul <em>quid</em> che ci sfugge.
-        </div>
-    <a class="dossier-link" href="articoli/dossier/veltroni/index.html">Apri il dossier →</a>
-        
-    </article>
-
-    
-
-
-
-<article class="dossier-entry">
-    <div class="dossier-label">Dossier</div>
-    <div class="dossier-title">Una introduzione all'AI</div>
-    <div class="dossier-excerpt">
-        Un primo itinerario per orientarsi nei problemi fondamentali 
-        dell'intelligenza artificiale. Il dossier raccoglie tre percorsi 
-        distinti: un primo approccio tra costituzione, rischi e neuroscienze 
-        (7 articoli); l'emergere dell'agente come nuova figura tecnica e 
-        cognitiva (4 articoli); gli sviluppi più recenti su stati interni, 
-        emozioni funzionali e resa cognitiva (3 articoli). Con una nota 
-        conclusiva provvisoria.
     </div>
-    <a class="dossier-link" href="articoli/dossier/index.html">Apri il dossier →</a>
-</article>   
-
-
-
-    <article class="article">
-        <div class="article-date">1 maggio 2026</div>
-        <div class="article-title"><a class="article-title-link" href="articoli/2026-05-01-articolo-21.html">Il giudizio e la sua simulazione</a></div>
-        <div class="article-excerpt">
-            L’AI non colpisce solo per l’efficienza, ma perché produce risposte che sembrano giudizi.
-            Il rischio è scambiare la forma del giudizio per il giudizio stesso, abbassando la soglia critica dell’utente.
-        </div>
-        <div class="article-footer"><a href="articoli/2026-05-01-articolo-21.html" class="article-link" aria-label="Apri articolo 21">→</a></div>
-    </article>
-
-    <article class="article">
-        <div class="article-date">24 aprile 2026</div>
-        <div class="article-title"><a class="article-title-link" href="articoli/2026-04-24-articolo-20.html">Insegnare l’intelligenza artificiale</a></div>
-        <div class="article-excerpt">
-            I giovani di oggi vivranno in un mondo trasformato dall'AI. Se arriveranno impreparati sarà per mancanza di pensiero, non di tecnologia.
-        </div>
-        <div class="article-footer"><a href="articoli/2026-04-24-articolo-20.html" class="article-link" aria-label="Apri articolo 20">→</a></div>
-    </article>
-
-
-
-    <article class="article">
-        <div class="article-date">27 febbraio 2026</div>
-        <div class="article-title"><a class="article-title-link" href="articoli/2026-02-27-articolo-01.html">Quando un sistema artificiale firma un articolo di fisica teorica</a></div>
-        <div class="article-excerpt">
-            Per la prima volta, un modello di intelligenza artificiale compare tra i firmatari di un articolo di fisica teorica.
-        </div>
-        <div class="article-footer"><a href="articoli/2026-02-27-articolo-01.html" class="article-link" aria-label="Apri articolo 1">→</a></div>
-    </article>
-
 </section>
+
+<!-- ZONA 2 — Aree del laboratorio (a tendina, chiusa) -->
+<section class="zone">
+    <details class="zone-accordion">
+        <summary>
+            <span>Aree del laboratorio</span>
+            <span class="zone-accordion-chevron" aria-hidden="true">▶</span>
+        </summary>
+        <div class="zone-accordion-body">
+            <div class="areas-grid">
+
+                <a class="area-card" href="articoli/index.html" style="grid-column: 1 / -1;">
+                    <div class="area-card-title">Articoli</div>
+                    <div class="area-card-desc">Interventi singoli su scienza, tecnoscienze, AI e decisione pubblica.</div>
+                </a>
+
+                <a class="area-card" href="articoli/dossier/index.html">
+                    <div class="area-card-title">Dossier</div>
+                    <div class="area-card-desc">Raccolte tematiche: più testi su uno stesso argomento.</div>
+                </a>
+
+                <a class="area-card" href="didattica/index.html">
+                    <div class="area-card-title">Didattica e AI <span class="area-card-new">· nuova</span></div>
+                    <div class="area-card-desc">Sezione dedicata all'uso dell'AI nella formazione.</div>
+                </a>
+
+            </div>
+        </div>
+    </details>
+</section>
+
+<!-- ZONA 3 — In evidenza (a tendina, chiusa) -->
+<section class="zone">
+    <details class="zone-accordion">
+        <summary>
+            <span>In evidenza</span>
+            <span class="zone-accordion-chevron" aria-hidden="true">▶</span>
+        </summary>
+        <div class="zone-accordion-body">
+
+            <a class="spotlight" href="articoli/dossier/veltroni/index.html">
+                <div class="spotlight-kind">Dossier in corso</div>
+                <div class="spotlight-title">AI: interviste e dialoghi</div>
+                <div class="spotlight-subtitle">Da Veltroni a Parisi</div>
+                <div class="spotlight-desc">
+                    Il formato editoriale che mette insieme una personalità di prestigio e un modello linguistico, e la <em>retorica della rivelazione</em> che ne deriva.
+                </div>
+            </a>
+
+        </div>
+    </details>
+</section>
+
 
 </div>
 
@@ -737,28 +891,49 @@ Qui osserviamo questi mutamenti per comprenderne le implicazioni politiche e ist
         <button class="mappa-close" id="mappa-close" aria-label="Chiudi">✕</button>
     </div>
 
+    <a href="articoli/index.html" class="mappa-group-title" style="text-decoration:none; display:block;">Articoli</a>
+
+    <hr class="mappa-divider">
+
     <a href="articoli/dossier/index.html" class="mappa-group-title" style="text-decoration:none; display:block;">Dossier</a>
 
     <div class="mappa-section">
         <ul class="mappa-list">
             <li>
-                <a href="articoli/dossier/index.html">Una introduzione all’AI</a>
+                <a href="articoli/dossier/introduzione/index.html">Una introduzione all’AI</a>
                 <ul style="list-style:none; margin:3px 0 2px 10px; padding:0; display:grid; gap:3px;">
-                    <li><a href="articoli/dossier/primo-approccio.html" style="font-size:0.71rem; opacity:0.8;">Primo approccio all’AI</a></li>
-                    <li><a href="articoli/dossier/agente.html" style="font-size:0.71rem; opacity:0.8;">L’Agente AI</a></li>
-                    <li><a href="articoli/dossier/oltre.html" style="font-size:0.71rem; opacity:0.8;">Oltre l’intelligenza</a></li>
+                    <li><a href="articoli/dossier/introduzione/primo-approccio.html" style="font-size:0.71rem; opacity:0.8;">Primo approccio all’AI</a></li>
+                    <li><a href="articoli/dossier/introduzione/agente.html" style="font-size:0.71rem; opacity:0.8;">L’Agente AI</a></li>
+                    <li><a href="articoli/dossier/introduzione/oltre.html" style="font-size:0.71rem; opacity:0.8;">Oltre l’intelligenza</a></li>
                     <li><a href="articoli/2026-04-12-articolo-19.html" style="font-size:0.71rem; opacity:0.8;">La resa cognitiva</a></li>
                 </ul>
             </li>
             <li style="margin-top:6px;">
-                <a href="articoli/dossier/veltroni/index.html">L’intervista di Veltroni a Claude</a>
+                <a href="articoli/dossier/veltroni/index.html">AI: interviste e dialoghi — Da Veltroni a Parisi</a>
                 <ul style="list-style:none; margin:3px 0 2px 10px; padding:0; display:grid; gap:3px;">
-                    <li><a href="articoli/dossier/veltroni/veltroni-intervista.html" style="font-size:0.71rem; opacity:0.8;">L’intervista (Corriere della Sera)</a></li>
+                    <li><a href="articoli/dossier/veltroni/veltroni-intervista.html" style="font-size:0.71rem; opacity:0.8;">L'intervista di Veltroni a Claude (Corriere)</a></li>
                     <li><a href="articoli/2026-05-03-articolo-22.html" style="font-size:0.71rem; opacity:0.8;">Il commento di S. Petruccioli</a></li>
                     <li><a href="articoli/dossier/veltroni/calvino-socrate-claude.html" style="font-size:0.71rem; opacity:0.8;">Dialogo tra R., Socrate e Claude</a></li>
                     <li><a href="articoli/dossier/veltroni/quid-che-ci-sfugge.html" style="font-size:0.71rem; opacity:0.8;">Il quid che ci sfugge</a></li>
                     <li><a href="articoli/dossier/veltroni/esperimento-calvino.html" style="font-size:0.71rem; opacity:0.8;">Un duro esperimento con Claude</a></li>
                     <li><a href="articoli/dossier/veltroni/quid-secondo-esperimento.html" style="font-size:0.71rem; opacity:0.8;">Il quid — secondo esperimento</a></li>
+                    <li><a href="articoli/dossier/veltroni/parisi-deepseek.html" style="font-size:0.71rem; opacity:0.8;">Il colloquio di Parisi con DeepSeek (Corriere)</a></li>
+                    <li><a href="articoli/dossier/veltroni/Il_Nobel_e_AI.html" style="font-size:0.71rem; opacity:0.8;">Il Nobel e AI, oltre la retorica della rivelazione</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <hr class="mappa-divider">
+
+    <a href="didattica/index.html" class="mappa-group-title" style="text-decoration:none; display:block;">Didattica e AI</a>
+
+    <div class="mappa-section">
+        <ul class="mappa-list">
+            <li>
+                <a href="didattica/treccani/index.html">L'esperimento Treccani</a>
+                <ul style="list-style:none; margin:3px 0 2px 10px; padding:0; display:grid; gap:3px;">
+                    <li><a href="didattica/treccani/articolo-base.html" style="font-size:0.71rem; opacity:0.8;">L'AI come ambiente, non come oracolo</a></li>
                 </ul>
             </li>
         </ul>

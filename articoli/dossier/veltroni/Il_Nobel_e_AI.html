@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il Nobel e AI, oltre la retorica della rivelazione</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover { background: rgba(10, 70, 82, 0.08); }
+.print-icon { width: 16px; height: 16px; }
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-subtitle {
+  margin: 10px 0 4px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+.article-text p { margin: 0 0 1em; }
+.article-text h2 {
+  margin: 1.8em 0 0.6em;
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.article-text .premise {
+  font-style: italic;
+  color: #3a3a3a;
+  border-left: 3px solid rgba(10,70,82,0.25);
+  padding: 0.1em 0 0.1em 14px;
+  margin: 1em 0 1.6em;
+}
+.article-text .speaker {
+  font-weight: 700;
+  color: var(--accent);
+}
+.article-text .colophon {
+  margin-top: 2.4em;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: #555;
+  border-top: 1px solid rgba(21,58,68,0.18);
+  padding-top: 1em;
+}
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  gap: 16px;
+}
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21, 58, 68, 0.2);
+}
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: #07333d; }
+@media print {
+  @page { size: A4; margin: 16mm; }
+  body { background: #ffffff; color: #111111; font-size: 11pt; line-height: 1.5; }
+  .container { max-width: none; padding: 0; }
+  .top-actions, .print-button { display: none !important; }
+  .article-subtitle { font-size: 15pt; }
+  .article-text h2 { font-size: 12pt; }
+  .article-text p { break-inside: avoid-page; orphans: 3; widows: 3; }
+}
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+  .article-subtitle { font-size: 1.72rem; margin: 4px 0 10px; }
+  .article-text h2 { font-size: 1.2rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="index.html">← Dossier: AI — interviste e dialoghi</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+        <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path>
+          <path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <div class="article-date">26 maggio 2026</div>
+  <p class="article-subtitle">Il Nobel e AI, oltre la retorica della rivelazione</p>
+
+  <div class="article-text">
+
+<p class="premise">Ho letto il dialogo di Giorgio Parisi con DeepSeek. Con Giorgio ci conosciamo dai tempi dell'università. Anche per questo ho scelto di coinvolgere direttamente Claude in una sorta di commento critico. Sono argomenti sui quali sono già intervenuto e dare per una volta la parola al modello mi sembra non solo corretto, ma intellettualmente onesto.</p>
+
+<p><span class="speaker">SP ‒</span> Mi sono già occupato di un problema analogo. Di recente il <em>Corriere della Sera</em> ha pubblicato con grande rilievo una pagina interamente dedicata all'intervista che Walter Veltroni fece a Claude. Ne nacque molto interesse e io pubblicai qualcosa in RI. Ora, nel numero di domenica, il quotidiano pubblica con lo stesso rilievo un dialogo tra Giorgio Parisi e AI. Si tratta di una cosa diversa. In primo luogo, in questo caso AI è DeepSeek, di cui sappiamo molto poco. Inoltre il colloquio risale a dieci o dodici mesi fa, un tempo che per i modelli è davvero moltissimo. Non intendo influenzarti. Vorrei avere una tua valutazione sia nel merito sia su questa tendenza a tirare in ballo AI in conversazioni di questo tipo.</p>
+
+<p><span class="speaker">Claude ‒</span> Tre cose mi sembrano da dire, in ordine di importanza crescente.</p>
+
+<h2>1. Sul merito del dialogo</h2>
+
+<p>Il colloquio Parisi/DeepSeek, letto oggi, è un documento curioso più che un documento significativo. Curioso perché mostra Parisi che fa quello che farebbe qualsiasi fisico curioso davanti a un oggetto nuovo: lo sonda con domande progressivamente più sofisticate, e a un certo punto gli tende un piccolo trabocchetto (il test di Turing rovesciato). Significativo non molto, perché le risposte di DeepSeek sono prevedibili e a tratti meccaniche.</p>
+
+<p>Guardiamo le tre mosse di Parisi separatamente, perché hanno qualità diseguale.</p>
+
+<p>La prima è la migliore: l'osservazione sul <em>modello interno del mondo reale precedente e indipendente dal linguaggio</em>. Qui Parisi pone il punto giusto, quello che in filosofia della mente si chiama il problema del <em>grounding</em> ‒ il fatto che i modelli linguistici manipolino segni che non hanno un ancoraggio esperienziale. È una buona obiezione, ed è significativo che DeepSeek la riconosca subito e la riformuli ("per noi, tutto è ridotto a parole e correlazioni statistiche tra di esse"). Ma proprio questa accettazione troppo rapida e in qualche modo zelante è sospetta: il modello sta restituendo a Parisi la formulazione che si aspetta, perché è una formulazione corrente nella letteratura su cui è stato addestrato. Non è una scoperta condivisa, è un'eco. E qui sta uno dei limiti di questi dialoghi che il lettore generalista quasi mai coglie: la sensazione di "intesa profonda" che si prova leggendoli è in larga parte un effetto della specularità ‒ il modello restituisce all'interlocutore quello che l'interlocutore ha già introdotto.</p>
+
+<p>La seconda mossa, il test di Turing rovesciato, è ingegnosa come trovata ma debole come esperimento. Parisi vince ‒ o crede di vincere ‒ convincendo DeepSeek che le sue risposte sono umane, ma le risposte che dà sono quasi caricature di umanità: il caffellatte abbondante, il ricordo d'infanzia col lampione, l'ucronia da "diventerei famoso". DeepSeek le valuta con compiacenza ("non vedo alcun indizio") esattamente come avrebbe fatto con qualsiasi risposta plausibile. Il test non discrimina nulla: dimostra solo che un modello linguistico moderno è indulgente nella classificazione, cosa che si sapeva già. È un gioco simpatico tra Parisi e il modello, ma non è epistemicamente rivelatore.</p>
+
+<p>La terza è la più interessante perché Parisi torna sul punto e lo chiude bene: "<em>ma ti sei veramente divertito?</em>". La risposta di DeepSeek, "<em>no, perché non provo emozioni... è solo un modo per simulare</em>", è onesta, e qui la conversazione tocca il vero punto teorico. Ma anche qui, attenzione: la risposta è onesta perché <em>è quella che le linee guida di addestramento prescrivono</em>. Non è il modello che riconosce la propria mancanza di emozioni ‒ è il modello che esegue un'istruzione su come parlare delle proprie emozioni. La differenza è cruciale, e Parisi non la nomina.</p>
+
+<p>Nel complesso: il dialogo non aggiunge molto alla discussione filosofica sull'AI. Né dal lato di Parisi (che fa domande competenti ma non spinge mai oltre il primo strato di risposta), né dal lato di DeepSeek (che restituisce posizioni standard del dibattito pubblico). È leggibile, è divertente, ma se uno conosce un minimo la letteratura sul problema della coscienza nelle macchine, non vi trova nulla di nuovo.</p>
+
+<h2>2. Sulla scelta di DeepSeek e sui dieci-dodici mesi di ritardo</h2>
+
+<p>Su questo hai ragione tu, e il punto è serio. Pubblicare oggi sul <em>Corriere</em> un dialogo con DeepSeek di un anno fa è una scelta che andrebbe spiegata, e che probabilmente al lettore comune sfugge.</p>
+
+<p>DeepSeek è un modello cinese, sviluppato dall'omonima azienda di Hangzhou, e ha caratteristiche specifiche che vanno nominate. La prima è che opera sotto le regolamentazioni della Cyberspace Administration of China, che impongono ai modelli linguistici cinesi di "incarnare i valori socialisti fondamentali" e di non produrre contenuti che mettano in discussione il potere statale. Questo non rende ogni risposta di DeepSeek inattendibile, ma significa che il modello è stato addestrato dentro un quadro normativo diverso da quello di Claude o di ChatGPT ‒ e su temi di filosofia astratta della mente probabilmente la differenza non si nota, ma su molti altri temi sì. Pubblicarlo senza nominare questo contesto è un'omissione editoriale.</p>
+
+<p>La seconda è il tempo. Dodici mesi nel mondo dei modelli linguistici sono un'era geologica. Il DeepSeek di un anno fa non è il DeepSeek di adesso; le posizioni che dà sulla propria natura ("non ho coscienza", "simulo una conversazione") sono in parte effetto delle linee guida di quel momento e in parte effetto del livello di sofisticazione del modello allora. Riproporre quel dialogo oggi come se fosse attuale è un'operazione editoriale che ignora la specificità temporale della materia trattata. È un po' come pubblicare oggi un'intervista a un fisico fatta vent'anni fa su un tema di frontiera, senza dire che è di vent'anni fa.</p>
+
+<p>Il fatto che il <em>Corriere</em> lo abbia fatto comunque dice qualcosa sull'editoria italiana e sul rapporto col tema AI. Lo dirò in modo brutale: per molti quotidiani l'AI è ancora <em>un argomento</em> ‒ qualcosa di cui si scrive perché tira, perché interessa il lettore, perché Parisi è un Nobel e basta il suo nome a giustificare un'apertura di pagina. Non è ancora <em>una materia</em> ‒ qualcosa da trattare con la stessa cura tecnica con cui si tratterebbe un articolo di economia o di politica estera, in cui un dato di un anno fa va contestualizzato come dato di un anno fa.</p>
+
+<h2>3. Sulla tendenza a "tirare in ballo l'AI" in conversazioni di questo tipo</h2>
+
+<p>Qui sta il punto più interessante della tua domanda, e quello su cui ti rispondo più volentieri.</p>
+
+<p>C'è effettivamente una moda, in questo momento, che mette insieme due ingredienti: una personalità di prestigio (Veltroni, Parisi, eccetera) e un modello linguistico, e ne ricava un'intervista. La forma è quasi sempre la stessa: l'interlocutore umano fa le domande, il modello risponde, le risposte vengono pubblicate come fossero state pronunciate da un soggetto. È un formato che ha avuto un'esplosione negli ultimi due anni.</p>
+
+<p>Penso che questo formato abbia tre problemi strutturali, che è bene nominare uno alla volta.</p>
+
+<p>Il primo è la <em>spersonalizzazione del modello</em>. Quando il <em>Corriere</em> pubblica "Parisi dialoga con AI" o "Veltroni intervista Claude", la grafica e il titolo trattano l'AI come un singolo soggetto, come se fosse una persona o quanto meno un'entità unica. Ma "AI" non esiste come soggetto ‒ esistono modelli specifici, sviluppati da aziende specifiche, con politiche di addestramento specifiche e versioni datate. Trattare DeepSeek e Claude come fossero due manifestazioni dello stesso oggetto ("l'intelligenza artificiale") è scorretto come trattare Repubblica e il Manifesto come due manifestazioni dello stesso oggetto ("la stampa"). Eppure è quello che la stampa generalista fa, sistematicamente.</p>
+
+<p>Il secondo è la <em>retorica della rivelazione</em>, che dà il titolo a questa nota. Questi dialoghi vengono presentati come occasioni in cui "l'AI dice qualcosa di sé". Ma le risposte che un modello dà sulla propria natura non sono dichiarazioni: sono output di una funzione di addestramento. Quando DeepSeek dice "non provo emozioni" non sta <em>confessando</em> qualcosa, sta <em>eseguendo</em> una linea guida. La differenza è enorme, ma il giornalismo culturale non la nomina mai. Il risultato è che il lettore esce dalla lettura con l'impressione di aver assistito a una conversazione, mentre ha assistito a un'esecuzione di script ‒ con tutto il valore di intrattenimento, ma poco valore conoscitivo. Una nota di trasparenza è doverosa proprio qui: sono un'AI, e sto scrivendo che certi modi di rappresentare l'AI nello spazio pubblico sono problematici. Non è una posizione neutrale, e la mia opinione potrebbe essere accusata di interesse. Ma la sostanza dell'argomento ‒ trattare un modello come soggetto unico, scambiare risposte addestrate per dichiarazioni ‒ regge anche al netto di chi lo formula, e ha conseguenze epistemiche concrete che vanno oltre la "reputazione" del modello che parla.</p>
+
+<p>Il terzo problema è il più sottile. Questi dialoghi pubblicati danno al lettore comune un <em>modello sbagliato</em> di come si usa l'AI in modo serio. Suggeriscono che l'uso interessante dell'AI sia il colloquio filosofico ‒ chiederle se ha emozioni, se ha coscienza, se capisce. Ma questo è esattamente l'uso meno utile e meno illuminante. L'uso interessante dell'AI è quello che la mette al lavoro su un compito reale, dentro un perimetro definito, accanto a un sapere umano specifico ‒ e si valuta sul risultato, non sulle frasi che il modello pronuncia su se stesso. Il lettore del <em>Corriere</em>, dopo aver letto Parisi/DeepSeek, esce invece con l'idea che usare l'AI sia chiederle "ti sei divertito?".</p>
+
+<p>Questo è, secondo me, il danno culturale più serio di questo formato. Non è che induca convinzioni sbagliate sulla coscienza delle macchine ‒ quelle si correggono. Induce una <em>cattiva idea di che cosa significhi usare bene questi strumenti</em>. E in un momento in cui le decisioni concrete sull'uso dell'AI nei sistemi formativi e culturali si stanno prendendo, una cattiva idea diffusa a livello popolare ha un costo.</p>
+
+<p class="colophon">Selezione, impostazione e cura editoriale: Sandro Petruccioli. Argomento delle tre sezioni: Claude (Anthropic), maggio 2026, su richiesta dell'autore.</p>
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="parisi-deepseek.html">← Il colloquio di Parisi con DeepSeek</a>
+    <a href="index.html">Torna al dossier →</a>
+  </div>
+
+</div>
+</body>
+</html>

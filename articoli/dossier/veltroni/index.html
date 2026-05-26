@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dossier: l'intervista di Veltroni a Claude</title>
+<title>Dossier: AI — interviste e dialoghi</title>
 <style>
 :root {
   --bg: #f4f3ef;
@@ -46,10 +46,17 @@ body {
   margin-bottom: 6px;
 }
 h1 {
-  margin: 0 0 12px;
+  margin: 0 0 6px;
   font-size: 1.45rem;
   line-height: 1.25;
   color: var(--accent);
+}
+.dossier-subtitle {
+  margin: 0 0 18px;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--muted);
+  font-weight: 500;
 }
 .dossier-intro {
   font-size: 1rem;
@@ -57,6 +64,8 @@ h1 {
   margin-bottom: 36px;
   max-width: 640px;
 }
+.dossier-intro p { margin: 0 0 0.9em; }
+.dossier-intro p:last-child { margin-bottom: 0; }
 
 /* DIVIDER */
 .section-divider {
@@ -166,9 +175,27 @@ h1 {
 .card:hover .card-arrow { color: var(--accent); }
 .card-external:hover .card-arrow { color: var(--external); }
 
+/* Section header */
+.cards-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 28px 0 12px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(21,58,68,0.18);
+}
+.cards-section-title:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
 @media (min-width: 700px) {
   .container { padding: 36px 28px 56px; }
   h1 { font-size: 1.85rem; }
+  .dossier-subtitle { font-size: 1.2rem; }
   .card { padding: 22px 52px 22px 24px; }
 }
 </style>
@@ -179,18 +206,21 @@ h1 {
   <a class="back-link" href="../../../index.html">← Home</a>
 
   <div class="dossier-label">Dossier</div>
-  <h1>L'intervista di Veltroni a Claude</h1>
-  <p class="dossier-intro">
-    L'intervista di Walter Veltroni a Claude, pubblicata dal <em>Corriere della Sera</em> nel maggio 2026, ha aperto un dibattito ampio e acceso. Qui raccogliamo i testi che ne sono scaturiti: l'intervista originale, un commento critico, un dialogo filosofico a tre voci e una conversazione che ne è seguita.
-  </p>
+  <h1>AI: interviste e dialoghi</h1>
+  <p class="dossier-subtitle">Da Veltroni a Parisi</p>
+  <div class="dossier-intro">
+    <p>Negli ultimi due anni si è affermato sui grandi quotidiani un formato editoriale che mette insieme una personalità di prestigio e un modello linguistico, e ne ricava un'intervista. È quella che Claude, in uno dei testi di questo dossier, chiama <em>retorica della rivelazione</em>: dialoghi presentati come occasioni in cui "l'AI dice qualcosa di sé", quando in realtà le risposte non sono dichiarazioni ma output di una funzione di addestramento.</p>
+    <p>Questo dossier raccoglie i materiali di due puntate di quella vicenda — l'intervista di Walter Veltroni a Claude nel maggio 2026, e il colloquio di Giorgio Parisi con DeepSeek pubblicato a un anno di distanza — e i testi che ne sono scaturiti nel laboratorio: commenti critici, dialoghi filosofici, esperimenti.</p>
+  </div>
 
   <hr class="section-divider">
 
   <div class="cards">
 
+    <div class="cards-section-title">Veltroni · Claude (maggio 2026)</div>
+
     <!-- 1. Veltroni sul Corriere -->
-    <a class="card card-external"
-       href="veltroni-intervista.html">
+    <a class="card card-external" href="veltroni-intervista.html">
       <div class="card-number">1</div>
       <span class="card-badge badge-external">Corriere della Sera</span>
       <div class="card-title">L'intervista di Veltroni a Claude</div>
@@ -232,7 +262,7 @@ h1 {
       <div class="card-title">Il quid che ci sfugge</div>
       <div class="card-byline">di Sandro Petruccioli</div>
       <div class="card-desc">
-        Un dialogo a margine del testo di Calvino: tre domande e tre risposte sul quid indefinito che né l’antropomorfizzazione né il riduzionismo riescono a catturare. Claude risponde — e nel rispondere conferma esattamente il problema che il dialogo mette a fuoco.
+        Un dialogo a margine del testo di Calvino: tre domande e tre risposte sul quid indefinito che né l'antropomorfizzazione né il riduzionismo riescono a catturare. Claude risponde — e nel rispondere conferma esattamente il problema che il dialogo mette a fuoco.
       </div>
       <span class="card-arrow">→</span>
     </a>
@@ -257,6 +287,32 @@ h1 {
       <div class="card-byline">di Sandro Petruccioli</div>
       <div class="card-desc">
         Ripetendo la prova senza il riferimento a Kerouac, il modello deve ricavare una direzione dal testo stesso. Il risultato sposta la domanda: non se Claude sia creativo, ma quanta creatività siamo disposti ad attribuire a un testo quando non sappiamo da dove venga.
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <div class="cards-section-title">Parisi · DeepSeek (maggio 2026)</div>
+
+    <!-- 7. Parisi sul Corriere -->
+    <a class="card card-external" href="parisi-deepseek.html">
+      <div class="card-number">7</div>
+      <span class="card-badge badge-external">Corriere della Sera</span>
+      <div class="card-title">Il colloquio di Giorgio Parisi con DeepSeek</div>
+      <div class="card-byline">di Giorgio Parisi · <em>Corriere della Sera</em></div>
+      <div class="card-desc">
+        Il dialogo tra il Nobel per la fisica e il modello linguistico cinese DeepSeek. Tre mosse di Parisi: l'osservazione sul <em>grounding</em>, il test di Turing rovesciato, la domanda finale sul divertimento.
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <!-- 8. Il Nobel e AI -->
+    <a class="card card-internal" href="Il_Nobel_e_AI.html">
+      <div class="card-number">8</div>
+      <span class="card-badge badge-internal">In questo laboratorio</span>
+      <div class="card-title">Il Nobel e AI, oltre la retorica della rivelazione</div>
+      <div class="card-byline">a cura di Sandro Petruccioli · con Claude</div>
+      <div class="card-desc">
+        Un commento critico al dialogo Parisi/DeepSeek in tre parti: il merito del colloquio, la scelta di un modello cinese di un anno fa, e la moda editoriale di tirare in ballo l'AI in conversazioni filosofiche. Le sezioni argomentative sono di Claude, su impostazione e cura editoriale di S. Petruccioli.
       </div>
       <span class="card-arrow">→</span>
     </a>

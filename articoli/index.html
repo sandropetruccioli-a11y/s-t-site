@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Articoli — Scienza e tecnoscienze</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 48px;
+}
+
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 28px;
+}
+.back-link:hover { color: #07333d; }
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+h1 {
+  margin: 0 0 14px;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--accent);
+}
+.section-intro {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 36px;
+  max-width: 640px;
+}
+.section-intro p { margin: 0 0 0.9em; }
+.section-intro p:last-child { margin-bottom: 0; }
+
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.2);
+  margin: 0 0 28px;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.article-card {
+  border-top: 1px solid rgba(21, 58, 68, 0.2);
+  padding-top: 14px;
+}
+
+.article-date {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.article-title {
+  margin: 0 0 6px;
+  font-size: 1.08rem;
+  line-height: 1.32;
+}
+
+.article-title a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.article-title a:hover { color: #07333d; }
+
+.article-excerpt {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0 0 0.6em;
+  line-height: 1.55;
+}
+
+.subarticles {
+  margin-top: 8px;
+  display: grid;
+  gap: 4px;
+}
+.subarticles a {
+  display: block;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 2px 0;
+}
+.subarticles a:hover { text-decoration: underline; }
+
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 56px; }
+  h1 { font-size: 1.95rem; }
+  .article-title { font-size: 1.22rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="../index.html">← Home</a>
+
+  <div class="section-label">Sezione</div>
+  <h1>Articoli</h1>
+  <div class="section-intro">
+    <p>Interventi singoli su scienza, tecnoscienze, intelligenza artificiale e decisione pubblica. Per i percorsi tematici a più voci si rimanda ai <a href="dossier/index.html" style="color:var(--accent); font-weight:600;">dossier</a>.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="article-list">
+
+    <article class="article-card">
+      <div class="article-date">12 maggio 2026 · in tre parti</div>
+      <h2 class="article-title">
+        <a href="2026-05-12-articolo-23.html">Quale AI per l'Europa?</a>
+      </h2>
+      <p class="article-excerpt">
+        La proposta di un CERN per l'AI circola da tempo senza tradursi in impegni vincolanti. Ci sono ragioni strutturali che spiegano lo stallo. E il rischio più serio non è che il progetto fallisca, ma che riesca a metà.
+      </p>
+      <div class="subarticles">
+        <a href="2026-05-12-articolo-23.html">→ Parte I — Il modello CERN e i suoi limiti</a>
+        <a href="2026-05-12-articolo-24.html">→ Parte II — Paradigmi scientifici ed ecosistema privato</a>
+        <a href="2026-05-12-articolo-25.html">→ Appendice — Il problema energetico</a>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <div class="article-date">1 maggio 2026</div>
+      <h2 class="article-title">
+        <a href="2026-05-01-articolo-21.html">Il giudizio e la sua simulazione</a>
+      </h2>
+      <p class="article-excerpt">
+        L'AI non colpisce solo per l'efficienza, ma perché produce risposte che sembrano giudizi. Il rischio è scambiare la forma del giudizio per il giudizio stesso, abbassando la soglia critica dell'utente.
+      </p>
+    </article>
+
+    <article class="article-card">
+      <div class="article-date">24 aprile 2026</div>
+      <h2 class="article-title">
+        <a href="2026-04-24-articolo-20.html">Insegnare l'intelligenza artificiale</a>
+      </h2>
+      <p class="article-excerpt">
+        I ragazzi usano già strumenti di intelligenza artificiale ogni giorno, mentre la scuola non ha ancora deciso che cosa insegnare su di essi. Se arriveranno impreparati al mondo trasformato dall'AI, non sarà per mancanza di tecnologia.
+      </p>
+    </article>
+
+    <article class="article-card">
+      <div class="article-date">12 aprile 2026</div>
+      <h2 class="article-title">
+        <a href="2026-04-12-articolo-19.html">La resa cognitiva: quando l'utente abbassa la guardia</a>
+      </h2>
+      <p class="article-excerpt">
+        Una fiducia ragionata, concessa in buona fede, può trasformarsi in una forma di abbassamento della guardia. Due ricerche recenti — Wharton e MIT Media Lab — cominciano a misurare il fenomeno.
+      </p>
+    </article>
+
+    <article class="article-card">
+      <div class="article-date">27 febbraio 2026</div>
+      <h2 class="article-title">
+        <a href="2026-02-27-articolo-01.html">Quando un sistema artificiale firma un articolo di fisica teorica</a>
+      </h2>
+      <p class="article-excerpt">
+        Per la prima volta un modello di intelligenza artificiale compare tra i firmatari di un articolo di fisica teorica. Non è solo automazione: è ingresso nella dinamica generativa della teoria.
+      </p>
+    </article>
+
+  </div>
+
+</div>
+</body>
+</html>
