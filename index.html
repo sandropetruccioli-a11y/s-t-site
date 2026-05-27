@@ -175,8 +175,8 @@ h2 {
     margin: 0 0 22px;
     font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
     font-style: italic;
-    font-size: 1.03rem;
-    line-height: 1.62;
+    font-size: 0.92rem;
+    line-height: 1.5;
     color: #2b2f31;
 }
 
@@ -390,7 +390,7 @@ h2 {
     .site-logo { width: 150px; }
     h1 { font-size: 1.82rem; }
     h2 { font-size: 1.05rem; }
-    .intro-note { font-size: 1.1rem; margin-bottom: 26px; }
+    .intro-note { font-size: 1rem; margin-bottom: 26px; }
     .article-title { font-size: 1.26rem; }
 
     .article-footer { display: none; }
@@ -402,58 +402,42 @@ h2 {
     }
 }
 
-/* ── Mappa laterale ── */
+/* ── Pulsante Indice contenuti — linguetta a destra, trascinabile ── */
 .mappa-trigger {
     position: fixed;
-    left: 0;
-    bottom: 30px;
+    right: 0;
+    top: calc(45% - 28px);
     z-index: 900;
-    width: 38px;
-    height: 64px;
+    width: 42px;
+    height: 56px;
     background: var(--accent);
     border: none;
-    border-radius: 0 16px 16px 0;
-    cursor: pointer;
+    border-radius: 28px 0 0 28px;
+    cursor: grab;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    padding: 0;
-    opacity: 0.94;
-    box-shadow: 2px 4px 14px rgba(0,0,0,0.2);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding: 0 6px 0 4px;
+    opacity: 0.78;
+    filter: saturate(0.45);
+    box-shadow: -2px 3px 10px rgba(0,0,0,0.12);
+    transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
-.mappa-trigger:hover { opacity: 1; transform: translateX(1px); }
-.mappa-trigger span {
+.mappa-trigger:hover {
+    opacity: 0.96;
+    filter: saturate(0.7);
+    transform: translateX(-1px);
+}
+.mappa-trigger:active {
+    cursor: grabbing;
+}
+.mappa-trigger svg {
     display: block;
-    height: 2px;
-    background: #fff;
-    border-radius: 2px;
-}
-.mappa-trigger span:nth-child(1) { width: 17px; }
-.mappa-trigger span:nth-child(2) { width: 17px; }
-.mappa-trigger span:nth-child(3) { width: 11px; }
-.mappa-trigger::after {
-    content: "Indice";
-    position: absolute;
-    left: 39px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(10, 70, 82, 0.96);
-    color: #fff;
-    font-size: 0.66rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 5px 7px;
-    border-radius: 999px;
-    opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease;
-    white-space: nowrap;
 }
-.mappa-trigger:hover::after { opacity: 1; }
 
 .mappa-overlay {
     position: fixed;
@@ -767,7 +751,7 @@ details.zone-accordion[open] .zone-accordion-chevron {
     </div>
 </header>
 
-<p class="intro-note">La transizione dalla scienza alle tecnoscienze solleva questioni inedite. Cambia il modo in cui il sapere si organizza e incide sulle forme della decisione. Qui osserviamo questi mutamenti per comprenderne le implicazioni politiche e istituzionali.</p>
+<p class="intro-note">Con le tecnoscienze cambia il modo in cui il sapere si organizza e incide sulle forme della decisione. Osservare i mutamenti per comprenderne le implicazioni politiche e istituzionali.</p>
 
 <!-- ZONA 1 — Recenti (sempre aperta) -->
 <section class="zone">
@@ -885,11 +869,16 @@ details.zone-accordion[open] .zone-accordion-chevron {
 })();
 </script>
 
-<!-- Icona mappa -->
-<button class="mappa-trigger" id="mappa-trigger" aria-label="Apri mappa contenuti" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
+<!-- Pulsante Indice contenuti -->
+<button class="mappa-trigger" id="mappa-trigger" aria-label="Apri indice contenuti" aria-expanded="false">
+    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true">
+        <circle cx="2" cy="2.5" r="1.7" fill="#fff"/>
+        <rect x="6" y="1.4" width="12" height="2.2" rx="1.1" fill="#fff"/>
+        <circle cx="2" cy="8" r="1.7" fill="#fff"/>
+        <rect x="6" y="6.9" width="12" height="2.2" rx="1.1" fill="#fff"/>
+        <circle cx="2" cy="13.5" r="1.7" fill="#fff"/>
+        <rect x="6" y="12.4" width="12" height="2.2" rx="1.1" fill="#fff"/>
+    </svg>
 </button>
 
 <!-- Overlay -->
@@ -903,6 +892,22 @@ details.zone-accordion[open] .zone-accordion-chevron {
     </div>
 
     <a href="articoli/index.html" class="mappa-group-title" style="text-decoration:none; display:block;">Articoli</a>
+
+    <div class="mappa-section">
+        <ul class="mappa-list">
+            <li><a href="articoli/2026-02-27-articolo-01.html">Quando un sistema artificiale firma un articolo di fisica teorica</a></li>
+            <li><a href="articoli/2026-04-24-articolo-20.html">Insegnare l'intelligenza artificiale</a></li>
+            <li><a href="articoli/2026-05-01-articolo-21.html">Il giudizio e la sua simulazione</a></li>
+            <li style="margin-top:4px;">
+                <a href="articoli/2026-05-12-articolo-23.html">Quale AI per l'Europa?</a>
+                <ul style="list-style:none; margin:3px 0 2px 10px; padding:0; display:grid; gap:3px;">
+                    <li><a href="articoli/2026-05-12-articolo-23.html" style="font-size:0.71rem; opacity:0.8;">I — Il modello CERN e i suoi limiti</a></li>
+                    <li><a href="articoli/2026-05-12-articolo-24.html" style="font-size:0.71rem; opacity:0.8;">II — Paradigmi scientifici ed ecosistema privato</a></li>
+                    <li><a href="articoli/2026-05-12-articolo-25.html" style="font-size:0.71rem; opacity:0.8;">Appendice — Il problema energetico</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
     <hr class="mappa-divider">
 
@@ -922,13 +927,13 @@ details.zone-accordion[open] .zone-accordion-chevron {
             <li style="margin-top:6px;">
                 <a href="articoli/dossier/veltroni/index.html">AI: interviste e dialoghi — Da Veltroni a Parisi</a>
                 <ul style="list-style:none; margin:3px 0 2px 10px; padding:0; display:grid; gap:3px;">
-                    <li><a href="articoli/dossier/veltroni/veltroni-intervista.html" style="font-size:0.71rem; opacity:0.8;">L'intervista di Veltroni a Claude (Corriere)</a></li>
+                    <li><a href="articoli/dossier/veltroni/veltroni-intervista.html" style="font-size:0.71rem; opacity:0.8;">L'intervista di Veltroni a Claude (Corriere della Sera)</a></li>
                     <li><a href="articoli/2026-05-03-articolo-22.html" style="font-size:0.71rem; opacity:0.8;">Il commento di S. Petruccioli</a></li>
                     <li><a href="articoli/dossier/veltroni/calvino-socrate-claude.html" style="font-size:0.71rem; opacity:0.8;">Dialogo tra R., Socrate e Claude</a></li>
                     <li><a href="articoli/dossier/veltroni/quid-che-ci-sfugge.html" style="font-size:0.71rem; opacity:0.8;">Il quid che ci sfugge</a></li>
                     <li><a href="articoli/dossier/veltroni/esperimento-calvino.html" style="font-size:0.71rem; opacity:0.8;">Un duro esperimento con Claude</a></li>
                     <li><a href="articoli/dossier/veltroni/quid-secondo-esperimento.html" style="font-size:0.71rem; opacity:0.8;">Il quid — secondo esperimento</a></li>
-                    <li><a href="articoli/dossier/veltroni/parisi-deepseek.html" style="font-size:0.71rem; opacity:0.8;">Il colloquio di Parisi con DeepSeek (Corriere)</a></li>
+                    <li><a href="articoli/dossier/veltroni/parisi-deepseek.html" style="font-size:0.71rem; opacity:0.8;">Il colloquio di Parisi con DeepSeek (Corriere della Sera)</a></li>
                     <li><a href="articoli/dossier/veltroni/Il_Nobel_e_AI.html" style="font-size:0.71rem; opacity:0.8;">Il Nobel e AI, oltre la retorica della rivelazione</a></li>
                 </ul>
             </li>
@@ -952,22 +957,7 @@ details.zone-accordion[open] .zone-accordion-chevron {
 
     <hr class="mappa-divider">
 
-    <div class="mappa-other-title">Articoli</div>
-    <div class="mappa-other">
-       <ul class="mappa-other">
-            <li><a href="articoli/2026-02-27-articolo-01.html">Quando un sistema artificiale firma un articolo di fisica teorica</a></li>
-            <li><a href="articoli/2026-04-24-articolo-20.html">Insegnare l’intelligenza artificiale</a></li>            <li><a href="articoli/2026-05-01-articolo-21.html">Il giudizio e la sua simulazione</a></li>
-            <li style="margin-top:4px;">
-                <a href="articoli/2026-05-12-articolo-23.html">Quale AI per l’Europa?</a>
-                <ul style="list-style:none; margin:3px 0 2px 10px; padding:0; display:grid; gap:3px;">
-                    <li><a href="articoli/2026-05-12-articolo-23.html" style="font-size:0.71rem; opacity:0.8;">I — Il modello CERN e i suoi limiti</a></li>
-                    <li><a href="articoli/2026-05-12-articolo-24.html" style="font-size:0.71rem; opacity:0.8;">II — Paradigmi scientifici ed ecosistema privato</a></li>
-                    <li><a href="articoli/2026-05-12-articolo-25.html" style="font-size:0.71rem; opacity:0.8;">Appendice — Il problema energetico</a></li>
-                </ul>
-            </li>
-        </ul>
-       
-    </div>
+    <a href="quaderni/quaderni.html" class="mappa-group-title" style="text-decoration:none; display:block;">Quaderni</a>
 
 </aside>
 
@@ -977,11 +967,93 @@ details.zone-accordion[open] .zone-accordion-chevron {
     var trigger = document.getElementById('mappa-trigger');
     var overlay = document.getElementById('mappa-overlay');
     var closeBtn = document.getElementById('mappa-close');
+    if (!trigger || !overlay || !closeBtn) return;
+
     function setOpen(open) {
         body.classList.toggle('mappa-open', open);
         trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
-    trigger.addEventListener('click', function() { setOpen(!body.classList.contains('mappa-open')); });
+
+    // ── Drag verticale del pulsante ──
+    var dragging = false;
+    var moved = false;
+    var startY = 0;
+    var startTop = 0;
+    var DRAG_THRESHOLD = 4;
+    var STORAGE_KEY = 'mappaTriggerTopPct';
+    var EDGE_MARGIN = 12;
+
+    function applyTopPct(pct) {
+        var btnH = trigger.offsetHeight;
+        var topPx = pct * window.innerHeight - btnH / 2;
+        var min = EDGE_MARGIN;
+        var max = window.innerHeight - btnH - EDGE_MARGIN;
+        if (topPx < min) topPx = min;
+        if (topPx > max) topPx = max;
+        trigger.style.top = topPx + 'px';
+    }
+
+    // Ripristina posizione salvata dalle visite precedenti
+    try {
+        var saved = parseFloat(localStorage.getItem(STORAGE_KEY));
+        if (!isNaN(saved) && saved > 0 && saved < 1) {
+            applyTopPct(saved);
+        }
+    } catch (e) {}
+
+    trigger.addEventListener('pointerdown', function(e) {
+        dragging = true;
+        moved = false;
+        startY = e.clientY;
+        var rect = trigger.getBoundingClientRect();
+        startTop = rect.top;
+        try { trigger.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+
+    trigger.addEventListener('pointermove', function(e) {
+        if (!dragging) return;
+        var dy = e.clientY - startY;
+        if (!moved && Math.abs(dy) > DRAG_THRESHOLD) moved = true;
+        if (!moved) return;
+        var btnH = trigger.offsetHeight;
+        var newTop = startTop + dy;
+        var min = EDGE_MARGIN;
+        var max = window.innerHeight - btnH - EDGE_MARGIN;
+        if (newTop < min) newTop = min;
+        if (newTop > max) newTop = max;
+        trigger.style.top = newTop + 'px';
+    });
+
+    trigger.addEventListener('pointerup', function(e) {
+        if (!dragging) return;
+        dragging = false;
+        try { trigger.releasePointerCapture(e.pointerId); } catch (err) {}
+        if (moved) {
+            // Salva posizione come percentuale del viewport
+            var rect = trigger.getBoundingClientRect();
+            var centerPct = (rect.top + rect.height / 2) / window.innerHeight;
+            try { localStorage.setItem(STORAGE_KEY, centerPct); } catch (e) {}
+        }
+    });
+
+    trigger.addEventListener('pointercancel', function() {
+        dragging = false;
+    });
+
+    // Click: apre il pannello solo se non era un drag
+    trigger.addEventListener('click', function() {
+        if (moved) { moved = false; return; }
+        setOpen(!body.classList.contains('mappa-open'));
+    });
+
+    // Riposiziona se il viewport cambia (rotazione, resize)
+    window.addEventListener('resize', function() {
+        try {
+            var pct = parseFloat(localStorage.getItem(STORAGE_KEY));
+            if (!isNaN(pct) && pct > 0 && pct < 1) applyTopPct(pct);
+        } catch (e) {}
+    });
+
     overlay.addEventListener('click', function() { setOpen(false); });
     closeBtn.addEventListener('click', function() { setOpen(false); });
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') setOpen(false); });
