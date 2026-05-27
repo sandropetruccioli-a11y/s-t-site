@@ -718,6 +718,19 @@ details.zone-accordion[open] .zone-accordion-chevron {
     .quaderni-title { font-size: 1.06rem; }
 }
 
+.intro-text {
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.intro-text.collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
 </style>
 </head>
 
@@ -751,20 +764,22 @@ details.zone-accordion[open] .zone-accordion-chevron {
     </div>
 </header>
 
-<p class="intro-note">Con le tecnoscienze cambia il modo in cui il sapere si organizza e incide sulle forme della decisione. Osservare i mutamenti per comprenderne le implicazioni politiche e istituzionali.</p>
+<p class="intro-note intro-text collapsed" id="introText" onclick="toggleIntro()">
+  Con la transizione dalla scienza alle tecnoscienze cambia il modo in cui il sapere si organizza e incide sulle forme della decisione. Questo laboratorio osserva tali mutamenti e ne interroga le implicazioni culturali, politiche e istituzionali.
+</p>
 
 <!-- ZONA 1 — Recenti (sempre aperta) -->
 <section class="zone">
     <h2 class="zone-title">Recenti</h2>
     <div class="flash">
 
-        <a class="flash-item" href="articoli/dossier/veltroni/index.html">
+        <a class="flash-item" href="articoli/dossier/veltroni/parisi-deepseek.html">
             <div class="flash-meta">26 maggio 2026 · <span class="kind">aggiunto a un dossier</span></div>
             <div class="flash-title">AI: interviste e dialoghi — due nuovi testi su Parisi e DeepSeek</div>
         </a>
 
         <a class="flash-item" href="articoli/2026-05-12-articolo-23.html">
-            <div class="flash-meta">12 maggio 2026 · <span class="kind">nuovo articolo in tre parti</span></div>
+            <div class="flash-meta">12 maggio 2026 · <span class="kind">articolo in tre parti</span></div>
             <div class="flash-title">Quale AI per l'Europa?</div>
         </a>
 
@@ -773,7 +788,7 @@ details.zone-accordion[open] .zone-accordion-chevron {
 
 <!-- ZONA 2 — Aree del laboratorio (a tendina, chiusa) -->
 <section class="zone">
-    <details class="zone-accordion">
+    <details class="zone-accordion" open>
         <summary>
             <span>Aree del laboratorio</span>
             <span class="zone-accordion-chevron" aria-hidden="true">▶</span>
@@ -1066,6 +1081,10 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/service-worker.js");
   });
 }
+function toggleIntro() {
+  document.getElementById('introText').classList.toggle('collapsed');
+}
+
 </script>
 
 </body>
