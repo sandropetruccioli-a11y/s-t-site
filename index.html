@@ -311,8 +311,23 @@ h2 {
 
 .quaderni-entry {
     display: flex;
-    justify-content: flex-end;
-    margin: 8px 0 24px 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    margin: 22px 0 8px 0;
+    padding-top: 22px;
+    border-top: 1px solid rgba(21,58,68,0.14);
+    transition: opacity 0.15s;
+}
+.quaderni-entry:hover { opacity: 0.85; }
+
+.quaderni-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.3;
 }
 
 .quaderni-button {
@@ -391,8 +406,7 @@ h2 {
 .mappa-trigger {
     position: fixed;
     left: 0;
-    top: 44%;
-    transform: translateY(-50%);
+    bottom: 30px;
     z-index: 900;
     width: 38px;
     height: 64px;
@@ -410,7 +424,7 @@ h2 {
     box-shadow: 2px 4px 14px rgba(0,0,0,0.2);
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.mappa-trigger:hover { opacity: 1; transform: translateY(-50%) translateX(1px); }
+.mappa-trigger:hover { opacity: 1; transform: translateX(1px); }
 .mappa-trigger span {
     display: block;
     height: 2px;
@@ -559,9 +573,13 @@ ul.mappa-other {
     font-size: 0.52rem;
 }
 
-/* ── NUOVA STRUTTURA HOME: tre zone ── */
+/* ── NUOVA STRUTTURA HOME: tre zone — versione asciutta ── */
 .zone {
     margin: 22px 0;
+}
+.zone + .zone {
+    border-top: 1px solid rgba(21,58,68,0.14);
+    padding-top: 18px;
 }
 .zone-title {
     font-size: 0.72rem;
@@ -569,24 +587,21 @@ ul.mappa-other {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--muted);
-    margin: 0 0 10px;
+    margin: 0 0 12px;
 }
 
-/* Zona 1 — In questi giorni (sempre aperta) */
+/* Zona 1 — Recenti (sempre aperta) */
 .flash {
-    background: #fff;
-    border-radius: 10px;
-    padding: 6px 14px;
-    border: 1px solid rgba(21,58,68,0.10);
+    /* niente sfondo, niente bordo: solo elenco tipografico */
 }
 .flash-item {
     display: block;
     text-decoration: none;
     color: inherit;
     padding: 11px 0;
-    border-bottom: 1px solid rgba(21,58,68,0.08);
+    border-top: 1px solid rgba(21,58,68,0.10);
 }
-.flash-item:last-child { border-bottom: none; }
+.flash-item:first-child { border-top: none; padding-top: 2px; }
 .flash-meta {
     font-size: 0.72rem;
     color: var(--muted);
@@ -608,64 +623,62 @@ ul.mappa-other {
 }
 .flash-item:hover .flash-title { color: #07333d; }
 
-/* Zone 2 e 3 — tendine */
+/* Zone 2 e 3 — tendine senza box */
 details.zone-accordion {
-    background: #fff;
-    border-radius: 10px;
-    border: 1px solid rgba(21,58,68,0.10);
-    overflow: hidden;
+    /* niente sfondo, niente bordo */
 }
-details.zone-accordion[open] { padding-bottom: 4px; }
 details.zone-accordion > summary {
     list-style: none;
     cursor: pointer;
-    padding: 13px 16px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
     user-select: none;
 }
+details.zone-accordion > summary:hover { color: var(--accent); }
 details.zone-accordion > summary::-webkit-details-marker { display: none; }
 .zone-accordion-chevron {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--muted);
     transition: transform 0.2s ease;
+    margin-left: 8px;
 }
 details.zone-accordion[open] .zone-accordion-chevron {
     transform: rotate(90deg);
 }
 .zone-accordion-body {
-    padding: 4px 14px 12px;
+    padding: 12px 0 2px;
 }
 
-/* Aree del laboratorio — griglia 2x2 */
+/* Aree del laboratorio — elenco verticale tipografico */
 .areas-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 0;
 }
 .area-card {
     display: block;
     text-decoration: none;
     color: inherit;
-    background: #fcfbf8;
-    border-radius: 8px;
-    border-left: 3px solid var(--accent);
-    padding: 12px 14px;
-    transition: background 0.15s;
+    padding: 11px 0;
+    border-top: 1px solid rgba(21,58,68,0.10);
+    transition: opacity 0.15s;
 }
-.area-card:hover { background: #f5f2e8; }
+.area-card:first-child { border-top: none; padding-top: 2px; }
+.area-card:hover { opacity: 0.75; }
 .area-card-title {
-    font-size: 0.95rem;
+    font-size: 0.96rem;
     font-weight: 700;
     color: var(--accent);
     margin-bottom: 3px;
 }
 .area-card-desc {
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     color: #555;
     line-height: 1.4;
 }
@@ -675,20 +688,17 @@ details.zone-accordion[open] .zone-accordion-chevron {
     font-size: 0.72rem;
 }
 
-/* In evidenza — singola scheda */
+/* In evidenza — singola voce, stesso linguaggio */
 .spotlight {
-    background: #fcfbf8;
-    border-radius: 8px;
-    border-left: 3px solid var(--highlight, #c9a227);
-    padding: 14px 16px;
+    display: block;
     text-decoration: none;
     color: inherit;
-    display: block;
-    transition: background 0.15s;
+    padding: 2px 0 0;
+    transition: opacity 0.15s;
 }
-.spotlight:hover { background: #f5f2e8; }
+.spotlight:hover { opacity: 0.75; }
 .spotlight-kind {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -696,7 +706,7 @@ details.zone-accordion[open] .zone-accordion-chevron {
     margin-bottom: 5px;
 }
 .spotlight-title {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     font-weight: 700;
     color: var(--accent);
     line-height: 1.3;
@@ -716,12 +726,12 @@ details.zone-accordion[open] .zone-accordion-chevron {
 
 @media (min-width: 700px) {
     .zone { margin: 30px 0; }
+    .zone + .zone { padding-top: 24px; }
     .flash-title { font-size: 1.02rem; }
-    .area-card { padding: 16px 18px; }
-    .area-card-title { font-size: 1.02rem; }
-    .area-card-desc { font-size: 0.85rem; }
-    .spotlight { padding: 18px 22px; }
-    .spotlight-title { font-size: 1.15rem; }
+    .area-card-title { font-size: 1.04rem; }
+    .area-card-desc { font-size: 0.86rem; }
+    .spotlight-title { font-size: 1.12rem; }
+    .quaderni-title { font-size: 1.06rem; }
 }
 
 </style>
@@ -757,15 +767,11 @@ details.zone-accordion[open] .zone-accordion-chevron {
     </div>
 </header>
 
-<a href="quaderni/quaderni.html" class="quaderni-entry">
-    <span class="quaderni-button">
-        <img src="logo-quaderni.png" alt="Quaderni" class="quaderni-logo">
-    </span>
-</a>
+<p class="intro-note">La transizione dalla scienza alle tecnoscienze solleva questioni inedite. Cambia il modo in cui il sapere si organizza e incide sulle forme della decisione. Qui osserviamo questi mutamenti per comprenderne le implicazioni politiche e istituzionali.</p>
 
-<!-- ZONA 1 — In questi giorni (sempre aperta) -->
+<!-- ZONA 1 — Recenti (sempre aperta) -->
 <section class="zone">
-    <h2 class="zone-title">In questi giorni</h2>
+    <h2 class="zone-title">Recenti</h2>
     <div class="flash">
 
         <a class="flash-item" href="articoli/dossier/veltroni/index.html">
@@ -776,11 +782,6 @@ details.zone-accordion[open] .zone-accordion-chevron {
         <a class="flash-item" href="articoli/2026-05-12-articolo-23.html">
             <div class="flash-meta">12 maggio 2026 · <span class="kind">nuovo articolo in tre parti</span></div>
             <div class="flash-title">Quale AI per l'Europa?</div>
-        </a>
-
-        <a class="flash-item" href="articoli/2026-05-01-articolo-21.html">
-            <div class="flash-meta">1 maggio 2026 · <span class="kind">nuovo articolo</span></div>
-            <div class="flash-title">Il giudizio e la sua simulazione</div>
         </a>
 
     </div>
@@ -796,7 +797,7 @@ details.zone-accordion[open] .zone-accordion-chevron {
         <div class="zone-accordion-body">
             <div class="areas-grid">
 
-                <a class="area-card" href="articoli/index.html" style="grid-column: 1 / -1;">
+                <a class="area-card" href="articoli/index.html">
                     <div class="area-card-title">Articoli</div>
                     <div class="area-card-desc">Interventi singoli su scienza, tecnoscienze, AI e decisione pubblica.</div>
                 </a>
@@ -837,6 +838,16 @@ details.zone-accordion[open] .zone-accordion-chevron {
         </div>
     </details>
 </section>
+
+<!-- Quaderni — richiamo in chiusura -->
+<a href="quaderni/quaderni.html" class="quaderni-entry">
+    <div class="quaderni-text">
+        <div class="quaderni-title">I Quaderni di S&amp;T</div>
+    </div>
+    <span class="quaderni-button">
+        <img src="logo-quaderni.png" alt="Quaderni" class="quaderni-logo">
+    </span>
+</a>
 
 
 </div>
