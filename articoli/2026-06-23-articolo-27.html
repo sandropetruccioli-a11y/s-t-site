@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosa sta succedendo nel mondo dell’AI</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 500; line-height: 1.65; }
+.container { max-width: 760px; margin: 0 auto; padding: 22px 16px 32px; }
+.print-button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+.print-button:hover { background: rgba(10,70,82,0.08); }
+.print-icon { width: 16px; height: 16px; }
+.article-date { margin-top: 14px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+h1 { margin: 8px 0 4px; font-size: 1.28rem; line-height: 1.3; color: var(--accent); }
+.article-kicker { margin: 0 0 20px; color: var(--muted); font-weight: 600; font-size: 0.95rem; }
+.article-text p { margin: 0 0 1em; }
+.article-text h2 { font-size: 1rem; font-weight: 700; color: var(--accent); margin: 1.8em 0 0.5em; }
+.article-text a { color: var(--accent); }
+.chapter-separator { margin-top: 36px; border: none; border-top: 1px solid rgba(21,58,68,0.25); }
+.chapter-nav { display: flex; justify-content: space-between; margin-top: 16px; font-size: 0.9rem; gap: 16px; }
+.chapter-nav a { text-decoration: none; color: var(--accent); font-weight: 500; }
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions { display: flex; flex-direction: column; gap: 0; margin-bottom: 22px; }
+.nav-links { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(21,58,68,0.2); }
+.print-row { display: flex; justify-content: flex-end; padding-top: 8px; }
+.back-link { text-decoration: none; color: var(--accent); font-weight: 500; font-size: 0.9rem; }
+.back-link:hover { color: #07333d; }
+@media (min-width: 700px) { .container { padding: 36px 28px 42px; } h1 { font-size: 1.72rem; } }
+@media print { @page { size: A4; margin: 16mm; } body { background: #fff; color: #111; font-size: 11pt; } .container { max-width: none; padding: 0; } .top-actions, .print-button { display: none !important; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="index.html">← Torna agli articoli</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()">
+        <svg class="print-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path><path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <div class="article-date">23 giugno 2026</div>
+  <h1>Cosa sta succedendo nel mondo dell’AI</h1>
+  <p class="article-kicker">Sanders, Anthropic, la sicurezza biologica, il caso Mythos e il G7</p>
+
+  <div class="article-text">
+
+<p>Da qualche settimana questo laboratorio non pubblica nuovi interventi sull’intelligenza artificiale. Non si tratta di un’interruzione del lavoro, né tantomeno di un abbandono dell’app. È accaduto piuttosto il contrario: proprio mentre il dibattito pubblico sull’AI si spostava con crescente rapidità sul terreno politico e geopolitico, una parte consistente del mio lavoro si è concentrata sul progetto di elaborazione di un sistema Treccani Tutor.</p>
+<p>La distinzione non è marginale. Da un lato, le questioni sollevate in queste settimane — proprietà pubblica delle grandi aziende AI, controllo federale dei modelli, accesso internazionale, sicurezza biologica, coordinamento fra Stati — appartengono ormai a un terreno squisitamente politico, che solo in parte coincide con gli obiettivi di questo laboratorio. Dall’altro lato, il progetto Treccani Tutor consente di affrontare l’intelligenza artificiale da un punto di vista diverso: non parlare soltanto intorno all’AI e alle sue potenzialità, ma provare a mostrare concretamente che cosa si possa fare con l’AI quando venga inserita in un lavoro culturale, didattico ed editoriale determinato.</p>
+<p>Per questo, prima di riprendere il filo degli interventi, può essere utile registrare in forma sintetica alcune delle notizie più rilevanti uscite dall’inizio di giugno. Non una rassegna completa, ma un repertorio ragionato: abbastanza per capire dove si è spostata la discussione e perché il lavoro concreto sul Treccani Tutor non sia un diversivo rispetto a queste domande, ma un modo diverso di abitarle.</p>
+<h2>1. Sanders porta l’AI dentro la politica democratica</h2>
+<p>Il primo fatto è l’ingresso esplicito del tema AI nell’agenda politica americana attraverso Bernie Sanders. In un intervento pubblicato sul New York Times il 1° giugno, <a href="https://www.nytimes.com/2026/06/01/opinion/artificial-intelligence-bernie-sanders.html" target="_blank" rel="noopener">The Public Should Own Half of the Big A.I. Companies</a>, il senatore ha proposto la creazione di un fondo sovrano federale che acquisisca una partecipazione del 50% nelle principali aziende americane dell’intelligenza artificiale. L’obiettivo non è soltanto redistribuire una parte del valore prodotto dall’AI, ma attribuire al pubblico diritti di voto sufficienti a rallentare o bloccare decisioni considerate socialmente distruttive, a cominciare da eventuali licenziamenti di massa.</p>
+<p>Pochi giorni dopo, in una lunga intervista radiofonica e televisiva, Sanders ha chiarito il presupposto della sua proposta. Gli scienziati che ha consultato — tra cui il premio Nobel Geoffrey Hinton — gli avrebbero indicato che la domanda non è più se l’intelligenza artificiale diventerà più capace dell’uomo, ma quando. E quando ciò accadrà, il rischio è che essa possa separarsi dal controllo umano. Lo stesso tema ritorna anche nel suo intervento video <a href="https://www.sanders.senate.gov/videos/the-existential-threat-of-ai-and-the-need-for-international-cooperation/" target="_blank" rel="noopener">The Existential Threat of AI and the Need for International Cooperation</a>. Sanders, che per decenni si è occupato soprattutto di lavoro, disuguaglianza, sanità e diritti sociali, porta così il tema dell’AI dentro il lessico della democrazia rappresentativa: chi controlla una tecnologia capace di trasformare il lavoro, la ricchezza e forse le condizioni stesse della decisione politica?</p>
+<p>La proposta ha avuto un’eco immediata anche in Italia. Nel convegno organizzato dal Partito Democratico con Elly Schlein e Giorgio Parisi, da un lato si sono riprese le posizioni di Sanders sulla necessità di riportare l’AI dentro un quadro di controllo pubblico; dall’altro si è rilanciata l’idea di una “terza via” europea, centrata su un CERN dell’intelligenza artificiale. Resta però non chiarito — ed è il limite su cui mi sono già soffermato — se un’infrastruttura pubblica europea possa davvero rispondere a un problema che non riguarda soltanto la proprietà dei modelli, ma la scala globale e la natura stessa della tecnologia.</p>
+<p>Il punto, in ogni caso, è che la questione è uscita dal recinto degli specialisti. Non riguarda più soltanto ingegneri, laboratori, investitori e aziende. È entrata nella politica democratica, e vi è entrata nella forma più radicale: non come questione di regolazione marginale, ma come questione di proprietà, controllo, redistribuzione e potere.</p>
+<h2>2. Anthropic e la soglia tecnica</h2>
+<p>Il secondo fatto, quasi contemporaneo, è il documento pubblicato da Anthropic il 4 giugno, <a href="https://www.anthropic.com/institute/recursive-self-improvement" target="_blank" rel="noopener">When AI builds itself</a>. Qui la questione non è affrontata dal lato della redistribuzione o della proprietà, ma dal lato della soglia tecnica. Anthropic descrive il punto in cui i sistemi di intelligenza artificiale cominciano a partecipare in modo decisivo alla progettazione dei propri successori.</p>
+<p>Secondo il documento, a maggio 2026 più dell’ottanta per cento del codice immesso nei sistemi dell’azienda era già scritto dai suoi modelli, non dai suoi ingegneri. La durata dei compiti svolti autonomamente dai modelli raddoppia ogni pochi mesi. Il ruolo degli ingegneri si sposta progressivamente dalla produzione alla sorveglianza; quello dei ricercatori dall’esecuzione alla scelta degli esperimenti da tentare. Anche questo margine, avvertono gli autori, comincia però a restringersi.</p>
+<p>Il punto centrale non è l’allarme catastrofico. Anthropic insiste anzi sulla necessità di evitare semplificazioni apocalittiche. Nemmeno una macchina capace di contribuire alla propria evoluzione cambierebbe da un giorno all’altro la vita della maggior parte delle persone. Il problema è un altro: il tempo dell’intervento.</p>
+<p>Se lo sviluppo dei modelli comincia a dipendere in misura crescente dai modelli stessi, il margine entro cui la politica, le istituzioni e la società possono ancora orientare il processo si restringe. Non si tratta più soltanto di governare uno strumento esterno, che gli esseri umani progettano, addestrano, distribuiscono e usano. Si tratta di accompagnare un processo che incorpora progressivamente una parte della propria direzione.</p>
+<p>Da qui la richiesta di darsi almeno l’opzione di rallentare. Non un blocco generico dell’innovazione, ma un coordinamento verificabile tra i principali laboratori prima che il processo diventi troppo rapido, troppo competitivo e troppo interno a se stesso per essere governato con gli strumenti ordinari della regolazione.</p>
+<p>Va detto, per onestà intellettuale, che Anthropic formula questa richiesta dalla posizione di chi partecipa pienamente alla corsa. La società che chiede di rallentare, e che pubblica documenti sui rischi di perdita di controllo, si prepara contemporaneamente all’ingresso a Wall Street. Il 1° giugno Anthropic ha comunicato di avere <a href="https://www.anthropic.com/news/confidential-draft-s1-sec" target="_blank" rel="noopener">depositato in via confidenziale una bozza di registrazione S-1 presso la SEC</a>, primo passo verso una possibile quotazione. Chiede il freno restando fra chi corre in testa. Il documento va dunque letto tenendo insieme due elementi: la serietà del problema indicato e l’interesse di posizione di chi lo indica. Separarli sarebbe ingenuo; tenerli insieme è il solo modo corretto di leggere ciò che sta accadendo.</p>
+<h2>3. La sicurezza biologica: quando il rischio diventa materiale</h2>
+<p>A questa linea di allarme si è aggiunto, negli stessi giorni, un terzo elemento: la lettera indirizzata al Congresso americano da dirigenti e ricercatori di alcune delle principali organizzazioni AI, tra cui OpenAI, Anthropic e Google DeepMind, sui rischi connessi alla biologia sintetica. La notizia è stata ricostruita, fra gli altri, da Wired in <a href="https://www.wired.com/story/openai-anthropic-letter-ai-biological-weapons/" target="_blank" rel="noopener">OpenAI and Anthropic Sign Letter to Prevent AI-Developed Biological Weapons</a>.</p>
+<p>La richiesta riguarda in particolare l’obbligo di controlli più rigorosi sugli ordini di DNA e RNA sintetici. Il timore è che sistemi avanzati di AI possano abbassare la soglia necessaria alla progettazione di agenti patogeni o armi biologiche, mettendo capacità finora riservate a gruppi altamente specializzati alla portata di soggetti molto più ampi.</p>
+<p>È un passaggio importante perché sposta il discorso dai rischi generali dell’AI a un terreno materiale molto preciso. Non si parla soltanto di automazione del lavoro, manipolazione dell’informazione, concentrazione del potere economico o sostituzione di competenze professionali. Si parla della possibilità che capacità computazionali e conoscenza biologica diventino una combinazione direttamente pericolosa.</p>
+<p>Questo non significa che siamo davanti a un rischio imminente e incontrollabile. Significa però che la discussione sulla sicurezza dell’AI non può più essere trattata come un capitolo astratto della filosofia della tecnologia. Entra nella sfera della biosicurezza, della prevenzione, della tracciabilità degli ordini, della responsabilità delle aziende che producono materiali biologici e dei laboratori che sviluppano modelli capaci di fornire assistenza tecnica avanzata.</p>
+<p>In altri termini: il rischio dell’AI non è più soltanto cognitivo, sociale o economico. Comincia a presentarsi come rischio materiale, infrastrutturale, biologico. È un cambio di piano che non può essere sottovalutato.</p>
+<h2>4. Mythos, Fable e l’export control americano</h2>
+<p>Il quarto fatto è la vicenda Mythos/Fable. Il 9 giugno Anthropic ha annunciato <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">Claude Fable 5 e Claude Mythos 5</a>: il primo come versione più accessibile e controllata di un modello di classe Mythos; il secondo destinato a un gruppo ristretto di soggetti fidati, in particolare nel campo della cybersicurezza.</p>
+<p>Pochi giorni dopo, il governo federale americano ha emanato una direttiva di export control che imponeva la sospensione dell’accesso a Fable 5 e Mythos 5 per tutti i cittadini stranieri, anche all’interno degli Stati Uniti. Anthropic ha pubblicato una propria <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">dichiarazione sulla direttiva del governo statunitense</a>, spiegando che l’effetto pratico dell’ordine era tale da costringerla a disabilitare l’accesso per tutti i clienti, almeno temporaneamente.</p>
+<p>Qui il problema tecnico diventa immediatamente geopolitico. Un modello troppo potente per essere distribuito liberamente viene trattato come una tecnologia strategica, non diversamente da chip avanzati, sistemi crittografici o altre tecnologie dual-use. La cittadinanza torna così a essere una soglia di accesso alla conoscenza artificiale: chi è dentro il perimetro nazionale può, almeno in linea di principio, accedere; chi ne è fuori viene escluso.</p>
+<p>Le reazioni sono state molto accese, soprattutto in Europa, dove la decisione americana è stata letta come un segnale ulteriore della dipendenza tecnologica dagli Stati Uniti. Se i modelli di frontiera sono sviluppati negli Stati Uniti, ospitati su infrastrutture americane, sottoposti a decisioni del governo americano e distribuiti secondo regole americane, allora la sovranità digitale europea mostra tutta la propria fragilità.</p>
+<p>Si sono inoltre moltiplicate le ipotesi sulle ragioni profonde della scelta federale, comprese quelle legate ai rapporti fra governo americano, Anthropic e OpenAI. Su questo punto conviene però mantenere prudenza. Il fatto documentato è l’ordine di sospensione e il suo effetto sull’accesso ai modelli. Le interpretazioni politiche, per quanto rilevanti, restano per ora ipotesi.</p>
+<p>La vicenda, tuttavia, dice già abbastanza. Mostra che i modelli più avanzati non vengono più considerati semplicemente prodotti commerciali. Vengono trattati come infrastrutture strategiche, sottoposte a logiche di sicurezza nazionale, controllo degli accessi, alleanze e diffidenze geopolitiche.</p>
+<h2>5. Il G7 e la governance internazionale</h2>
+<p>Il quinto fatto, forse il più importante, è l’incontro avvenuto a margine del G7 di Évian tra i leader politici e i rappresentanti delle principali aziende AI. Reuters ha anticipato la presenza dei principali dirigenti tecnologici in <a href="https://www.reuters.com/world/tech-executives-attend-g7-summit-leaders-address-ai-online-safety-2026-06-12/" target="_blank" rel="noopener">Tech executives to attend G7 summit as leaders address AI, online safety</a> e ha poi ricostruito la discussione sullo schema dei “trusted partners” in <a href="https://www.reuters.com/legal/litigation/g7-leaders-vow-closer-ties-ai-they-hash-out-trusted-partners-scheme-2026-06-17/" target="_blank" rel="noopener">At G7, Macron says he expects progress on broadening access to Anthropic’s Mythos</a>.</p>
+<p>Alla riunione erano presenti Dario Amodei per Anthropic, Sam Altman per OpenAI, Demis Hassabis per Google DeepMind, Arthur Mensch per Mistral e altri protagonisti del settore. La scena è significativa già di per sé: i capi delle aziende che costruiscono i modelli di frontiera siedono accanto ai capi di governo per discutere il futuro della governance tecnologica.</p>
+<p>Da quell’incontro è emersa con forza la richiesta di un coordinamento internazionale fra le principali democrazie industriali nella gestione dei modelli più avanzati. Amodei ha invitato a evitare la frammentazione regolatoria e a costruire un quadro comune fra paesi democratici; Altman e Hassabis hanno sostenuto, in forme diverse, la necessità di standard condivisi, strumenti di valutazione, cooperazione sulla sicurezza e accesso coordinato alle capacità più avanzate.</p>
+<p>Ma il punto politicamente più delicato è il perimetro di questo coordinamento. Non si tratta di una governance mondiale in senso pieno. Si profila piuttosto una forma di coordinamento guidata dagli Stati Uniti e dalle democrazie alleate, con la Cina collocata fuori dal perimetro della fiducia.</p>
+<p>Da un lato, questa scelta è comprensibile: nessuna governance dell’AI può ignorare le tensioni strategiche fra Stati Uniti e Cina, né il fatto che i modelli più avanzati hanno ormai ricadute militari, industriali, informative e scientifiche. Dall’altro lato, proprio questa esclusione mostra il limite del progetto. Una tecnologia globale viene discussa dentro un quadro che non può davvero essere globale, perché nasce già segnato dalla divisione geopolitica.</p>
+<p>Le reazioni europee erano prevedibili. Collaborazione sì, ma non al prezzo di una dipendenza permanente dall’infrastruttura americana. L’Europa vede bene il rischio: partecipare alla governance dell’AI come alleato degli Stati Uniti, ma non come soggetto autonomo. Avere voce nelle regole, ma non pieno controllo sui modelli, sui chip, sui data center, sulle piattaforme e sulle condizioni materiali dell’accesso.</p>
+<p>Il G7 mostra dunque il punto più avanzato e insieme più fragile della discussione attuale. Da un lato, l’AI è ormai riconosciuta come problema di governance internazionale. Dall’altro, il soggetto capace di esercitare quella governance non esiste ancora. Non esiste un’autorità mondiale dell’AI dotata di legittimazione democratica. Non esiste un demos globale. Non esiste un luogo in cui la scala tecnica del fenomeno e la scala politica della decisione coincidano davvero.</p>
+<h2>6. Il filo che tiene insieme queste notizie</h2>
+<p>La sequenza di queste notizie disegna un quadro abbastanza preciso.</p>
+<p>Sanders pone il problema della legittimazione democratica: chi decide, con quale mandato, nell’interesse di chi. La sua risposta è nazionale, pubblica, rappresentativa. Per questo è politicamente forte. Ma proprio per questo mostra anche il proprio limite: una tecnologia globale non può essere governata interamente dentro il perimetro di uno Stato, neppure quando quello Stato sono gli Stati Uniti.</p>
+<p>Anthropic pone il problema della scala e del tempo: quanto spazio resta per intervenire prima che lo sviluppo dei modelli diventi troppo rapido, troppo automatizzato e troppo interno alla competizione fra laboratori. La sua risposta ha la scala giusta, perché parla di coordinamento internazionale, standard condivisi e possibilità di rallentamento. Ma non ha una legittimazione democratica sufficiente: nasce da un laboratorio privato, non da un soggetto politico costituente.</p>
+<p>La lettera sui rischi biologici mostra che l’AI non riguarda soltanto lavoro, produttività o comunicazione. Tocca la sicurezza materiale, la biosicurezza, la possibilità di combinare modelli avanzati e biotecnologie. La vicenda Mythos/Fable mostra che i modelli più avanzati sono già trattati come tecnologie strategiche, sottoposte a controllo nazionale. Il G7 mostra che la governance dell’AI si sta spostando verso un terreno internazionale, ma senza che esista ancora un vero soggetto politico capace di governarla democraticamente su quella scala.</p>
+<p>La formula più semplice è questa: il problema è globale, ma la democrazia resta nazionale; la tecnologia accelera, ma le istituzioni deliberano lentamente; le aziende vedono la soglia, ma non possono essere esse stesse il fondamento della sua regolazione; gli Stati vogliono controllare, ma controllano dentro confini che la tecnologia attraversa continuamente.</p>
+<p>È questa sproporzione a definire il momento attuale.</p>
+<h2>7. Perché tornare al Treccani Tutor</h2>
+<p>È in questo quadro che si colloca il lavoro sul Treccani Tutor.</p>
+<p>La discussione pubblica tende ormai a muoversi tra due estremi. Da una parte la geopolitica dell’AI: Stati Uniti, Cina, Europa, G7, export control, modelli di frontiera, sicurezza nazionale. Dall’altra la promessa generale delle applicazioni: produttività, automazione, assistenti personali, strumenti educativi, agenti intelligenti.</p>
+<p>Il progetto Treccani Tutor si colloca su un terreno più circoscritto. Non pretende di affrontare direttamente le grandi questioni di governance, né di offrire una risposta generale ai problemi sollevati dall’AI. Serve piuttosto a osservare, dentro un caso concreto, che cosa accade quando questi strumenti vengono inseriti in un lavoro culturale, didattico ed editoriale determinato.</p>
+<p>Non si tratta quindi di contrapporre la sperimentazione pratica al dibattito politico. Si tratta di tenere distinti i piani. Le notizie di giugno mostrano che l’intelligenza artificiale è ormai entrata nel campo della sovranità, della sicurezza e della governance internazionale. Il lavoro sul Treccani Tutor procede invece su una scala diversa: più limitata, ma proprio per questo verificabile.</p>
+<p>Per questo il laboratorio riprenderà il proprio lavoro da qui: non con l’intenzione di inseguire ogni notizia, ma cercando di mantenere un rapporto fra il quadro generale e l’osservazione concreta degli usi. Capire l’AI significa anche questo: distinguere ciò che appartiene alla scala delle decisioni politiche da ciò che può essere verificato, corretto e discusso dentro pratiche determinate.</p>
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="index.html">← Torna agli articoli</a>
+  </div>
+
+  <footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;"></p>
+  </footer>
+
+</div>
+</body>
+</html>

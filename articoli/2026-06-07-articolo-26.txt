@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Costituzione italiana e le geometrie non euclidee</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 500; line-height: 1.65; }
+.container { max-width: 760px; margin: 0 auto; padding: 22px 16px 32px; }
+.print-button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+.print-button:hover { background: rgba(10,70,82,0.08); }
+.print-icon { width: 16px; height: 16px; }
+.article-date { margin-top: 14px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+h1 { margin: 8px 0 4px; font-size: 1.28rem; line-height: 1.3; color: var(--accent); }
+.article-kicker { margin: 0 0 20px; color: var(--muted); font-weight: 600; font-size: 0.95rem; }
+.article-text p { margin: 0 0 1em; }
+.article-text h2 { font-size: 1rem; font-weight: 700; color: var(--accent); margin: 1.8em 0 0.5em; }
+.bib { margin-top: 2em; padding-top: 1em; border-top: 1px solid rgba(21,58,68,0.2); font-size: 0.88rem; color: #555; }
+.bib h3 { font-size: 0.9rem; color: var(--accent); margin: 0 0 0.8em; }
+.bib ol { margin: 0; padding-left: 1.4em; }
+.bib li { margin-bottom: 0.8em; line-height: 1.5; }
+.bib a { color: var(--accent); }
+.chapter-separator { margin-top: 36px; border: none; border-top: 1px solid rgba(21,58,68,0.25); }
+.chapter-nav { display: flex; justify-content: space-between; margin-top: 16px; font-size: 0.9rem; gap: 16px; }
+.chapter-nav a { text-decoration: none; color: var(--accent); font-weight: 500; }
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions { display: flex; flex-direction: column; gap: 0; margin-bottom: 22px; }
+.nav-links { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(21,58,68,0.2); }
+.print-row { display: flex; justify-content: flex-end; padding-top: 8px; }
+.back-link { text-decoration: none; color: var(--accent); font-weight: 500; font-size: 0.9rem; }
+.back-link:hover { color: #07333d; }
+@media (min-width: 700px) { .container { padding: 36px 28px 42px; } h1 { font-size: 1.72rem; } }
+@media print { @page { size: A4; margin: 16mm; } body { background: #fff; color: #111; font-size: 11pt; } .container { max-width: none; padding: 0; } .top-actions, .print-button { display: none !important; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="../index.html">← Torna agli articoli</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()">
+        <svg class="print-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path><path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <div class="article-date">12 maggio 2026</div>
+  <h1>Quale AI per l'Europa?</h1>
+  <p class="article-kicker">La Costituzione italiana e le geometrie non euclidee</p>
+
+  <div class="article-text">
+
+<p> Ogni sistema logico coerente poggia su un insieme di assunzioni di partenza. Lo sapevano i matematici dell’antichità, lo ribadì Euclide raccogliendo in cinque postulati i fondamenti della geometria, e lo riscoprirono con sorpresa i matematici del XIX secolo quando si accorsero che uno di quei postulati – il quinto, quello sulle rette parallele – poteva essere sostituito con un altro, ugualmente non dimostrabile, ugualmente accettabile, e che da questa sostituzione nascevano geometrie nuove, internamente coerenti, ma radicalmente diverse da quella euclidea. Lobačevskij e Riemann non demolirono la geometria: mostrarono che essa era un caso particolare di qualcosa di più vasto, e che cambiare un assioma cambia tutto, anche ciò che sembrava immutabile per definizione.
+</p><p> 
+Questa storia mi è tornata in mente osservando il dibattito politico italiano di questi giorni, e in particolare la discussione intorno a una nuova proposta di legge elettorale di impianto marcatamente maggioritario. Non intendo entrare nel merito tecnico della proposta, né ho la competenza del costituzionalista. Scrivo come storico della scienza e come cittadino che si sente progressivamente escluso da un processo di rappresentanza che fatica a riconoscere come pienamente democratico. Ma proprio la storia della scienza mi offre uno strumento di lettura che mi sembra utile.
+</p>
+<h2>La Costituzione come sistema assiomatico</h2>
+<p> 
+Le grandi costituzioni, come i sistemi geometrici, poggiano su assunzioni che non vengono dimostrate ma condivise. I padri fondatori di una costituzione non scelgono a caso le architetture istituzionali che costruiscono: le scelgono alla luce di valori, di esperienze storiche, di modelli di democrazia che danno per acquisiti senza sentire il bisogno di esplicitarli in ogni dettaglio. Questi valori impliciti sono gli assiomi del sistema. Sono invisibili proprio perché condivisi. Diventano visibili solo quando qualcuno li mette in discussione.
+</p>
+La Costituzione italiana del 1948 è un documento straordinario per rigore e lungimiranza. Ma come ogni sistema fondato su assiomi, contiene assunzioni non scritte che ne reggono l’intera architettura. Una di queste – la più importante, a mio avviso – riguarda il sistema elettorale.
+</p>
+<h2>L’assioma implicito: il proporzionalismo</h2>
+<p> 
+La parola “partiti” compare nella Costituzione italiana una sola volta, all’articolo 49, e in un contesto che riguarda il diritto dei cittadini di associarsi liberamente per concorrere alla determinazione della politica nazionale. Non compare mai in riferimento all’impianto istituzionale, alla formazione dei governi, alla composizione del Parlamento. Eppure l’intera architettura della Costituzione acquista senso pieno solo alla luce di un assunto implicito: che il sistema elettorale debba essere di tipo proporzionale.
+</p><p> 
+È questo assioma non scritto che spiega il parlamentarismo come forma di governo, il ruolo di garanzia e mediazione del Presidente della Repubblica, la figura del Presidente del Consiglio – non eletto direttamente ma nominato sulla base degli equilibri parlamentari – il bicameralismo perfetto, il sistema di pesi e contrappesi tra i poteri. Tutto questo ha senso in un sistema in cui nessun partito vince tutto, in cui la rappresentanza è frammentata, in cui la formazione di un governo richiede mediazione e accordo. La prima legge elettorale approvata dopo la Costituzione, nel 1948, era proporzionale. E tale rimase, salvo modifiche non sostanziali, per tutta la cosiddetta Prima Repubblica. Non fu una coincidenza: fu la traduzione in norma di un assioma già presente, implicito, nell’impianto costituzionale.
+</p><p> 
+Vale la pena notare, per completezza, che neppure l’assioma proporzionalista è dimostrabile in senso assoluto. In Gran Bretagna vige un sistema maggioritario che produce effetti molto diversi in termini di rappresentanza – spesso assegnando a un partito una maggioranza parlamentare schiacciante a fronte di una percentuale di voti che non la giustifica. Si tratta di un altro sistema, internamente coerente, fondato su un assioma diverso: che la stabilità governativa valga più della proporzionalità della rappresentanza. Né l’uno né l’altro sistema è dimostrabilmente superiore all’altro in assoluto. Sono geometrie diverse.
+</p>
+<h2>La Prima Repubblica: un sistema coerente</h2>
+<p> 
+Per quasi cinquant’anni, con tutti i suoi difetti – l’instabilità dei governi, la difficoltà delle riforme, la mediazione estenuante tra partiti – la Prima Repubblica ha funzionato come un sistema internamente coerente. La proporzionalità era la grammatica non scritta della politica italiana. I governi cadevano e si riformavano, ma il Parlamento era il luogo reale della rappresentanza, il Presidente della Repubblica esercitava un ruolo arbitrale autentico, le segreterie di partito erano potenti ma non avevano il monopolio della selezione dei rappresentanti. Il sistema era fondato sul suo assioma, e su quell’assioma reggeva.
+</p>
+<h2>Il cambio di assioma: dalla Prima alla Seconda Repubblica</h2>
+<p> 
+Il 1989, la caduta del Muro di Berlino, Tangentopoli e la crisi sistemica dei partiti storici segnano una rottura. Il referendum del 1993 sul sistema elettorale è il momento in cui l’assioma fondante viene messo esplicitamente in discussione per la prima volta. Da quel momento in poi si susseguono leggi elettorali – il Mattarellum, il Porcellum, il Rosatellum – che progressivamente modificano il rapporto tra rappresentanza e governabilità, tra volontà degli elettori e potere delle segreterie di partito. Ognuna di queste leggi introduce, in silenzio, un nuovo assioma parziale. Ma la Costituzione formale resta invariata. È qui che il parallelo con le geometrie non euclidee diventa più stringente.
+</p>
+<h2>Le geometrie non euclidee della politica italiana</h2>
+<p> 
+Quando Lobačevskij sostituì il postulato euclideo sulle parallele con uno diverso, non stava violando la geometria: stava costruendo un sistema nuovo, fondato su presupposti diversi, internamente coerente, ma incompatibile con il sistema precedente. Il problema sarebbe sorto se qualcuno avesse preteso di applicare simultaneamente i teoremi della geometria euclidea e quelli della geometria iperbolica allo stesso spazio. I due sistemi non convivono.
+</p><p> 
+È esattamente ciò che sta accadendo con la Costituzione italiana. Si cambia l’assioma elettorale – progressivamente, per via legislativa ordinaria – senza cambiare la Costituzione formale. Il risultato è un sistema ibrido, in cui le norme costituzionali pensate per un contesto proporzionale vengono applicate a un contesto sempre più maggioritario. Il Presidente della Repubblica continua ad avere i poteri di mediazione che aveva senso attribuirgli in un sistema frammentato; il Parlamento continua ad essere formalmente sovrano in un sistema in cui la scelta dei rappresentanti è sempre più nelle mani delle segreterie di partito; il Presidente del Consiglio continua a chiamarsi tale in un sistema che tende di fatto a eleggere direttamente un capo del governo. La geometria è cambiata, ma si usano ancora i teoremi di quella vecchia.
+</p>
+<h2>La svolta in corso: un nuovo cambio di paradigma</h2>
+<p> 
+La proposta attuale di riforma elettorale si presenta, nelle parole dei suoi sostenitori, come una risposta al problema della stabilità governativa. Ma introduce in realtà due nuovi assiomi, entrambi estranei ai costituenti del 1948. Il primo è che la stabilità del governo sia un valore costituzionale supremo, da garantire anche a scapito della proporzionalità della rappresentanza – attraverso premi di maggioranza che possono produrre una distorsione significativa tra voti ricevuti e seggi assegnati. Il secondo, ancora più rilevante dal punto di vista della teoria democratica, è che la selezione dei rappresentanti ricada nella competenza delle segreterie di partito e non sia espressione diretta della volontà popolare – attraverso sistemi di liste bloccate che tolgono all’elettore la possibilità di scegliere la persona, oltre che il partito.
+</p><p> 
+Entrambi questi assiomi producono effetti a cascata sull’intero sistema costituzionale. Riducono il ruolo del Parlamento, comprimono lo spazio di mediazione del Presidente della Repubblica, spostano il baricentro del potere verso l’esecutivo e verso chi controlla le candidature. Non sono modifiche marginali: sono cambi di postulato. E come nella geometria, cambiare un postulato cambia tutto.
+</p>
+<h2>Il bug costituzionale</h2>
+<p> 
+C’è qualcosa che i costituenti del 1948 non potevano prevedere, o forse non vollero affrontare esplicitamente: che la Costituzione formale non si difende da sola da un cambio di assioma che avviene per via legislativa ordinaria. Una legge elettorale non è una norma costituzionale. Non richiede le maggioranze qualificate previste per la revisione della Costituzione, non innesca necessariamente un referendum confermativo, non passa attraverso il doppio voto parlamentare previsto dall’articolo 138. Eppure può riscrivere silenziosamente la costituzione materiale – quella che determina come funziona davvero il potere, chi lo detiene, come si forma, come si controlla.
+</p><p> 
+Questo è il bug del sistema: la possibilità di cambiare tutto senza cambiare formalmente nulla. È un bug che la storia della scienza conosce bene. I cambi di paradigma, scriveva Thomas Kuhn, non avvengono mai in modo lineare e trasparente. Avvengono per accumulo di anomalie, per crisi silenziose, per sostituzioni progressive di assunzioni fondanti. E spesso chi li vive non se ne accorge fino a quando il nuovo sistema è già in piedi.
+</p>
+<h2>Conclusione</h2>
+<p> 
+Non è necessario essere costituzionalisti per vedere quello che sta accadendo. È sufficiente essere cittadini che osservano, con gli strumenti che hanno a disposizione. I miei sono quelli della storia della scienza: l’attenzione ai sistemi, agli assiomi, ai cambi di paradigma, alle conseguenze non dette dei mutamenti apparentemente tecnici. E quello che vedo è un sistema costituzionale sottoposto a una pressione crescente, non dall’esterno, ma dall’interno, attraverso la sostituzione silenziosa degli assiomi su cui fu costruito.
+</p><p> 
+Le geometrie non euclidee sono geometrie legittime. Ma chi le usa deve sapere che ha cambiato le regole del gioco. Il problema sorge quando si pretende di usare i teoremi di Euclide in uno spazio di Riemann, o quando si cambia la geometria senza dirlo a chi ci abita.
+</p>
+
+
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="2026-05-12-articolo-24.html">← Parte II — Paradigmi scientifici ed ecosistema privato</a>
+    <a href="../index.html">Torna agli articoli →</a>
+  </div>
+
+  <footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;"></p>
+  </footer>
+
+</div>
+</body>
+</html>

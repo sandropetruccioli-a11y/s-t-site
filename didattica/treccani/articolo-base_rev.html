@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'AI come ambiente, non come oracolo</title>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --text: #1f1f1f;
+  --muted: #24535d;
+  --accent: #0a4652;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 16px 32px;
+}
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.print-button:hover { background: rgba(10, 70, 82, 0.08); }
+.print-icon { width: 16px; height: 16px; }
+.article-date {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.article-subtitle {
+  margin: 10px 0 4px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.34rem;
+  line-height: 1.25;
+}
+.article-byline {
+  margin: 0 0 22px;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--muted);
+}
+.article-text p { margin: 0 0 1em; }
+.article-text h2 {
+  margin: 1.8em 0 0.6em;
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.chapter-separator {
+  margin-top: 36px;
+  border: none;
+  border-top: 1px solid rgba(21,58,68,0.25);
+}
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  gap: 16px;
+}
+.chapter-nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.chapter-nav a:hover { color: #07333d; text-decoration: underline; }
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21, 58, 68, 0.2);
+}
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: #07333d; }
+@media print {
+  @page { size: A4; margin: 16mm; }
+  body { background: #ffffff; color: #111111; font-size: 11pt; line-height: 1.5; }
+  .container { max-width: none; padding: 0; }
+  .top-actions, .print-button { display: none !important; }
+  .article-subtitle { font-size: 15pt; }
+  .article-text h2 { font-size: 12pt; }
+  .article-text p { break-inside: avoid-page; orphans: 3; widows: 3; }
+}
+@media (min-width: 700px) {
+  .container { padding: 36px 28px 42px; }
+  .article-subtitle { font-size: 1.72rem; margin: 4px 0 10px; }
+  .article-text h2 { font-size: 1.2rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-actions">
+    <div class="nav-links">
+      <a class="back-link" href="index.html">← Dossier: L'esperimento Treccani</a>
+    </div>
+    <div class="print-row">
+      <button class="print-button" type="button" onclick="window.print()" aria-label="Stampa articolo in PDF">
+        <svg class="print-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"></path>
+          <path d="M6 18h12v3H6z"></path>
+          <rect x="3" y="9" width="18" height="9" rx="2" ry="2"></rect>
+        </svg>
+        Stampa
+      </button>
+    </div>
+  </div>
+
+  <div class="article-date">Maggio 2026</div>
+  <p class="article-subtitle">L'AI come ambiente, non come oracolo</p>
+  <p class="article-byline">Un esperimento di didattica assistita sulla <em>History of Science</em> di Treccani</p>
+
+  <div class="article-text">
+
+<p>Quando si parla di intelligenza artificiale nella scuola e nella formazione, il dibattito tende a polarizzarsi in fretta. Da un lato c'è chi vede nei modelli linguistici uno strumento miracoloso — il tutor sempre disponibile, paziente, capace di adattare la spiegazione a ogni studente. Dall'altro chi vi vede la fine di qualcosa: della lettura, della fatica, dell'autonomia intellettuale. Entrambe le posizioni colgono un pezzo di realtà, ma nessuna delle due aiuta a decidere cosa fare. La prima è una promessa, la seconda è un allarme. Manca quasi del tutto una terza voce, quella di chi prende l'AI come fatto compiuto e si chiede cosa farne di intelligente in un campo specifico.</p>
+
+<p>Da un anno mi muovo in questa direzione, lavorando intorno a un corpus che conosco bene: la <em>History of Science</em> edita da Treccani — dieci volumi, circa cinquecentocinquanta capitoli firmati da specialisti di prima grandezza, un'opera che copre la storia della scienza dall'antichità greca alla fisica del Novecento. È un'opera notevole, ma è anche un'opera difficile da attraversare per un lettore non specialista. Non perché i singoli capitoli siano oscuri — sono saggi pensati con cura didattica — ma perché un corpus di questa estensione richiede una guida. Senza guida, anche un lettore motivato fatica a sapere da dove cominciare, cosa cercare, come collegare un capitolo all'altro.</p>
+
+<p>La domanda da cui sono partito è semplice solo in apparenza: può l'AI servire da guida senza sostituirsi al testo? La risposta non era ovvia. La maggior parte delle applicazioni dell'AI in ambito didattico, oggi, va in direzione opposta. Il modello produce un riassunto, e lo studente legge il riassunto invece del testo. Il modello risponde alla domanda, e lo studente non incontra la difficoltà che il testo originale gli avrebbe posto. Si parla di democratizzazione del sapere, e in qualche misura è vero — ma quello che si democratizza, in molti casi, è una versione addomesticata e indebolita dei contenuti, non i contenuti.</p>
+
+<p>L'esperimento che descrivo qui parte da una scelta opposta: <strong>il testo resta al centro</strong>. L'AI non lo sostituisce. Non lo riassume. Non lo riformula. Lo studente è chiamato a leggere il capitolo intero, esattamente come è stato scritto dall'autore. L'AI interviene prima e dopo: prima, per orientare la scelta della lettura; dopo, per aiutare a capire cosa si è capito.</p>
+
+<p>La distinzione è meno tecnica di quanto sembri, ed è quella su cui si gioca quasi tutto. Nel modello dominante, l'AI è un <em>oracolo</em>: gli si fa una domanda, lui risponde, la conversazione finisce lì. Nel modello che propongo, l'AI è un <em>ambiente</em> — un perimetro intorno al testo, fatto di domande aperte, suggerimenti motivati, collegamenti tra letture diverse, opportunità di rielaborazione. Lo studente non interroga il modello al posto di leggere; legge perché il modello gli ha mostrato perché vale la pena leggere, e dopo aver letto può tornare a discutere con il modello quello che ha trovato. La differenza, formulata in una riga: non un chatbot che risponde sul testo, ma un ambiente di studio in cui l'AI organizza il passaggio dalla domanda alla lettura e dalla lettura alla comprensione riflessiva.</p>
+
+<p>Questa scelta non è estetica. Risponde a un'analisi del modo in cui l'AI agisce sui processi cognitivi, che è meno ovvia di quanto si dica. Nei primi mesi del dibattito pubblico è circolata insistentemente l'idea che l'AI fosse un fattore di equità: il tutor personale, storicamente un privilegio delle famiglie abbienti, ora disponibile a tutti gratuitamente. C'è del vero, ma c'è anche un punto cieco. L'AI non produce lo stesso valore per tutti gli studenti. Il suo valore dipende da quello che lo studente porta nella conversazione. Uno studente che ha già una struttura concettuale, che sa fare domande precise, che riconosce quando una risposta è insufficiente, trae dal modello un vantaggio enorme. Uno studente che non ha quella struttura riceve risposte autorevoli che non sa valutare, e tende ad accettarle. L'AI amplifica le competenze esistenti molto più di quanto ne crei di nuove. Per uno studente già forte è un acceleratore; per uno studente fragile può avere l'effetto opposto a quello dichiarato — non rinforzare l'apprendimento, ma attenuarlo, perché lo studente accetta risposte autorevoli che non ha gli strumenti per discutere.</p>
+
+<p>Questa osservazione, una volta presa sul serio, cambia il problema. La domanda non è più <em>come rendere l'AI accessibile a tutti gli studenti</em>, perché lo è già. La domanda è <em>come costruire ambienti in cui anche lo studente fragile sia messo nella condizione di usarla bene</em> — cioè di leggere davvero il testo, di porsi domande sue, di non delegare il giudizio. L'esperimento che descrivo è un tentativo in questa direzione: non un'AI più potente, ma un'architettura intorno all'AI che protegge il processo cognitivo dello studente da una delega troppo precoce.</p>
+
+<h2>Tre tempi: orientamento, lettura, consolidamento</h2>
+
+<p>Il sistema che ho costruito si articola in tre momenti distinti, che corrispondono a tre operazioni cognitive diverse. Non è una distinzione amministrativa, è una scelta di principio: ognuna delle tre operazioni richiede un tipo diverso di interazione con il modello, e tenerle separate evita di mescolare cose che vanno fatte separatamente.</p>
+
+<p>Il primo momento è l'orientamento. Lo studente arriva quasi sempre con qualcosa di sfumato — un interesse, una curiosità non ancora messa a fuoco, talvolta solo il vago desiderio di capire un tema di cui non conosce nemmeno il nome tecnico. In un sistema tradizionale, lo studente dovrebbe consultare l'indice dei dieci volumi, identificare il volume pertinente, scorrere i titoli dei capitoli, fare un'ipotesi su dove cercare. Per chi non conosce già il campo è un'operazione difficile e spesso frustrante: l'indice è uno strumento di consultazione, non di orientamento. Presuppone che tu sappia già cosa cerchi.</p>
+
+<p>Il tutor — che svolge qui una sorta di ruolo di mediazione, anche se non amo il termine "agente" che gli si attribuisce comunemente nel gergo tecnico — interviene esattamente in questa zona di indeterminazione. Il suo primo lavoro è dialogico: aiutare lo studente a mettere a fuoco la domanda che porta con sé. Domande di rilancio brevi, che servono a far emergere cosa lo studente sta cercando davvero — un periodo storico, un autore, un problema concettuale, una controversia. Solo quando la richiesta è messa a fuoco arriva la proposta di lettura.</p>
+
+<p>La proposta arriva sempre nella stessa forma: titolo del capitolo, nome dell'autore, una breve giustificazione che lega la domanda alla lettura proposta. Mai "leggi il capitolo 27"; sempre "per la tua domanda sulla nascita della meccanica quantistica, ti propongo <em>Le origini della teoria dei quanti</em> di [autore], che ricostruisce il passaggio da Planck a Bohr come una crisi interna della fisica classica, non come un'invenzione improvvisa". Il numero del capitolo è un'informazione di catalogazione; il titolo e l'autore sono ciò che il lettore sta per incontrare. Mantenere questa distinzione, anche in dettagli apparentemente marginali, contribuisce a tenere il testo al centro della relazione.</p>
+
+<p>C'è un'altra cosa che il tutor può fare, e che va nominata esplicitamente perché è uno dei tratti distintivi del sistema: può dire allo studente che la sua domanda non trova risposta nel corpus. Se lo studente chiede di un argomento che la <em>History of Science</em> non tratta, o che tratta solo marginalmente, il tutor lo riconosce e lo dichiara. Questa è una scelta progettuale, non un limite: i chatbot generalisti tendono a rispondere sempre, a volte costruendo risposte plausibili ma infondate. Un tutor agganciato a un corpus definito ha una virtù che il chatbot non ha — sa cosa non sa, e quando non sa lo dice. Lo studente è libero di cercare altrove; ma quando il sistema risponde, risponde su materiale verificato.</p>
+
+<p>Il secondo momento è la lettura vera e propria. Qui l'AI scompare. Lo studente è solo con il testo, esattamente come sarebbe stato con un volume cartaceo. Il capitolo si apre nella sua forma completa, con le note, le illustrazioni, l'apparato critico se è previsto. Non c'è un riassunto laterale, non c'è un assistente che spiega frase per frase, non c'è alcuna mediazione attiva. La pagina del capitolo è essenziale: il testo, e tre comandi minimi per uscire (tornare al tutor, passare al consolidamento, chiudere). Nessuna distrazione, nessun rumore, nessuna scorciatoia offerta in nome dell'efficienza.</p>
+
+<p>Questa scelta è stata oggetto di discussione interna al progetto. Era tecnicamente possibile, e in un certo senso tentante, arricchire la pagina del capitolo con strumenti di assistenza in tempo reale — una funzione per spiegare un termine difficile cliccandoci sopra, una sintesi laterale, un glossario dinamico. Ma ogni aggiunta di questo tipo riportava lo studente fuori dal testo. Il principio "il testo al centro" non sopravvive alle eccezioni: o lo si applica davvero, o si finisce per costruire l'ennesimo ambiente di lettura mediata che lentamente sostituisce la lettura. Abbiamo scelto la versione più ascetica, e a posteriori credo sia la scelta giusta. Lo studente che ha bisogno di chiarimenti li troverà nella terza fase, dove il dialogo serve esattamente a questo. Mescolare lettura e dialogo, invece, indebolisce entrambi.</p>
+
+<p>Il terzo momento è il consolidamento. Qui lo studente torna al tutor, dopo avere letto il capitolo, e si apre una conversazione che non è una verifica nel senso scolastico tradizionale. Il tutor non interroga per assegnare un voto. Non chiede "qual è la differenza tra forma e materia in Aristotele" come si farebbe a un esame. Apre il dialogo con una domanda aperta, qualcosa come "cosa ti ha colpito di più nella distinzione che Berti propone tra teoria della scienza e fisica della natura?" — e lascia che la risposta dello studente determini la direzione della conversazione successiva.</p>
+
+<p>Le regole del tutor in questa fase sono poche e nette. Una sola domanda alla volta, perché due domande insieme costringono lo studente a sceglierne una e dimenticare l'altra. Nessun quiz meccanico — i quiz misurano la ritenzione di informazioni, non la comprensione. Chiarimenti concettuali quando lo studente li chiede, ma offerti come spiegazioni e non come correzioni dall'alto. Collegamenti con altri capitoli quando la conversazione li richiama, ma sempre presentati come proposte motivate, mai come imposizioni. Il tono complessivo è quello di un collega più esperto che ragiona con un collega più giovane, non quello di un esaminatore.</p>
+
+<p>Vale la pena precisare una cosa, per evitare equivoci. Il consolidamento dialogico ha una forma che ricorda quella del dialogo socratico — domande aperte, costruzione progressiva di una comprensione attraverso scambi successivi. Ma è solo una somiglianza esteriore. Il tutor non scopre nulla insieme allo studente: ha già una mappa del capitolo, conosce le risposte possibili, sa dove vuole arrivare. Quello che fa, nei momenti migliori, è simulare il dialogo socratico entro un percorso in larga parte predeterminato. È un'imitazione utile — permette a ogni studente di avere un interlocutore che adatta le domande al suo ritmo, cosa che un docente con trenta studenti non può fare — ma resta un'imitazione, e dirlo chiaramente è il modo per non attribuire all'AI competenze che non ha.</p>
+
+<p>Questi tre momenti — orientamento, lettura, consolidamento — non sono pensati come passaggi obbligati. Lo studente può fermarsi al primo, leggere il capitolo e chiudere senza tornare al tutor. Può tornare al tutor solo per chiedere una seconda lettura, senza passare per il consolidamento. Può fare il consolidamento e poi chiedere un nuovo orientamento su un argomento collegato, costruendo così un percorso personale che attraversa più capitoli. L'architettura non costringe, propone. La proposta è che ogni operazione cognitiva — orientarsi, leggere, capire cosa si è capito — ha un tempo e un luogo suoi, e che riconoscere questa distinzione è il primo passo per usare bene uno strumento come l'AI in un contesto formativo serio.</p>
+
+<h2>Il problema del corpus</h2>
+
+<p>Un sistema come quello che ho descritto richiede che il tutor sappia di cosa sta parlando. Sembra ovvio, ma non lo è — anzi è il punto su cui la maggior parte degli usi divulgativi dell'AI fallisce in silenzio.</p>
+
+<p>Un modello linguistico generalista, interrogato sulla <em>History of Science</em> di Treccani, può rispondere in modi che sembrano competenti senza aver mai letto un solo capitolo dell'opera. Lo fa attingendo a tutto quello che ha imparato durante l'addestramento — milioni di pagine di storia della scienza pubblicate altrove, voci enciclopediche, articoli, manuali. La risposta è spesso accurata in senso generale, ma non è una risposta sul testo che lo studente sta per leggere. È una risposta sull'argomento di quel testo, costruita da fonti diverse. La differenza, in un contesto formativo, è sostanziale.</p>
+
+<p>Il sistema che abbiamo costruito segue un principio opposto: il tutor lavora <em>su</em> questo corpus, non <em>intorno a</em> questo argomento. Quando propone un capitolo, deve sapere cosa c'è in quel capitolo specifico — quali tesi sostiene quell'autore, come articola gli argomenti, quali distinzioni introduce, in quali punti dialoga o si distanzia da altri capitoli dell'opera. Solo a queste condizioni la proposta di lettura è davvero motivata, e il consolidamento successivo è davvero un consolidamento di quello che lo studente ha letto, e non una conversazione parallela sullo stesso tema.</p>
+
+<p>Per ottenere questo risultato, ogni capitolo del corpus è accompagnato da una scheda strutturata. La scheda non è un riassunto — un riassunto rischierebbe di sostituire il testo, esattamente quello che vogliamo evitare. È una descrizione concettuale che il tutor consulta per orientarsi senza esporre allo studente. Contiene quattro tipi di informazione, scelti per ragioni precise.</p>
+
+<p>Il primo è la struttura argomentativa del capitolo: i nodi concettuali principali, l'ordine in cui sono trattati, le distinzioni che l'autore introduce, le tesi che sostiene. Non <em>cosa dice</em>, ma <em>come ragiona</em>. Questo permette al tutor di formulare domande che seguono effettivamente la traiettoria del testo, anziché aggirarla.</p>
+
+<p>Il secondo è il posizionamento del capitolo nel corpus. Ogni capitolo della <em>History of Science</em> dialoga con altri — talvolta dichiaratamente, talvolta in modo implicito. La scheda registra questi collegamenti: a quale capitolo precedente il presente capitolo risponde, quale capitolo successivo ne sviluppa una conseguenza, dove un'altra firma propone una lettura divergente sullo stesso oggetto. È quello che permette al tutor, durante il consolidamento, di suggerire una lettura successiva che non sia una scelta casuale ma un passaggio motivato.</p>
+
+<p>Il terzo sono i presupposti e i prerequisiti. Un capitolo sulla meccanica quantistica presume che il lettore abbia un'idea della fisica classica; un capitolo sulla scolastica medievale presume una qualche familiarità con l'aristotelismo. La scheda registra questi presupposti, e quando lo studente formula una domanda che li ignora, il tutor lo riconosce e può proporre una lettura propedeutica o offrire un chiarimento prima di procedere.</p>
+
+<p>Il quarto è l'autorialità. Ogni capitolo è firmato da uno specialista, spesso uno studioso di prima grandezza nel suo campo. La scheda registra l'orientamento dell'autore — la sua collocazione storiografica, le sue prese di posizione esplicite. Questo importa perché un capitolo non è una voce neutra: è la voce di qualcuno. Il tutor, quando cita o richiama il testo, deve poter distinguere tra l'affermazione di un autore specifico e quello che è patrimonio condiviso del campo.</p>
+
+<p>Costruire una scheda di questo tipo per ciascuno dei circa cinquecentocinquanta capitoli dell'opera è il lavoro che richiede più tempo nell'intero progetto, ed è anche il pezzo che ne determina la qualità. Le schede non vengono compilate in modo meccanico, né interamente a mano: emergono da un dialogo iterativo tra il modello e l'editore, in cui il modello propone una prima ricognizione del capitolo e l'editore corregge, integra, ricalibra. È una forma di collaborazione che ha senso nominare, perché è coerente con l'idea complessiva del progetto: l'AI non sostituisce il giudizio editoriale, lo accompagna e lo amplifica. Va aggiunto che la griglia non può essere la stessa per tutti i capitoli. Le categorie che organizzano un capitolo sulla scienza ellenistica non sono quelle che organizzano un capitolo sulla meccanica quantistica, e la griglia deve adattarsi alla materia. Quello che resta stabile sono i tipi di informazione che la scheda deve fornire al tutor; come queste informazioni si articolano dipende dal capitolo che descrivono.</p>
+
+<p>Senza queste schede, il tutor sarebbe un chatbot generalista travestito da specialista. Con queste schede è uno strumento di orientamento ancorato a un'opera specifica — e ancorato in un senso forte, perché ogni proposta che il tutor fa allo studente è verificabile contro un materiale di riferimento che esiste e che è stato vagliato.</p>
+
+<p>Una conseguenza vale la pena di nominarla, perché ha implicazioni che vanno oltre il caso Treccani. Un sistema di questo tipo è generalizzabile, ma solo a corpora che soddisfano alcune condizioni. Servono testi stabili nel tempo, autorialità riconoscibile, struttura argomentativa esplicita, e la possibilità di costruire per ogni unità del corpus una scheda concettuale. Quando queste condizioni ci sono — opere enciclopediche serie, manuali specialistici, raccolte di saggi curate, classici annotati — il modello funziona. Quando mancano, no. Questo restringe il campo delle applicazioni possibili, ma è una restrizione che vale la pena accettare. Meglio uno strumento che funziona bene in un perimetro definito che uno strumento che funziona male su tutto.</p>
+
+<h2>Cosa c'è dietro</h2>
+
+<p>Vorrei chiudere uscendo per un momento dal caso specifico, perché credo che valga la pena nominare cosa è in gioco al di là di questo singolo progetto.</p>
+
+<p>L'AI sta entrando nei processi formativi con una velocità che le istituzioni non hanno la capacità di seguire. Mentre i ministeri discutono linee guida, gli studenti usano già i modelli ogni giorno, per ogni cosa. Mentre i collegi dei docenti deliberano sui divieti, intere generazioni si stanno abituando a un nuovo modo di accedere alla conoscenza. Lo scarto tra la velocità del cambiamento tecnologico e la velocità del cambiamento istituzionale è forse il problema più serio che il sistema formativo si trovi oggi ad affrontare. Non perché la tecnologia vada fermata — non può — ma perché lo spazio tra ciò che è già cambiato e ciò che le istituzioni sono ancora in grado di gestire si sta allargando in modo preoccupante.</p>
+
+<p>In questa zona di scarto, le scelte concrete le stanno prendendo soggetti molto diversi tra loro. Le grandi aziende tecnologiche, che hanno una visione globale e interessi propri. Gli editori scolastici, che cercano di adattare i loro prodotti al nuovo contesto. I singoli docenti, che improvvisano nel quotidiano. Gli studenti, che usano gli strumenti senza che nessuno gli abbia insegnato a usarli. L'esito complessivo dipenderà dalla qualità delle decisioni che ciascuno di questi soggetti prende, e dalla loro capacità di parlarsi.</p>
+
+<p>Quello che ho descritto in questo articolo è una scelta concreta, presa dentro un contesto specifico — un'opera enciclopedica, un corpus di cinquecentocinquanta capitoli, un editore che si interroga su come renderla utilizzabile nell'epoca dell'AI. Non è un modello generale né una proposta di politica formativa. È un esperimento. Ma è un esperimento che incorpora alcune scelte che credo abbiano un valore al di là del caso particolare, e che vale la pena raccogliere qui in chiusura — senza tornare ad argomentarle, perché è da scelte come queste che dipende l'esito complessivo di cui parlavo.</p>
+
+<p>Due le ho già messe al centro di queste pagine. La prima è che il testo deve restare al centro: e la posta in gioco, qui, è di equità prima ancora che di metodo, perché se l'AI sostituisce il testo ciò che si democratizza non è il contenuto ma una sua versione addomesticata e indebolita — e la promessa di accesso per tutti si rovescia nel suo contrario. La seconda è che un ambiente pensato per proteggere il processo cognitivo dello studente più fragile — per riportarlo al testo, alla rielaborazione, al giudizio autonomo — non è una cautela paternalistica ma una scelta di equità sostanziale: rende possibile a chi non lo sa ancora fare ciò che lo studente più attrezzato fa già da solo.</p>
+
+<p>La terza scelta non l'ho ancora nominata per intero, ed è quella su cui vorrei chiudere, perché riguarda lo statuto dell'AI nel sistema. Il modello che ho descritto non è autonomo: lavora dentro un perimetro definito da un editore umano, su un corpus selezionato e su schede costruite insieme a lui. La sua intelligenza non è autosufficiente — è un'intelligenza che si attiva dentro un ambiente che qualcuno ha pensato. Questo non è un limite del prototipo, è una scelta. L'idea opposta — che l'AI debba essere lasciata sola a costruire il proprio rapporto con il sapere — è anch'essa una scelta, con conseguenze diverse. Quale delle due strade prevarrà, nei prossimi anni, dipenderà dalle decisioni che si prendono adesso, in molti luoghi contemporaneamente, e da chi le prende.</p>
+
+<p>Ho lavorato per molti anni nell'editoria della divulgazione scientifica, ed è da quella prospettiva che ho affrontato questo problema. Non sono un teorico dell'AI, non sono un pedagogista, non sono un esperto di policy. Quello che ho cercato di fare è applicare a uno strumento nuovo lo stesso criterio che si applica a qualsiasi mediazione editoriale: chiedersi cosa serve davvero al lettore, e costruire intorno a quella domanda. Il risultato non è definitivo. È un punto di partenza, da cui altre persone, in altri contesti, possono partire per costruire altre cose. La sperimentazione vera comincia adesso.</p>
+
+  </div>
+
+  <hr class="chapter-separator">
+  <div class="chapter-nav">
+    <a href="index.html">← Dossier: L'esperimento Treccani</a>
+    <a href="../index.html">Didattica e AI →</a>
+  </div>
+
+  <footer>
+    <p style="margin-top:2.5em; font-size:0.9em; color:#444;">— Sandro Petruccioli</p>
+  </footer>
+
+</div>
+</body>
+</html>
